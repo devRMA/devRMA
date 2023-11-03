@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                             <Link
                                 isExternal
                                 className="flex items-center gap-1 text-current"
-                                href="https://github.com/devRMA/devRMA"
+                                href="https://github.com/devRMA/devRMA/tree/portfolio"
                                 title="source"
                             >
                                 <span className="text-default-600">Source on</span>
