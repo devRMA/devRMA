@@ -1,8 +1,9 @@
-import { Navbar as NextUINavbar, NavbarContent, NavbarBrand, NavbarItem } from "@nextui-org/navbar";
+import { Navbar as NextUINavbar, NavbarContent, NavbarBrand, NavbarItem } from "@nextui-org/react";
 
 import NextLink from "next/link";
 
 import { ThemeSwitch } from "@/components/theme-switch";
+import { LocaleSwitcher } from "@/components/locale-switcher";
 
 export const Navbar = () => {
     return (
@@ -18,11 +19,13 @@ export const Navbar = () => {
             <NavbarContent className="hidden basis-1/5 sm:flex sm:basis-full" justify="end">
                 <NavbarItem className="hidden gap-2 sm:flex">
                     <ThemeSwitch />
+                    <LocaleSwitcher />
                 </NavbarItem>
             </NavbarContent>
 
             <NavbarContent className="basis-1 pl-4 sm:hidden" justify="end">
                 <ThemeSwitch />
+                <LocaleSwitcher />
             </NavbarContent>
         </NextUINavbar>
     );
