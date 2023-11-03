@@ -28,7 +28,7 @@ export const LocaleSwitcher = () => {
         <Dropdown>
             <DropdownTrigger>
                 <Button isIconOnly variant="light" className="text-default-500" aria-label="Change Language">
-                    <GlobeIcon />
+                    <GlobeIcon size={24} />
                 </Button>
             </DropdownTrigger>
             <DropdownMenu aria-label="Static Actions">
