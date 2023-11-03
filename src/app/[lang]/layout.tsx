@@ -6,7 +6,7 @@ import { siteConfig } from "@/config/site";
 import { fontPoppins } from "@/config/fonts";
 import { Providers } from "@/app/providers";
 import { Navbar } from "@/components/navbar";
-import { Link } from "@nextui-org/link";
+import { Link } from "@nextui-org/react";
 import type { Locale } from "@/types";
 import { getDictionary } from "@/utils/get-dictionary";
 
@@ -34,7 +34,7 @@ export default async function RootLayout({
         <html lang={lang} suppressHydrationWarning>
             <head />
             <body className={clsx("min-h-screen bg-background font-sans", fontPoppins.variable)}>
-                <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
+                <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
                     <div className="relative flex h-screen flex-col">
                         <Navbar />
                         <main className="container mx-auto max-w-7xl flex-grow px-6 pt-16">{children}</main>
