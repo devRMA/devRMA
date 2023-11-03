@@ -9,20 +9,12 @@ module.exports = {
         "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                sans: "var(--font-poppins)",
+            },
+        },
     },
     darkMode: "class",
-    plugins: [
-        nextui([
-            {
-                theme: {
-                    extend: {
-                        fontFamily: {
-                            sans: "var(--font-poppins)",
-                        },
-                    },
-                },
-            },
-        ]),
-    ],
+    plugins: [nextui()],
 };

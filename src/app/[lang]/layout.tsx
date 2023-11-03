@@ -33,7 +33,7 @@ export default async function RootLayout({
     return (
         <html lang={lang} suppressHydrationWarning>
             <head />
-            <body className={clsx("min-h-screen bg-background font-sans antialiased", fontPoppins.variable)}>
+            <body className={clsx("min-h-screen bg-background font-sans", fontPoppins.variable)}>
                 <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
                     <div className="relative flex h-screen flex-col">
                         <Navbar />
