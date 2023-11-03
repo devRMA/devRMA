@@ -2,12 +2,13 @@ import "@/styles/globals.css";
 
 import { Metadata } from "next";
 import clsx from "clsx";
-
 import { siteConfig } from "@/config/site";
 import { fontPoppins } from "@/config/fonts";
-import { Providers } from "./providers";
+import { Providers } from "@/app/providers";
 import { Navbar } from "@/components/navbar";
 import { Link } from "@nextui-org/link";
+import type { Locale } from "@/types";
+import { getDictionary } from "@/utils/get-dictionary";
 
 export const metadata: Metadata = {
     title: {
@@ -20,12 +21,20 @@ export const metadata: Metadata = {
     },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+    children,
+    params: { lang },
+}: {
+    children: React.ReactNode;
+    params: { lang: Locale };
+}) {
+    const t = await getDictionary(lang);
+
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html lang={lang} suppressHydrationWarning>
             <head />
             <body className={clsx("min-h-screen bg-background font-sans antialiased", fontPoppins.variable)}>
-                <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+                <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
                     <div className="relative flex h-screen flex-col">
                         <Navbar />
                         <main className="container mx-auto max-w-7xl flex-grow px-6 pt-16">{children}</main>
@@ -36,7 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                                 href="https://github.com/devRMA/devRMA/tree/portfolio"
                                 title="source"
                             >
-                                <span className="text-default-600">Source on</span>
+                                <span className="text-default-600">{t.footer.source}</span>
                                 <p className="text-primary">GitHub</p>
                             </Link>
                         </footer>

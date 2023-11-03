@@ -13,6 +13,7 @@
     "format": "bun lint:fix && bun prettier:fix"
   },
   "dependencies": {
+    "@formatjs/intl-localematcher": "^0.4.2",
     "@nextui-org/button": "2.0.18",
     "@nextui-org/code": "2.0.16",
     "@nextui-org/input": "2.1.6",
@@ -29,6 +30,7 @@
     "clsx": "^2.0.0",
     "framer-motion": "^10.16.2",
     "intl-messageformat": "^10.5.0",
+    "negotiator": "^0.6.3",
     "next": "^14",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
@@ -36,6 +38,7 @@
     "tailwind-variants": "^0.1.13"
   },
   "devDependencies": {
+    "@types/negotiator": "^0.6.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
