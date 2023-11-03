@@ -3,7 +3,6 @@ import { Navbar as NextUINavbar, NavbarContent, NavbarBrand, NavbarItem } from "
 import NextLink from "next/link";
 
 import { ThemeSwitch } from "@/components/theme-switch";
-import { LinkedInIcon } from "@/components/icons";
 
 export const Navbar = () => {
     return (
@@ -19,7 +18,6 @@ export const Navbar = () => {
             <NavbarContent className="hidden basis-1/5 sm:flex sm:basis-full" justify="end">
                 <NavbarItem className="hidden gap-2 sm:flex">
                     <ThemeSwitch />
-                    <LinkedInIcon size={22} />
                 </NavbarItem>
             </NavbarContent>
 
