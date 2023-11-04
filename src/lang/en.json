@@ -1,8 +1,4 @@
 {
-    "test": {
-        "hello": "Hello",
-        "world": "World"
-    },
     "footer": {
         "source": "Source on"
     }

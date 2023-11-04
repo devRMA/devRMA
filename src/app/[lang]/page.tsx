@@ -1,15 +1,15 @@
-import { title } from "@/components/primitives";
-import type { Locale } from "@/types";
-import { getDictionary } from "@/utils/get-dictionary";
+import { TypingName } from "@/components/typing-name";
+import { Image } from "@nextui-org/react";
+import NextImage from "next/image";
 
-export default async function Home({ params: { lang } }: { params: { lang: Locale } }) {
-    const t = await getDictionary(lang);
-
+export default async function Home() {
     return (
-        <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-            <div className="inline-block max-w-lg justify-center text-center">
-                <h1 className={title()}>{t.test.hello}&nbsp;</h1>
-                <h1 className={title({ color: "violet" })}>{t.test.world}&nbsp;</h1>
+        <section className="flex h-full flex-col items-center justify-between gap-4 md:flex-row">
+            <div className="min-h-[168px]">
+                <TypingName />
+            </div>
+            <div>
+                <Image as={NextImage} width={400} height={400} src="/avatar.png" alt="My profile picture" />
             </div>
         </section>
     );

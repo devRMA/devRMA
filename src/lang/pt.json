@@ -1,8 +1,4 @@
 {
-    "test": {
-        "hello": "Olá",
-        "world": "Mundo"
-    },
     "footer": {
         "source": "Código fonte no"
     }
