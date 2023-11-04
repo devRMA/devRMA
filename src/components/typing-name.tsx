@@ -3,6 +3,7 @@
 import { useRef, useEffect } from "react";
 import { title } from "@/components/primitives";
 import Typed from "typed.js";
+import { clsx } from "clsx";
 
 export const TypingName = () => {
     const element = useRef(null);
@@ -26,7 +27,7 @@ export const TypingName = () => {
     }, []);
 
     return (
-        <h1 className={title()}>
+        <h1 className={clsx("min-h-[9rem]", title())}>
             <span ref={element} />
         </h1>
     );
