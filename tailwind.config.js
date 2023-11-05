@@ -13,12 +13,6 @@ module.exports = {
             fontFamily: {
                 sans: "var(--font-poppins)",
             },
-            minHeight: {
-                screenHeightWithoutHeader: "calc(100vh - 64px)",
-            },
-            height: {
-                screenHeightWithoutHeader: "calc(100vh - 64px)",
-            },
         },
     },
     darkMode: "class",
