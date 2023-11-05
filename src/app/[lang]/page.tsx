@@ -1,12 +1,16 @@
-import { Avatar } from "@/components/avatar";
 import { PageWrapper } from "@/components/page-wrapper";
-import { TypingName } from "@/components/typing-name";
+import { About } from "@/components/sections/about";
+import { Hero } from "@/components/sections/hero";
+import { Locale } from "@/types";
+import { getDictionary } from "@/utils/get-dictionary";
 
-export default async function Home() {
+export default async function Home({ params: { lang } }: { params: { lang: Locale } }) {
+    const t = await getDictionary(lang);
+
     return (
-        <PageWrapper className="flex flex-col-reverse items-center justify-center gap-4 py-8 md:flex-row md:justify-between md:py-10">
-            <TypingName />
-            <Avatar />
+        <PageWrapper>
+            <Hero />
+            <About t={t} />
         </PageWrapper>
     );
 }
