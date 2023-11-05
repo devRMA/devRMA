@@ -6,4 +6,22 @@ export const siteConfig = {
     links: {
         github: "https://github.com/devRMA",
     },
+    navItems: [
+        {
+            key: "home",
+            href: "/#home",
+        },
+        {
+            key: "about",
+            href: "/#about",
+        },
+        {
+            key: "projects",
+            href: "/#projects",
+        },
+        {
+            key: "experiences",
+            href: "/#experiences",
+        },
+    ],
 };
