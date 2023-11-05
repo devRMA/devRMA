@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 
 import { Link } from "@nextui-org/react";
+import { Analytics } from '@vercel/analytics/react';
 import clsx from "clsx";
 import { Metadata } from "next";
 
@@ -52,6 +53,7 @@ export default async function RootLayout({
                         </footer>
                     </div>
                 </Providers>
+                <Analytics />
             </body>
         </html>
     );
