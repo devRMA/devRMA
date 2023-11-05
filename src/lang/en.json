@@ -1,4 +1,21 @@
 {
+    "navbar": {
+        "items": {
+            "home": "Home",
+            "about": "About",
+            "projects": "Projects",
+            "experiences": "Experiences"
+        }
+    },
+    "about": {
+        "card": {
+            "developer": "Developer ",
+            "years_ago": " years ago",
+            "years_old": "years old"
+        },
+        "about_text": "I am passionate about programming. Since 2017 I have been dedicating myself to learning and developing new programming skills. I love trying new things and I'm always looking to learn about new technologies. I currently share my projects through my GitHub. I find it amazing how programming allows me to create new things and solve complex problems. I am a dedicated and determined person. I want to continue learning and evolving as a programmer, and I am sure that one day I will achieve my goals.",
+        "find": "Find me on"
+    },
     "footer": {
         "source": "Source on"
     }

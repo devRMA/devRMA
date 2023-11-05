@@ -1,4 +1,21 @@
 {
+    "navbar": {
+        "items": {
+            "home": "Início",
+            "about": "Sobre mim",
+            "projects": "Projetos",
+            "experiences": "Experiências"
+        }
+    },
+    "about": {
+        "card": {
+            "developer": "Desenvolvedor há ",
+            "years_ago": " anos",
+            "years_old": "anos de idade"
+        },
+        "about_text": "Sou um apaixonado por programação. Desde 2017 venho me dedicando para aprender e desenvolver novas habilidades na programação. Eu adoro experimentar coisas novas e sempre estou buscando conhecer novas tecnologias. Atualmente compartilho meus projetos através do meu GitHub. Acho incrível como a programação me permite criar coisas novas e resolver problemas complexos. Sou uma pessoa dedicada e determinada. Quero continuar aprendendo e evoluindo como programador, e tenho certeza de que um dia alcançarei meus objetivos.",
+        "find": "Você pode me encontrar em"
+    },
     "footer": {
         "source": "Código fonte no"
     }
