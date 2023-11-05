@@ -37,13 +37,13 @@ export default async function RootLayout({
                 <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
                     <div className="relative flex h-screen flex-col">
                         <Navbar />
-                        <main className="container mx-auto max-w-7xl flex-grow px-6 pt-16">{children}</main>
+                        <main className="container mx-auto max-w-7xl flex-grow px-6 md:pt-16">{children}</main>
                         <footer className="flex w-full items-center justify-center py-3">
                             <Link
                                 isExternal
                                 className="flex items-center gap-1 text-current"
                                 href="https://github.com/devRMA/devRMA/tree/portfolio"
-                                title="source"
+                                title="Source"
                             >
                                 <span className="text-default-600">{t.footer.source}</span>
                                 <p className="text-primary">GitHub</p>
