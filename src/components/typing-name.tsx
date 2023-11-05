@@ -28,7 +28,7 @@ export const TypingName = () => {
     }, []);
 
     return (
-        <h1 className={clsx("min-h-[9rem]", title())}>
+        <h1 className={clsx("h-[9rem] w-48", title())}>
             <span ref={element} />
         </h1>
     );
