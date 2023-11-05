@@ -8,6 +8,7 @@ export const PageWrapper = ({ children, className }: { children: React.ReactNode
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 50 }}
         className={className}
+        transition={{ when: "beforeChildren" }}
     >
         {children}
     </motion.div>
