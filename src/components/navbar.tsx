@@ -1,9 +1,8 @@
-import { Navbar as NextUINavbar, NavbarContent, NavbarBrand, NavbarItem } from "@nextui-org/react";
-
+import { Navbar as NextUINavbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/react";
 import NextLink from "next/link";
 
-import { ThemeSwitch } from "@/components/theme-switch";
 import { LocaleSwitcher } from "@/components/locale-switcher";
+import { ThemeSwitch } from "@/components/theme-switch";
 
 export const Navbar = () => {
     return (

@@ -1,8 +1,8 @@
 "use client";
 
-import { MouseParallaxContainer, MouseParallaxChild } from "react-parallax-mouse";
 import { Image } from "@nextui-org/react";
 import NextImage from "next/image";
+import { MouseParallaxChild, MouseParallaxContainer } from "react-parallax-mouse";
 
 export const Avatar = () => {
     return (

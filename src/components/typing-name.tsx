@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import { title } from "@/components/primitives";
-import Typed from "typed.js";
 import { clsx } from "clsx";
+import { useEffect, useRef } from "react";
+import Typed from "typed.js";
+
+import { title } from "@/components/primitives";
 
 export const TypingName = () => {
     const element = useRef(null);

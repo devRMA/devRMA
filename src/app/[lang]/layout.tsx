@@ -1,12 +1,13 @@
 import "@/styles/globals.css";
 
-import { Metadata } from "next";
+import { Link } from "@nextui-org/react";
 import clsx from "clsx";
-import { siteConfig } from "@/config/site";
-import { fontPoppins } from "@/config/fonts";
+import { Metadata } from "next";
+
 import { Providers } from "@/app/providers";
 import { Navbar } from "@/components/navbar";
-import { Link } from "@nextui-org/react";
+import { fontPoppins } from "@/config/fonts";
+import { siteConfig } from "@/config/site";
 import type { Locale } from "@/types";
 import { getDictionary } from "@/utils/get-dictionary";
 

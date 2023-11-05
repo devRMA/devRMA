@@ -1,8 +1,9 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import { Button } from "@nextui-org/react";
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
+import { usePathname } from "next/navigation";
+
 import { GlobeIcon } from "@/components/icons";
 
 export const LocaleSwitcher = () => {

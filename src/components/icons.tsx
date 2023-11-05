@@ -1,12 +1,13 @@
-import * as React from "react";
-import { IconSvgProps } from "@/types";
 import {
-    LinkedInLogoIcon,
     GitHubLogoIcon,
     GlobeIcon as RadixGlobeIcon,
+    LinkedInLogoIcon,
     MoonIcon as RadixMoonIcon,
     SunIcon as RadixSunIcon,
 } from "@radix-ui/react-icons";
+import * as React from "react";
+
+import { IconSvgProps } from "@/types";
 
 export const LinkedInIcon = ({ size = 24, width, height }: IconSvgProps) => {
     return <LinkedInLogoIcon height={size || height} width={size || width} fill="currentColor" />;

@@ -1,6 +1,6 @@
-import { TypingName } from "@/components/typing-name";
 import { Avatar } from "@/components/avatar";
 import { PageWrapper } from "@/components/page-wrapper";
+import { TypingName } from "@/components/typing-name";
 
 export default async function Home() {
     return (
