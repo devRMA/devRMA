@@ -32,13 +32,13 @@ export default async function RootLayout({
     const t = await getDictionary(lang);
 
     return (
-        <html lang={lang} suppressHydrationWarning>
+        <html lang={lang} suppressHydrationWarning className="scroll-smooth">
             <head />
             <body className={clsx("min-h-screen bg-background font-sans", fontPoppins.variable)}>
                 <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
                     <div className="relative flex h-screen flex-col">
-                        <Navbar />
-                        <main className="container mx-auto max-w-7xl flex-grow px-6 md:pt-16">{children}</main>
+                        <Navbar lang={lang} />
+                        <main className="container mx-auto max-w-7xl flex-grow px-6">{children}</main>
                         <footer className="flex w-full items-center justify-center py-3">
                             <Link
                                 isExternal
