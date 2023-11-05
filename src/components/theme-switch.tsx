@@ -4,8 +4,8 @@ import { FC } from "react";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { SwitchProps, useSwitch } from "@nextui-org/switch";
 import { useTheme } from "next-themes";
-import { useIsSSR } from "@react-aria/ssr";
 import clsx from "clsx";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { SunIcon, MoonIcon } from "@/components/icons";
 
@@ -16,15 +16,25 @@ export interface ThemeSwitchProps {
 
 export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className, classNames }) => {
     const { theme, setTheme } = useTheme();
-    const isSSR = useIsSSR();
+    const iconVariants = {
+        enter: {
+            transform: "rotateY(90deg)",
+        },
+        center: {
+            transform: "rotateY(0deg)",
+        },
+        exit: {
+            transform: "rotateY(90deg)",
+        },
+    };
 
     const onChange = () => {
         theme === "light" ? setTheme("dark") : setTheme("light");
     };
 
     const { Component, slots, isSelected, getBaseProps, getInputProps, getWrapperProps } = useSwitch({
-        isSelected: theme === "light" || isSSR,
-        "aria-label": `Switch to ${theme === "light" || isSSR ? "dark" : "light"} mode`,
+        isSelected: theme === "light",
+        "aria-label": `Switch to ${theme === "light" ? "dark" : "light"} mode`,
         onChange,
     });
 
@@ -60,7 +70,31 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className, classNames }) => 
                     ),
                 })}
             >
-                {!isSelected || isSSR ? <SunIcon size={24} /> : <MoonIcon size={24} />}
+                <AnimatePresence mode="wait" initial={false}>
+                    {!isSelected ? (
+                        <motion.span
+                            key="sun"
+                            className="relative"
+                            variants={iconVariants}
+                            initial="enter"
+                            animate="center"
+                            exit="exit"
+                        >
+                            <SunIcon className="absolute" size={24} />
+                        </motion.span>
+                    ) : (
+                        <motion.span
+                            key="moon"
+                            className="relative"
+                            variants={iconVariants}
+                            initial="enter"
+                            animate="center"
+                            exit="exit"
+                        >
+                            <MoonIcon className="absolute" size={24} />
+                        </motion.span>
+                    )}
+                </AnimatePresence>
             </div>
         </Component>
     );
