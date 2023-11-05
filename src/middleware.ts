@@ -20,7 +20,7 @@ function getLocale(request: NextRequest): string | undefined {
 export function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
 
-    if (["/avatar.png", "/background.png"].includes(pathname)) return;
+    if (["/avatar.png", "/background.png", "/photo.png"].includes(pathname)) return;
 
     // Check if there is any supported locale in the pathname
     const pathnameIsMissingLocale = i18n.locales.every(
