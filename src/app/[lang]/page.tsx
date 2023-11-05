@@ -1,11 +1,12 @@
 import { TypingName } from "@/components/typing-name";
 import { Avatar } from "@/components/avatar";
+import { PageWrapper } from "@/components/page-wrapper";
 
 export default async function Home() {
     return (
-        <section className="flex h-full flex-col items-center gap-4 md:flex-row md:justify-between">
+        <PageWrapper className="flex flex-col-reverse items-center justify-center gap-4 py-8 md:flex-row md:justify-between md:py-10">
             <TypingName />
             <Avatar />
-        </section>
+        </PageWrapper>
     );
 }
