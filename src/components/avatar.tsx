@@ -8,7 +8,7 @@ export const Avatar = () => {
     return (
         <MouseParallaxContainer
             resetOnLeave
-            className="grid h-40 w-40 auto-rows-auto rounded-full md:h-[25rem] md:w-[25rem]"
+            className="grid h-52 w-52 auto-rows-auto rounded-full md:h-[25rem] md:w-[25rem]"
         >
             <MouseParallaxChild factorX={0.03} factorY={0.03} className="absolute overflow-hidden blur-[1px]">
                 <Image as={NextImage} width={500} height={500} src="/background.png" alt="Background" priority />
