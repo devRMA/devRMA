@@ -1,4 +1,5 @@
 import { nextui } from "@nextui-org/react";
+import scrollbar from "tailwind-scrollbar";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -16,6 +17,6 @@ module.exports = {
         },
     },
     darkMode: "class",
-    plugins: [nextui()],
+    plugins: [nextui(), scrollbar],
     tailwindFunctions: ["tv"],
 };
