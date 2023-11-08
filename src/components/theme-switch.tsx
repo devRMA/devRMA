@@ -3,7 +3,7 @@
 import { SwitchProps, useSwitch } from "@nextui-org/switch";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import clsx from "clsx";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 import { useTheme } from "next-themes";
 import { FC } from "react";
 
@@ -16,7 +16,7 @@ export interface ThemeSwitchProps {
 
 export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className, classNames }) => {
     const { theme, setTheme } = useTheme();
-    const iconVariants = {
+    const iconVariants: Variants = {
         enter: {
             transform: "rotateY(90deg)",
         },
