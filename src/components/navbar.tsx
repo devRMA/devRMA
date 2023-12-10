@@ -10,6 +10,7 @@ import {
 } from "@nextui-org/react";
 
 import { LocaleSwitcher } from "@/components/locale-switcher";
+import { Logo } from "@/components/logo";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { siteConfig } from "@/config/site";
 import type { Locale } from "@/types";
@@ -22,8 +23,9 @@ export const Navbar = async ({ lang }: { lang: Locale }) => {
         <NextUINavbar maxWidth="xl" position="sticky" shouldHideOnScroll>
             <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
                 <NavbarBrand as="li" className="max-w-fit gap-3">
-                    <Link className="flex items-center justify-start gap-1" color="foreground" href={`/${lang}`}>
-                        <p className="font-bold text-inherit">DevRMA</p>
+                    <Link className="flex items-center justify-start gap-2" color="foreground" href={`/${lang}`}>
+                        <Logo />
+                        <p className="text-lg font-bold text-inherit">DevRMA</p>
                     </Link>
                 </NavbarBrand>
 
