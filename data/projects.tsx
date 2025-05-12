@@ -1,0 +1,105 @@
+export const projectsData = [
+    {
+        id: 1,
+        title: "E-commerce Platform",
+        shortDescription: "Full-stack e-commerce solution",
+        longDescription:
+            "A complete e-commerce platform with product management, cart functionality, payment processing, and order tracking.",
+        technologies: [
+            "Next.js",
+            "TypeScript",
+            "Prisma",
+            "PostgreSQL",
+            "Stripe",
+            "Tailwind CSS",
+        ],
+        image: "/placeholder.svg?height=192&width=384",
+        githubUrl: "https://github.com/yourusername/ecommerce",
+        liveUrl: "https://ecommerce-demo.vercel.app",
+    },
+    {
+        id: 2,
+        title: "Task Management App",
+        shortDescription: "Collaborative task manager",
+        longDescription:
+            "A task management application with real-time collaboration, drag-and-drop interface, and team workspaces.",
+        technologies: [
+            "React",
+            "Node.js",
+            "Socket.io",
+            "MongoDB",
+            "Express",
+            "Redux",
+        ],
+        image: "/placeholder.svg?height=192&width=384",
+        githubUrl: "https://github.com/yourusername/taskmanager",
+        liveUrl: "https://taskmanager-demo.vercel.app",
+    },
+    {
+        id: 3,
+        title: "Weather Dashboard",
+        shortDescription: "Real-time weather visualization",
+        longDescription:
+            "A weather dashboard that displays current conditions, forecasts, and historical data with interactive charts.",
+        technologies: [
+            "React",
+            "Chart.js",
+            "OpenWeather API",
+            "Tailwind CSS",
+            "Vite",
+        ],
+        image: "/placeholder.svg?height=192&width=384",
+        githubUrl: "https://github.com/yourusername/weather",
+        liveUrl: "https://weather-demo.vercel.app",
+    },
+    {
+        id: 4,
+        title: "Blog Platform",
+        shortDescription: "Content management system",
+        longDescription:
+            "A blog platform with markdown support, categories, tags, and a responsive design for optimal reading experience.",
+        technologies: [
+            "Next.js",
+            "MDX",
+            "Tailwind CSS",
+            "Prisma",
+            "PostgreSQL",
+        ],
+        image: "/placeholder.svg?height=192&width=384",
+        githubUrl: "https://github.com/yourusername/blog",
+        liveUrl: "https://blog-demo.vercel.app",
+    },
+    {
+        id: 5,
+        title: "Portfolio Generator",
+        shortDescription: "Developer portfolio builder",
+        longDescription:
+            "A tool that helps developers create professional portfolios by importing projects from GitHub and customizing the design.",
+        technologies: [
+            "React",
+            "GitHub API",
+            "Tailwind CSS",
+            "Firebase",
+            "Framer Motion",
+        ],
+        image: "/placeholder.svg?height=192&width=384",
+        githubUrl: "https://github.com/yourusername/portfolio-generator",
+        liveUrl: "https://portfolio-generator-demo.vercel.app",
+    },
+    {
+        id: 6,
+        title: "Recipe Finder",
+        shortDescription: "Culinary discovery app",
+        longDescription:
+            "A recipe finder application that allows users to search for recipes based on ingredients, dietary restrictions, and cuisine types.",
+        technologies: [
+            "React",
+            "Spoonacular API",
+            "Styled Components",
+            "Redux Toolkit",
+        ],
+        image: "/placeholder.svg?height=192&width=384",
+        githubUrl: "https://github.com/yourusername/recipe-finder",
+        liveUrl: "https://recipe-finder-demo.vercel.app",
+    },
+];
