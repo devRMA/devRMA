@@ -98,7 +98,7 @@ export function CertificatesSection() {
                 <Card>
                   <CardContent className="p-6 overflow-hidden">
                     {isMobile ? (
-                      <div
+                      <button
                         className="flex overflow-x-auto pb-4 gap-4 scrollbar-hide"
                         onTouchStart={handleTouchStart}
                         onTouchMove={handleTouchMove}
@@ -108,9 +108,9 @@ export function CertificatesSection() {
                         onMouseUp={handleTouchEnd}
                         onMouseLeave={handleTouchEnd}
                       >
-                        {certificatesData[category].map((certificate) => (
+                        {[...certificatesData[category], ...certificatesData[category]].map((certificate, index) => (
                           <motion.div
-                            key={certificate.id}
+                            key={`${certificate.id}-${index}`}
                             className="flex-shrink-0 w-[240px]"
                             whileTap={{
                               scale: 0.98,
@@ -144,13 +144,13 @@ export function CertificatesSection() {
                             />
                           </motion.div>
                         ))}
-                      </div>
+                      </button>
                     ) : (
                       <div className="carousel-container">
                         <div className="carousel">
-                          {certificatesData[category].map((certificate) => (
+                          {[...certificatesData[category], ...certificatesData[category]].map((certificate, index) => (
                             <CertificateCard
-                              key={`${certificate.id}-1`}
+                              key={`${certificate.id}-${index}`}
                               id={certificate.id}
                               title={
                                 t(
