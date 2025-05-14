@@ -1,0 +1,52 @@
+"use client";
+
+import { useLanguage } from "@/components/language-provider";
+import { motion } from "framer-motion";
+import { projectsData } from "@/data/projects";
+import { SectionHeading } from "@/components/atoms/section-heading";
+import { ProjectCard } from "@/components/molecules/project-card";
+
+export function ProjectsSection() {
+  const { t } = useLanguage();
+
+  return (
+    <section
+      id="projects"
+      className="min-h-screen py-16 scroll-mt-16 relative flex flex-col justify-center"
+    >
+      <SectionHeading
+        title={t("projects.title")}
+        description={t("projects.description")}
+      />
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projectsData.map((project, index) => (
+          <motion.div
+            key={project.id}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <ProjectCard
+              id={project.id}
+              title={t(`projects.items.${project.id}.title`) ?? project.title}
+              shortDescription={
+                t(`projects.items.${project.id}.shortDescription`) ??
+                project.shortDescription
+              }
+              longDescription={
+                t(`projects.items.${project.id}.longDescription`) ??
+                project.longDescription
+              }
+              technologies={project.technologies}
+              image={project.image}
+              githubUrl={project.githubUrl}
+              liveUrl={project.liveUrl}
+            />
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
