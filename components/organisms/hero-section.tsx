@@ -87,10 +87,10 @@ export function HeroSection() {
           </p>
 
           <div className="flex flex-wrap gap-3 mt-4">
-            <Button className="rounded-2xl">
+            {/* <Button className="rounded-2xl">
               <Download className="mr-2 h-4 w-4" aria-hidden="true" />
               {t("hero.downloadCV")}
-            </Button>
+            </Button> */}
             <ButtonLink
               href="#contact"
               variant="outline"

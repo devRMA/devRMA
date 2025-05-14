@@ -1,141 +1,130 @@
 type Position = {
-    title: string;
-    period: string;
-    description: string;
-    technologies: string[];
+  title: string;
+  period: string;
+  description: string;
+  technologies: string[];
 };
 
 type Company = {
-    id: string;
-    name: string;
-    period: string;
-    positions: Position[];
+  id: string;
+  name: string;
+  period: string;
+  positions: Position[];
 };
 
 type Education = {
-    id: string;
-    degree: string;
-    institution: string;
-    period: string;
-    description: string;
-    inProgress: boolean;
-    achievements?: string[];
+  id: string;
+  degree: string;
+  institution: string;
+  period: string;
+  description: string;
+  inProgress: boolean;
+  achievements?: string[];
 };
 
 export const experienceData: Company[] = [
-    {
-        id: "tech-innovations",
-        name: "Tech Innovations Inc.",
-        period: "Jan 2020 - Present",
-        positions: [
-            {
-                title: "Senior Full Stack Developer",
-                period: "Jan 2022 - Present",
-                description:
-                    "Leading development of enterprise web applications, mentoring junior developers, and implementing CI/CD pipelines for streamlined deployments.",
-                technologies: [
-                    "Next.js",
-                    "TypeScript",
-                    "Node.js",
-                    "PostgreSQL",
-                    "AWS",
-                    "Docker",
-                ],
-            },
-            {
-                title: "Full Stack Developer",
-                period: "Jan 2020 - Dec 2021",
-                description:
-                    "Developed and maintained multiple client web applications, implemented responsive designs, and integrated third-party APIs for enhanced functionality.",
-                technologies: [
-                    "React",
-                    "JavaScript",
-                    "Express",
-                    "MongoDB",
-                    "Redux",
-                    "Bootstrap",
-                ],
-            },
+  {
+    id: "madeira-madeira",
+    name: "Madeira Madeira",
+    period: "March 2024 - Present",
+    positions: [
+      {
+        title: "Full Stack Developer",
+        period: "June 2025 - Present",
+        description:
+          "Focused on performance, observability, and best development practices. I work on improving scalability and efficiency, implementing monitoring strategies with logs and metrics, refactoring critical code areas, and ensuring quality through tests, documentation, and architecture reviews.",
+        technologies: ["Laravel", "Vue.js", "MySQL", "AWS", "Docker", "Python"],
+      },
+      {
+        title: "Junior Full Stack Developer",
+        period: "March 2024 - May 2025",
+        description:
+          "Worked on the iSend logistics system from iTrack, fixing bugs, developing new features, and continuous improvement. Used Laravel and relational databases, and implemented unit/integration tests, code standardization, and documentation. Collaborated with developers to deliver efficient and sustainable solutions.",
+        technologies: ["Laravel", "Vue.js", "MySQL", "AWS", "Docker"],
+      },
+    ],
+  },
+  {
+    id: "adam-robo",
+    name: "Adam Robo",
+    period: "June 2021 - March 2024",
+    positions: [
+      {
+        title: "IT Coordinator",
+        period: "July 2022 - March 2024",
+        description:
+          "Managed subdomain configurations, created CI/CD pipelines with GitHub Actions for application deployment, and developed REST APIs with Laravel. Also led the IT team, taking part in recruitment, task management, and technical support, gaining valuable hands-on leadership and team management experience.",
+        technologies: [
+          "Laravel",
+          "React.js",
+          "TypeScript",
+          "MySQL",
+          "Docker",
+          "Python",
         ],
-    },
-    {
-        id: "digital-solutions",
-        name: "Digital Solutions Ltd.",
-        period: "Mar 2018 - Dec 2019",
-        positions: [
-            {
-                title: "Frontend Developer",
-                period: "Jun 2019 - Dec 2019",
-                description:
-                    "Created responsive and interactive user interfaces for client websites, collaborated with designers to implement pixel-perfect designs, and optimized web performance.",
-                technologies: [
-                    "HTML",
-                    "CSS",
-                    "JavaScript",
-                    "Vue.js",
-                    "SASS",
-                    "Webpack",
-                ],
-            },
-            {
-                title: "Junior Web Developer",
-                period: "Mar 2018 - May 2019",
-                description:
-                    "Assisted in developing web applications, fixed bugs, and implemented new features under senior developer guidance.",
-                technologies: [
-                    "HTML",
-                    "CSS",
-                    "JavaScript",
-                    "PHP",
-                    "jQuery",
-                    "MySQL",
-                ],
-            },
+      },
+      {
+        title: "Full Stack Developer",
+        period: "January 2022 - June 2022",
+        description:
+          "Worked on monolithic systems development, handling both backend (Laravel) and frontend (Blade templates, HTML, CSS), delivering complete solutions.",
+        technologies: [
+          "Laravel",
+          "jQuery",
+          "Blade",
+          "React.js",
+          "TypeScript",
+          "MySQL",
+          "Docker",
+          "Python",
+          "FileZilla",
         ],
-    },
-    {
-        id: "startup-ventures",
-        name: "StartUp Ventures",
-        period: "Jan 2017 - Feb 2018",
-        positions: [
-            {
-                title: "Web Development Intern",
-                period: "Jan 2017 - Feb 2018",
-                description:
-                    "Gained hands-on experience in web development, assisted senior developers with coding tasks, and participated in team meetings and code reviews.",
-                technologies: ["HTML", "CSS", "JavaScript", "PHP", "WordPress"],
-            },
+      },
+      {
+        title: "Junior Apprentice",
+        period: "June 2021 - December 2021",
+        description:
+          "During high school, I focused on customer support, test automation with Python and Selenium, and started learning PHP.",
+        technologies: [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "PHP",
+          "Bootstrap",
+          "MySQL",
         ],
-    },
+      },
+    ],
+  },
 ];
 
 export const academicData: Education[] = [
-    {
-        id: "software-engineering",
-        degree: "Bachelor's in Software Engineering",
-        institution: "Faculdade Positivo",
-        period: "Jun 2022 - Dec 2026",
-        description:
-            "Comprehensive program covering software development methodologies, algorithms, data structures, database management, and software architecture. Focus on practical applications and industry-relevant skills.",
-        inProgress: true,
-        achievements: [
-            "Maintained a GPA of 3.8/4.0",
-            "Developed a full-stack application for the university's internal use",
-            "Participated in the university's programming competition, securing 2nd place",
-        ],
-    },
-    {
-        id: "systems-analysis",
-        degree: "Technical Course in Systems Analysis and Development",
-        institution: "SENAI",
-        period: "Aug 2019 - Dec 2020",
-        description:
-            "Technical program focused on practical software development skills, including programming fundamentals, database design, and web development. Emphasis on hands-on projects and industry collaboration.",
-        inProgress: false,
-        achievements: [
-            "Graduated with distinction",
-            "Developed an inventory management system as final project",
-            "Completed an internship at a local software company during the course",
-        ],
-    },
+  {
+    id: "software-engineering",
+    degree: "Bachelor's in Software Engineering",
+    institution: "Faculdade Positivo",
+    period: "Jun 2022 - Dec 2026",
+    description:
+      "I study Software Engineering at Universidade Positivo, deepening my knowledge in algorithms, data structures, systems architecture, DevOps, and cloud computing, with practical, market-aligned focus.",
+    inProgress: true,
+    achievements: [
+      "Participated in full app modeling, from requirements gathering to wireframes and user stories.",
+      "Applied software engineering practices in academic projects, focusing on organization, analysis, and technical planning.",
+      "Completed hands-on tasks solving problems using logic, algorithms, and data structures in various contexts.",
+    ],
+  },
+  {
+    id: "systems-analysis",
+    degree: "Technical Degree in Systems Development",
+    institution: "SENAI Dr. Celso Charuri",
+    period: "Aug 2019 - Dec 2020",
+    description:
+      "In the SENAI technical course, I learned SQL, programming logic, modeling, and testing. Worked with C (Arduino), Java (desktop), C# with ASP.NET Core (web), Python with Selenium (testing), and HTML, CSS, JavaScript, always in a hands-on lab setting.",
+    inProgress: false,
+    achievements: [
+      "Collaborated on simple games using programming logic, flow control, and data structures.",
+      "Helped create a website with ASP.NET integrated with an Arduino for environment temperature control.",
+      "Implemented end-to-end testing with Python and Selenium as part of the final project.",
+    ],
+  },
 ];

@@ -34,51 +34,38 @@ const translations = {
   },
   projects: {
     title: "Projetos",
-    description:
-      "Alguns dos projetos que desenvolvi, demonstrando minhas habilidades e experiência.",
+    description: "Alguns dos projetos que eu fiz.",
     items: {
       1: {
-        title: "Plataforma de E-commerce",
-        shortDescription: "Solução completa de e-commerce",
+        title: "Androxus",
+        shortDescription: "Bot para Discord em Python",
         longDescription:
-          "Uma plataforma completa de e-commerce com gerenciamento de produtos, funcionalidade de carrinho, processamento de pagamentos e rastreamento de pedidos.",
+          "Um bot desenvolvido em Python para o Discord, com comandos personalizados e lógica modular.",
       },
       2: {
-        title: "App de Gerenciamento de Tarefas",
-        shortDescription: "Gerenciador de tarefas colaborativo",
+        title: "Python Stopwatch2",
+        shortDescription: "Biblioteca de medição de tempo em Python",
         longDescription:
-          "Um aplicativo de gerenciamento de tarefas com colaboração em tempo real, interface de arrastar e soltar e espaços de trabalho em equipe.",
+          "Uma biblioteca simples e reutilizável para medir tempo de execução de blocos de código em Python. Para testes de performance, benchmarks e logs.",
       },
       3: {
-        title: "Painel de Clima",
-        shortDescription: "Visualização de clima em tempo real",
+        title: "Pybot com Docker",
+        shortDescription: "Bot Discord com suporte a Docker",
         longDescription:
-          "Um painel de clima que exibe condições atuais, previsões e dados históricos com gráficos interativos.",
+          "Exemplo de estrutura para bot de Discord em Python usando Docker.",
       },
       4: {
-        title: "Plataforma de Blog",
-        shortDescription: "Sistema de gerenciamento de conteúdo",
+        title: "Stock Trader",
+        shortDescription: "Jogo de compra e venda de ações",
         longDescription:
-          "Uma plataforma de blog com suporte a markdown, categorias, tags e um design responsivo para uma experiência de leitura ideal.",
-      },
-      5: {
-        title: "Gerador de Portfólio",
-        shortDescription: "Construtor de portfólio para desenvolvedores",
-        longDescription:
-          "Uma ferramenta que ajuda desenvolvedores a criar portfólios profissionais importando projetos do GitHub e personalizando o design.",
-      },
-      6: {
-        title: "Buscador de Receitas",
-        shortDescription: "App de descoberta culinária",
-        longDescription:
-          "Um aplicativo de busca de receitas que permite aos usuários pesquisar receitas com base em ingredientes, restrições alimentares e tipos de culinária.",
+          "Jogo simples criado com Vue.js no frontend e Laravel no backend, onde o usuário pode simular a compra e venda de ações de empresas fictícias, com preços variando dinamicamente.",
       },
     },
   },
   experience: {
-    title: "Experiência Profissional",
+    title: "Experiências",
     description:
-      "Minha trajetória profissional e as empresas onde tive a oportunidade de contribuir.",
+      "Minha trajetória profissional e acadêmica, com as empresas e instituições onde tive a oportunidade de estudar e contribuir.",
     tabs: {
       professional: "Profissional",
       academic: "Acadêmica",
@@ -87,69 +74,73 @@ const translations = {
     inProgress: "Em andamento",
     keyAchievements: "Principais conquistas",
     companies: {
-      "tech-innovations": {
-        name: "Tech Innovations Inc.",
-        positions: {
-          0: {
-            title: "Desenvolvedor Full Stack Sênior",
+      "madeira-madeira": {
+        name: "Madeira Madeira",
+        period: "Março 2024 - Presente",
+        positions: [
+          {
+            title: "Desenvolvedor Full Stack Pleno",
+            period: "Junho 2025 - Presente",
             description:
-              "Liderando o desenvolvimento de aplicações web empresariais, mentorando desenvolvedores juniores e implementando pipelines de CI/CD para implantações otimizadas.",
+              "Atuo com foco em performance, observabilidade e boas práticas de desenvolvimento. Tenho trabalhado para melhorar a escalabilidade e eficiência da aplicação, implementando estratégias de monitoramento com logs e métricas, refatorando trechos críticos do sistema e garantindo qualidade através de testes, documentação e revisão de arquitetura.",
           },
-          1: {
+          {
+            title: "Desenvolvedor Full Stack Júnior",
+            period: "Março 2024 - Maio 2025",
+            description:
+              "Atuei no sistema logístico iSend da iTrack, realizando correções de bugs, desenvolvimento de novas funcionalidades e melhorias contínuas. Trabalhei com Laravel e banco de dados relacional, além de implementar testes unitários e de integração, padronização de código e documentação. Colaborei com outros desenvolvedores para entregar soluções eficientes e sustentáveis.",
+          },
+        ],
+      },
+      "adam-robo": {
+        name: "Adam Robo",
+        period: "Junho 2021 - Março 2024",
+        positions: [
+          {
+            title: "Coordenador de TI",
+            period: "Julho 2022 - Março 2024",
+            description:
+              "Fui responsável pelas configurações de subdomínios, criação de pipelines de CI/CD com GitHub Actions para deploy de aplicações e desenvolvimento de APIs REST com Laravel. Também liderei a equipe de TI, participando ativamente do recrutamento, organização de tarefas e suporte técnico, o que me proporcionou um aprendizado prático valioso sobre liderança e gestão de equipe.",
+          },
+          {
             title: "Desenvolvedor Full Stack",
+            period: "Janeiro 2022 - Junho 2022",
             description:
-              "Desenvolvi e mantive várias aplicações web para clientes, implementei designs responsivos e integrei APIs de terceiros para funcionalidades aprimoradas.",
+              "Atuei no desenvolvimento de sistemas monolíticos, sendo responsável tanto pelo backend (Laravel) quanto pelo frontend (Blade templates, HTML e CSS), entregando soluções completas.",
           },
-        },
-      },
-      "digital-solutions": {
-        name: "Digital Solutions Ltda.",
-        positions: {
-          0: {
-            title: "Desenvolvedor Frontend",
+          {
+            title: "Jovem Aprendiz",
+            period: "Junho 2021 - Dezembro 2021",
             description:
-              "Criei interfaces de usuário responsivas e interativas para sites de clientes, colaborei com designers para implementar designs perfeitos e otimizei o desempenho da web.",
+              "Durante o ensino médio, atuei na empresa com foco em suporte ao cliente, automatização de testes com Python e Selenium, além de iniciar meus estudos em PHP.",
           },
-          1: {
-            title: "Desenvolvedor Web Júnior",
-            description:
-              "Auxiliei no desenvolvimento de aplicações web, corrigi bugs e implementei novos recursos sob orientação de desenvolvedores seniores.",
-          },
-        },
-      },
-      "startup-ventures": {
-        name: "StartUp Ventures",
-        positions: {
-          0: {
-            title: "Estagiário de Desenvolvimento Web",
-            description:
-              "Obtive experiência prática em desenvolvimento web, auxiliei desenvolvedores seniores com tarefas de codificação e participei de reuniões de equipe e revisões de código.",
-          },
-        },
+        ],
       },
     },
     education: {
       "software-engineering": {
         degree: "Bacharelado em Engenharia de Software",
         institution: "Faculdade Positivo",
+        period: "Junho 2022 - Dezembro 2026",
         description:
-          "Programa abrangente cobrindo metodologias de desenvolvimento de software, algoritmos, estruturas de dados, gerenciamento de banco de dados e arquitetura de software. Foco em aplicações práticas e habilidades relevantes para a indústria.",
-        achievements: {
-          0: "Mantive um GPA de 3.8/4.0",
-          1: "Desenvolvi uma aplicação full-stack para uso interno da universidade",
-          2: "Participei da competição de programação da universidade, garantindo o 2º lugar",
-        },
+          "Curso Engenharia de Software na Universidade Positivo, onde aprofundo meus conhecimentos em algoritmos, estrutura de dados, arquitetura de sistemas, DevOps e cloud, com foco prático e alinhado ao mercado.",
+        achievements: [
+          "Participei da modelagem completa de um aplicativo, desde o levantamento de requisitos até wireframes e definição de histórias de usuário.",
+          "Apliquei práticas de engenharia de software em projetos acadêmicos, com foco em organização, análise e planejamento técnico.",
+          "Desenvolvi atividades práticas com foco em resolução de problemas, utilizando lógica, algoritmos e estrutura de dados em diferentes contextos.",
+        ],
       },
       "systems-analysis": {
-        degree: "Curso Técnico em Análise e Desenvolvimento de Sistemas",
-        institution: "SENAI",
+        degree: "Técnico em Desenvolvimento de Sistemas",
+        institution: "SENAI Dr. Celso Charuri",
+        period: "Agosto 2019 - Dezembro 2020",
         description:
-          "Programa técnico focado em habilidades práticas de desenvolvimento de software, incluindo fundamentos de programação, design de banco de dados e desenvolvimento web. Ênfase em projetos práticos e colaboração com a indústria.",
-        achievements: {
-          0: "Graduado com distinção",
-          1: "Desenvolvi um sistema de gerenciamento de inventário como projeto final",
-          2: "Completei um estágio em uma empresa local de software durante o curso",
-        },
+          "No curso técnico do SENAI, aprendi SQL, lógica de programação, modelagem e testes; trabalhei com C (Arduino), Java (desktop), C# com ASP.NET Core (web), Python com Selenium (testes), além de HTML, CSS e JavaScript, sempre com foco prático e estrutura de laboratório.",
+        achievements: [
+          "Desenvolvi, em equipe, jogos simples aplicando lógica de programação, controle de fluxo e estrutura de dados.",
+          "Participei da criação de um site com ASP.NET integrado a um Arduino para controle de temperatura de ambientes.",
+          "Implementei testes end-to-end com Python e Selenium como parte do projeto de TCC.",
+        ],
       },
     },
   },

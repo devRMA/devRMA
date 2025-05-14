@@ -107,7 +107,8 @@ export function ExperienceSection() {
                       </CardTitle>
                       <CardDescription className="flex items-center">
                         <Calendar className="h-3 w-3 mr-1" aria-hidden="true" />
-                        {company.period}
+                        {t(`experience.companies.${company.id}.period`) ??
+                          company.period}
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -118,7 +119,11 @@ export function ExperienceSection() {
                               `experience.companies.${company.id}.positions.0.title`
                             ) ?? company.positions[0].title
                           }
-                          period={company.positions[0].period}
+                          period={
+                            t(
+                              `experience.companies.${company.id}.positions.0.period`
+                            ) ?? company.positions[0].period
+                          }
                           description={
                             t(
                               `experience.companies.${company.id}.positions.0.description`
@@ -166,7 +171,11 @@ export function ExperienceSection() {
                                             }.positions.${idx + 1}.title`
                                           ) ?? position.title
                                         }
-                                        period={position.period}
+                                        period={t(
+                                          `experience.companies.${
+                                            company.id
+                                          }.positions.${idx + 1}.period`
+                                        ) ?? position.period}
                                         description={
                                           t(
                                             `experience.companies.${
@@ -229,7 +238,9 @@ export function ExperienceSection() {
                     </CardHeader>
                     <CardContent>
                       <EducationCard
-                        period={education.period}
+                        period={t(
+                          `experience.education.${education.id}.period`
+                        ) ?? education.period}
                         description={
                           t(
                             `experience.education.${education.id}.description`

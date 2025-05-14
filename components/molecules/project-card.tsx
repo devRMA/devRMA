@@ -24,7 +24,7 @@ interface ProjectCardProps {
   technologies: string[];
   image: string;
   githubUrl?: string;
-  liveUrl?: string;
+  liveUrl?: string | null;
 }
 
 export function ProjectCard({

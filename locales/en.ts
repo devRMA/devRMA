@@ -18,67 +18,54 @@ const translations = {
   },
   hero: {
     description:
-      "Hi there! 👋 I'm Rafael, but you can call me Rafa. I'm passionate about technology and always focused on building solutions that provide a smooth, accessible, and memorable user experience.",
+      "Hi there! 👋 I'm Rafael, but you can call me Rafa. Passionate about technology and always focused on developing solutions that offer a fluid, accessible, and memorable user experience.",
     downloadCV: "Download CV",
     contact: "Get in touch",
   },
   skills: {
     title: "Skills",
     description:
-      "Over time, I've worked with many technologies. Here, I've organized what I've used, what I'm currently studying, and what I'd like to explore in the future.",
+      "Over time I've worked with many technologies. Here I've separated what I've used, what I'm studying, and what I still want to explore.",
     tabs: {
       know: "Used",
-      studying: "Learning",
-      future: "To explore",
+      studying: "Studying",
+      future: "Want to learn",
     },
   },
   projects: {
     title: "Projects",
-    description:
-      "Some of the projects I've developed, showcasing my skills and experience.",
+    description: "Some of the projects I've worked on.",
     items: {
       1: {
-        title: "E-commerce Platform",
-        shortDescription: "Full-stack e-commerce solution",
+        title: "Androxus",
+        shortDescription: "Discord bot in Python",
         longDescription:
-          "A complete e-commerce platform with product management, cart functionality, payment processing, and order tracking.",
+          "A bot developed in Python for Discord, with custom commands and modular logic.",
       },
       2: {
-        title: "Task Management App",
-        shortDescription: "Collaborative task manager",
+        title: "Python Stopwatch2",
+        shortDescription: "Python time measurement library",
         longDescription:
-          "A task management application with real-time collaboration, drag-and-drop interface, and team workspaces.",
+          "A simple and reusable library to measure code execution time in Python. Ideal for performance testing, benchmarks, and logging.",
       },
       3: {
-        title: "Weather Dashboard",
-        shortDescription: "Real-time weather visualization",
+        title: "Pybot with Docker",
+        shortDescription: "Discord bot with Docker support",
         longDescription:
-          "A weather dashboard that displays current conditions, forecasts, and historical data with interactive charts.",
+          "Example structure for a Discord bot in Python using Docker.",
       },
       4: {
-        title: "Blog Platform",
-        shortDescription: "Content management system",
+        title: "Stock Trader",
+        shortDescription: "Stock trading simulation game",
         longDescription:
-          "A blog platform with markdown support, categories, tags, and a responsive design for optimal reading experience.",
-      },
-      5: {
-        title: "Portfolio Generator",
-        shortDescription: "Developer portfolio builder",
-        longDescription:
-          "A tool that helps developers create professional portfolios by importing projects from GitHub and customizing the design.",
-      },
-      6: {
-        title: "Recipe Finder",
-        shortDescription: "Culinary discovery app",
-        longDescription:
-          "A recipe finder application that allows users to search for recipes based on ingredients, dietary restrictions, and cuisine types.",
+          "Simple game created with Vue.js (frontend) and Laravel (backend), where users can simulate trading stocks from fictional companies, with dynamically changing prices.",
       },
     },
   },
   experience: {
-    title: "Professional Experience",
+    title: "Experience",
     description:
-      "My professional journey and the companies where I've had the opportunity to contribute.",
+      "My professional and academic journey, with the companies and institutions where I had the opportunity to study and contribute.",
     tabs: {
       professional: "Professional",
       academic: "Academic",
@@ -87,76 +74,80 @@ const translations = {
     inProgress: "In progress",
     keyAchievements: "Key achievements",
     companies: {
-      "tech-innovations": {
-        name: "Tech Innovations Inc.",
-        positions: {
-          0: {
-            title: "Senior Full Stack Developer",
-            description:
-              "Leading development of enterprise web applications, mentoring junior developers, and implementing CI/CD pipelines for streamlined deployments.",
-          },
-          1: {
+      "madeira-madeira": {
+        name: "Madeira Madeira",
+        period: "March 2024 - Present",
+        positions: [
+          {
             title: "Full Stack Developer",
+            period: "June 2025 - Present",
             description:
-              "Developed and maintained multiple client web applications, implemented responsive designs, and integrated third-party APIs for enhanced functionality.",
+              "Focused on performance, observability, and best development practices. I work on improving scalability and efficiency, implementing monitoring strategies with logs and metrics, refactoring critical code areas, and ensuring quality through tests, documentation, and architecture reviews.",
           },
-        },
+          {
+            title: "Junior Full Stack Developer",
+            period: "March 2024 - May 2025",
+            description:
+              "Worked on the iSend logistics system from iTrack, fixing bugs, developing new features, and continuous improvement. Used Laravel and relational databases, and implemented unit/integration tests, code standardization, and documentation. Collaborated with developers to deliver efficient and sustainable solutions.",
+          },
+        ],
       },
-      "digital-solutions": {
-        name: "Digital Solutions Ltd.",
-        positions: {
-          0: {
-            title: "Frontend Developer",
+      "adam-robo": {
+        name: "Adam Robo",
+        period: "June 2021 - March 2024",
+        positions: [
+          {
+            title: "IT Coordinator",
+            period: "July 2022 - March 2024",
             description:
-              "Created responsive and interactive user interfaces for client websites, collaborated with designers to implement pixel-perfect designs, and optimized web performance.",
+              "Managed subdomain configurations, created CI/CD pipelines with GitHub Actions for application deployment, and developed REST APIs with Laravel. Also led the IT team, taking part in recruitment, task management, and technical support, gaining valuable hands-on leadership and team management experience.",
           },
-          1: {
-            title: "Junior Web Developer",
+          {
+            title: "Full Stack Developer",
+            period: "January 2022 - June 2022",
             description:
-              "Assisted in developing web applications, fixed bugs, and implemented new features under senior developer guidance.",
+              "Worked on monolithic systems development, handling both backend (Laravel) and frontend (Blade templates, HTML, CSS), delivering complete solutions.",
           },
-        },
-      },
-      "startup-ventures": {
-        name: "StartUp Ventures",
-        positions: {
-          0: {
-            title: "Web Development Intern",
+          {
+            title: "Junior Apprentice",
+            period: "June 2021 - December 2021",
             description:
-              "Gained hands-on experience in web development, assisted senior developers with coding tasks, and participated in team meetings and code reviews.",
+              "During high school, I focused on customer support, test automation with Python and Selenium, and started learning PHP.",
           },
-        },
+        ],
       },
     },
     education: {
       "software-engineering": {
         degree: "Bachelor's in Software Engineering",
         institution: "Faculdade Positivo",
+        period: "Jun 2022 - Dec 2026",
         description:
-          "Comprehensive program covering software development methodologies, algorithms, data structures, database management, and software architecture. Focus on practical applications and industry-relevant skills.",
-        achievements: {
-          0: "Maintained a GPA of 3.8/4.0",
-          1: "Developed a full-stack application for the university's internal use",
-          2: "Participated in the university's programming competition, securing 2nd place",
-        },
+          "I study Software Engineering at Universidade Positivo, deepening my knowledge in algorithms, data structures, systems architecture, DevOps, and cloud computing, with practical, market-aligned focus.",
+        achievements: [
+          "Participated in full app modeling, from requirements gathering to wireframes and user stories.",
+          "Applied software engineering practices in academic projects, focusing on organization, analysis, and technical planning.",
+          "Completed hands-on tasks solving problems using logic, algorithms, and data structures in various contexts.",
+        ],
       },
       "systems-analysis": {
-        degree: "Technical Course in Systems Analysis and Development",
-        institution: "SENAI",
+        degree: "Technical Degree in Systems Development",
+        institution: "SENAI Dr. Celso Charuri",
+        period: "Aug 2019 - Dec 2020",
         description:
-          "Technical program focused on practical software development skills, including programming fundamentals, database design, and web development. Emphasis on hands-on projects and industry collaboration.",
-        achievements: {
-          0: "Graduated with distinction",
-          1: "Developed an inventory management system as final project",
-          2: "Completed an internship at a local software company during the course",
-        },
+          "In the SENAI technical course, I learned SQL, programming logic, modeling, and testing. Worked with C (Arduino), Java (desktop), C# with ASP.NET Core (web), Python with Selenium (testing), and HTML, CSS, JavaScript, always in a hands-on lab setting.",
+        achievements: [
+          "Collaborated on simple games using programming logic, flow control, and data structures.",
+          "Helped create a website with ASP.NET integrated with an Arduino for environment temperature control.",
+          "Implemented end-to-end testing with Python and Selenium as part of the final project.",
+        ],
       },
     },
   },
   certificates: {
     title: "Certificates",
     description:
-      "Certifications and courses I've completed to enhance my technical skills.",
+      "Certifications and courses I've completed to improve my technical skills.",
     tabs: {
       frontend: "Frontend",
       backend: "Backend",
@@ -166,7 +157,7 @@ const translations = {
     verify: "Verify certificate",
     items: {
       1: {
-        title: "Vue JS 2 Course – The Complete Guide (incl. Vue Router & Vuex)",
+        title: "Vue JS 2 Course - The Complete Guide (incl. Vue Router & Vuex)",
         issuer: "Udemy",
       },
       2: {
@@ -174,15 +165,15 @@ const translations = {
         issuer: "Udemy",
       },
       3: {
-        title: "SOLID – The 5 Principles of Object-Oriented Best Practices",
+        title: "SOLID - The 5 Principles of OOP Best Practices",
         issuer: "Udemy",
       },
       4: {
-        title: "Regex Fundamentals (Regular Expressions)",
+        title: "Regular Expressions Fundamentals (Regex)",
         issuer: "Udemy",
       },
       5: {
-        title: "SASS and SCSS from Beginner to Advanced + Projects",
+        title: "SASS and SCSS from Basics to Advanced + Projects",
         issuer: "Udemy",
       },
       6: {
@@ -190,7 +181,7 @@ const translations = {
         issuer: "Udemy",
       },
       7: {
-        title: "Advanced Web Development with PHP, Laravel and Vue.js",
+        title: "Advanced Web Development with PHP, Laravel, and Vue.JS",
         issuer: "Udemy",
       },
       8: {
@@ -202,7 +193,7 @@ const translations = {
         issuer: "Udemy",
       },
       10: {
-        title: "Graphical Interface for Python Apps with GTK and Glade",
+        title: "GUI for Python Apps with GTK and Glade",
         issuer: "Udemy",
       },
       11: {
@@ -210,11 +201,11 @@ const translations = {
         issuer: "Udemy",
       },
       12: {
-        title: "PRO FIGMA | UI Design with Figma from Beginner to Expert",
+        title: "PRO FIGMA | UI DESIGN with Figma from Zero to Expert",
         issuer: "Udemy",
       },
       13: {
-        title: "AWS Solutions Architect Associate Certification SAA-C03",
+        title: "AWS Solutions Architect Associate SAA-C03 Certification",
         issuer: "Udemy",
       },
       14: {
@@ -226,14 +217,13 @@ const translations = {
   contact: {
     title: "Contact",
     description:
-      "Got a question or just want to chat? Feel free to reach out through the links below — I'd love to connect with you.",
+      "Got any questions or want to chat? Reach out through the links below, I'd love to hear from you.",
     connect: {
       title: "Get in touch",
-      description: "You can also find me on the following platforms:",
+      description: "You can also find me on these platforms:",
       email: "Email",
       github: "GitHub",
       linkedin: "LinkedIn",
-      whatsapp: "WhatsApp",
     },
   },
   footer: {
@@ -242,10 +232,10 @@ const translations = {
   },
   mobile: {
     swipeGuideTitle: "Swipe to Navigate",
-    swipeGuideDesc: "Swipe up and down to navigate between sections",
+    swipeGuideDesc: "Swipe up and down to browse between sections",
     tapToExpand: "Tap to expand",
     dragToScroll: "Drag to scroll",
-    pullToRefresh: "Pull down to refresh",
+    pullToRefresh: "Pull to refresh",
   },
 };
 
