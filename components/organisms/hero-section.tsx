@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import profileImage from "@/public/photo.png";
 import { useMobile } from "@/hooks/use-mobile";
 import { ScrollIndicator } from "@/components/atoms/scroll-indicator";
 import { ButtonLink } from "@/components/atoms/button-link";
@@ -108,11 +109,13 @@ export function HeroSection() {
           className="flex justify-center"
           whileTap={isMobile ? { scale: 0.95 } : {}}
         >
-          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl">
+        <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl">
             <Image
-              src="/photo.png?height=320&width=320"
+              src={profileImage}
               alt="Rafael Martins Alves"
-              fill
+              width={320}
+              height={320}
+              sizes="(max-width: 768px) 256px, 320px"
               className="object-cover"
               priority
             />

@@ -65,6 +65,32 @@ export const metadata = {
   },
 };
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Rafael Martins Alves",
+  url: "https://devrma.com",
+  sameAs: [
+    "https://github.com/devRMA",
+    "https://linkedin.com/in/devRMA"
+  ],
+  jobTitle: "Full Stack Developer",
+  image: "https://devrma.com/photo.png",
+  description: "Portfolio of Rafael Martins Alves - Full Stack Developer"
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  url: "https://devrma.com",
+  name: "devRMA",
+  description: "Portfolio of Rafael Martins Alves - Full Stack Developer",
+  publisher: {
+    "@type": "Person",
+    name: "Rafael Martins Alves"
+  }
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -76,6 +102,14 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
         <ThemeProvider
