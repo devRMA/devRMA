@@ -34,11 +34,12 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
       <AnimatePresence>
         {isChanging && (
           <motion.div
+            className="fixed inset-0 z-50 bg-background"
+            data-testid="theme-transition-overlay"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-[90] bg-background pointer-events-none"
           />
         )}
       </AnimatePresence>

@@ -111,10 +111,11 @@ app/
 
 ## Testing
 - Write tests for all components
-- Use Jest and React Testing Library
+- Use Vitest and React Testing Library
 - Test atoms in isolation
 - Test molecules with their atom dependencies
 - Test organisms with their molecule dependencies
+- Always run tests after making changes to verify the changes work as expected
 
 ## Testing Standards
 
@@ -129,18 +130,24 @@ app/
 - Follow AAA pattern (Arrange, Act, Assert)
 - Mock external dependencies
 - Test both success and error scenarios
+- Run tests after any changes to verify the changes work as expected
 
-### E2E Testing with Cypress
-- Use Cypress for end-to-end testing
-- Test files should be in `cypress/e2e/`
-- Test critical user flows
-- Test responsive design
-- Test form submissions
-- Test API integrations
-- Test authentication flows
-- Use custom commands for common operations
-- Use fixtures for test data
-- Follow best practices for Cypress testing
+### Clean Code in Tests
+- Apply the same clean code standards to test files
+- Use self-explanatory test names that describe the expected behavior
+- Avoid comments in test files - let the code be self-documenting
+- Break complex test scenarios into smaller, focused test cases
+- Use descriptive variable names in test setup and assertions
+- Keep test functions small and focused on a single behavior
+- Use meaningful test data that clearly represents the test scenario
+- Structure test files to be easily readable and maintainable
+- Use clear and consistent naming patterns for test utilities and helpers
+- Mock all external dependencies to isolate component testing
+- Focus on testing component behavior, not its dependencies
+- Create mock implementations that simulate real behavior
+- Keep mocks simple and focused on the test scenario
+- Document mock behavior through clear naming and structure
+- Avoid testing implementation details of dependencies
 
 ### Test Coverage
 - Maintain minimum 80% code coverage
@@ -156,10 +163,6 @@ tests/
   │   ├── atoms/
   │   ├── molecules/
   │   └── organisms/
-  └── e2e/
-      ├── auth/
-      ├── user/
-      └── admin/
 ```
 
 ### Test Naming
@@ -176,7 +179,6 @@ tests/
 
 ### CI/CD Integration
 - Run unit tests on every pull request
-- Run E2E tests on main branch
 - Generate coverage reports
 - Block merges if tests fail
 - Block merges if coverage drops below threshold
