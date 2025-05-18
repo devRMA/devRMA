@@ -1,6 +1,6 @@
-import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { ChevronRight, MoreHorizontal } from "lucide-react";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -12,31 +12,25 @@ const Breadcrumb = React.forwardRef<
 >(({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />);
 Breadcrumb.displayName = "Breadcrumb";
 
-const BreadcrumbList = React.forwardRef<
-  HTMLOListElement,
-  React.ComponentPropsWithoutRef<"ol">
->(({ className, ...props }, ref) => (
-  <ol
-    ref={ref}
-    className={cn(
-      "flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5",
-      className
-    )}
-    {...props}
-  />
-));
+const BreadcrumbList = React.forwardRef<HTMLOListElement, React.ComponentPropsWithoutRef<"ol">>(
+  ({ className, ...props }, ref) => (
+    <ol
+      ref={ref}
+      className={cn(
+        "flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5",
+        className,
+      )}
+      {...props}
+    />
+  ),
+);
 BreadcrumbList.displayName = "BreadcrumbList";
 
-const BreadcrumbItem = React.forwardRef<
-  HTMLLIElement,
-  React.ComponentPropsWithoutRef<"li">
->(({ className, ...props }, ref) => (
-  <li
-    ref={ref}
-    className={cn("inline-flex items-center gap-1.5", className)}
-    {...props}
-  />
-));
+const BreadcrumbItem = React.forwardRef<HTMLLIElement, React.ComponentPropsWithoutRef<"li">>(
+  ({ className, ...props }, ref) => (
+    <li ref={ref} className={cn("inline-flex items-center gap-1.5", className)} {...props} />
+  ),
+);
 BreadcrumbItem.displayName = "BreadcrumbItem";
 
 const BreadcrumbLink = React.forwardRef<
@@ -71,28 +65,15 @@ const BreadcrumbPage = React.forwardRef<
 ));
 BreadcrumbPage.displayName = "BreadcrumbPage";
 
-const BreadcrumbSeparator = ({
-  children,
-  className,
-  ...props
-}: React.ComponentProps<"li">) => (
-  <li
-    className={cn("[&>svg]:w-3.5 [&>svg]:h-3.5", className)}
-    {...props}
-  >
+const BreadcrumbSeparator = ({ children, className, ...props }: React.ComponentProps<"li">) => (
+  <li className={cn("[&>svg]:w-3.5 [&>svg]:h-3.5", className)} {...props}>
     {children ?? <ChevronRight aria-hidden="true" />}
   </li>
 );
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
 
-const BreadcrumbEllipsis = ({
-  className,
-  ...props
-}: React.ComponentProps<"span">) => (
-  <span
-    className={cn("flex h-9 w-9 items-center justify-center", className)}
-    {...props}
-  >
+const BreadcrumbEllipsis = ({ className, ...props }: React.ComponentProps<"span">) => (
+  <span className={cn("flex h-9 w-9 items-center justify-center", className)} {...props}>
     <MoreHorizontal className="h-4 w-4" aria-hidden="true" />
     <span className="sr-only">More</span>
   </span>

@@ -2,13 +2,13 @@
 
 import type React from "react";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { X, Menu } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { useMobile } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 type NavItem = {
   href: string;
@@ -22,11 +22,7 @@ interface MobileMenuProps {
   onNavClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
 }
 
-export function MobileMenu({
-  navItems,
-  activeSection,
-  onNavClick,
-}: Readonly<MobileMenuProps>) {
+export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<MobileMenuProps>) {
   const [isOpen, setIsOpen] = useState(false);
   const { isTouchDevice } = useMobile();
 
@@ -38,10 +34,7 @@ export function MobileMenu({
     }
   };
 
-  const handleNavItemClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
+  const handleNavItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     onNavClick(e, href);
     setIsOpen(false);
 
@@ -131,7 +124,7 @@ export function MobileMenu({
                       "py-3 px-2 text-sm font-medium transition-colors flex items-center rounded-md relative overflow-hidden",
                       activeSection === item.id
                         ? "text-primary bg-primary/5"
-                        : "text-foreground/70 hover:text-foreground hover:bg-muted/50"
+                        : "text-foreground/70 hover:text-foreground hover:bg-muted/50",
                     )}
                   >
                     {activeSection === item.id && (

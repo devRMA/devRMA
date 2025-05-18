@@ -1,6 +1,6 @@
-import type React from "react";
-import Link from "next/link";
 import { Button, type ButtonProps } from "@/components/ui/button";
+import Link from "next/link";
+import type React from "react";
 import { forwardRef } from "react";
 
 interface ButtonLinkProps extends ButtonProps {
@@ -26,7 +26,7 @@ export const ButtonLink = forwardRef<HTMLButtonElement, ButtonLinkProps>(
         <Link href={href}>{children}</Link>
       </Button>
     );
-  }
+  },
 );
 
 ButtonLink.displayName = "ButtonLink";

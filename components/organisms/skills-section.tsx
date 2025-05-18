@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { SectionHeading } from "@/components/atoms/section-heading";
 import { useLanguage } from "@/components/language-provider";
+import { SkillCard } from "@/components/molecules/skill-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { motion, AnimatePresence } from "framer-motion";
 import { skillsData } from "@/data/skills";
-import { SectionHeading } from "@/components/atoms/section-heading";
-import { SkillCard } from "@/components/molecules/skill-card";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 
 export function SkillsSection() {
   const { t } = useLanguage();
@@ -42,10 +42,7 @@ export function SkillsSection() {
       id="skills"
       className="min-h-screen py-16 scroll-mt-16 relative flex flex-col justify-center"
     >
-      <SectionHeading
-        title={t("skills.title")}
-        description={t("skills.description")}
-      />
+      <SectionHeading title={t("skills.title")} description={t("skills.description")} />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -54,16 +51,10 @@ export function SkillsSection() {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="flex-grow"
       >
-        <Tabs
-          defaultValue="know"
-          className="w-full"
-          onValueChange={handleTabChange}
-        >
+        <Tabs defaultValue="know" className="w-full" onValueChange={handleTabChange}>
           <TabsList className="grid w-full grid-cols-3 mb-8">
             <TabsTrigger value="know">{t("skills.tabs.know")}</TabsTrigger>
-            <TabsTrigger value="studying">
-              {t("skills.tabs.studying")}
-            </TabsTrigger>
+            <TabsTrigger value="studying">{t("skills.tabs.studying")}</TabsTrigger>
             <TabsTrigger value="future">{t("skills.tabs.future")}</TabsTrigger>
           </TabsList>
 
@@ -83,7 +74,10 @@ export function SkillsSection() {
                         <CardContent className="p-6 overflow-hidden">
                           <div className="carousel-container">
                             <div className="carousel">
-                              {[...skillsData[tabValue as keyof typeof skillsData], ...skillsData[tabValue as keyof typeof skillsData]].map((skill, index) => (
+                              {[
+                                ...skillsData[tabValue as keyof typeof skillsData],
+                                ...skillsData[tabValue as keyof typeof skillsData],
+                              ].map((skill, index) => (
                                 <SkillCard
                                   key={`${skill.name}-${index}`}
                                   name={skill.name}
@@ -96,7 +90,7 @@ export function SkillsSection() {
                       </Card>
                     </TabsContent>
                   </motion.div>
-                )
+                ),
             )}
           </AnimatePresence>
         </Tabs>

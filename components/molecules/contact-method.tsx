@@ -7,12 +7,7 @@ interface ContactMethodProps {
   href: string;
 }
 
-export function ContactMethod({
-  icon: Icon,
-  title,
-  value,
-  href,
-}: Readonly<ContactMethodProps>) {
+export function ContactMethod({ icon: Icon, title, value, href }: Readonly<ContactMethodProps>) {
   return (
     <div className="flex items-center gap-4">
       <div className="bg-primary/10 p-3 rounded-full" aria-hidden="true">

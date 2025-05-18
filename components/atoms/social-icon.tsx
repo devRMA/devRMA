@@ -7,11 +7,7 @@ interface SocialIconProps {
   label: string;
 }
 
-export function SocialIcon({
-  href,
-  icon: Icon,
-  label,
-}: Readonly<SocialIconProps>) {
+export function SocialIcon({ href, icon: Icon, label }: Readonly<SocialIconProps>) {
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
       <Button variant="ghost" size="icon">

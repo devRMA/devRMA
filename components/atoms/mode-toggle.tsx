@@ -1,6 +1,6 @@
 "use client";
 
-import { useTheme } from "next-themes";
+import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -8,8 +8,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Moon, Sun, Laptop } from "lucide-react";
-import { useLanguage } from "@/components/language-provider";
+import { Laptop, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 export function ModeToggle() {

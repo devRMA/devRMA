@@ -1,9 +1,9 @@
 "use client";
 
-import * as React from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import type { ThemeProviderProps } from "next-themes";
-import { motion, AnimatePresence } from "framer-motion";
+import * as React from "react";
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   const [mounted, setMounted] = React.useState(false);
@@ -21,8 +21,7 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
       };
 
       window.addEventListener("theme-change", handleThemeChange);
-      return () =>
-        window.removeEventListener("theme-change", handleThemeChange);
+      return () => window.removeEventListener("theme-change", handleThemeChange);
     }
   }, [mounted]);
 

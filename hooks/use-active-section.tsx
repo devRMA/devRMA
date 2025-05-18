@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export function useActiveSection(sections: string[], offset = 100) {
   const [activeSection, setActiveSection] = useState<string | null>("about");
@@ -29,9 +29,7 @@ export function useActiveSection(sections: string[], offset = 100) {
       const element = document.getElementById(section);
       if (element) {
         const observer = new IntersectionObserver(handleObserver, {
-          rootMargin: `-${offset}px 0px -${Math.floor(
-            window.innerHeight / 2
-          )}px 0px`,
+          rootMargin: `-${offset}px 0px -${Math.floor(window.innerHeight / 2)}px 0px`,
           threshold: [0.1, 0.5],
         });
 

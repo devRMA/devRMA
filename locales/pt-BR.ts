@@ -51,8 +51,7 @@ const translations = {
       3: {
         title: "Pybot com Docker",
         shortDescription: "Bot Discord com suporte a Docker",
-        longDescription:
-          "Exemplo de estrutura para bot de Discord em Python usando Docker.",
+        longDescription: "Exemplo de estrutura para bot de Discord em Python usando Docker.",
       },
       4: {
         title: "Stock Trader",
@@ -146,8 +145,7 @@ const translations = {
   },
   certificates: {
     title: "Certificados",
-    description:
-      "Certificações e cursos que completei para aprimorar minhas habilidades técnicas.",
+    description: "Certificações e cursos que completei para aprimorar minhas habilidades técnicas.",
     tabs: {
       frontend: "Frontend",
       backend: "Backend",
@@ -232,8 +230,7 @@ const translations = {
   },
   mobile: {
     swipeGuideTitle: "Deslize para Navegar",
-    swipeGuideDesc:
-      "Deslize para cima e para baixo para navegar entre as seções",
+    swipeGuideDesc: "Deslize para cima e para baixo para navegar entre as seções",
     tapToExpand: "Toque para expandir",
     dragToScroll: "Arraste para rolar",
     pullToRefresh: "Puxe para atualizar",

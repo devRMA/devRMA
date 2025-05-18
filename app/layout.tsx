@@ -1,8 +1,8 @@
-import type React from "react";
-import { Inter, JetBrains_Mono } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/components/language-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
+import { Inter, JetBrains_Mono } from "next/font/google";
+import type React from "react";
 import "./globals.css";
 
 import { Providers } from "./providers";
@@ -70,13 +70,10 @@ const personSchema = {
   "@type": "Person",
   name: "Rafael Martins Alves",
   url: "https://devrma.com",
-  sameAs: [
-    "https://github.com/devRMA",
-    "https://linkedin.com/in/devRMA"
-  ],
+  sameAs: ["https://github.com/devRMA", "https://linkedin.com/in/devRMA"],
   jobTitle: "Full Stack Developer",
   image: "https://devrma.com/photo.png",
-  description: "Portfolio of Rafael Martins Alves - Full Stack Developer"
+  description: "Portfolio of Rafael Martins Alves - Full Stack Developer",
 };
 
 const websiteSchema = {
@@ -87,8 +84,8 @@ const websiteSchema = {
   description: "Portfolio of Rafael Martins Alves - Full Stack Developer",
   publisher: {
     "@type": "Person",
-    name: "Rafael Martins Alves"
-  }
+    name: "Rafael Martins Alves",
+  },
 };
 
 export default function RootLayout({

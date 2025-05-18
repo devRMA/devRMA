@@ -1,6 +1,7 @@
 "use client";
 
-import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -9,11 +10,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Github, ExternalLink } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { useMobile } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
+import { ExternalLink, Github } from "lucide-react";
+import Image from "next/image";
 
 interface ProjectCardProps {
   id: number;
@@ -48,7 +48,7 @@ export function ProjectCard({
             "object-cover",
             isMobile
               ? "transition-transform active:scale-105"
-              : "transition-transform hover:scale-105"
+              : "transition-transform hover:scale-105",
           )}
         />
       </div>

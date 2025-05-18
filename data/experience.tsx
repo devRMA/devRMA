@@ -54,14 +54,7 @@ export const experienceData: Company[] = [
         period: "July 2022 - March 2024",
         description:
           "Managed subdomain configurations, created CI/CD pipelines with GitHub Actions for application deployment, and developed REST APIs with Laravel. Also led the IT team, taking part in recruitment, task management, and technical support, gaining valuable hands-on leadership and team management experience.",
-        technologies: [
-          "Laravel",
-          "React.js",
-          "TypeScript",
-          "MySQL",
-          "Docker",
-          "Python",
-        ],
+        technologies: ["Laravel", "React.js", "TypeScript", "MySQL", "Docker", "Python"],
       },
       {
         title: "Full Stack Developer",
@@ -85,14 +78,7 @@ export const experienceData: Company[] = [
         period: "June 2021 - December 2021",
         description:
           "During high school, I focused on customer support, test automation with Python and Selenium, and started learning PHP.",
-        technologies: [
-          "HTML",
-          "CSS",
-          "JavaScript",
-          "PHP",
-          "Bootstrap",
-          "MySQL",
-        ],
+        technologies: ["HTML", "CSS", "JavaScript", "PHP", "Bootstrap", "MySQL"],
       },
     ],
   },

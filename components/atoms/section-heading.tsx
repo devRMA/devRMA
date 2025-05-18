@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 interface SectionHeadingProps {
   title: string;
@@ -31,10 +31,7 @@ export function SectionHeading({
       </motion.h2>
       {description && (
         <motion.p
-          className={cn(
-            "text-muted-foreground max-w-2xl mx-auto",
-            descriptionClassName
-          )}
+          className={cn("text-muted-foreground max-w-2xl mx-auto", descriptionClassName)}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

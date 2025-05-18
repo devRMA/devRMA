@@ -2,9 +2,9 @@
 
 import type React from "react";
 
-import Link from "next/link";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface MobileNavItemProps {
   href: string;
@@ -13,12 +13,7 @@ interface MobileNavItemProps {
   onClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
 }
 
-export function MobileNavItem({
-  href,
-  label,
-  isActive,
-  onClick,
-}: Readonly<MobileNavItemProps>) {
+export function MobileNavItem({ href, label, isActive, onClick }: Readonly<MobileNavItemProps>) {
   return (
     <Link
       href={href}
@@ -27,7 +22,7 @@ export function MobileNavItem({
         "py-3 px-2 text-sm font-medium transition-colors flex items-center rounded-md relative overflow-hidden",
         isActive
           ? "text-primary bg-primary/5"
-          : "text-foreground/70 hover:text-foreground hover:bg-muted/50"
+          : "text-foreground/70 hover:text-foreground hover:bg-muted/50",
       )}
     >
       {isActive && (

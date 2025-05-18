@@ -1,10 +1,10 @@
 "use client";
 
-import { useLanguage } from "@/components/language-provider";
-import { motion } from "framer-motion";
-import { projectsData } from "@/data/projects";
 import { SectionHeading } from "@/components/atoms/section-heading";
+import { useLanguage } from "@/components/language-provider";
 import { ProjectCard } from "@/components/molecules/project-card";
+import { projectsData } from "@/data/projects";
+import { motion } from "framer-motion";
 
 export function ProjectsSection() {
   const { t } = useLanguage();
@@ -14,10 +14,7 @@ export function ProjectsSection() {
       id="projects"
       className="min-h-screen py-16 scroll-mt-16 relative flex flex-col justify-center"
     >
-      <SectionHeading
-        title={t("projects.title")}
-        description={t("projects.description")}
-      />
+      <SectionHeading title={t("projects.title")} description={t("projects.description")} />
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projectsData.map((project, index) => (
@@ -32,12 +29,10 @@ export function ProjectsSection() {
               id={project.id}
               title={t(`projects.items.${project.id}.title`) ?? project.title}
               shortDescription={
-                t(`projects.items.${project.id}.shortDescription`) ??
-                project.shortDescription
+                t(`projects.items.${project.id}.shortDescription`) ?? project.shortDescription
               }
               longDescription={
-                t(`projects.items.${project.id}.longDescription`) ??
-                project.longDescription
+                t(`projects.items.${project.id}.longDescription`) ?? project.longDescription
               }
               technologies={project.technologies}
               image={project.image}

@@ -2,11 +2,11 @@
 
 import type React from "react";
 
-import { useActiveSection } from "@/hooks/use-active-section";
 import { useLanguage } from "@/components/language-provider";
 import { NavItem } from "@/components/molecules/nav-item";
-import { useMobile } from "@/hooks/use-mobile";
 import { MobileMenu } from "@/components/organisms/mobile-menu";
+import { useActiveSection } from "@/hooks/use-active-section";
+import { useMobile } from "@/hooks/use-mobile";
 
 interface NavigationProps {
   className?: string;
@@ -16,14 +16,7 @@ export function Navigation({ className }: Readonly<NavigationProps>) {
   const { t } = useLanguage();
   const { isMobile } = useMobile();
 
-  const navSections = [
-    "about",
-    "skills",
-    "projects",
-    "experience",
-    "certificates",
-    "contact",
-  ];
+  const navSections = ["about", "skills", "projects", "experience", "certificates", "contact"];
   const activeSection = useActiveSection(navSections);
 
   const navItems = [
@@ -39,10 +32,7 @@ export function Navigation({ className }: Readonly<NavigationProps>) {
     { href: "#contact", label: t("nav.contact"), id: "contact" },
   ];
 
-  const handleNavClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const targetId = href.replace("#", "");
     const element = document.getElementById(targetId);
@@ -59,11 +49,7 @@ export function Navigation({ className }: Readonly<NavigationProps>) {
 
   if (isMobile) {
     return (
-      <MobileMenu
-        navItems={navItems}
-        activeSection={activeSection}
-        onNavClick={handleNavClick}
-      />
+      <MobileMenu navItems={navItems} activeSection={activeSection} onNavClick={handleNavClick} />
     );
   }
 

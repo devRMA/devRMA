@@ -51,8 +51,7 @@ const translations = {
       3: {
         title: "Pybot with Docker",
         shortDescription: "Discord bot with Docker support",
-        longDescription:
-          "Example structure for a Discord bot in Python using Docker.",
+        longDescription: "Example structure for a Discord bot in Python using Docker.",
       },
       4: {
         title: "Stock Trader",
@@ -146,8 +145,7 @@ const translations = {
   },
   certificates: {
     title: "Certificates",
-    description:
-      "Certifications and courses I've completed to improve my technical skills.",
+    description: "Certifications and courses I've completed to improve my technical skills.",
     tabs: {
       frontend: "Frontend",
       backend: "Backend",

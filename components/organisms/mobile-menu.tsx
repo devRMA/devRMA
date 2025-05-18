@@ -2,12 +2,12 @@
 
 import type React from "react";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { X, Menu } from "lucide-react";
-import { useMobile } from "@/hooks/use-mobile";
 import { MobileNavItem } from "@/components/molecules/mobile-nav-item";
+import { Button } from "@/components/ui/button";
+import { useMobile } from "@/hooks/use-mobile";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
 type NavItem = {
   href: string;
@@ -21,11 +21,7 @@ interface MobileMenuProps {
   onNavClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
 }
 
-export function MobileMenu({
-  navItems,
-  activeSection,
-  onNavClick,
-}: Readonly<MobileMenuProps>) {
+export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<MobileMenuProps>) {
   const [isOpen, setIsOpen] = useState(false);
   const { isTouchDevice } = useMobile();
 
@@ -36,10 +32,7 @@ export function MobileMenu({
     }
   };
 
-  const handleNavItemClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
+  const handleNavItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     onNavClick(e, href);
     setIsOpen(false);
     if (navigator.vibrate && isTouchDevice) {

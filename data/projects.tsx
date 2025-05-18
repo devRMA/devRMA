@@ -25,8 +25,7 @@ export const projectsData = [
     id: 3,
     title: "Pybot with Docker",
     shortDescription: "Discord bot with Docker support",
-    longDescription:
-      "Example structure for a Discord bot in Python using Docker.",
+    longDescription: "Example structure for a Discord bot in Python using Docker.",
     technologies: ["Python", "Docker", "Discord.py", "PostgreSQL"],
     image: "/placeholder.svg?height=192&width=384",
     githubUrl: "https://github.com/devRMA/Pybot_with_docker",

@@ -1,10 +1,10 @@
 "use client";
 
-import { useLanguage } from "@/components/language-provider";
-import { Button } from "@/components/ui/button";
-import { Github, Linkedin, ArrowUp } from "lucide-react";
 import { Logo } from "@/components/atoms/logo";
 import { SocialIcon } from "@/components/atoms/social-icon";
+import { useLanguage } from "@/components/language-provider";
+import { Button } from "@/components/ui/button";
+import { ArrowUp, Github, Linkedin } from "lucide-react";
 
 export function Footer() {
   const { t } = useLanguage();
@@ -29,11 +29,7 @@ export function Footer() {
           </div>
 
           <div className="flex items-center gap-4">
-            <SocialIcon
-              href="https://github.com/devRMA"
-              icon={Github}
-              label="GitHub Profile"
-            />
+            <SocialIcon href="https://github.com/devRMA" icon={Github} label="GitHub Profile" />
             <SocialIcon
               href="https://linkedin.com/in/devRMA"
               icon={Linkedin}

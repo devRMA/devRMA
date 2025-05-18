@@ -1,14 +1,14 @@
 "use client";
 
+import { ButtonLink } from "@/components/atoms/button-link";
+import { ScrollIndicator } from "@/components/atoms/scroll-indicator";
 import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import profileImage from "@/public/photo.png";
 import { useMobile } from "@/hooks/use-mobile";
-import { ScrollIndicator } from "@/components/atoms/scroll-indicator";
-import { ButtonLink } from "@/components/atoms/button-link";
+import profileImage from "@/public/photo.png";
+import { motion } from "framer-motion";
+import { Download } from "lucide-react";
+import Image from "next/image";
 
 export function HeroSection() {
   const { t } = useLanguage();
@@ -78,9 +78,7 @@ export function HeroSection() {
         >
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
             Rafael Martins Alves{" "}
-            <span className="text-primary block mt-2">
-              Full Stack Developer
-            </span>
+            <span className="text-primary block mt-2">Full Stack Developer</span>
           </h1>
 
           <p className="text-muted-foreground text-lg md:text-xl max-w-md">
@@ -92,11 +90,7 @@ export function HeroSection() {
               <Download className="mr-2 h-4 w-4" aria-hidden="true" />
               {t("hero.downloadCV")}
             </Button> */}
-            <ButtonLink
-              href="#contact"
-              variant="outline"
-              className="rounded-2xl"
-            >
+            <ButtonLink href="#contact" variant="outline" className="rounded-2xl">
               {t("hero.contact")}
             </ButtonLink>
           </div>
@@ -108,7 +102,7 @@ export function HeroSection() {
           variants={isMobile ? mobileImageAnimation : desktopImageAnimation}
           className="flex justify-center"
         >
-        <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl">
+          <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl">
             <Image
               src={profileImage}
               alt="Rafael Martins Alves"

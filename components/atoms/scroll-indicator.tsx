@@ -2,8 +2,8 @@
 
 import type React from "react";
 
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 
 interface ScrollIndicatorProps {
@@ -11,10 +11,7 @@ interface ScrollIndicatorProps {
   label: string;
 }
 
-export function ScrollIndicator({
-  targetId,
-  label,
-}: Readonly<ScrollIndicatorProps>) {
+export function ScrollIndicator({ targetId, label }: Readonly<ScrollIndicatorProps>) {
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const target = document.getElementById(targetId);

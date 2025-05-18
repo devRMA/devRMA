@@ -106,8 +106,10 @@ export const certificatesData = {
       title: "Fundamentos de Arquitetura de Software",
       issuer: "Udemy",
       date: "2021",
-      thumbnail: "https://i.vimeocdn.com/video/794188994-11c4ba6543b596af5b606698f9c520dce2f533357a3126e4439e09afbe7a19ec-d",
-      image: "https://i.vimeocdn.com/video/794188994-11c4ba6543b596af5b606698f9c520dce2f533357a3126e4439e09afbe7a19ec-d",
+      thumbnail:
+        "https://i.vimeocdn.com/video/794188994-11c4ba6543b596af5b606698f9c520dce2f533357a3126e4439e09afbe7a19ec-d",
+      image:
+        "https://i.vimeocdn.com/video/794188994-11c4ba6543b596af5b606698f9c520dce2f533357a3126e4439e09afbe7a19ec-d",
       url: "https://desenvolvedor.io/certificados/cd226dd5-0e9a-4cb0-b750-4a1b338967c3",
     },
   ],

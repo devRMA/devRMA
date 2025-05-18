@@ -8,14 +8,10 @@ interface TouchCardProps {
   onClick?: () => void;
 }
 
-export function TouchCard({
-  children,
-  className,
-  onClick,
-}: Readonly<TouchCardProps>) {
+export function TouchCard({ children, className, onClick }: Readonly<TouchCardProps>) {
   return (
-    <div className={className} onClick={onClick}>
+    <button type="button" className={className} onClick={onClick}>
       {children}
-    </div>
+    </button>
   );
 }

@@ -1,9 +1,9 @@
 "use client";
 
-import type React from "react";
-import { createContext, useContext, useState, useEffect, useMemo } from "react";
-import ptBR from "@/locales/pt-BR";
 import en from "@/locales/en";
+import ptBR from "@/locales/pt-BR";
+import type React from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 type Language = "pt-BR" | "en";
 
@@ -18,22 +18,15 @@ const translations = {
   en: en,
 };
 
-const LanguageContext = createContext<LanguageContextType | undefined>(
-  undefined
-);
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export function LanguageProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   const [languageState, setLanguageState] = useState<Language>("pt-BR");
 
   useEffect(() => {
     try {
       const savedLanguage = localStorage.getItem("language") as Language;
-      if (
-        savedLanguage &&
-        (savedLanguage === "pt-BR" || savedLanguage === "en")
-      ) {
+      if (savedLanguage && (savedLanguage === "pt-BR" || savedLanguage === "en")) {
         setLanguageState(savedLanguage);
       }
     } catch (error) {
@@ -72,14 +65,10 @@ export function LanguageProvider({
 
   const contextValue = useMemo(
     () => ({ language: languageState, setLanguage, t }),
-    [languageState, setLanguage, t]
+    [languageState, setLanguage, t],
   );
 
-  return (
-    <LanguageContext.Provider value={contextValue}>
-      {children}
-    </LanguageContext.Provider>
-  );
+  return <LanguageContext.Provider value={contextValue}>{children}</LanguageContext.Provider>;
 }
 
 export function useLanguage() {

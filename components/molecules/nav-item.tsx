@@ -2,9 +2,9 @@
 
 import type React from "react";
 
-import Link from "next/link";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface NavItemProps {
   href: string;
@@ -13,19 +13,14 @@ interface NavItemProps {
   onClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
 }
 
-export function NavItem({
-  href,
-  label,
-  isActive,
-  onClick,
-}: Readonly<NavItemProps>) {
+export function NavItem({ href, label, isActive, onClick }: Readonly<NavItemProps>) {
   return (
     <Link
       href={href}
       onClick={(e) => onClick(e, href)}
       className={cn(
         "text-sm font-medium transition-colors relative py-1",
-        isActive ? "text-primary" : "text-foreground/70 hover:text-foreground"
+        isActive ? "text-primary" : "text-foreground/70 hover:text-foreground",
       )}
     >
       {label}

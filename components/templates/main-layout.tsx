@@ -1,7 +1,7 @@
-import type React from "react";
-import { Header } from "@/components/organisms/header";
 import { Footer } from "@/components/organisms/footer";
+import { Header } from "@/components/organisms/header";
 import { SplashScreen } from "@/components/splash-screen";
+import type React from "react";
 
 interface MainLayoutProps {
   children: React.ReactNode;
