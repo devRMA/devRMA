@@ -107,7 +107,6 @@ export function HeroSection() {
           animate="animate"
           variants={isMobile ? mobileImageAnimation : desktopImageAnimation}
           className="flex justify-center"
-          whileTap={isMobile ? { scale: 0.95 } : {}}
         >
         <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl">
             <Image

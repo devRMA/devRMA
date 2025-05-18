@@ -18,7 +18,6 @@ import { motion } from "framer-motion";
 import { certificatesData } from "@/data/certificates";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
-import { useMobile } from "@/hooks/use-mobile";
 import { SectionHeading } from "@/components/atoms/section-heading";
 import { CertificateCard } from "@/components/molecules/certificate-card";
 
@@ -29,35 +28,6 @@ export function CertificatesSection() {
   const { t } = useLanguage();
   const [selectedCertificate, setSelectedCertificate] =
     useState<Certificate | null>(null);
-  const { isMobile, isTouchDevice } = useMobile();
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-
-  const handleTouchStart = (e: React.TouchEvent | React.MouseEvent) => {
-    if (!isMobile) return;
-
-    setIsDragging(true);
-    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
-    setStartX(clientX);
-
-    const container = e.currentTarget as HTMLDivElement;
-    setScrollLeft(container.scrollLeft);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent | React.MouseEvent) => {
-    if (!isMobile || !isDragging) return;
-
-    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
-    const x = clientX - startX;
-
-    const container = e.currentTarget as HTMLDivElement;
-    container.scrollLeft = scrollLeft - x;
-  };
-
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-  };
 
   return (
     <section
@@ -97,58 +67,10 @@ export function CertificatesSection() {
               <TabsContent key={category} value={category}>
                 <Card>
                   <CardContent className="p-6 overflow-hidden">
-                    {isMobile ? (
-                      <button
-                        className="flex overflow-x-auto pb-4 gap-4 scrollbar-hide"
-                        onTouchStart={handleTouchStart}
-                        onTouchMove={handleTouchMove}
-                        onTouchEnd={handleTouchEnd}
-                        onMouseDown={handleTouchStart}
-                        onMouseMove={handleTouchMove}
-                        onMouseUp={handleTouchEnd}
-                        onMouseLeave={handleTouchEnd}
-                      >
-                        {[...certificatesData[category], ...certificatesData[category]].map((certificate, index) => (
-                          <motion.div
-                            key={`${certificate.id}-${index}`}
-                            className="flex-shrink-0 w-[240px]"
-                            whileTap={{
-                              scale: 0.98,
-                            }}
-                            onClick={() => {
-                              if (!isDragging) {
-                                setSelectedCertificate(certificate);
-                                if (navigator.vibrate && isTouchDevice) {
-                                  navigator.vibrate(5);
-                                }
-                              }
-                            }}
-                          >
-                            <CertificateCard
-                              id={certificate.id}
-                              title={
-                                t(
-                                  `certificates.items.${certificate.id}.title`
-                                ) || certificate.title
-                              }
-                              issuer={
-                                t(
-                                  `certificates.items.${certificate.id}.issuer`
-                                ) || certificate.issuer
-                              }
-                              date={certificate.date}
-                              thumbnail={certificate.thumbnail}
-                              onClick={() =>
-                                setSelectedCertificate(certificate)
-                              }
-                            />
-                          </motion.div>
-                        ))}
-                      </button>
-                    ) : (
-                      <div className="carousel-container">
-                        <div className="carousel">
-                          {[...certificatesData[category], ...certificatesData[category]].map((certificate, index) => (
+                    <div className="carousel-container">
+                      <div className="carousel">
+                        {[...certificatesData[category], ...certificatesData[category]].map(
+                          (certificate, index) => (
                             <CertificateCard
                               key={`${certificate.id}-${index}`}
                               id={certificate.id}
@@ -168,10 +90,10 @@ export function CertificatesSection() {
                                 setSelectedCertificate(certificate)
                               }
                             />
-                          ))}
-                        </div>
+                          )
+                        )}
                       </div>
-                    )}
+                    </div>
                   </CardContent>
                 </Card>
               </TabsContent>
