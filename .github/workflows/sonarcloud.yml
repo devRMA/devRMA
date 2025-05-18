@@ -5,6 +5,7 @@ on:
     branches:
       - portfolio
   pull_request:
+    types: [opened, synchronize, reopened]
     branches:
       - portfolio
 
