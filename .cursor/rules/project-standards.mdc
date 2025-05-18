@@ -1,0 +1,182 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Project Standards
+
+## TypeScript Standards
+- Use TypeScript for all code
+- Avoid using `any` or `unknown` types
+- Always provide explicit type definitions
+- Use interfaces for object shapes
+- Use type aliases for complex types
+- Use generics when appropriate
+- Use strict type checking
+
+## Clean Code Standards
+- All code must be in English
+- Use self-explanatory variable and function names
+- No comments explaining code functionality
+- Break complex code into smaller, self-explanatory functions
+- Follow single responsibility principle
+- Use meaningful names that reveal intent
+- Keep functions small and focused
+
+## Atomic Design Structure
+The project follows Atomic Design methodology with the following structure:
+
+### Atoms
+- Basic building blocks
+- Located in `components/atoms/`
+- Examples: buttons, inputs, typography, icons
+- Must be highly reusable
+- Should not contain business logic
+
+### Molecules
+- Combinations of atoms
+- Located in `components/molecules/`
+- Examples: form fields, search bars, navigation items
+- Should be composed of multiple atoms
+- Can contain simple logic
+
+### Organisms
+- Complex UI components
+- Located in `components/organisms/`
+- Examples: headers, footers, forms
+- Can contain multiple molecules and atoms
+- May contain business logic
+
+### Templates
+- Page layouts
+- Located in `components/templates/`
+- Define the structure of pages
+- Placeholder for content
+- No business logic
+
+### Pages
+- Final implementation
+- Located in `app/` directory
+- Use templates to render content
+- Contain page-specific logic
+- Handle data fetching
+
+## File Organization
+```
+components/
+  ├── atoms/
+  │   ├── Button.tsx
+  │   ├── Input.tsx
+  │   └── Typography.tsx
+  ├── molecules/
+  │   ├── SearchBar.tsx
+  │   └── FormField.tsx
+  ├── organisms/
+  │   ├── Header.tsx
+  │   └── Footer.tsx
+  └── templates/
+      ├── MainLayout.tsx
+      └── AuthLayout.tsx
+app/
+  ├── page.tsx
+  └── (auth)/
+      ├── login/
+      │   └── page.tsx
+      └── register/
+          └── page.tsx
+```
+
+## Component Naming
+- Use PascalCase for component names
+- Use descriptive names that indicate the component's purpose
+- Suffix with type: `Button.tsx`, `SearchBar.tsx`, `MainLayout.tsx`
+
+## Type Definitions
+- Place shared types in `types/` directory
+- Use `.d.ts` files for global type declarations
+- Use `.ts` files for type exports
+- Group related types in the same file
+
+## State Management
+- Use React hooks for local state
+- Use context for global state
+- Keep state as close as possible to where it's used
+- Avoid prop drilling
+
+## Error Handling
+- Use TypeScript for compile-time error prevention
+- Implement proper error boundaries
+- Use try-catch for runtime errors
+- Provide meaningful error messages
+
+## Testing
+- Write tests for all components
+- Use Jest and React Testing Library
+- Test atoms in isolation
+- Test molecules with their atom dependencies
+- Test organisms with their molecule dependencies
+
+## Testing Standards
+
+### Unit Testing with Vitest
+- Use Vitest for all unit tests
+- Test files should be named `*.test.ts` or `*.test.tsx`
+- Place test files next to the components they test
+- Test atoms in isolation
+- Test molecules with their atom dependencies
+- Test organisms with their molecule dependencies
+- Use `@testing-library/react` for component testing
+- Follow AAA pattern (Arrange, Act, Assert)
+- Mock external dependencies
+- Test both success and error scenarios
+
+### E2E Testing with Cypress
+- Use Cypress for end-to-end testing
+- Test files should be in `cypress/e2e/`
+- Test critical user flows
+- Test responsive design
+- Test form submissions
+- Test API integrations
+- Test authentication flows
+- Use custom commands for common operations
+- Use fixtures for test data
+- Follow best practices for Cypress testing
+
+### Test Coverage
+- Maintain minimum 80% code coverage
+- Focus on critical business logic
+- Test edge cases
+- Test error handling
+- Test accessibility features
+
+### Test Organization
+```
+tests/
+  ├── unit/
+  │   ├── atoms/
+  │   ├── molecules/
+  │   └── organisms/
+  └── e2e/
+      ├── auth/
+      ├── user/
+      └── admin/
+```
+
+### Test Naming
+- Use descriptive test names
+- Follow pattern: `should [expected behavior] when [condition]`
+- Group related tests using `describe` blocks
+- Use `it` for individual test cases
+
+### Test Data
+- Use factories for test data
+- Keep test data in `__fixtures__` directories
+- Use meaningful test data
+- Avoid hardcoding test values
+
+### CI/CD Integration
+- Run unit tests on every pull request
+- Run E2E tests on main branch
+- Generate coverage reports
+- Block merges if tests fail
+- Block merges if coverage drops below threshold
