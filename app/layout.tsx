@@ -7,6 +7,11 @@ import "./globals.css";
 
 import { Providers } from "./providers";
 
+const JsonLd = ({ data }: { data: Record<string, unknown> }) => {
+  const jsonString = JSON.stringify(data);
+  return <script type="application/ld+json">{jsonString}</script>;
+};
+
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -99,14 +104,8 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
+        <JsonLd data={personSchema} />
+        <JsonLd data={websiteSchema} />
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
         <ThemeProvider

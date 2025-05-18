@@ -20,6 +20,12 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "i.vimeocdn.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };

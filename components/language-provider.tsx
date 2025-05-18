@@ -3,7 +3,7 @@
 import en from "@/locales/en";
 import ptBR from "@/locales/pt-BR";
 import type React from "react";
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
 type Language = "pt-BR" | "en";
 
@@ -34,34 +34,37 @@ export function LanguageProvider({ children }: Readonly<{ children: React.ReactN
     }
   }, []);
 
-  const setLanguage = (lang: Language) => {
+  const t = useCallback(
+    (key: string): string => {
+      try {
+        const keys = key.split(".");
+        let result: Record<string, unknown> = translations[languageState];
+
+        for (const k of keys) {
+          if (result && typeof result === "object" && k in result) {
+            result = result[k] as Record<string, unknown>;
+          } else {
+            return key;
+          }
+        }
+
+        return typeof result === "string" ? result : key;
+      } catch (error) {
+        console.error(`Translation error for key "${key}":`, error);
+        return key;
+      }
+    },
+    [languageState],
+  );
+
+  const setLanguage = useCallback((lang: Language) => {
     setLanguageState(lang);
     try {
       localStorage.setItem("language", lang);
     } catch (error) {
       console.error("Failed to save language preference:", error);
     }
-  };
-
-  const t = (key: string): string => {
-    try {
-      const keys = key.split(".");
-      let result: any = translations[languageState];
-
-      for (const k of keys) {
-        if (result && typeof result === "object" && k in result) {
-          result = result[k];
-        } else {
-          return key;
-        }
-      }
-
-      return typeof result === "string" ? result : key;
-    } catch (error) {
-      console.error(`Translation error for key "${key}":`, error);
-      return key;
-    }
-  };
+  }, []);
 
   const contextValue = useMemo(
     () => ({ language: languageState, setLanguage, t }),

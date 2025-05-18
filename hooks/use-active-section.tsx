@@ -25,7 +25,7 @@ export function useActiveSection(sections: string[], offset = 100) {
       }
     };
 
-    sections.forEach((section) => {
+    for (const section of sections) {
       const element = document.getElementById(section);
       if (element) {
         const observer = new IntersectionObserver(handleObserver, {
@@ -37,7 +37,7 @@ export function useActiveSection(sections: string[], offset = 100) {
         observers.push(observer);
         observedElements.push(element);
       }
-    });
+    }
 
     const handleScroll = () => {
       if (window.scrollY < 50) {
