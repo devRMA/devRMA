@@ -19,11 +19,13 @@ export function EducationCard({
 }: Readonly<EducationCardProps>) {
   return (
     <>
-      <div className="flex items-center mb-3">
-        <Calendar className="h-4 w-4 mr-2 text-muted-foreground" aria-hidden="true" />
-        <span className="text-sm text-muted-foreground">{period}</span>
+      <div className="flex flex-wrap items-center gap-2 mb-3 text-sm text-muted-foreground">
+        <span className="flex items-center gap-2">
+          <Calendar className="h-4 w-4" aria-hidden="true" />
+          {period}
+        </span>
         {inProgress && (
-          <span className="ml-2 inline-flex items-center rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
+          <span className="inline-flex items-center rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
             {inProgressLabel}
           </span>
         )}
