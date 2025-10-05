@@ -1,5 +1,7 @@
 # Portfolio
 
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=devRMA_devRMA)
+
 Welcome to my digital playground! This project is a bold, bilingual portfolio built with Next.js and crafted to showcase experience, skills, and personality with flair. Smooth animations, responsive layouts, and data-driven sections come together to tell a compelling story.
 
 ## ✨ Highlights
