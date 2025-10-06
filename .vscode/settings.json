@@ -4,5 +4,9 @@
   "cSpell.words": ["clsx", "dayjs", "nextui"],
   "tailwindCSS.experimental.classRegex": [
     ["tv\\((([^()]*|\\([^()]*\\))*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
-  ]
+  ],
+  "sonarlint.connectedMode.project": {
+    "connectionId": "devrma",
+    "projectKey": "devRMA_devRMA"
+  }
 }
