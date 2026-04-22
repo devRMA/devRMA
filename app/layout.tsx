@@ -69,6 +69,9 @@ export const metadata = {
     creator: "@devRMA",
     images: ["/og-image.jpg"],
   },
+  other: {
+    "google-adsense-account": "ca-pub-8745764662929625",
+  },
 };
 
 const personSchema = {
