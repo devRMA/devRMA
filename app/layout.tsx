@@ -2,6 +2,7 @@ import { LanguageProvider } from "@/components/language-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import type React from "react";
 import "./globals.css";
 
@@ -108,6 +109,12 @@ export default function RootLayout({
         <JsonLd data={websiteSchema} />
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8745764662929625"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
