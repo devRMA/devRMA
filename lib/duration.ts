@@ -4,7 +4,7 @@ const labels = {
     years: "anos",
     month: "mês",
     months: "meses",
-    lessThanMonth: "Menos de um mês",
+    invalid: "Menos de um mês",
     joiner: " e ",
   },
   en: {
@@ -12,7 +12,7 @@ const labels = {
     years: "years",
     month: "month",
     months: "months",
-    lessThanMonth: "Less than a month",
+    invalid: "Less than a month",
     joiner: " and ",
   },
 } as const;
@@ -23,21 +23,35 @@ type DurationConfig = {
   locale: SupportedLocale;
 };
 
-function parseDate(value: string | undefined) {
+type YearMonth = { year: number; month: number };
+
+function parseYearMonth(value: string | undefined): YearMonth | undefined {
   if (!value) {
     return undefined;
   }
 
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? undefined : date;
-}
-
-function clampToStart(start: Date | undefined, end: Date | undefined) {
-  if (!start || !end) {
-    return { start, end };
+  const match = /^(\d{4})-(\d{2})/.exec(value);
+  if (!match) {
+    return undefined;
   }
 
-  return end < start ? { start, end: start } : { start, end };
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+
+  if (month < 1 || month > 12) {
+    return undefined;
+  }
+
+  return { year, month: month - 1 };
+}
+
+function currentYearMonth(): YearMonth {
+  const now = new Date();
+  return { year: now.getFullYear(), month: now.getMonth() };
+}
+
+function countMonthsInclusive(start: YearMonth, end: YearMonth) {
+  return (end.year - start.year) * 12 + (end.month - start.month) + 1;
 }
 
 export function formatDurationRange(
@@ -45,29 +59,27 @@ export function formatDurationRange(
   endInput: string | undefined,
   { locale }: DurationConfig,
 ) {
-  const start = parseDate(startInput);
-  const requestedEnd = parseDate(endInput) ?? new Date();
-  const { start: validStart, end } = clampToStart(start, requestedEnd);
+  const intlLabels = labels[locale];
+  const start = parseYearMonth(startInput);
 
-  if (!validStart || !end) {
-    return labels[locale].lessThanMonth;
+  if (!start) {
+    return intlLabels.invalid;
   }
 
-  const yearDiff = end.getFullYear() - validStart.getFullYear();
-  const monthDiff = end.getMonth() - validStart.getMonth();
-  let totalMonths = yearDiff * 12 + monthDiff;
+  const end = endInput ? parseYearMonth(endInput) : currentYearMonth();
 
-  if (end.getDate() < validStart.getDate()) {
-    totalMonths -= 1;
+  if (!end) {
+    return intlLabels.invalid;
   }
 
-  if (totalMonths < 0) {
-    totalMonths = 0;
+  const totalMonths = countMonthsInclusive(start, end);
+
+  if (totalMonths < 1) {
+    return intlLabels.invalid;
   }
 
   const wholeYears = Math.floor(totalMonths / 12);
   const remainingMonths = totalMonths % 12;
-  const intlLabels = labels[locale];
   const parts: string[] = [];
 
   if (wholeYears > 0) {
@@ -78,10 +90,6 @@ export function formatDurationRange(
     parts.push(
       `${remainingMonths} ${remainingMonths === 1 ? intlLabels.month : intlLabels.months}`,
     );
-  }
-
-  if (parts.length === 0) {
-    return intlLabels.lessThanMonth;
   }
 
   return parts.join(intlLabels.joiner);

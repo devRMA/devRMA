@@ -10,8 +10,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { useMobile } from "@/hooks/use-mobile";
-import { cn } from "@/lib/utils";
 import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
 
@@ -35,8 +33,6 @@ export function ProjectCard({
   githubUrl,
   liveUrl,
 }: Readonly<ProjectCardProps>) {
-  const { isMobile } = useMobile();
-
   return (
     <Card className="h-full flex flex-col overflow-hidden">
       <div className="relative h-48 w-full overflow-hidden">
@@ -44,12 +40,8 @@ export function ProjectCard({
           src={image || "/placeholder.svg?height=192&width=384"}
           alt={title}
           fill
-          className={cn(
-            "object-cover",
-            isMobile
-              ? "transition-transform active:scale-105"
-              : "transition-transform hover:scale-105",
-          )}
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform hover:scale-105 active:scale-105"
         />
       </div>
       <CardHeader>

@@ -65,7 +65,8 @@ export function HeroSection() {
   return (
     <section
       id="about"
-      className="min-h-screen py-16 md:py-24 relative flex flex-col justify-center"
+      aria-labelledby="hero-heading"
+      className="min-h-screen py-16 md:py-24 scroll-mt-16 relative flex flex-col justify-center"
     >
       <div className="grid md:grid-cols-2 gap-8 items-center flex-grow">
         <motion.div
@@ -74,7 +75,10 @@ export function HeroSection() {
           variants={isMobile ? mobileTextAnimation : desktopTextAnimation}
           className="flex flex-col gap-4"
         >
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
+          <h1
+            id="hero-heading"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight"
+          >
             Rafael Martins Alves{" "}
             <span className="text-primary block mt-2">Full Stack Developer</span>
           </h1>
