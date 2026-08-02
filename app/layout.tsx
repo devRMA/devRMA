@@ -1,5 +1,5 @@
+import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import Script from "next/script";
 import type React from "react";
 import { LanguageProvider } from "@/components/language-provider";
 import { MotionProvider } from "@/components/motion-provider";
@@ -23,70 +23,131 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
-export const metadata = {
-  metadataBase: new URL("https://devrma.com"),
+const SITE_URL = "https://devrma.com";
+const TITLE = "Rafael Martins Alves | Desenvolvedor Full Stack";
+const DESCRIPTION =
+  "Desenvolvedor Full Stack com foco em Laravel, PHP, TypeScript e AWS. Construo sistemas escaláveis, observáveis e bem testados — hoje na MadeiraMadeira.";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Rafael Martins Alves | Full Stack Developer",
+    default: TITLE,
     template: "%s | devRMA",
   },
-  description: "Portfolio of Rafael Martins Alves - Full Stack Developer",
+  description: DESCRIPTION,
+  applicationName: "devRMA",
+  category: "technology",
   keywords: [
-    "developer",
-    "full stack",
-    "portfolio",
-    "next.js",
-    "react",
-    "typescript",
-    "laravel",
-    "php",
-    "python",
+    "Rafael Martins Alves",
+    "devRMA",
+    "desenvolvedor full stack",
+    "full stack developer",
+    "Laravel",
+    "PHP",
+    "TypeScript",
+    "Next.js",
+    "React",
+    "Python",
+    "AWS",
+    "Curitiba",
   ],
   authors: [{ name: "Rafael Martins Alves", url: "https://github.com/devRMA" }],
   creator: "Rafael Martins Alves",
+  publisher: "Rafael Martins Alves",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   alternates: {
     canonical: "/",
+    languages: {
+      "pt-BR": "/",
+      en: "/",
+      "x-default": "/",
+    },
   },
   openGraph: {
     type: "website",
     locale: "pt_BR",
     alternateLocale: "en_US",
-    url: "https://devrma.com",
-    siteName: "Rafael Martins Alves Portfolio",
-    title: "Rafael Martins Alves | Full Stack Developer",
-    description: "Portfolio of Rafael Martins Alves - Full Stack Developer",
+    url: SITE_URL,
+    siteName: "Rafael Martins Alves | devRMA",
+    title: TITLE,
+    description: DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rafael Martins Alves | Full Stack Developer",
-    description: "Portfolio of Rafael Martins Alves - Full Stack Developer",
+    title: TITLE,
+    description: DESCRIPTION,
     creator: "@devRMA",
   },
-  other: {
-    "google-adsense-account": "ca-pub-8745764662929625",
-  },
+};
+
+export const viewport: Viewport = {
+  colorScheme: "light dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f7f9fc" },
+    { media: "(prefers-color-scheme: dark)", color: "#12141a" },
+  ],
 };
 
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": `${SITE_URL}/#person`,
   name: "Rafael Martins Alves",
-  url: "https://devrma.com",
+  alternateName: "devRMA",
+  url: SITE_URL,
   sameAs: ["https://github.com/devRMA", "https://linkedin.com/in/devRMA"],
-  jobTitle: "Full Stack Developer",
-  image: "https://devrma.com/photo.png",
-  description: "Portfolio of Rafael Martins Alves - Full Stack Developer",
+  jobTitle: "Desenvolvedor Full Stack",
+  email: "mailto:contact@devrma.com",
+  image: `${SITE_URL}/rafael-martins-alves.jpg`,
+  description: DESCRIPTION,
+  worksFor: {
+    "@type": "Organization",
+    name: "MadeiraMadeira",
+    url: "https://www.madeiramadeira.com.br",
+  },
+  alumniOf: [
+    { "@type": "CollegeOrUniversity", name: "Universidade Positivo" },
+    { "@type": "EducationalOrganization", name: "SENAI Dr. Celso Charuri" },
+  ],
+  knowsAbout: [
+    "Laravel",
+    "PHP",
+    "TypeScript",
+    "Next.js",
+    "React",
+    "Python",
+    "Docker",
+    "AWS",
+    "PostgreSQL",
+    "CI/CD",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Curitiba",
+    addressRegion: "PR",
+    addressCountry: "BR",
+  },
 };
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  url: "https://devrma.com",
+  "@id": `${SITE_URL}/#website`,
+  url: SITE_URL,
   name: "devRMA",
-  description: "Portfolio of Rafael Martins Alves - Full Stack Developer",
-  publisher: {
-    "@type": "Person",
-    name: "Rafael Martins Alves",
-  },
+  inLanguage: "pt-BR",
+  description: DESCRIPTION,
+  publisher: { "@id": `${SITE_URL}/#person` },
 };
 
 export default function RootLayout({
@@ -99,14 +160,15 @@ export default function RootLayout({
       <head>
         <JsonLd data={personSchema} />
         <JsonLd data={websiteSchema} />
+        <noscript>
+          <style>
+            {
+              '[style*="opacity:0"]{opacity:1!important;transform:none!important;height:auto!important}'
+            }
+          </style>
+        </noscript>
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans`}>
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8745764662929625"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
