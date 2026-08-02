@@ -39,10 +39,17 @@ const { MockIntersectionObserver, observers } = vi.hoisted(() => {
   return { MockIntersectionObserver, observers: instances };
 });
 
+function entryFor(id: string, top: number, isIntersecting: boolean) {
+  return {
+    isIntersecting,
+    boundingClientRect: { top } as DOMRectReadOnly,
+    target: document.getElementById(id) as Element,
+  } as unknown as IntersectionObserverEntry;
+}
+
 describe("useActiveSection", () => {
   const sections = ["about", "skills", "projects"];
   let originalIntersectionObserver: typeof IntersectionObserver;
-  let scrollYDescriptor: PropertyDescriptor | undefined;
 
   beforeEach(() => {
     document.body.innerHTML = "";
@@ -52,8 +59,6 @@ describe("useActiveSection", () => {
       document.body.appendChild(element);
     });
 
-    scrollYDescriptor = Object.getOwnPropertyDescriptor(window, "scrollY");
-
     originalIntersectionObserver = window.IntersectionObserver;
     // @ts-expect-error - we are providing a test double for IntersectionObserver
     window.IntersectionObserver = MockIntersectionObserver;
@@ -62,59 +67,56 @@ describe("useActiveSection", () => {
 
   afterEach(() => {
     window.IntersectionObserver = originalIntersectionObserver;
-    if (scrollYDescriptor) {
-      Object.defineProperty(window, "scrollY", scrollYDescriptor);
-    }
     document.body.innerHTML = "";
   });
 
-  it("defaults to the first section and updates when intersections change", async () => {
+  it("observes every section with a single observer", async () => {
+    renderHook(() => useActiveSection(sections, 150));
+
+    await waitFor(() => expect(observers.length).toBe(1));
+    expect(observers[0].elements).toHaveLength(sections.length);
+    expect(observers[0].options?.rootMargin).toBe("-150px 0px -45% 0px");
+  });
+
+  it("defaults to the first section and picks the topmost visible one", async () => {
     const { result } = renderHook(() => useActiveSection(sections, 150));
 
     expect(result.current).toBe("about");
-    await waitFor(() => expect(observers.length).toBe(sections.length));
+    await waitFor(() => expect(observers.length).toBe(1));
 
     await act(async () => {
-      observers[1].trigger([
-        {
-          isIntersecting: true,
-          boundingClientRect: { top: 0 } as DOMRectReadOnly,
-          target: document.getElementById("skills")!,
-        } as unknown as IntersectionObserverEntry,
-      ]);
+      observers[0].trigger([entryFor("projects", 480, true), entryFor("skills", 120, true)]);
+      await Promise.resolve();
+    });
+
+    await waitFor(() => expect(result.current).toBe("skills"));
+  });
+
+  it("falls back to the remaining visible section when one leaves the viewport", async () => {
+    const { result } = renderHook(() => useActiveSection(sections));
+
+    await waitFor(() => expect(observers.length).toBe(1));
+
+    await act(async () => {
+      observers[0].trigger([entryFor("skills", 100, true), entryFor("projects", 600, true)]);
       await Promise.resolve();
     });
 
     await waitFor(() => expect(result.current).toBe("skills"));
 
-    act(() => {
-      Object.defineProperty(window, "scrollY", { configurable: true, value: 200 });
-      window.dispatchEvent(new Event("scroll"));
+    await act(async () => {
+      observers[0].trigger([entryFor("skills", -400, false)]);
+      await Promise.resolve();
     });
 
-    expect(result.current).toBe("skills");
-
-    act(() => {
-      Object.defineProperty(window, "scrollY", { configurable: true, value: 0 });
-      window.dispatchEvent(new Event("scroll"));
-    });
-
-    expect(result.current).toBe("about");
+    await waitFor(() => expect(result.current).toBe("projects"));
   });
 
-  it("falls back to the first section when no entries intersect", (context) => {
+  it("keeps the current section when no entries intersect", () => {
     const { result } = renderHook(() => useActiveSection(sections));
 
     act(() => {
-      observers.forEach((observer) => {
-        observer.trigger([
-          {
-            isIntersecting: false,
-            boundingClientRect: { top: 0 } as DOMRectReadOnly,
-            target: observer.elements[0] ?? document.createElement("div"),
-          } as unknown as IntersectionObserverEntry,
-        ]);
-      });
+      observers[0].trigger([entryFor("skills", 0, false)]);
     });
 
     expect(result.current).toBe("about");

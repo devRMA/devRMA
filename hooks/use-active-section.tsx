@@ -3,59 +3,39 @@
 import { useEffect, useState } from "react";
 
 export function useActiveSection(sections: string[], offset = 100) {
-  const [activeSection, setActiveSection] = useState<string | null>("about");
+  const [activeSection, setActiveSection] = useState<string | null>(sections[0] ?? null);
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-    const observedElements: Element[] = [];
+    const visibleTops = new Map<string, number>();
 
-    const handleObserver = (entries: IntersectionObserverEntry[]) => {
-      const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            visibleTops.set(entry.target.id, entry.boundingClientRect.top);
+          } else {
+            visibleTops.delete(entry.target.id);
+          }
+        }
 
-      if (visibleEntries.length > 0) {
-        visibleEntries.sort((a, b) => {
-          const rectA = a.boundingClientRect;
-          const rectB = b.boundingClientRect;
-          return rectA.top - rectB.top;
-        });
+        if (visibleTops.size === 0) {
+          return;
+        }
 
-        setActiveSection(visibleEntries[0].target.id);
-      } else if (window.scrollY < 100) {
-        setActiveSection("about");
-      }
-    };
+        const topMost = [...visibleTops.entries()].sort(([, a], [, b]) => a - b)[0];
+        setActiveSection(topMost[0]);
+      },
+      { rootMargin: `-${offset}px 0px -45% 0px`, threshold: 0 },
+    );
 
     for (const section of sections) {
       const element = document.getElementById(section);
       if (element) {
-        const observer = new IntersectionObserver(handleObserver, {
-          rootMargin: `-${offset}px 0px -${Math.floor(window.innerHeight / 2)}px 0px`,
-          threshold: [0.1, 0.5],
-        });
-
         observer.observe(element);
-        observers.push(observer);
-        observedElements.push(element);
       }
     }
 
-    const handleScroll = () => {
-      if (window.scrollY < 50) {
-        setActiveSection("about");
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      observers.forEach((observer, index) => {
-        if (observedElements[index]) {
-          observer.unobserve(observedElements[index]);
-        }
-        observer.disconnect();
-      });
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => observer.disconnect();
   }, [sections, offset]);
 
   return activeSection;

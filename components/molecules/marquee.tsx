@@ -15,20 +15,21 @@ export function Marquee({ children }: Readonly<MarqueeProps>) {
 
   return (
     <div className="relative">
-      <Button
-        variant="outline"
-        size="icon"
-        onClick={() => setIsPaused((paused) => !paused)}
-        aria-pressed={isPaused}
-        aria-label={isPaused ? t("a11y.playCarousel") : t("a11y.pauseCarousel")}
-        className="absolute right-0 -top-12 z-10"
-      >
-        {isPaused ? (
-          <Play className="h-4 w-4" aria-hidden="true" />
-        ) : (
-          <Pause className="h-4 w-4" aria-hidden="true" />
-        )}
-      </Button>
+      <div className="flex justify-end">
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={() => setIsPaused((paused) => !paused)}
+          aria-pressed={isPaused}
+          aria-label={isPaused ? t("a11y.playCarousel") : t("a11y.pauseCarousel")}
+        >
+          {isPaused ? (
+            <Play className="h-4 w-4" aria-hidden="true" />
+          ) : (
+            <Pause className="h-4 w-4" aria-hidden="true" />
+          )}
+        </Button>
+      </div>
 
       <div className="carousel-container">
         <div className="carousel" data-paused={isPaused || undefined}>
