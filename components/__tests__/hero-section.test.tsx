@@ -4,7 +4,6 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { HeroSection } from "../organisms/hero-section";
 
 const useLanguageMock = vi.fn();
-const useMobileMock = vi.fn();
 const buttonLinkMock = vi.fn(({ children, ...props }: any) => (
   <a data-testid="button-link" {...props}>
     {children}
@@ -20,10 +19,6 @@ vi.mock("@/components/language-provider", () => ({
   useLanguage: () => useLanguageMock(),
 }));
 
-vi.mock("@/hooks/use-mobile", () => ({
-  useMobile: () => useMobileMock(),
-}));
-
 vi.mock("@/components/atoms/button-link", () => ({
   ButtonLink: (props: any) => buttonLinkMock(props),
 }));
@@ -32,8 +27,8 @@ vi.mock("@/components/atoms/scroll-indicator", () => ({
   ScrollIndicator: (props: { label: string; targetId: string }) => scrollIndicatorMock(props),
 }));
 
-vi.mock("@/public/photo.png", () => ({
-  default: "photo.png",
+vi.mock("@/public/rafael-martins-alves.jpg", () => ({
+  default: "rafael-martins-alves.jpg",
 }));
 
 vi.mock("next/image", () => ({
@@ -57,54 +52,67 @@ vi.mock("framer-motion", () => ({
 describe("HeroSection", () => {
   beforeEach(() => {
     useLanguageMock.mockReset();
-    useMobileMock.mockReset();
     buttonLinkMock.mockClear();
     scrollIndicatorMock.mockClear();
     motionVariants.length = 0;
-  });
 
-  it("renders the translated content and actions for desktop", () => {
     useLanguageMock.mockReturnValue({
       t: (key: string) =>
         ({
+          "hero.badge": "Full Stack Developer at MadeiraMadeira",
+          "hero.role": "Full Stack Developer",
           "hero.description": "Building delightful web experiences.",
+          "hero.projects": "View projects",
           "hero.contact": "Contact me",
+          "hero.stats.experience": "Years of experience",
         })[key] ?? key,
     });
-    useMobileMock.mockReturnValue({ isMobile: false });
+  });
 
+  it("renders the translated content", () => {
     render(<HeroSection />);
 
     expect(screen.getByText("Building delightful web experiences.")).toBeInTheDocument();
+    expect(screen.getByText("Full Stack Developer at MadeiraMadeira")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Rafael Martins Alves");
+  });
+
+  it("exposes both calls to action and the scroll indicator", () => {
+    render(<HeroSection />);
+
+    expect(buttonLinkMock).toHaveBeenCalledWith(
+      expect.objectContaining({ href: "#projects", children: "View projects" }),
+    );
     expect(buttonLinkMock).toHaveBeenCalledWith(
       expect.objectContaining({ href: "#contact", children: "Contact me" }),
     );
     expect(scrollIndicatorMock).toHaveBeenCalledWith(
       expect.objectContaining({ targetId: "skills", label: "a11y.scrollToSkills" }),
     );
-    expect(screen.getByTestId("profile-image")).toHaveAttribute("alt", "Rafael Martins Alves");
-
-    // The first motion.div receives the text animation variants.
-    const textVariants = motionVariants[0] as { animate: { transition: { duration?: number } } };
-    expect(textVariants.animate.transition.duration).toBe(0.5);
   });
 
-  it("uses the mobile animation variants when rendered on small screens", () => {
-    useLanguageMock.mockReturnValue({
-      t: (key: string) =>
-        ({
-          "hero.description": "Experiências mobile first.",
-          "hero.contact": "Vamos conversar",
-        })[key] ?? key,
-    });
-    useMobileMock.mockReturnValue({ isMobile: true });
-
+  it("describes the profile picture", () => {
     render(<HeroSection />);
 
-    const textVariants = motionVariants[0] as {
-      animate: { transition: { type?: string; stiffness?: number } };
-    };
-    expect(textVariants.animate.transition.type).toBe("spring");
-    expect(textVariants.animate.transition.stiffness).toBe(100);
+    expect(screen.getByTestId("profile-image")).toHaveAttribute(
+      "alt",
+      "Rafael Martins Alves, desenvolvedor full stack",
+    );
+  });
+
+  it("derives the years of experience from the current year", () => {
+    render(<HeroSection />);
+
+    const expected = `${new Date().getFullYear() - 2021}+`;
+    expect(screen.getByText(expected)).toBeInTheDocument();
+  });
+
+  it("animates with a single set of variants regardless of viewport", () => {
+    render(<HeroSection />);
+
+    for (const variants of motionVariants) {
+      const typed = variants as { animate: { transition: { duration: number } } };
+      expect(typed.animate.transition.duration).toBe(0.5);
+    }
   });
 });

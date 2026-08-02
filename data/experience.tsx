@@ -30,7 +30,7 @@ type Education = DateRange & {
 export const experienceData: Company[] = [
   {
     id: "madeira-madeira",
-    name: "Madeira Madeira",
+    name: "MadeiraMadeira",
     period: "March 2024 - Present",
     startDate: "2024-03-18",
     positions: [

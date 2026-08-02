@@ -6,7 +6,7 @@ export const projectsData = [
     longDescription:
       "A bot developed in Python for Discord, with custom commands and modular logic.",
     technologies: ["Python", "Discord.py", "Docker", "PostgreSQL"],
-    image: "/placeholder.svg?height=192&width=384",
+    image: null,
     githubUrl: "https://github.com/devRMA/Androxus",
     liveUrl: null,
   },
@@ -27,7 +27,7 @@ export const projectsData = [
     shortDescription: "Discord bot with Docker support",
     longDescription: "Example structure for a Discord bot in Python using Docker.",
     technologies: ["Python", "Docker", "Discord.py", "PostgreSQL"],
-    image: "/placeholder.svg?height=192&width=384",
+    image: null,
     githubUrl: "https://github.com/devRMA/Pybot_with_docker",
     liveUrl: null,
   },
@@ -38,7 +38,7 @@ export const projectsData = [
     longDescription:
       "Simple game created with Vue.js (frontend) and Laravel (backend), where users can simulate trading stocks from fictional companies, with dynamically changing prices.",
     technologies: ["Vue.js", "Laravel", "PostgreSQL"],
-    image: "/placeholder.svg?height=192&width=384",
+    image: null,
     githubUrl: "https://github.com/devRMA/stock_trader",
     liveUrl: "https://stocktrader-bay.vercel.app",
   },

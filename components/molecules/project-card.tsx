@@ -19,7 +19,7 @@ interface ProjectCardProps {
   shortDescription: string;
   longDescription: string;
   technologies: string[];
-  image: string;
+  image?: string | null;
   githubUrl?: string;
   liveUrl?: string | null;
 }
@@ -35,14 +35,20 @@ export function ProjectCard({
 }: Readonly<ProjectCardProps>) {
   return (
     <Card className="h-full flex flex-col overflow-hidden">
-      <div className="relative h-48 w-full overflow-hidden">
-        <Image
-          src={image || "/placeholder.svg?height=192&width=384"}
-          alt={title}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-transform hover:scale-105 active:scale-105"
-        />
+      <div className="relative h-48 w-full overflow-hidden border-b bg-muted/40">
+        {image ? (
+          <Image
+            src={image}
+            alt={title}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1536px) 50vw, 25vw"
+            className="object-cover transition-transform hover:scale-105 active:scale-105"
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center bg-gradient-to-br from-primary/25 via-primary/10 to-transparent p-4">
+            <span className="text-center font-mono text-xl font-bold text-primary">{title}</span>
+          </div>
+        )}
       </div>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
