@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from "vitest";
 import { NavItem } from "../molecules/nav-item";
 
 vi.mock("next/link", () => ({
-  default: ({ href, children, ...props }: { href: string; children: unknown }) => (
+  default: ({ href, children, ...props }: { href: string; children: React.ReactNode }) => (
     <a href={href} {...props}>
       {children}
     </a>
@@ -13,7 +13,7 @@ vi.mock("next/link", () => ({
 
 vi.mock("framer-motion", () => ({
   motion: {
-    div: ({ children, layoutId: _layoutId, ...props }: { children: unknown; layoutId?: string }) => (
+    div: ({ children, layoutId: _layoutId, ...props }: { children: React.ReactNode; layoutId?: string }) => (
       <div data-testid="motion" {...props}>
         {children}
       </div>

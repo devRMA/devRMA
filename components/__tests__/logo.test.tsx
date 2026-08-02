@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from "vitest";
 import { Logo } from "../atoms/logo";
 
 vi.mock("next/link", () => ({
-  default: ({ href, children, ...props }: { href: string; children: unknown }) => (
+  default: ({ href, children, ...props }: { href: string; children: React.ReactNode }) => (
     <a href={href} {...props}>
       {children}
     </a>

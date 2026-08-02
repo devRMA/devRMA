@@ -5,14 +5,14 @@ import { ScrollIndicator } from "@/components/atoms/scroll-indicator";
 import { useLanguage } from "@/components/language-provider";
 import { useMobile } from "@/hooks/use-mobile";
 import profileImage from "@/public/photo.png";
-import { motion } from "framer-motion";
+import { type Variants, motion } from "framer-motion";
 import Image from "next/image";
 
 export function HeroSection() {
   const { t } = useLanguage();
   const { isMobile } = useMobile();
 
-  const mobileImageAnimation = {
+  const mobileImageAnimation: Variants = {
     initial: { opacity: 0, scale: 0.8 },
     animate: {
       opacity: 1,
@@ -26,7 +26,7 @@ export function HeroSection() {
     },
   };
 
-  const mobileTextAnimation = {
+  const mobileTextAnimation: Variants = {
     initial: { opacity: 0, y: 30 },
     animate: {
       opacity: 1,
@@ -39,7 +39,7 @@ export function HeroSection() {
     },
   };
 
-  const desktopImageAnimation = {
+  const desktopImageAnimation: Variants = {
     initial: { opacity: 0, scale: 0.9 },
     animate: {
       opacity: 1,
@@ -51,7 +51,7 @@ export function HeroSection() {
     },
   };
 
-  const desktopTextAnimation = {
+  const desktopTextAnimation: Variants = {
     initial: { opacity: 0, y: 20 },
     animate: {
       opacity: 1,

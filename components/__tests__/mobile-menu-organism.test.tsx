@@ -6,7 +6,14 @@ import { afterAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { MobileMenu } from "../organisms/mobile-menu";
 
 const useMobileMock = vi.fn();
-const MobileNavItemMock = vi.fn(() => null);
+type NavItemMockProps = {
+  href: string;
+  label: string;
+  isActive: boolean;
+  onClick: (event: unknown, href: string) => void;
+};
+
+const MobileNavItemMock = vi.fn((_props: NavItemMockProps) => null);
 
 vi.mock("@/hooks/use-mobile", () => ({
   useMobile: () => useMobileMock(),
@@ -40,18 +47,15 @@ vi.mock("framer-motion", () => ({
 }));
 
 describe("MobileMenu (organism)", () => {
-  // @ts-expect-error - vibrate exists at runtime in the test environment
   const originalVibrate = navigator.vibrate;
 
   beforeEach(() => {
     useMobileMock.mockReset();
     MobileNavItemMock.mockClear();
-    // @ts-expect-error - JSDOM exposes vibrate for testing even if not typed on Navigator
     navigator.vibrate = vi.fn();
   });
 
   afterAll(() => {
-    // @ts-expect-error - restore original implementation
     navigator.vibrate = originalVibrate;
   });
 

@@ -6,7 +6,7 @@ import { SkillCard } from "@/components/molecules/skill-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { skillsData } from "@/data/skills";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, type Variants, motion } from "framer-motion";
 import { useState } from "react";
 
 export function SkillsSection() {
@@ -17,7 +17,7 @@ export function SkillsSection() {
     setActiveTab(value);
   };
 
-  const tabContentVariants = {
+  const tabContentVariants: Variants = {
     hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,

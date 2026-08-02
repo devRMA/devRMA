@@ -1,5 +1,5 @@
 import { renderHook, act, waitFor } from "@testing-library/react";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { useActiveSection } from "../use-active-section";
 
@@ -61,7 +61,6 @@ describe("useActiveSection", () => {
   });
 
   afterEach(() => {
-    // @ts-expect-error - restore original observer implementation
     window.IntersectionObserver = originalIntersectionObserver;
     if (scrollYDescriptor) {
       Object.defineProperty(window, "scrollY", scrollYDescriptor);
@@ -81,7 +80,7 @@ describe("useActiveSection", () => {
           isIntersecting: true,
           boundingClientRect: { top: 0 } as DOMRectReadOnly,
           target: document.getElementById("skills")!,
-        } as IntersectionObserverEntry,
+        } as unknown as IntersectionObserverEntry,
       ]);
       await Promise.resolve();
     });
@@ -113,7 +112,7 @@ describe("useActiveSection", () => {
             isIntersecting: false,
             boundingClientRect: { top: 0 } as DOMRectReadOnly,
             target: observer.elements[0] ?? document.createElement("div"),
-          } as IntersectionObserverEntry,
+          } as unknown as IntersectionObserverEntry,
         ]);
       });
     });

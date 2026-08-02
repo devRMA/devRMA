@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from "vitest";
 import { ButtonLink } from "../atoms/button-link";
 
 vi.mock("next/link", () => ({
-  default: ({ href, children, ...props }: { href: string; children: unknown }) => (
+  default: ({ href, children, ...props }: { href: string; children: React.ReactNode }) => (
     <a href={href} {...props}>
       {children}
     </a>
