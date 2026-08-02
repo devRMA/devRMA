@@ -1,7 +1,9 @@
 "use client";
 
-import type React from "react";
-
+import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 import { SectionHeading } from "@/components/atoms/section-heading";
 import { useLanguage } from "@/components/language-provider";
 import { CertificateCard } from "@/components/molecules/certificate-card";
@@ -17,10 +19,6 @@ import {
 } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { certificatesData } from "@/data/certificates";
-import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
-import Image from "next/image";
-import { useState } from "react";
 
 type CertificateCategory = keyof typeof certificatesData;
 type Certificate = (typeof certificatesData)[CertificateCategory][number];
@@ -37,7 +35,9 @@ export function CertificatesSection() {
     >
       <SectionHeading
         id="certificates-heading"
-        title={t("certificates.title")} description={t("certificates.description")} />
+        title={t("certificates.title")}
+        description={t("certificates.description")}
+      />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -65,9 +65,7 @@ export function CertificatesSection() {
                         key={certificate.id}
                         id={certificate.id}
                         title={t(`certificates.items.${certificate.id}.title`)}
-                        issuer={
-                          t(`certificates.items.${certificate.id}.issuer`)
-                        }
+                        issuer={t(`certificates.items.${certificate.id}.issuer`)}
                         date={certificate.date}
                         thumbnail={certificate.thumbnail}
                         onClick={() => setSelectedCertificate(certificate)}
@@ -89,20 +87,16 @@ export function CertificatesSection() {
           {selectedCertificate && (
             <>
               <DialogHeader>
-                <DialogTitle>
-                  {t(`certificates.items.${selectedCertificate.id}.title`)}
-                </DialogTitle>
+                <DialogTitle>{t(`certificates.items.${selectedCertificate.id}.title`)}</DialogTitle>
                 <DialogDescription id="certificate-details">
-                  {t(`certificates.items.${selectedCertificate.id}.issuer`)}{" "}
-                  • {selectedCertificate.date}
+                  {t(`certificates.items.${selectedCertificate.id}.issuer`)} •{" "}
+                  {selectedCertificate.date}
                 </DialogDescription>
               </DialogHeader>
               <div className="relative h-[60vh] w-full">
                 <Image
                   src={selectedCertificate.image || "/placeholder.svg?height=600&width=800"}
-                  alt={
-                    t(`certificates.items.${selectedCertificate.id}.title`)
-                  }
+                  alt={t(`certificates.items.${selectedCertificate.id}.title`)}
                   fill
                   sizes="(max-width: 768px) 100vw, 768px"
                   className="object-contain"

@@ -1,9 +1,9 @@
 "use client";
 
-import { useLanguage } from "@/components/language-provider";
-import { Button } from "@/components/ui/button";
 import { Pause, Play } from "lucide-react";
 import { type ReactNode, useState } from "react";
+import { useLanguage } from "@/components/language-provider";
+import { Button } from "@/components/ui/button";
 
 interface MarqueeProps {
   children: ReactNode;

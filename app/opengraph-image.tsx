@@ -26,7 +26,9 @@ export default function OpengraphImage() {
         Rafael Martins Alves
       </div>
       <div style={{ fontSize: 48, marginTop: 16, color: "#3b82f6" }}>Full Stack Developer</div>
-      <div style={{ display: "flex", marginTop: 48, height: 8, width: 220, background: "#3b82f6" }} />
+      <div
+        style={{ display: "flex", marginTop: 48, height: 8, width: 220, background: "#3b82f6" }}
+      />
     </div>,
     size,
   );

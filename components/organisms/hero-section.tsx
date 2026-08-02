@@ -1,12 +1,12 @@
 "use client";
 
+import { motion, type Variants } from "framer-motion";
+import Image from "next/image";
 import { ButtonLink } from "@/components/atoms/button-link";
 import { ScrollIndicator } from "@/components/atoms/scroll-indicator";
 import { useLanguage } from "@/components/language-provider";
 import { useMobile } from "@/hooks/use-mobile";
 import profileImage from "@/public/photo.png";
-import { type Variants, motion } from "framer-motion";
-import Image from "next/image";
 
 export function HeroSection() {
   const { t } = useLanguage();

@@ -1,10 +1,9 @@
 "use client";
 
-import type React from "react";
-
-import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import type React from "react";
+import { cn } from "@/lib/utils";
 
 interface MobileNavItemProps {
   href: string;

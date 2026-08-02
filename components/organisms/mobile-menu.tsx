@@ -1,14 +1,13 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import type React from "react";
-
+import { useEffect, useId, useRef, useState } from "react";
 import { useLanguage } from "@/components/language-provider";
 import { MobileNavItem } from "@/components/molecules/mobile-nav-item";
 import { Button } from "@/components/ui/button";
 import { useMobile } from "@/hooks/use-mobile";
-import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { useEffect, useId, useRef, useState } from "react";
 
 type NavItem = {
   href: string;

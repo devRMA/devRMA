@@ -30,9 +30,7 @@ describe("MobileNavItem", () => {
   });
 
   it("applies active styling and renders the indicator when active", () => {
-    render(
-      <MobileNavItem href="#skills" label="Skills" isActive onClick={vi.fn()} />,
-    );
+    render(<MobileNavItem href="#skills" label="Skills" isActive onClick={vi.fn()} />);
 
     const link = screen.getByRole("link", { name: "Skills" });
     expect(link).toHaveAttribute("href", "#skills");

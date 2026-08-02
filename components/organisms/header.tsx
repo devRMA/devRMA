@@ -1,5 +1,7 @@
 "use client";
 
+import { Github, Linkedin } from "lucide-react";
+import { useEffect, useState } from "react";
 import { LanguageToggle } from "@/components/atoms/language-toggle";
 import { Logo } from "@/components/atoms/logo";
 import { ModeToggle } from "@/components/atoms/mode-toggle";
@@ -7,8 +9,6 @@ import { SocialIcon } from "@/components/atoms/social-icon";
 import { useLanguage } from "@/components/language-provider";
 import { Navigation } from "@/components/organisms/navigation";
 import { cn } from "@/lib/utils";
-import { Github, Linkedin } from "lucide-react";
-import { useEffect, useState } from "react";
 
 export function Header() {
   const { t } = useLanguage();

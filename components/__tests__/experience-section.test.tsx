@@ -1,14 +1,15 @@
-import userEvent from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import type { ReactNode } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-
+import { academicData, experienceData } from "@/data/experience";
 import { ExperienceSection } from "../organisms/experience-section";
-import { experienceData, academicData } from "@/data/experience";
 
-const sectionHeadingMock = vi.fn(({ title, description }: { title: string; description: string }) => (
-  <header data-testid="heading" data-title={title} data-description={description} />
-));
+const sectionHeadingMock = vi.fn(
+  ({ title, description }: { title: string; description: string }) => (
+    <header data-testid="heading" data-title={title} data-description={description} />
+  ),
+);
 
 const experiencePositionMock = vi.fn((props: any) => (
   <div data-testid={`position-${props.title}`} data-previous={props.isPrevious ?? false}>
@@ -32,9 +33,12 @@ for (const company of experienceData) {
   translationMap[`experience.companies.${company.id}.name`] = `${company.name} Inc.`;
   translationMap[`experience.companies.${company.id}.period`] = company.period;
   company.positions.forEach((position, index) => {
-    translationMap[`experience.companies.${company.id}.positions.${index}.title`] = `${position.title}*`;
-    translationMap[`experience.companies.${company.id}.positions.${index}.period`] = position.period;
-    translationMap[`experience.companies.${company.id}.positions.${index}.description`] = position.description;
+    translationMap[`experience.companies.${company.id}.positions.${index}.title`] =
+      `${position.title}*`;
+    translationMap[`experience.companies.${company.id}.positions.${index}.period`] =
+      position.period;
+    translationMap[`experience.companies.${company.id}.positions.${index}.description`] =
+      position.description;
   });
 }
 

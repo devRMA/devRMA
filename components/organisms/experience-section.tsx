@@ -1,5 +1,8 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
+import { Briefcase, Building, Calendar, ChevronDown, ChevronUp, GraduationCap } from "lucide-react";
+import { useMemo, useState } from "react";
 import { SectionHeading } from "@/components/atoms/section-heading";
 import { useLanguage } from "@/components/language-provider";
 import { EducationCard } from "@/components/molecules/education-card";
@@ -8,9 +11,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { academicData, experienceData } from "@/data/experience";
 import { formatDurationRange } from "@/lib/duration";
-import { AnimatePresence, motion } from "framer-motion";
-import { Briefcase, Building, Calendar, ChevronDown, ChevronUp, GraduationCap } from "lucide-react";
-import { useMemo, useState } from "react";
 
 export function ExperienceSection() {
   const { t, language } = useLanguage();
@@ -55,7 +55,9 @@ export function ExperienceSection() {
     >
       <SectionHeading
         id="experience-heading"
-        title={t("experience.title")} description={t("experience.description")} />
+        title={t("experience.title")}
+        description={t("experience.description")}
+      />
 
       <Tabs defaultValue="professional" className="w-full">
         <TabsList className="mb-8 flex w-full overflow-x-auto">
@@ -151,16 +153,12 @@ export function ExperienceSection() {
                       <CardContent>
                         <div className="mb-4">
                           <ExperiencePosition
-                            title={
-                              t(`experience.companies.${company.id}.positions.0.title`)
-                            }
-                            period={
-                              t(`experience.companies.${company.id}.positions.0.period`)
-                            }
+                            title={t(`experience.companies.${company.id}.positions.0.title`)}
+                            period={t(`experience.companies.${company.id}.positions.0.period`)}
                             duration={mainPositionDuration}
-                            description={
-                              t(`experience.companies.${company.id}.positions.0.description`)
-                            }
+                            description={t(
+                              `experience.companies.${company.id}.positions.0.description`,
+                            )}
                             technologies={mainPosition.technologies}
                           />
                         </div>
@@ -249,9 +247,7 @@ export function ExperienceSection() {
                     <Card>
                       <CardHeader>
                         <div className="flex justify-between items-start">
-                          <CardTitle>
-                            {t(`experience.education.${education.id}.degree`)}
-                          </CardTitle>
+                          <CardTitle>{t(`experience.education.${education.id}.degree`)}</CardTitle>
                         </div>
                         <CardDescription>
                           {t(`experience.education.${education.id}.institution`)}
@@ -259,16 +255,11 @@ export function ExperienceSection() {
                       </CardHeader>
                       <CardContent>
                         <EducationCard
-                          period={
-                            t(`experience.education.${education.id}.period`)
-                          }
-                          description={
-                            t(`experience.education.${education.id}.description`)
-                          }
+                          period={t(`experience.education.${education.id}.period`)}
+                          description={t(`experience.education.${education.id}.description`)}
                           inProgress={education.inProgress}
-                          achievements={education.achievements?.map(
-                            (achievement, idx) =>
-                              t(`experience.education.${education.id}.achievements.${idx}`),
+                          achievements={education.achievements?.map((_achievement, idx) =>
+                            t(`experience.education.${education.id}.achievements.${idx}`),
                           )}
                           inProgressLabel={t("experience.inProgress")}
                           keyAchievementsLabel={t("experience.keyAchievements")}

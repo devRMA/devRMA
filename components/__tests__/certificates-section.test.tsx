@@ -1,14 +1,15 @@
-import userEvent from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { cloneElement, isValidElement, type ReactNode } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-
-import { CertificatesSection } from "../organisms/certificates-section";
 import { certificatesData } from "@/data/certificates";
+import { CertificatesSection } from "../organisms/certificates-section";
 
-const sectionHeadingMock = vi.fn(({ title, description }: { title: string; description: string }) => (
-  <header data-testid="heading" data-title={title} data-description={description} />
-));
+const sectionHeadingMock = vi.fn(
+  ({ title, description }: { title: string; description: string }) => (
+    <header data-testid="heading" data-title={title} data-description={description} />
+  ),
+);
 
 const certificateCardMock = vi.fn((props: any) => (
   <button type="button" data-testid={`certificate-${props.id}`} onClick={props.onClick}>
@@ -66,7 +67,8 @@ vi.mock("@/components/ui/card", () => ({
 }));
 
 vi.mock("@/components/ui/dialog", () => ({
-  Dialog: ({ open, children }: { open: boolean; children: ReactNode }) => (open ? <>{children}</> : null),
+  Dialog: ({ open, children }: { open: boolean; children: ReactNode }) =>
+    open ? <>{children}</> : null,
   DialogContent: ({ children }: { children: ReactNode }) => (
     <div role="dialog" aria-modal="true">
       {children}
@@ -107,8 +109,16 @@ describe("CertificatesSection", () => {
     await user.click(firstTrigger);
 
     expect(screen.getByRole("heading", { name: `${firstCertificate.title}*` })).toBeInTheDocument();
-    expect(screen.getByText((content) => content.includes(`${firstCertificate.issuer} Ltd.`))).toBeInTheDocument();
-    expect(screen.getByTestId("certificate-image")).toHaveAttribute("alt", `${firstCertificate.title}*`);
-    expect(screen.getByRole("link", { name: "Verify credential" })).toHaveAttribute("href", firstCertificate.url);
+    expect(
+      screen.getByText((content) => content.includes(`${firstCertificate.issuer} Ltd.`)),
+    ).toBeInTheDocument();
+    expect(screen.getByTestId("certificate-image")).toHaveAttribute(
+      "alt",
+      `${firstCertificate.title}*`,
+    );
+    expect(screen.getByRole("link", { name: "Verify credential" })).toHaveAttribute(
+      "href",
+      firstCertificate.url,
+    );
   });
 });

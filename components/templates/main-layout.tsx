@@ -1,7 +1,7 @@
+import type React from "react";
 import { SkipLink } from "@/components/atoms/skip-link";
 import { Footer } from "@/components/organisms/footer";
 import { Header } from "@/components/organisms/header";
-import type React from "react";
 
 interface MainLayoutProps {
   children: React.ReactNode;

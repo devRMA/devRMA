@@ -1,14 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
 
 describe("Card UI", () => {
   it("renders the card primitives with their default styles", () => {
@@ -53,6 +46,12 @@ describe("Card UI", () => {
       "extra-description",
     );
     expect(screen.getByTestId("content")).toHaveClass("p-6", "pt-0", "extra-content");
-    expect(screen.getByTestId("footer")).toHaveClass("flex", "items-center", "p-6", "pt-0", "extra-footer");
+    expect(screen.getByTestId("footer")).toHaveClass(
+      "flex",
+      "items-center",
+      "p-6",
+      "pt-0",
+      "extra-footer",
+    );
   });
 });

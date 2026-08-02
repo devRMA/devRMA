@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import * as React from "react";
 import { describe, expect, it, vi } from "vitest";
 
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "../ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 
 vi.mock("@radix-ui/react-tabs", () => {
   const forward = (tag: string) =>
@@ -12,12 +12,14 @@ vi.mock("@radix-ui/react-tabs", () => {
       </div>
     ));
 
-  const Root = ({ children }: { children: React.ReactNode }) => <div data-testid="tabs-root">{children}</div>;
+  const Root = ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="tabs-root">{children}</div>
+  );
   const List = forward("list");
   const Trigger = forward("trigger");
   const Content = forward("content");
 
-  return { Root, List, Trigger, Content }; 
+  return { Root, List, Trigger, Content };
 });
 
 describe("Tabs", () => {

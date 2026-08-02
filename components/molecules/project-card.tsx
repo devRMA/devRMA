@@ -1,5 +1,7 @@
 "use client";
 
+import { ExternalLink, Github } from "lucide-react";
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,8 +12,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ExternalLink, Github } from "lucide-react";
-import Image from "next/image";
 
 interface ProjectCardProps {
   id: number;

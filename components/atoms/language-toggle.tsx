@@ -1,5 +1,6 @@
 "use client";
 
+import { Globe } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,7 +10,6 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Globe } from "lucide-react";
 
 export function LanguageToggle() {
   const { language, setLanguage, t } = useLanguage();
