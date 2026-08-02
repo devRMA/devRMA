@@ -9,7 +9,7 @@ const sectionHeadingMock = vi.fn(({ title, description }: { title: string; descr
   <header data-testid="heading" data-title={title} data-description={description} />
 ));
 
-const projectCardMock = vi.fn(() => null);
+const projectCardMock = vi.fn((_props: unknown) => null);
 
 const translationMap = projectsData.reduce<Record<string, string>>((map, project) => {
   map[`projects.items.${project.id}.title`] = `${project.title} (translated)`;

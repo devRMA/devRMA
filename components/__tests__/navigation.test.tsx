@@ -6,8 +6,15 @@ import { Navigation } from "../organisms/navigation";
 const useLanguageMock = vi.fn();
 const useMobileMock = vi.fn();
 const useActiveSectionMock = vi.fn();
-const NavItemMock = vi.fn(() => null);
-const MobileMenuMock = vi.fn(() => null);
+type NavItemMockProps = {
+  href: string;
+  label: string;
+  isActive: boolean;
+  onClick: (event: unknown, href: string) => void;
+};
+
+const NavItemMock = vi.fn((_props: NavItemMockProps) => null);
+const MobileMenuMock = vi.fn((_props: unknown) => null);
 
 vi.mock("@/components/language-provider", () => ({
   useLanguage: () => useLanguageMock(),
@@ -74,13 +81,12 @@ describe("Navigation", () => {
     const targetElement = document.createElement("div");
     targetElement.id = "projects";
     const scrollSpy = vi.fn();
-    // @ts-expect-error - jsdom doesn't know about scrollIntoView but we can attach it.
     targetElement.scrollIntoView = scrollSpy;
     document.body.appendChild(targetElement);
 
     const navItemProps = NavItemMock.mock.calls.find(([props]) => props.href === "#projects")?.[0];
     const preventDefault = vi.fn();
-    navItemProps.onClick({ preventDefault } as any, "#projects");
+    navItemProps?.onClick({ preventDefault }, "#projects");
 
     expect(preventDefault).toHaveBeenCalled();
     expect(scrollSpy).toHaveBeenCalledWith({ behavior: "smooth", block: "start" });

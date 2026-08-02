@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import type { LucideIcon } from "lucide-react";
 import type { SVGProps } from "react";
 import { describe, expect, it } from "vitest";
 
@@ -11,7 +12,7 @@ function StubIcon(props: SVGProps<SVGSVGElement>) {
 describe("ContactMethod", () => {
   it("renders the contact information with an accessible link", () => {
     render(
-      <ContactMethod icon={StubIcon} title="Email" value="rafael@example.com" href="mailto:test" />,
+      <ContactMethod icon={StubIcon as unknown as LucideIcon} title="Email" value="rafael@example.com" href="mailto:test" />,
     );
 
     expect(screen.getByTestId("contact-icon")).toBeInTheDocument();

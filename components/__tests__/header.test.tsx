@@ -3,7 +3,7 @@ import { afterAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { Header } from "../organisms/header";
 
-const NavigationMock = vi.fn(() => <nav data-testid="navigation" />);
+const NavigationMock = vi.fn((_props: unknown) => <nav data-testid="navigation" />);
 const SocialIconMock = vi.fn(({ label }: { label: string }) => <span>{label}</span>);
 
 vi.mock("@/components/atoms/language-toggle", () => ({

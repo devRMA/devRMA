@@ -8,7 +8,7 @@ const sectionHeadingMock = vi.fn(({ title, description }: { title: string; descr
   <div data-testid="section-heading" data-title={title} data-description={description} />
 ));
 
-const contactMethodMock = vi.fn(() => null);
+const contactMethodMock = vi.fn((_props: unknown) => null);
 
 const translationMap = {
   "contact.title": "Let's connect",

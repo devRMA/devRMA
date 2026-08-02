@@ -31,7 +31,7 @@ describe("ProjectCard", () => {
     image: "/image.png",
     githubUrl: "https://github.com/example",
     liveUrl: "https://example.com",
-  } as const;
+  };
 
   it("renders project details and action links for desktop devices", () => {
     useMobileMock.mockReturnValue({ isMobile: false });
