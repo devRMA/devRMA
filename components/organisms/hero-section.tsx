@@ -3,11 +3,9 @@
 import { ButtonLink } from "@/components/atoms/button-link";
 import { ScrollIndicator } from "@/components/atoms/scroll-indicator";
 import { useLanguage } from "@/components/language-provider";
-import { Button } from "@/components/ui/button";
 import { useMobile } from "@/hooks/use-mobile";
 import profileImage from "@/public/photo.png";
 import { motion } from "framer-motion";
-import { Download } from "lucide-react";
 import Image from "next/image";
 
 export function HeroSection() {
@@ -86,10 +84,6 @@ export function HeroSection() {
           </p>
 
           <div className="flex flex-wrap gap-3 mt-4">
-            {/* <Button className="rounded-2xl">
-              <Download className="mr-2 h-4 w-4" aria-hidden="true" />
-              {t("hero.downloadCV")}
-            </Button> */}
             <ButtonLink href="#contact" variant="outline" className="rounded-2xl">
               {t("hero.contact")}
             </ButtonLink>
