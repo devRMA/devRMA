@@ -2,8 +2,10 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { ModeToggle } from "../atoms/mode-toggle";
 
+const setThemeMock = vi.fn();
+
 vi.mock("next-themes", () => ({
-  useTheme: () => ({ setTheme: vi.fn() }),
+  useTheme: () => ({ setTheme: setThemeMock }),
 }));
 vi.mock("@/components/language-provider", () => ({
   useLanguage: () => ({ t: (key: string) => key }),
@@ -31,8 +33,8 @@ describe("ModeToggle", () => {
     });
   });
 
-  it("should dispatch theme-change event when theme is changed", async () => {
-    const dispatchSpy = vi.spyOn(window, "dispatchEvent");
+  it("should set the theme when an option is picked", async () => {
+    setThemeMock.mockClear();
     render(<ModeToggle />);
     await waitFor(() => expect(screen.getByRole("button")).toBeEnabled());
     fireEvent.click(screen.getByRole("button"));
@@ -46,8 +48,7 @@ describe("ModeToggle", () => {
     if (lightOption) {
       fireEvent.click(lightOption);
     }
-    expect(dispatchSpy).toHaveBeenCalledWith(expect.any(CustomEvent));
-    dispatchSpy.mockRestore();
+    expect(setThemeMock).toHaveBeenCalledWith("light");
   });
 
   it("should render all theme options", async () => {

@@ -21,11 +21,6 @@ export function ModeToggle() {
     setMounted(true);
   }, []);
 
-  const handleThemeChange = (newTheme: string) => {
-    setTheme(newTheme);
-    window.dispatchEvent(new CustomEvent("theme-change"));
-  };
-
   if (!mounted) {
     return (
       <Button variant="ghost" size="icon" disabled>
@@ -45,15 +40,15 @@ export function ModeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => handleThemeChange("light")}>
+        <DropdownMenuItem onClick={() => setTheme("light")}>
           <Sun className="mr-2 h-4 w-4" />
           <span>{t("theme.light")}</span>
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => handleThemeChange("dark")}>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
           <Moon className="mr-2 h-4 w-4" />
           <span>{t("theme.dark")}</span>
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => handleThemeChange("system")}>
+        <DropdownMenuItem onClick={() => setTheme("system")}>
           <Laptop className="mr-2 h-4 w-4" />
           <span>{t("theme.system")}</span>
         </DropdownMenuItem>

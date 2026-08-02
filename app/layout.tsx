@@ -50,21 +50,12 @@ export const metadata = {
     siteName: "Rafael Martins Alves Portfolio",
     title: "Rafael Martins Alves | Full Stack Developer",
     description: "Portfolio of Rafael Martins Alves - Full Stack Developer",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Rafael Martins Alves - Full Stack Developer",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Rafael Martins Alves | Full Stack Developer",
     description: "Portfolio of Rafael Martins Alves - Full Stack Developer",
     creator: "@devRMA",
-    images: ["/og-image.jpg"],
   },
   other: {
     "google-adsense-account": "ca-pub-8745764662929625",
@@ -102,9 +93,6 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
         <JsonLd data={personSchema} />
         <JsonLd data={websiteSchema} />
       </head>
