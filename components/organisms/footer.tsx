@@ -1,10 +1,10 @@
 "use client";
 
+import { ArrowUp, Github, Linkedin } from "lucide-react";
 import { Logo } from "@/components/atoms/logo";
 import { SocialIcon } from "@/components/atoms/social-icon";
 import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
-import { ArrowUp, Github, Linkedin } from "lucide-react";
 
 export function Footer() {
   const { t } = useLanguage();

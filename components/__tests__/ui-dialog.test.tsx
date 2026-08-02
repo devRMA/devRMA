@@ -1,16 +1,16 @@
 import { render, screen } from "@testing-library/react";
-import * as React from "react";
 import type { ReactNode } from "react";
+import * as React from "react";
 import { describe, expect, it, vi } from "vitest";
 
 import {
   Dialog,
-  DialogTrigger,
   DialogContent,
-  DialogHeader,
-  DialogFooter,
-  DialogTitle,
   DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
 } from "../ui/dialog";
 
 vi.mock("@radix-ui/react-dialog", () => {
@@ -19,8 +19,12 @@ vi.mock("@radix-ui/react-dialog", () => {
       React.createElement(tag, { ref, ...props, "data-tag": tag }, children),
     );
 
-  const Root = ({ children }: { children: ReactNode }) => <div data-testid="dialog-root">{children}</div>;
-  const Trigger = ({ children }: { children: ReactNode }) => <button data-testid="dialog-trigger">{children}</button>;
+  const Root = ({ children }: { children: ReactNode }) => (
+    <div data-testid="dialog-root">{children}</div>
+  );
+  const Trigger = ({ children }: { children: ReactNode }) => (
+    <button data-testid="dialog-trigger">{children}</button>
+  );
   const Portal = ({ children }: { children: ReactNode }) => <>{children}</>;
   const Overlay = forward("div");
   const Content = forward("section");

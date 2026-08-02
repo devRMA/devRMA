@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/atoms/section-heading";
 import { useLanguage } from "@/components/language-provider";
 import { Marquee } from "@/components/molecules/marquee";
@@ -7,7 +8,6 @@ import { SkillCard } from "@/components/molecules/skill-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { skillsData } from "@/data/skills";
-import { motion } from "framer-motion";
 
 type SkillCategory = keyof typeof skillsData;
 

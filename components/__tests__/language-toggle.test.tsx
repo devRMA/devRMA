@@ -15,7 +15,10 @@ vi.mock("@/components/ui/button", () => ({
   Button: ({
     children,
     "aria-label": ariaLabel,
-  }: { children: ReactNode; "aria-label"?: string }) => (
+  }: {
+    children: ReactNode;
+    "aria-label"?: string;
+  }) => (
     <button type="button" aria-label={ariaLabel}>
       {children}
     </button>

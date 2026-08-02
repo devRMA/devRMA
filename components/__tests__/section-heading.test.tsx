@@ -7,11 +7,17 @@ import { SectionHeading } from "../atoms/section-heading";
 vi.mock("framer-motion", () => ({
   motion: {
     h2: ({ children, ...props }: { children: ReactNode }) => {
-      const { initial, whileInView, viewport, transition, ...other } = props as Record<string, unknown>;
+      const { initial, whileInView, viewport, transition, ...other } = props as Record<
+        string,
+        unknown
+      >;
       return <h2 {...other}>{children}</h2>;
     },
     p: ({ children, ...props }: { children: ReactNode }) => {
-      const { initial, whileInView, viewport, transition, ...other } = props as Record<string, unknown>;
+      const { initial, whileInView, viewport, transition, ...other } = props as Record<
+        string,
+        unknown
+      >;
       return <p {...other}>{children}</p>;
     },
   },

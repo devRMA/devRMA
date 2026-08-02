@@ -1,25 +1,29 @@
 import { render } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-
-import { ProjectsSection } from "../organisms/projects-section";
 import { projectsData } from "@/data/projects";
+import { ProjectsSection } from "../organisms/projects-section";
 
-const sectionHeadingMock = vi.fn(({ title, description }: { title: string; description: string }) => (
-  <header data-testid="heading" data-title={title} data-description={description} />
-));
+const sectionHeadingMock = vi.fn(
+  ({ title, description }: { title: string; description: string }) => (
+    <header data-testid="heading" data-title={title} data-description={description} />
+  ),
+);
 
 const projectCardMock = vi.fn((_props: unknown) => null);
 
-const translationMap = projectsData.reduce<Record<string, string>>((map, project) => {
-  map[`projects.items.${project.id}.title`] = `${project.title} (translated)`;
-  map[`projects.items.${project.id}.shortDescription`] = `${project.shortDescription} short`;
-  map[`projects.items.${project.id}.longDescription`] = `${project.longDescription} long`;
-  return map;
-}, {
-  "projects.title": "Highlighted projects",
-  "projects.description": "Selected case studies.",
-});
+const translationMap = projectsData.reduce<Record<string, string>>(
+  (map, project) => {
+    map[`projects.items.${project.id}.title`] = `${project.title} (translated)`;
+    map[`projects.items.${project.id}.shortDescription`] = `${project.shortDescription} short`;
+    map[`projects.items.${project.id}.longDescription`] = `${project.longDescription} long`;
+    return map;
+  },
+  {
+    "projects.title": "Highlighted projects",
+    "projects.description": "Selected case studies.",
+  },
+);
 
 vi.mock("@/components/language-provider", () => ({
   useLanguage: () => ({

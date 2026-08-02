@@ -13,7 +13,14 @@ vi.mock("next/link", () => ({
 
 vi.mock("framer-motion", () => ({
   motion: {
-    div: ({ children, layoutId: _layoutId, ...props }: { children: React.ReactNode; layoutId?: string }) => (
+    div: ({
+      children,
+      layoutId: _layoutId,
+      ...props
+    }: {
+      children: React.ReactNode;
+      layoutId?: string;
+    }) => (
       <div data-testid="motion" {...props}>
         {children}
       </div>

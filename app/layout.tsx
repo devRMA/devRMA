@@ -1,9 +1,9 @@
-import { LanguageProvider } from "@/components/language-provider";
-import { MotionProvider } from "@/components/motion-provider";
-import { ThemeProvider } from "@/components/theme-provider";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import type React from "react";
+import { LanguageProvider } from "@/components/language-provider";
+import { MotionProvider } from "@/components/motion-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 const JsonLd = ({ data }: { data: Record<string, unknown> }) => {

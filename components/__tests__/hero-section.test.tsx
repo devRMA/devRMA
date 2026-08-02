@@ -69,7 +69,7 @@ describe("HeroSection", () => {
         ({
           "hero.description": "Building delightful web experiences.",
           "hero.contact": "Contact me",
-        }[key] ?? key),
+        })[key] ?? key,
     });
     useMobileMock.mockReturnValue({ isMobile: false });
 
@@ -95,7 +95,7 @@ describe("HeroSection", () => {
         ({
           "hero.description": "Experiências mobile first.",
           "hero.contact": "Vamos conversar",
-        }[key] ?? key),
+        })[key] ?? key,
     });
     useMobileMock.mockReturnValue({ isMobile: true });
 

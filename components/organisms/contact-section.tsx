@@ -1,11 +1,11 @@
 "use client";
 
+import { motion } from "framer-motion";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { SectionHeading } from "@/components/atoms/section-heading";
 import { useLanguage } from "@/components/language-provider";
 import { ContactMethod } from "@/components/molecules/contact-method";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { motion } from "framer-motion";
-import { Github, Linkedin, Mail } from "lucide-react";
 
 export function ContactSection() {
   const { t } = useLanguage();
@@ -18,7 +18,9 @@ export function ContactSection() {
     >
       <SectionHeading
         id="contact-heading"
-        title={t("contact.title")} description={t("contact.description")} />
+        title={t("contact.title")}
+        description={t("contact.description")}
+      />
 
       <div className="flex justify-center">
         <motion.div

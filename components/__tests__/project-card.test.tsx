@@ -51,7 +51,10 @@ describe("ProjectCard", () => {
       "href",
       "https://github.com/example",
     );
-    expect(screen.getByRole("link", { name: /demo/i })).toHaveAttribute("href", "https://example.com");
+    expect(screen.getByRole("link", { name: /demo/i })).toHaveAttribute(
+      "href",
+      "https://example.com",
+    );
   });
 
   it("adjusts the image interaction when rendered on mobile", () => {

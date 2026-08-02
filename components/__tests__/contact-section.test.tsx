@@ -4,9 +4,11 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ContactSection } from "../organisms/contact-section";
 
-const sectionHeadingMock = vi.fn(({ title, description }: { title: string; description: string }) => (
-  <div data-testid="section-heading" data-title={title} data-description={description} />
-));
+const sectionHeadingMock = vi.fn(
+  ({ title, description }: { title: string; description: string }) => (
+    <div data-testid="section-heading" data-title={title} data-description={description} />
+  ),
+);
 
 const contactMethodMock = vi.fn((_props: unknown) => null);
 
@@ -61,7 +63,10 @@ describe("ContactSection", () => {
     render(<ContactSection />);
 
     expect(sectionHeadingMock).toHaveBeenCalledWith(
-      expect.objectContaining({ title: "Let's connect", description: translationMap["contact.description"] }),
+      expect.objectContaining({
+        title: "Let's connect",
+        description: translationMap["contact.description"],
+      }),
     );
 
     expect(contactMethodMock).toHaveBeenCalledTimes(3);

@@ -1,10 +1,10 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/atoms/section-heading";
 import { useLanguage } from "@/components/language-provider";
 import { ProjectCard } from "@/components/molecules/project-card";
 import { projectsData } from "@/data/projects";
-import { motion } from "framer-motion";
 
 export function ProjectsSection() {
   const { t } = useLanguage();
@@ -17,7 +17,9 @@ export function ProjectsSection() {
     >
       <SectionHeading
         id="projects-heading"
-        title={t("projects.title")} description={t("projects.description")} />
+        title={t("projects.title")}
+        description={t("projects.description")}
+      />
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projectsData.map((project, index) => (
@@ -31,12 +33,8 @@ export function ProjectsSection() {
             <ProjectCard
               id={project.id}
               title={t(`projects.items.${project.id}.title`)}
-              shortDescription={
-                t(`projects.items.${project.id}.shortDescription`)
-              }
-              longDescription={
-                t(`projects.items.${project.id}.longDescription`)
-              }
+              shortDescription={t(`projects.items.${project.id}.shortDescription`)}
+              longDescription={t(`projects.items.${project.id}.longDescription`)}
               technologies={project.technologies}
               image={project.image}
               githubUrl={project.githubUrl}

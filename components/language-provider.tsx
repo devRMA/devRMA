@@ -1,9 +1,9 @@
 "use client";
 
-import en from "@/locales/en";
-import ptBR from "@/locales/pt-BR";
 import type React from "react";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import en from "@/locales/en";
+import ptBR from "@/locales/pt-BR";
 
 type Language = "pt-BR" | "en";
 

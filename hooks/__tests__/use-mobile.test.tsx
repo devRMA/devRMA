@@ -21,8 +21,14 @@ const restoreNavigatorProp = (key: string, original: PropertyDescriptor | undefi
 
 describe("useMobile", () => {
   const originalInnerWidth = window.innerWidth;
-  const originalMaxTouchPoints = Object.getOwnPropertyDescriptor(window.navigator, "maxTouchPoints");
-  const originalMsMaxTouchPoints = Object.getOwnPropertyDescriptor(window.navigator, "msMaxTouchPoints");
+  const originalMaxTouchPoints = Object.getOwnPropertyDescriptor(
+    window.navigator,
+    "maxTouchPoints",
+  );
+  const originalMsMaxTouchPoints = Object.getOwnPropertyDescriptor(
+    window.navigator,
+    "msMaxTouchPoints",
+  );
 
   beforeEach(() => {
     Object.defineProperty(window, "innerWidth", {

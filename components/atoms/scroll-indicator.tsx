@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface ScrollIndicatorProps {
   targetId: string;

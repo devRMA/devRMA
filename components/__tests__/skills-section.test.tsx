@@ -115,9 +115,6 @@ describe("SkillsSection", () => {
   it("labels the section with its own heading", () => {
     const { container } = render(<SkillsSection />);
 
-    expect(container.querySelector("section")).toHaveAttribute(
-      "aria-labelledby",
-      "skills-heading",
-    );
+    expect(container.querySelector("section")).toHaveAttribute("aria-labelledby", "skills-heading");
   });
 });
