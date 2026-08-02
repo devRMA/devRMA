@@ -2,7 +2,7 @@
 
 # About me:
 
-I'm a 20-year-old Full Stack Developer. I am currently studying Software Engineering at Universidade Positivo. I love studying new technologies and sharing my knowledge with the community.
+I'm a 22-year-old Full Stack Developer. I am currently studying Software Engineering at Universidade Positivo. I love studying new technologies and sharing my knowledge with the community.
 
 <p align="center">
     <a href="https://linkedin.com/in/devRMA"><img src="https://img.shields.io/badge/linkedin-000000?style=for-the-badge&logoColor=F2F2F2&logo=linkedin" /></a>
