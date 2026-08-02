@@ -36,16 +36,18 @@ export function Header() {
         <Navigation className="hidden md:flex items-center gap-6 relative" />
 
         <div className="flex items-center gap-2">
-          <SocialIcon
-            href="https://github.com/devRMA"
-            icon={Github}
-            label={t("a11y.githubProfile")}
-          />
-          <SocialIcon
-            href="https://linkedin.com/in/devRMA"
-            icon={Linkedin}
-            label={t("a11y.linkedinProfile")}
-          />
+          <span className="hidden items-center gap-2 sm:flex">
+            <SocialIcon
+              href="https://github.com/devRMA"
+              icon={Github}
+              label={t("a11y.githubProfile")}
+            />
+            <SocialIcon
+              href="https://linkedin.com/in/devRMA"
+              icon={Linkedin}
+              label={t("a11y.linkedinProfile")}
+            />
+          </span>
           <LanguageToggle />
           <ModeToggle />
         </div>
