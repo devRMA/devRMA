@@ -13,9 +13,12 @@ export function ContactSection() {
   return (
     <section
       id="contact"
+      aria-labelledby="contact-heading"
       className="min-h-screen py-16 scroll-mt-16 relative flex flex-col justify-center"
     >
-      <SectionHeading title={t("contact.title")} description={t("contact.description")} />
+      <SectionHeading
+        id="contact-heading"
+        title={t("contact.title")} description={t("contact.description")} />
 
       <div className="flex justify-center">
         <motion.div

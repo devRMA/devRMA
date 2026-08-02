@@ -25,7 +25,7 @@ describe("CertificateCard", () => {
       />,
     );
 
-    expect(screen.getByTestId("image")).toHaveAttribute("alt", "Certified Dev");
+    expect(screen.getByTestId("image")).toHaveAttribute("alt", "");
     expect(screen.getByText("ACME • 2024")).toBeInTheDocument();
 
     await user.click(screen.getByRole("button", { name: /Certified Dev/i }));

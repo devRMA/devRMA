@@ -11,6 +11,10 @@ vi.mock("@/components/organisms/header", () => ({
   Header: () => <header data-testid="header" />,
 }));
 
+vi.mock("@/components/atoms/skip-link", () => ({
+  SkipLink: () => <a href="#main-content">skip</a>,
+}));
+
 describe("MainLayout", () => {
   it("renders the header, main content and footer", () => {
     render(

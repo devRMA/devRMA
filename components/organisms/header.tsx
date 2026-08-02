@@ -4,12 +4,14 @@ import { LanguageToggle } from "@/components/atoms/language-toggle";
 import { Logo } from "@/components/atoms/logo";
 import { ModeToggle } from "@/components/atoms/mode-toggle";
 import { SocialIcon } from "@/components/atoms/social-icon";
+import { useLanguage } from "@/components/language-provider";
 import { Navigation } from "@/components/organisms/navigation";
 import { cn } from "@/lib/utils";
 import { Github, Linkedin } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export function Header() {
+  const { t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -34,11 +36,15 @@ export function Header() {
         <Navigation className="hidden md:flex items-center gap-6 relative" />
 
         <div className="flex items-center gap-2">
-          <SocialIcon href="https://github.com/devRMA" icon={Github} label="GitHub Profile" />
+          <SocialIcon
+            href="https://github.com/devRMA"
+            icon={Github}
+            label={t("a11y.githubProfile")}
+          />
           <SocialIcon
             href="https://linkedin.com/in/devRMA"
             icon={Linkedin}
-            label="LinkedIn Profile"
+            label={t("a11y.linkedinProfile")}
           />
           <LanguageToggle />
           <ModeToggle />

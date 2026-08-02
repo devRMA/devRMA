@@ -5,6 +5,7 @@ import type React from "react";
 import { SectionHeading } from "@/components/atoms/section-heading";
 import { useLanguage } from "@/components/language-provider";
 import { CertificateCard } from "@/components/molecules/certificate-card";
+import { Marquee } from "@/components/molecules/marquee";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -31,9 +32,12 @@ export function CertificatesSection() {
   return (
     <section
       id="certificates"
+      aria-labelledby="certificates-heading"
       className="min-h-screen py-16 scroll-mt-16 relative flex flex-col justify-center"
     >
-      <SectionHeading title={t("certificates.title")} description={t("certificates.description")} />
+      <SectionHeading
+        id="certificates-heading"
+        title={t("certificates.title")} description={t("certificates.description")} />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -43,38 +47,33 @@ export function CertificatesSection() {
         className="flex-grow"
       >
         <Tabs defaultValue="frontend" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 mb-8">
-            <TabsTrigger value="frontend">{t("certificates.tabs.frontend")}</TabsTrigger>
-            <TabsTrigger value="backend">{t("certificates.tabs.backend")}</TabsTrigger>
-            <TabsTrigger value="devops">{t("certificates.tabs.devops")}</TabsTrigger>
-            <TabsTrigger value="other">{t("certificates.tabs.other")}</TabsTrigger>
+          <TabsList className="mb-8 flex w-full overflow-x-auto">
+            {(Object.keys(certificatesData) as CertificateCategory[]).map((category) => (
+              <TabsTrigger key={category} value={category} className="flex-1">
+                {t(`certificates.tabs.${category}`)}
+              </TabsTrigger>
+            ))}
           </TabsList>
 
           {(Object.keys(certificatesData) as CertificateCategory[]).map((category) => (
             <TabsContent key={category} value={category}>
               <Card>
                 <CardContent className="p-6 overflow-hidden">
-                  <div className="carousel-container">
-                    <div className="carousel">
-                      {[...certificatesData[category], ...certificatesData[category]].map(
-                        (certificate, index) => (
-                          <CertificateCard
-                            key={`${certificate.id}-${index}`}
-                            id={certificate.id}
-                            title={
-                              t(`certificates.items.${certificate.id}.title`) || certificate.title
-                            }
-                            issuer={
-                              t(`certificates.items.${certificate.id}.issuer`) || certificate.issuer
-                            }
-                            date={certificate.date}
-                            thumbnail={certificate.thumbnail}
-                            onClick={() => setSelectedCertificate(certificate)}
-                          />
-                        ),
-                      )}
-                    </div>
-                  </div>
+                  <Marquee>
+                    {certificatesData[category].map((certificate) => (
+                      <CertificateCard
+                        key={certificate.id}
+                        id={certificate.id}
+                        title={t(`certificates.items.${certificate.id}.title`) || certificate.title}
+                        issuer={
+                          t(`certificates.items.${certificate.id}.issuer`) || certificate.issuer
+                        }
+                        date={certificate.date}
+                        thumbnail={certificate.thumbnail}
+                        onClick={() => setSelectedCertificate(certificate)}
+                      />
+                    ))}
+                  </Marquee>
                 </CardContent>
               </Card>
             </TabsContent>

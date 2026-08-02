@@ -1,4 +1,5 @@
 import { LanguageProvider } from "@/components/language-provider";
+import { MotionProvider } from "@/components/motion-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
@@ -109,7 +110,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LanguageProvider>{children}</LanguageProvider>
+          <LanguageProvider>
+            <MotionProvider>{children}</MotionProvider>
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

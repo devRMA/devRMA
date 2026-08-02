@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
 interface SectionHeadingProps {
+  id?: string;
   title: string;
   description?: string;
   className?: string;
@@ -12,6 +13,7 @@ interface SectionHeadingProps {
 }
 
 export function SectionHeading({
+  id,
   title,
   description,
   className,
@@ -21,6 +23,7 @@ export function SectionHeading({
   return (
     <div className={cn("text-center mb-12", className)}>
       <motion.h2
+        id={id}
         className={cn("text-3xl font-bold mb-4", titleClassName)}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

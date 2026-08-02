@@ -228,6 +228,20 @@ const translations = {
     rights: "All rights reserved.",
     backToTop: "Back to top",
   },
+  a11y: {
+    skipToContent: "Skip to content",
+    githubProfile: "GitHub profile (opens in a new tab)",
+    linkedinProfile: "LinkedIn profile (opens in a new tab)",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    mobileNavigation: "Main navigation",
+    scrollToSkills: "Go to the Skills section",
+    pauseCarousel: "Pause automatic scrolling",
+    playCarousel: "Resume automatic scrolling",
+    expandPositions: "Show previous positions at {company}",
+    collapsePositions: "Hide previous positions at {company}",
+    viewCertificate: "View certificate: {title}",
+  },
 };
 
 export default translations;

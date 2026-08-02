@@ -41,14 +41,14 @@ describe("Footer", () => {
 
   it("renders the localized copyright message", () => {
     useLanguageMock.mockReturnValue({
-      t: (key: string) => (key === "footer.rights" ? "All rights reserved." : "Back to top"),
+      t: (key: string) => (key === "footer.rights" ? "All rights reserved." : key),
     });
 
     render(<Footer />);
 
     expect(screen.getByTestId("logo")).toHaveClass("mb-2");
-    expect(screen.getByText("GitHub Profile")).toBeInTheDocument();
-    expect(screen.getByText("LinkedIn Profile")).toBeInTheDocument();
+    expect(screen.getByText("a11y.githubProfile")).toBeInTheDocument();
+    expect(screen.getByText("a11y.linkedinProfile")).toBeInTheDocument();
     const year = new Date().getFullYear();
     expect(
       screen.getByText(`© ${year} Rafael Martins Alves. All rights reserved.`),

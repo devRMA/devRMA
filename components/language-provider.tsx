@@ -10,7 +10,7 @@ type Language = "pt-BR" | "en";
 type LanguageContextType = {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (key: string) => string;
+  t: (key: string, params?: Record<string, string>) => string;
 };
 
 const translations = {
@@ -35,20 +35,28 @@ export function LanguageProvider({ children }: Readonly<{ children: React.ReactN
   }, []);
 
   const t = useCallback(
-    (key: string): string => {
+    (key: string, params?: Record<string, string>): string => {
       try {
         const keys = key.split(".");
-        let result: Record<string, unknown> = translations[languageState];
+        let result: unknown = translations[languageState];
 
         for (const k of keys) {
           if (result && typeof result === "object" && k in result) {
-            result = result[k] as Record<string, unknown>;
+            result = (result as Record<string, unknown>)[k];
           } else {
             return key;
           }
         }
 
-        return typeof result === "string" ? result : key;
+        if (typeof result !== "string") {
+          return key;
+        }
+
+        if (!params) {
+          return result;
+        }
+
+        return result.replace(/\{(\w+)\}/g, (match: string, name: string) => params[name] ?? match);
       } catch (error) {
         console.error(`Translation error for key "${key}":`, error);
         return key;

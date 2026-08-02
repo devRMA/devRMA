@@ -1,41 +1,40 @@
-import userEvent from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
-import * as React from "react";
+import type * as React from "react";
 import { describe, expect, it, vi } from "vitest";
 
 import { ScrollIndicator } from "../atoms/scroll-indicator";
 
 vi.mock("@/components/ui/button", () => ({
-  Button: ({ children, asChild: _asChild, ...props }: any) => (
+  Button: ({
+    children,
+    asChild: _asChild,
+    ...props
+  }: { children: React.ReactNode; asChild?: boolean }) => (
     <button type="button" {...props}>
       {children}
     </button>
   ),
 }));
 
+const useReducedMotionMock = vi.fn(() => false);
+
 vi.mock("framer-motion", () => ({
   motion: {
     div: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
   },
+  useReducedMotion: () => useReducedMotionMock(),
 }));
 
 describe("ScrollIndicator", () => {
-  it("scrolls smoothly to the target section", async () => {
-    const user = userEvent.setup();
-    const target = document.createElement("div");
-    target.id = "destination";
-    target.style.marginTop = "200px";
-    document.body.appendChild(target);
-
-    const scrollSpy = vi.spyOn(window, "scrollTo").mockImplementation(() => {});
-
+  it("points at the target section so the native anchor jump handles scrolling", () => {
     render(<ScrollIndicator targetId="destination" label="Go" />);
 
-    await user.click(screen.getByRole("link", { name: "Go" }));
+    expect(screen.getByRole("link", { name: "Go" })).toHaveAttribute("href", "#destination");
+  });
 
-    expect(scrollSpy).toHaveBeenCalledWith({ top: target.offsetTop - 80, behavior: "smooth" });
+  it("keeps an accessible name on the icon-only control", () => {
+    render(<ScrollIndicator targetId="destination" label="Go to skills" />);
 
-    scrollSpy.mockRestore();
-    document.body.removeChild(target);
+    expect(screen.getByRole("link", { name: "Go to skills" })).toBeInTheDocument();
   });
 });

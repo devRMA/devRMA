@@ -12,9 +12,12 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
+      aria-labelledby="projects-heading"
       className="min-h-screen py-16 scroll-mt-16 relative flex flex-col justify-center"
     >
-      <SectionHeading title={t("projects.title")} description={t("projects.description")} />
+      <SectionHeading
+        id="projects-heading"
+        title={t("projects.title")} description={t("projects.description")} />
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projectsData.map((project, index) => (

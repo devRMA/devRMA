@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Globe } from "lucide-react";
@@ -17,25 +18,22 @@ export function LanguageToggle() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" aria-label={t("language.toggle")}>
-          <Globe className="h-5 w-5" />
+          <Globe className="h-5 w-5" aria-hidden="true" />
           <span className="sr-only">{t("language.toggle")}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem
-          onClick={() => setLanguage("pt-BR")}
-          className={language === "pt-BR" ? "bg-muted" : ""}
+        <DropdownMenuRadioGroup
+          value={language}
+          onValueChange={(value) => setLanguage(value as typeof language)}
         >
-          <span className="mr-2">🇧🇷</span>
-          <span>Português</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => setLanguage("en")}
-          className={language === "en" ? "bg-muted" : ""}
-        >
-          <span className="mr-2">🇺🇸</span>
-          <span>English</span>
-        </DropdownMenuItem>
+          <DropdownMenuRadioItem value="pt-BR" lang="pt-BR">
+            Português
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="en" lang="en">
+            English
+          </DropdownMenuRadioItem>
+        </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   );

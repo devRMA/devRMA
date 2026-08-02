@@ -9,11 +9,11 @@ interface SocialIconProps {
 
 export function SocialIcon({ href, icon: Icon, label }: Readonly<SocialIconProps>) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
-      <Button variant="ghost" size="icon">
-        <Icon className="h-5 w-5" />
+    <Button variant="ghost" size="icon" asChild>
+      <a href={href} target="_blank" rel="noopener noreferrer">
+        <Icon className="h-5 w-5" aria-hidden="true" />
         <span className="sr-only">{label}</span>
-      </Button>
-    </a>
+      </a>
+    </Button>
   );
 }

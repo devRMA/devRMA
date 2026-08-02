@@ -6,6 +6,10 @@ import { Header } from "../organisms/header";
 const NavigationMock = vi.fn((_props: unknown) => <nav data-testid="navigation" />);
 const SocialIconMock = vi.fn(({ label }: { label: string }) => <span>{label}</span>);
 
+vi.mock("@/components/language-provider", () => ({
+  useLanguage: () => ({ t: (key: string) => key }),
+}));
+
 vi.mock("@/components/atoms/language-toggle", () => ({
   LanguageToggle: () => <div data-testid="language-toggle" />,
 }));
@@ -59,8 +63,8 @@ describe("Header", () => {
       expect.objectContaining({ className: expect.stringContaining("hidden md:flex") }),
     );
     expect(SocialIconMock).toHaveBeenCalledTimes(2);
-    expect(SocialIconMock.mock.calls[0][0]).toEqual(expect.objectContaining({ label: "GitHub Profile" }));
-    expect(SocialIconMock.mock.calls[1][0]).toEqual(expect.objectContaining({ label: "LinkedIn Profile" }));
+    expect(SocialIconMock.mock.calls[0][0]).toEqual(expect.objectContaining({ label: "a11y.githubProfile" }));
+    expect(SocialIconMock.mock.calls[1][0]).toEqual(expect.objectContaining({ label: "a11y.linkedinProfile" }));
   });
 
   it("adds a background and border once the user scrolls", () => {

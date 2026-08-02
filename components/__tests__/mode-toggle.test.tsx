@@ -1,64 +1,77 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import type { ReactNode } from "react";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ModeToggle } from "../atoms/mode-toggle";
 
 const setThemeMock = vi.fn();
+const useThemeMock = vi.fn(() => ({ theme: "dark", setTheme: setThemeMock }));
 
 vi.mock("next-themes", () => ({
-  useTheme: () => ({ setTheme: setThemeMock }),
+  useTheme: () => useThemeMock(),
 }));
+
 vi.mock("@/components/language-provider", () => ({
   useLanguage: () => ({ t: (key: string) => key }),
 }));
+
 vi.mock("@/components/ui/dropdown-menu", () => ({
-  DropdownMenu: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-  DropdownMenuTrigger: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-  DropdownMenuContent: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-  DropdownMenuItem: ({
+  DropdownMenu: ({ children }: { children: ReactNode }) => <div>{children}</div>,
+  DropdownMenuTrigger: ({ children }: { children: ReactNode }) => <div>{children}</div>,
+  DropdownMenuContent: ({ children }: { children: ReactNode }) => <div>{children}</div>,
+  DropdownMenuRadioGroup: ({
     children,
-    onClick,
-  }: { children: React.ReactNode; onClick?: () => void }) => (
-    <div tabIndex={0} role="menuitem" onClick={onClick} onKeyUp={() => {}}>
+    value,
+    onValueChange,
+  }: {
+    children: ReactNode;
+    value?: string;
+    onValueChange?: (value: string) => void;
+  }) => (
+    <div data-testid="theme-group" data-value={value ?? ""}>
       {children}
+      <button type="button" data-testid="pick-light" onClick={() => onValueChange?.("light")} />
     </div>
+  ),
+  DropdownMenuRadioItem: ({ children, value }: { children: ReactNode; value: string }) => (
+    <div data-value={value}>{children}</div>
   ),
 }));
 
 describe("ModeToggle", () => {
-  it("should render theme toggle button after mount", async () => {
+  beforeEach(() => {
+    setThemeMock.mockClear();
+    useThemeMock.mockReturnValue({ theme: "dark", setTheme: setThemeMock });
+  });
+
+  it("renders an enabled, labelled trigger", async () => {
     render(<ModeToggle />);
+
+    const trigger = screen.getByLabelText("theme.toggle");
+    expect(trigger).toBeEnabled();
+  });
+
+  it("marks the active theme once mounted", async () => {
+    render(<ModeToggle />);
+
     await waitFor(() => {
-      expect(screen.getByRole("button")).toBeEnabled();
-      expect(screen.getByLabelText("theme.toggle")).toBeDefined();
+      expect(screen.getByTestId("theme-group")).toHaveAttribute("data-value", "dark");
     });
   });
 
-  it("should set the theme when an option is picked", async () => {
-    setThemeMock.mockClear();
+  it("sets the theme when an option is picked", async () => {
     render(<ModeToggle />);
-    await waitFor(() => expect(screen.getByRole("button")).toBeEnabled());
-    fireEvent.click(screen.getByRole("button"));
-    await waitFor(() => {
-      expect(document.body.textContent).toContain("theme.light");
-    });
-    const lightOption = Array.from(document.body.querySelectorAll("*")).find(
-      (el) => el.textContent === "theme.light",
-    );
-    expect(lightOption).toBeDefined();
-    if (lightOption) {
-      fireEvent.click(lightOption);
-    }
+
+    await userEvent.click(screen.getByTestId("pick-light"));
+
     expect(setThemeMock).toHaveBeenCalledWith("light");
   });
 
-  it("should render all theme options", async () => {
+  it("renders all three theme options", () => {
     render(<ModeToggle />);
-    await waitFor(() => expect(screen.getByRole("button")).toBeEnabled());
-    fireEvent.click(screen.getByRole("button"));
-    await waitFor(() => {
-      expect(document.body.textContent).toContain("theme.light");
-      expect(document.body.textContent).toContain("theme.dark");
-      expect(document.body.textContent).toContain("theme.system");
-    });
+
+    expect(document.body.textContent).toContain("theme.light");
+    expect(document.body.textContent).toContain("theme.dark");
+    expect(document.body.textContent).toContain("theme.system");
   });
 });

@@ -29,11 +29,15 @@ export function Footer() {
           </div>
 
           <div className="flex items-center gap-4">
-            <SocialIcon href="https://github.com/devRMA" icon={Github} label="GitHub Profile" />
+            <SocialIcon
+              href="https://github.com/devRMA"
+              icon={Github}
+              label={t("a11y.githubProfile")}
+            />
             <SocialIcon
               href="https://linkedin.com/in/devRMA"
               icon={Linkedin}
-              label="LinkedIn Profile"
+              label={t("a11y.linkedinProfile")}
             />
             <Button
               variant="outline"
