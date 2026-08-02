@@ -45,7 +45,7 @@ export function useActiveSection(sections: string[], offset = 100) {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       observers.forEach((observer, index) => {

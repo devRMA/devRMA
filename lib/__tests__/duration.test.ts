@@ -14,36 +14,60 @@ describe("formatDurationRange", () => {
     vi.useRealTimers();
   });
 
-  it("returns 'Less than a month' when the start date is invalid", () => {
-    expect(formatDurationRange("not-a-date", "2024-05-01", { locale: "en" })).toBe(
-      "Less than a month",
+  it("counts both endpoints, the way a CV range reads", () => {
+    expect(formatDurationRange("2022-01-01", "2022-06-30", { locale: "en" })).toBe("6 months");
+    expect(formatDurationRange("2021-06-14", "2021-12-31", { locale: "en" })).toBe("7 months");
+  });
+
+  it("agrees with the printed period for every real position", () => {
+    expect(formatDurationRange("2024-03-18", "2025-05-31", { locale: "en" })).toBe(
+      "1 year and 3 months",
+    );
+    expect(formatDurationRange("2022-07-01", "2024-03-17", { locale: "en" })).toBe(
+      "1 year and 9 months",
     );
   });
 
-  it("falls back to the current date when end date is missing", () => {
-    expect(formatDurationRange("2024-03-01", undefined, { locale: "en" })).toBe("2 months");
+  it("is not affected by the reader's timezone", () => {
+    const original = process.env.TZ;
+    const results = ["UTC", "America/Sao_Paulo", "Asia/Tokyo", "Pacific/Kiritimati"].map((tz) => {
+      process.env.TZ = tz;
+      return formatDurationRange("2022-01-01", "2022-06-30", { locale: "en" });
+    });
+    process.env.TZ = original;
+
+    expect(new Set(results).size).toBe(1);
+    expect(results[0]).toBe("6 months");
   });
 
-  it("calculates the year and month difference in English", () => {
-    expect(formatDurationRange("2020-01-15", "2021-03-10", { locale: "en" })).toBe(
-      "1 year and 1 month",
-    );
+  it("falls back to the current month when the end date is missing", () => {
+    expect(formatDurationRange("2024-03-01", undefined, { locale: "en" })).toBe("3 months");
   });
 
-  it("clamps the end date when it is earlier than the start date", () => {
-    expect(formatDurationRange("2024-06-01", "2024-05-01", { locale: "en" })).toBe(
-      "Less than a month",
-    );
+  it("reports a single month for a range inside one month", () => {
+    expect(formatDurationRange("2024-01-10", "2024-01-20", { locale: "en" })).toBe("1 month");
+  });
+
+  it("uses singular labels for exactly one year", () => {
+    expect(formatDurationRange("2023-01-01", "2023-12-31", { locale: "en" })).toBe("1 year");
+    expect(formatDurationRange("2023-01-01", "2023-12-31", { locale: "pt-BR" })).toBe("1 ano");
   });
 
   it("returns the Portuguese labels when requested", () => {
-    expect(formatDurationRange("2024-01-10", "2024-03-15", { locale: "pt-BR" })).toBe(
-      "2 meses",
+    expect(formatDurationRange("2024-01-10", "2024-03-15", { locale: "pt-BR" })).toBe("3 meses");
+  });
+
+  it("rejects an unparseable start date", () => {
+    expect(formatDurationRange("not-a-date", "2024-05-01", { locale: "en" })).toBe(
+      "Less than a month",
+    );
+    expect(formatDurationRange("2024-13-01", "2024-05-01", { locale: "en" })).toBe(
+      "Less than a month",
     );
   });
 
-  it("treats durations shorter than a whole month as less than a month", () => {
-    expect(formatDurationRange("2024-01-10", "2024-01-20", { locale: "en" })).toBe(
+  it("rejects an end date earlier than the start", () => {
+    expect(formatDurationRange("2024-06-01", "2024-05-01", { locale: "en" })).toBe(
       "Less than a month",
     );
   });

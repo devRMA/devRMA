@@ -30,12 +30,12 @@ export function ProjectsSection() {
           >
             <ProjectCard
               id={project.id}
-              title={t(`projects.items.${project.id}.title`) ?? project.title}
+              title={t(`projects.items.${project.id}.title`)}
               shortDescription={
-                t(`projects.items.${project.id}.shortDescription`) ?? project.shortDescription
+                t(`projects.items.${project.id}.shortDescription`)
               }
               longDescription={
-                t(`projects.items.${project.id}.longDescription`) ?? project.longDescription
+                t(`projects.items.${project.id}.longDescription`)
               }
               technologies={project.technologies}
               image={project.image}

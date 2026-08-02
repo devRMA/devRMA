@@ -43,6 +43,9 @@ export const metadata = {
   ],
   authors: [{ name: "Rafael Martins Alves", url: "https://github.com/devRMA" }],
   creator: "Rafael Martins Alves",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "pt_BR",

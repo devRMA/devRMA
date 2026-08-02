@@ -20,6 +20,13 @@ const translations = {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+function warnAndFallBackToKey(key: string, language: Language) {
+  if (process.env.NODE_ENV !== "production") {
+    console.warn(`[i18n] missing translation for "${key}" in ${language}`);
+  }
+  return key;
+}
+
 export function LanguageProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   const [languageState, setLanguageState] = useState<Language>("pt-BR");
 
@@ -34,6 +41,10 @@ export function LanguageProvider({ children }: Readonly<{ children: React.ReactN
     }
   }, []);
 
+  useEffect(() => {
+    document.documentElement.lang = languageState;
+  }, [languageState]);
+
   const t = useCallback(
     (key: string, params?: Record<string, string>): string => {
       try {
@@ -44,12 +55,12 @@ export function LanguageProvider({ children }: Readonly<{ children: React.ReactN
           if (result && typeof result === "object" && k in result) {
             result = (result as Record<string, unknown>)[k];
           } else {
-            return key;
+            return warnAndFallBackToKey(key, languageState);
           }
         }
 
         if (typeof result !== "string") {
-          return key;
+          return warnAndFallBackToKey(key, languageState);
         }
 
         if (!params) {

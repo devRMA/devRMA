@@ -116,7 +116,7 @@ export function ExperienceSection() {
                             aria-controls={`positions-${company.id}`}
                             className="flex w-full items-center gap-2 rounded-sm text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                           >
-                            {t(`experience.companies.${company.id}.name`) ?? company.name}
+                            {t(`experience.companies.${company.id}.name`)}
                             {isExpanded(company.id) ? (
                               <ChevronUp
                                 className="h-4 w-4 text-muted-foreground"
@@ -141,7 +141,7 @@ export function ExperienceSection() {
                               className="h-3 w-3 text-muted-foreground"
                               aria-hidden="true"
                             />
-                            {t(`experience.companies.${company.id}.period`) ?? company.period}
+                            {t(`experience.companies.${company.id}.period`)}
                           </span>
                           <span className="inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
                             {companyDuration}
@@ -152,17 +152,14 @@ export function ExperienceSection() {
                         <div className="mb-4">
                           <ExperiencePosition
                             title={
-                              t(`experience.companies.${company.id}.positions.0.title`) ??
-                              mainPosition.title
+                              t(`experience.companies.${company.id}.positions.0.title`)
                             }
                             period={
-                              t(`experience.companies.${company.id}.positions.0.period`) ??
-                              mainPosition.period
+                              t(`experience.companies.${company.id}.positions.0.period`)
                             }
                             duration={mainPositionDuration}
                             description={
-                              t(`experience.companies.${company.id}.positions.0.description`) ??
-                              mainPosition.description
+                              t(`experience.companies.${company.id}.positions.0.description`)
                             }
                             technologies={mainPosition.technologies}
                           />
@@ -196,33 +193,21 @@ export function ExperienceSection() {
                                 <div className="space-y-6">
                                   {company.positions.slice(1).map((position, idx) => (
                                     <ExperiencePosition
-                                      key={`${company.id}-${idx}`}
-                                      title={
-                                        t(
-                                          `experience.companies.${
-                                            company.id
-                                          }.positions.${idx + 1}.title`,
-                                        ) ?? position.title
-                                      }
-                                      period={
-                                        t(
-                                          `experience.companies.${
-                                            company.id
-                                          }.positions.${idx + 1}.period`,
-                                        ) ?? position.period
-                                      }
+                                      key={`${company.id}-${position.startDate}`}
+                                      title={t(
+                                        `experience.companies.${company.id}.positions.${idx + 1}.title`,
+                                      )}
+                                      period={t(
+                                        `experience.companies.${company.id}.positions.${idx + 1}.period`,
+                                      )}
                                       duration={formatDurationRange(
                                         position.startDate,
                                         position.endDate,
                                         durationConfig,
                                       )}
-                                      description={
-                                        t(
-                                          `experience.companies.${
-                                            company.id
-                                          }.positions.${idx + 1}.description`,
-                                        ) ?? position.description
-                                      }
+                                      description={t(
+                                        `experience.companies.${company.id}.positions.${idx + 1}.description`,
+                                      )}
                                       technologies={position.technologies}
                                       isPrevious={true}
                                     />
@@ -265,28 +250,25 @@ export function ExperienceSection() {
                       <CardHeader>
                         <div className="flex justify-between items-start">
                           <CardTitle>
-                            {t(`experience.education.${education.id}.degree`) ?? education.degree}
+                            {t(`experience.education.${education.id}.degree`)}
                           </CardTitle>
                         </div>
                         <CardDescription>
-                          {t(`experience.education.${education.id}.institution`) ??
-                            education.institution}
+                          {t(`experience.education.${education.id}.institution`)}
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
                         <EducationCard
                           period={
-                            t(`experience.education.${education.id}.period`) ?? education.period
+                            t(`experience.education.${education.id}.period`)
                           }
                           description={
-                            t(`experience.education.${education.id}.description`) ??
-                            education.description
+                            t(`experience.education.${education.id}.description`)
                           }
                           inProgress={education.inProgress}
                           achievements={education.achievements?.map(
                             (achievement, idx) =>
-                              t(`experience.education.${education.id}.achievements.${idx}`) ??
-                              achievement,
+                              t(`experience.education.${education.id}.achievements.${idx}`),
                           )}
                           inProgressLabel={t("experience.inProgress")}
                           keyAchievementsLabel={t("experience.keyAchievements")}

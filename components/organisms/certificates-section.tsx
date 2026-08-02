@@ -64,9 +64,9 @@ export function CertificatesSection() {
                       <CertificateCard
                         key={certificate.id}
                         id={certificate.id}
-                        title={t(`certificates.items.${certificate.id}.title`) || certificate.title}
+                        title={t(`certificates.items.${certificate.id}.title`)}
                         issuer={
-                          t(`certificates.items.${certificate.id}.issuer`) || certificate.issuer
+                          t(`certificates.items.${certificate.id}.issuer`)
                         }
                         date={certificate.date}
                         thumbnail={certificate.thumbnail}
@@ -90,12 +90,10 @@ export function CertificatesSection() {
             <>
               <DialogHeader>
                 <DialogTitle>
-                  {t(`certificates.items.${selectedCertificate.id}.title`) ||
-                    selectedCertificate.title}
+                  {t(`certificates.items.${selectedCertificate.id}.title`)}
                 </DialogTitle>
                 <DialogDescription id="certificate-details">
-                  {t(`certificates.items.${selectedCertificate.id}.issuer`) ||
-                    selectedCertificate.issuer}{" "}
+                  {t(`certificates.items.${selectedCertificate.id}.issuer`)}{" "}
                   • {selectedCertificate.date}
                 </DialogDescription>
               </DialogHeader>
@@ -103,10 +101,10 @@ export function CertificatesSection() {
                 <Image
                   src={selectedCertificate.image || "/placeholder.svg?height=600&width=800"}
                   alt={
-                    t(`certificates.items.${selectedCertificate.id}.title`) ||
-                    selectedCertificate.title
+                    t(`certificates.items.${selectedCertificate.id}.title`)
                   }
                   fill
+                  sizes="(max-width: 768px) 100vw, 768px"
                   className="object-contain"
                 />
               </div>
