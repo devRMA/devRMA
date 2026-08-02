@@ -17,15 +17,23 @@ const translations = {
     toggle: "Alternar idioma",
   },
   hero: {
+    badge: "Desenvolvedor Full Stack na MadeiraMadeira",
+    role: "Desenvolvedor Full Stack",
     description:
-      "Olá! 👋 Eu sou o Rafael, mas pode me chamar de Rafa. Apaixonado por tecnologia e sempre focado em desenvolver soluções que ofereçam uma experiência fluida, acessível e memorável para o usuário.",
-    downloadCV: "Baixar CV",
+      "Trabalho com Laravel, PHP e TypeScript no desenvolvimento de sistemas de larga escala, com foco em performance, observabilidade e código sustentável — software que continua simples de evoluir depois do deploy.",
+    stackLabel: "Principais tecnologias",
+    projects: "Ver projetos",
     contact: "Entre em contato",
+    stats: {
+      experience: "Anos de experiência",
+      certificates: "Certificações",
+      companies: "Empresas",
+    },
   },
   skills: {
     title: "Habilidades",
     description:
-      "Ao longo do tempo fui mexendo com muitas tecnologias. Aqui eu separei o que já usei, o que estou estudando e o que ainda quero explorar.",
+      "As tecnologias que uso no dia a dia, as que estou aprofundando agora e as que pretendo explorar em seguida.",
     tabs: {
       know: "Já usei",
       studying: "Estudando",
@@ -34,7 +42,8 @@ const translations = {
   },
   projects: {
     title: "Projetos",
-    description: "Alguns dos projetos que eu fiz.",
+    description:
+      "Projetos pessoais e de estudo, todos com o código aberto no GitHub. Cada um nasceu de um problema real que eu quis resolver ou entender melhor.",
     items: {
       1: {
         title: "Androxus",
@@ -62,9 +71,9 @@ const translations = {
     },
   },
   experience: {
-    title: "Experiências",
+    title: "Experiência",
     description:
-      "Minha trajetória profissional e acadêmica, com as empresas e instituições onde tive a oportunidade de estudar e contribuir.",
+      "Minha trajetória profissional e acadêmica: as empresas onde atuei, os cargos que ocupei e a formação que sustenta esse percurso.",
     tabs: {
       professional: "Profissional",
       academic: "Acadêmica",
@@ -74,7 +83,7 @@ const translations = {
     keyAchievements: "Principais conquistas",
     companies: {
       "madeira-madeira": {
-        name: "Madeira Madeira",
+        name: "MadeiraMadeira",
         period: "Março 2024 - Presente",
         positions: [
           {
@@ -145,7 +154,8 @@ const translations = {
   },
   certificates: {
     title: "Certificados",
-    description: "Certificações e cursos que completei para aprimorar minhas habilidades técnicas.",
+    description:
+      "Certificações e cursos concluídos ao longo da carreira. Clique em qualquer um para ver o certificado e validá-lo na origem.",
     tabs: {
       frontend: "Frontend",
       backend: "Backend",
@@ -215,10 +225,10 @@ const translations = {
   contact: {
     title: "Contato",
     description:
-      "Ficou com alguma dúvida ou quer bater um papo? Me chama pelos links abaixo, vou adorar trocar uma ideia com você.",
+      "Estou aberto a conversas sobre projetos, oportunidades e colaborações. Escolha o canal que preferir — costumo responder em até um dia útil.",
     connect: {
-      title: "Entre em contato",
-      description: "Você também pode me encontrar nas seguintes plataformas:",
+      title: "Vamos conversar",
+      description: "Você me encontra nos canais abaixo:",
       email: "E-mail",
       github: "GitHub",
       linkedin: "LinkedIn",

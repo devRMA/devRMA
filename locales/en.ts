@@ -17,15 +17,23 @@ const translations = {
     toggle: "Toggle language",
   },
   hero: {
+    badge: "Full Stack Developer at MadeiraMadeira",
+    role: "Full Stack Developer",
     description:
-      "Hi there! 👋 I'm Rafael, but you can call me Rafa. Passionate about technology and always focused on developing solutions that offer a fluid, accessible, and memorable user experience.",
-    downloadCV: "Download CV",
+      "I build large-scale systems with Laravel, PHP, and TypeScript, focused on performance, observability, and maintainable code — software that stays easy to evolve long after it ships.",
+    stackLabel: "Core technologies",
+    projects: "View projects",
     contact: "Get in touch",
+    stats: {
+      experience: "Years of experience",
+      certificates: "Certifications",
+      companies: "Companies",
+    },
   },
   skills: {
     title: "Skills",
     description:
-      "Over time I've worked with many technologies. Here I've separated what I've used, what I'm studying, and what I still want to explore.",
+      "The technologies I use day to day, the ones I'm going deeper on right now, and the ones I plan to explore next.",
     tabs: {
       know: "Used",
       studying: "Studying",
@@ -34,7 +42,8 @@ const translations = {
   },
   projects: {
     title: "Projects",
-    description: "Some of the projects I've worked on.",
+    description:
+      "Personal and study projects, all open source on GitHub. Each one started from a real problem I wanted to solve or understand better.",
     items: {
       1: {
         title: "Androxus",
@@ -64,7 +73,7 @@ const translations = {
   experience: {
     title: "Experience",
     description:
-      "My professional and academic journey, with the companies and institutions where I had the opportunity to study and contribute.",
+      "My professional and academic path: the companies I've worked for, the roles I've held, and the education behind it.",
     tabs: {
       professional: "Professional",
       academic: "Academic",
@@ -74,7 +83,7 @@ const translations = {
     keyAchievements: "Key achievements",
     companies: {
       "madeira-madeira": {
-        name: "Madeira Madeira",
+        name: "MadeiraMadeira",
         period: "March 2024 - Present",
         positions: [
           {
@@ -145,7 +154,8 @@ const translations = {
   },
   certificates: {
     title: "Certificates",
-    description: "Certifications and courses I've completed to improve my technical skills.",
+    description:
+      "Certifications and courses completed throughout my career. Click any of them to view the certificate and verify it at the source.",
     tabs: {
       frontend: "Frontend",
       backend: "Backend",
@@ -215,10 +225,10 @@ const translations = {
   contact: {
     title: "Contact",
     description:
-      "Got any questions or want to chat? Reach out through the links below, I'd love to hear from you.",
+      "I'm open to conversations about projects, opportunities, and collaborations. Pick whichever channel works best — I usually reply within one business day.",
     connect: {
-      title: "Get in touch",
-      description: "You can also find me on these platforms:",
+      title: "Let's talk",
+      description: "You can reach me through the channels below:",
       email: "Email",
       github: "GitHub",
       linkedin: "LinkedIn",
