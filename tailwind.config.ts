@@ -2,7 +2,6 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "*.{js,ts,jsx,tsx,mdx}",
@@ -60,26 +59,9 @@ const config: Config = {
         sans: ["var(--font-inter)"],
         mono: ["var(--font-jetbrains-mono)"],
       },
-      typography: {
-        DEFAULT: {
-          css: {
-            maxWidth: "100%",
-            code: {
-              fontFamily: "var(--font-jetbrains-mono)",
-              fontWeight: 400,
-            },
-            "code::before": {
-              content: '""',
-            },
-            "code::after": {
-              content: '""',
-            },
-          },
-        },
-      },
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate")],
 };
 
 export default config;

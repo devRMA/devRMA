@@ -1,12 +1,9 @@
 import { LanguageProvider } from "@/components/language-provider";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Toaster } from "@/components/ui/toaster";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import type React from "react";
 import "./globals.css";
-
-import { Providers } from "./providers";
 
 const JsonLd = ({ data }: { data: Record<string, unknown> }) => {
   const jsonString = JSON.stringify(data);
@@ -124,12 +121,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LanguageProvider>
-            <Providers>
-              {children}
-              <Toaster />
-            </Providers>
-          </LanguageProvider>
+          <LanguageProvider>{children}</LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

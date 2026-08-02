@@ -228,13 +228,6 @@ const translations = {
     rights: "All rights reserved.",
     backToTop: "Back to top",
   },
-  mobile: {
-    swipeGuideTitle: "Swipe to Navigate",
-    swipeGuideDesc: "Swipe up and down to browse between sections",
-    tapToExpand: "Tap to expand",
-    dragToScroll: "Drag to scroll",
-    pullToRefresh: "Pull to refresh",
-  },
 };
 
 export default translations;

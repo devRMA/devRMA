@@ -228,13 +228,6 @@ const translations = {
     rights: "Todos os direitos reservados.",
     backToTop: "Voltar ao topo",
   },
-  mobile: {
-    swipeGuideTitle: "Deslize para Navegar",
-    swipeGuideDesc: "Deslize para cima e para baixo para navegar entre as seções",
-    tapToExpand: "Toque para expandir",
-    dragToScroll: "Arraste para rolar",
-    pullToRefresh: "Puxe para atualizar",
-  },
 };
 
 export default translations;

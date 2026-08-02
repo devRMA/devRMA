@@ -27,16 +27,6 @@ vi.mock("@/components/theme-provider", () => ({
   ),
 }));
 
-vi.mock("@/components/ui/toaster", () => ({
-  Toaster: () => <div data-testid="toaster" />,
-}));
-
-vi.mock("../providers", () => ({
-  Providers: ({ children }: { children: React.ReactNode }) => (
-    <div data-testid="providers">{children}</div>
-  ),
-}));
-
 describe("RootLayout", () => {
   it("should render the layout with all providers", () => {
     const html = renderToString(
@@ -47,8 +37,7 @@ describe("RootLayout", () => {
 
     expect(html).toContain('data-testid="language-provider"');
     expect(html).toContain('data-testid="theme-provider"');
-    expect(html).toContain('data-testid="providers"');
-    expect(html).toContain('data-testid="toaster"');
+    expect(html).toContain("Test Content");
   });
 
   it("should render the JsonLd scripts", () => {
