@@ -11,11 +11,7 @@ export function ContactSection() {
   const { t } = useLanguage();
 
   return (
-    <section
-      id="contact"
-      aria-labelledby="contact-heading"
-      className="min-h-screen py-16 scroll-mt-16 relative flex flex-col justify-center"
-    >
+    <section id="contact" aria-labelledby="contact-heading" className="scroll-mt-16 py-20 md:py-28">
       <SectionHeading
         id="contact-heading"
         title={t("contact.title")}

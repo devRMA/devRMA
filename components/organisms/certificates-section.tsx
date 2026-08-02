@@ -31,7 +31,7 @@ export function CertificatesSection() {
     <section
       id="certificates"
       aria-labelledby="certificates-heading"
-      className="min-h-screen py-16 scroll-mt-16 relative flex flex-col justify-center"
+      className="scroll-mt-16 py-20 md:py-28"
     >
       <SectionHeading
         id="certificates-heading"
@@ -44,10 +44,9 @@ export function CertificatesSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="flex-grow"
       >
         <Tabs defaultValue="frontend" className="w-full">
-          <TabsList className="mb-8 flex w-full overflow-x-auto">
+          <TabsList className="mb-8 flex w-full flex-wrap">
             {(Object.keys(certificatesData) as CertificateCategory[]).map((category) => (
               <TabsTrigger key={category} value={category} className="flex-1">
                 {t(`certificates.tabs.${category}`)}
@@ -83,12 +82,12 @@ export function CertificatesSection() {
         open={selectedCertificate !== null}
         onOpenChange={(open) => !open && setSelectedCertificate(null)}
       >
-        <DialogContent className="max-w-3xl" aria-describedby="certificate-details">
+        <DialogContent className="max-w-3xl">
           {selectedCertificate && (
             <>
               <DialogHeader>
                 <DialogTitle>{t(`certificates.items.${selectedCertificate.id}.title`)}</DialogTitle>
-                <DialogDescription id="certificate-details">
+                <DialogDescription>
                   {t(`certificates.items.${selectedCertificate.id}.issuer`)} •{" "}
                   {selectedCertificate.date}
                 </DialogDescription>

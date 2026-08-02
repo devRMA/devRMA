@@ -51,7 +51,7 @@ export function ExperienceSection() {
     <section
       id="experience"
       aria-labelledby="experience-heading"
-      className="min-h-screen py-16 scroll-mt-16 relative flex flex-col justify-center"
+      className="scroll-mt-16 py-20 md:py-28"
     >
       <SectionHeading
         id="experience-heading"
@@ -60,7 +60,7 @@ export function ExperienceSection() {
       />
 
       <Tabs defaultValue="professional" className="w-full">
-        <TabsList className="mb-8 flex w-full overflow-x-auto">
+        <TabsList className="mb-8 flex w-full flex-wrap">
           <TabsTrigger value="professional" className="flex flex-1 items-center gap-2">
             <Briefcase className="h-4 w-4" aria-hidden="true" />
             {t("experience.tabs.professional")}

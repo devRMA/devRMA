@@ -30,7 +30,7 @@ export function Header() {
         isScrolled ? "bg-background/80 backdrop-blur-md border-b" : "bg-transparent",
       )}
     >
-      <div className="max-w-[1280px] mx-auto px-4 md:px-6 flex h-16 items-center justify-between">
+      <div className="container-page flex h-16 items-center justify-between gap-2">
         <Logo />
 
         <Navigation className="hidden md:flex items-center gap-6 relative" />
