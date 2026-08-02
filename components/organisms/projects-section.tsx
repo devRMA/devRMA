@@ -13,7 +13,7 @@ export function ProjectsSection() {
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="min-h-screen py-16 scroll-mt-16 relative flex flex-col justify-center"
+      className="scroll-mt-16 py-20 md:py-28"
     >
       <SectionHeading
         id="projects-heading"
@@ -21,7 +21,7 @@ export function ProjectsSection() {
         description={t("projects.description")}
       />
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid gap-6 sm:grid-cols-2 2xl:grid-cols-4">
         {projectsData.map((project, index) => (
           <motion.div
             key={project.id}

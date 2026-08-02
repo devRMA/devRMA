@@ -19,7 +19,7 @@ export function Footer() {
 
   return (
     <footer className="py-8 border-t relative">
-      <div className="max-w-[1280px] mx-auto px-4 md:px-6">
+      <div className="container-page">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex flex-col items-center md:items-start">
             <Logo className="mb-2" />

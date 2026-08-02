@@ -17,11 +17,7 @@ export function SkillsSection() {
   const { t } = useLanguage();
 
   return (
-    <section
-      id="skills"
-      aria-labelledby="skills-heading"
-      className="min-h-screen py-16 scroll-mt-16 relative flex flex-col justify-center"
-    >
+    <section id="skills" aria-labelledby="skills-heading" className="scroll-mt-16 py-20 md:py-28">
       <SectionHeading
         id="skills-heading"
         title={t("skills.title")}
@@ -33,10 +29,9 @@ export function SkillsSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="flex-grow"
       >
         <Tabs defaultValue="know" className="w-full">
-          <TabsList className="mb-8 flex w-full overflow-x-auto">
+          <TabsList className="mb-8 flex w-full flex-wrap">
             {CATEGORIES.map((category) => (
               <TabsTrigger key={category} value={category} className="flex-1">
                 {t(`skills.tabs.${category}`)}
