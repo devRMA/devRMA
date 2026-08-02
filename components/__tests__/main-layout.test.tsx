@@ -11,19 +11,14 @@ vi.mock("@/components/organisms/header", () => ({
   Header: () => <header data-testid="header" />,
 }));
 
-vi.mock("@/components/splash-screen", () => ({
-  SplashScreen: () => <div data-testid="splash" />,
-}));
-
 describe("MainLayout", () => {
-  it("renders the splash screen, header, main content and footer", () => {
+  it("renders the header, main content and footer", () => {
     render(
       <MainLayout>
         <p>Inner content</p>
       </MainLayout>,
     );
 
-    expect(screen.getByTestId("splash")).toBeInTheDocument();
     expect(screen.getByTestId("header")).toBeInTheDocument();
     expect(screen.getByTestId("footer")).toBeInTheDocument();
     expect(screen.getByRole("main")).toHaveTextContent("Inner content");

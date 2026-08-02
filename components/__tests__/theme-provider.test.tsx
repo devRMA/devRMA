@@ -1,43 +1,44 @@
-import { render, screen, waitForElementToBeRemoved } from "@testing-library/react";
-import { act } from "react";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 import { ThemeProvider } from "../theme-provider";
 
-describe("ThemeProvider", () => {
-  beforeEach(() => {
-    vi.useFakeTimers();
-  });
+const nextThemesProviderMock = vi.fn((_props: unknown) => null);
 
-  it("renders children when mounted", () => {
+vi.mock("next-themes", () => ({
+  ThemeProvider: ({ children, ...props }: { children: React.ReactNode }) => {
+    nextThemesProviderMock(props);
+    return <div data-testid="next-themes-provider">{children}</div>;
+  },
+}));
+
+describe("ThemeProvider", () => {
+  it("wraps children in next-themes on the first render, before hydration", () => {
     render(
-      <ThemeProvider>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <div data-testid="test-child">Test Child</div>
       </ThemeProvider>,
     );
 
+    expect(screen.getByTestId("next-themes-provider")).toBeInTheDocument();
     expect(screen.getByTestId("test-child")).toBeInTheDocument();
   });
 
-  it("shows transition overlay when theme changes", async () => {
-    vi.useRealTimers();
+  it("forwards its configuration to next-themes", () => {
+    nextThemesProviderMock.mockClear();
+
     render(
-      <ThemeProvider>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
         <div>Test Child</div>
       </ThemeProvider>,
     );
 
-    await act(async () => {
-      window.dispatchEvent(new Event("theme-change"));
-      await new Promise((resolve) => setTimeout(resolve, 0));
-    });
-
-    const overlay = screen.getByTestId("theme-transition-overlay");
-    expect(overlay).toHaveClass("bg-background");
-
-    await act(async () => {
-      await new Promise((resolve) => setTimeout(resolve, 600));
-    });
-
-    await waitForElementToBeRemoved(() => screen.queryByTestId("theme-transition-overlay"));
+    expect(nextThemesProviderMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        attribute: "class",
+        defaultTheme: "system",
+        enableSystem: true,
+        disableTransitionOnChange: true,
+      }),
+    );
   });
 });
