@@ -1,5 +1,5 @@
-import userEvent from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import type { ReactNode } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -12,8 +12,11 @@ vi.mock("@/components/language-provider", () => ({
 }));
 
 vi.mock("@/components/ui/button", () => ({
-  Button: ({ children, "aria-label": ariaLabel, ...props }: any) => (
-    <button type="button" aria-label={ariaLabel} {...props}>
+  Button: ({
+    children,
+    "aria-label": ariaLabel,
+  }: { children: ReactNode; "aria-label"?: string }) => (
+    <button type="button" aria-label={ariaLabel}>
       {children}
     </button>
   ),
@@ -23,8 +26,28 @@ vi.mock("@/components/ui/dropdown-menu", () => ({
   DropdownMenu: ({ children }: { children: ReactNode }) => <div>{children}</div>,
   DropdownMenuTrigger: ({ children }: { children: ReactNode }) => <>{children}</>,
   DropdownMenuContent: ({ children }: { children: ReactNode }) => <div>{children}</div>,
-  DropdownMenuItem: ({ children, onClick, className }: any) => (
-    <button type="button" className={className} onClick={onClick}>
+  DropdownMenuRadioGroup: ({
+    children,
+    value,
+    onValueChange,
+  }: {
+    children: ReactNode;
+    value?: string;
+    onValueChange?: (value: string) => void;
+  }) => (
+    <div data-testid="radio-group" data-value={value}>
+      {children}
+      <button
+        type="button"
+        data-testid="select-pt"
+        onClick={() => onValueChange?.("pt-BR")}
+        hidden
+      />
+      <button type="button" data-testid="select-en" onClick={() => onValueChange?.("en")} hidden />
+    </div>
+  ),
+  DropdownMenuRadioItem: ({ children, value }: { children: ReactNode; value: string }) => (
+    <button type="button" data-value={value}>
       {children}
     </button>
   ),
@@ -35,38 +58,50 @@ describe("LanguageToggle", () => {
     useLanguageMock.mockReset();
   });
 
-  it("renders the current language and switches to Portuguese", async () => {
-    const setLanguage = vi.fn();
+  it("exposes the active language as the radio group value, not only as a colour", () => {
     useLanguageMock.mockReturnValue({
       language: "en",
-      setLanguage,
+      setLanguage: vi.fn(),
       t: (key: string) => (key === "language.toggle" ? "Change language" : key),
     });
 
     render(<LanguageToggle />);
 
     expect(screen.getByRole("button", { name: "Change language" })).toBeInTheDocument();
-    const englishOption = screen.getByRole("button", { name: /english/i });
-    expect(englishOption).toHaveClass("bg-muted");
-
-    await userEvent.click(screen.getByRole("button", { name: /português/i }));
-    expect(setLanguage).toHaveBeenCalledWith("pt-BR");
+    expect(screen.getByTestId("radio-group")).toHaveAttribute("data-value", "en");
+    expect(screen.getByRole("button", { name: "Português" })).toHaveAttribute(
+      "data-value",
+      "pt-BR",
+    );
   });
 
-  it("switches back to English when the English option is selected", async () => {
+  it("switches to Portuguese when that option is selected", async () => {
     const setLanguage = vi.fn();
     useLanguageMock.mockReturnValue({
-      language: "pt-BR",
+      language: "en",
       setLanguage,
-      t: (key: string) => (key === "language.toggle" ? "Alterar idioma" : key),
+      t: (key: string) => key,
     });
 
     render(<LanguageToggle />);
 
-    const portugueseOption = screen.getByRole("button", { name: /português/i });
-    expect(portugueseOption).toHaveClass("bg-muted");
+    await userEvent.click(screen.getByTestId("select-pt"));
+    expect(setLanguage).toHaveBeenCalledWith("pt-BR");
+  });
 
-    await userEvent.click(screen.getByRole("button", { name: /english/i }));
+  it("switches back to English when that option is selected", async () => {
+    const setLanguage = vi.fn();
+    useLanguageMock.mockReturnValue({
+      language: "pt-BR",
+      setLanguage,
+      t: (key: string) => key,
+    });
+
+    render(<LanguageToggle />);
+
+    expect(screen.getByTestId("radio-group")).toHaveAttribute("data-value", "pt-BR");
+
+    await userEvent.click(screen.getByTestId("select-en"));
     expect(setLanguage).toHaveBeenCalledWith("en");
   });
 });

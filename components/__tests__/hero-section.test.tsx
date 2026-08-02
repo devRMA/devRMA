@@ -80,7 +80,7 @@ describe("HeroSection", () => {
       expect.objectContaining({ href: "#contact", children: "Contact me" }),
     );
     expect(scrollIndicatorMock).toHaveBeenCalledWith(
-      expect.objectContaining({ targetId: "skills", label: "Scroll to Skills section" }),
+      expect.objectContaining({ targetId: "skills", label: "a11y.scrollToSkills" }),
     );
     expect(screen.getByTestId("profile-image")).toHaveAttribute("alt", "Rafael Martins Alves");
 

@@ -133,8 +133,16 @@
   width: fit-content;
 }
 
-.carousel:hover {
+.carousel:hover,
+.carousel:focus-within,
+.carousel[data-paused] {
   animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel {
+    animation: none;
+  }
 }
 
 .carousel-item {

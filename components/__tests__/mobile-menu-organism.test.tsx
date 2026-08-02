@@ -5,6 +5,10 @@ import { afterAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { MobileMenu } from "../organisms/mobile-menu";
 
+vi.mock("@/components/language-provider", () => ({
+  useLanguage: () => ({ t: (key: string) => key }),
+}));
+
 const useMobileMock = vi.fn();
 type NavItemMockProps = {
   href: string;
@@ -72,7 +76,7 @@ describe("MobileMenu (organism)", () => {
 
     render(<MobileMenu navItems={navItems} activeSection="skills" onNavClick={onNavClick} />);
 
-    const toggleButton = screen.getByRole("button", { name: "Open Menu" });
+    const toggleButton = screen.getByRole("button", { name: "a11y.openMenu" });
     expect(toggleButton).toHaveAttribute("aria-expanded", "false");
 
     await user.click(toggleButton);
@@ -90,7 +94,7 @@ describe("MobileMenu (organism)", () => {
 
     expect(onNavClick).toHaveBeenCalledWith(clickEvent, "#about");
     expect(navigator.vibrate).toHaveBeenCalledTimes(2);
-    expect(await screen.findByRole("button", { name: "Open Menu" })).toHaveAttribute(
+    expect(await screen.findByRole("button", { name: "a11y.openMenu" })).toHaveAttribute(
       "aria-expanded",
       "false",
     );
@@ -103,7 +107,7 @@ describe("MobileMenu (organism)", () => {
     render(<MobileMenu navItems={navItems} activeSection={null} onNavClick={onNavClick} />);
 
     const user = userEvent.setup();
-    await user.click(screen.getByRole("button", { name: "Open Menu" }));
+    await user.click(screen.getByRole("button", { name: "a11y.openMenu" }));
     expect(navigator.vibrate).not.toHaveBeenCalled();
   });
 });

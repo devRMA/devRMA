@@ -50,17 +50,20 @@ export function ExperienceSection() {
   return (
     <section
       id="experience"
+      aria-labelledby="experience-heading"
       className="min-h-screen py-16 scroll-mt-16 relative flex flex-col justify-center"
     >
-      <SectionHeading title={t("experience.title")} description={t("experience.description")} />
+      <SectionHeading
+        id="experience-heading"
+        title={t("experience.title")} description={t("experience.description")} />
 
       <Tabs defaultValue="professional" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 mb-8">
-          <TabsTrigger value="professional" className="flex items-center gap-2">
+        <TabsList className="mb-8 flex w-full overflow-x-auto">
+          <TabsTrigger value="professional" className="flex flex-1 items-center gap-2">
             <Briefcase className="h-4 w-4" aria-hidden="true" />
             {t("experience.tabs.professional")}
           </TabsTrigger>
-          <TabsTrigger value="academic" className="flex items-center gap-2">
+          <TabsTrigger value="academic" className="flex flex-1 items-center gap-2">
             <GraduationCap className="h-4 w-4" aria-hidden="true" />
             {t("experience.tabs.academic")}
           </TabsTrigger>
@@ -103,13 +106,16 @@ export function ExperienceSection() {
                   </div>
 
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)]">
-                    <Card
-                      className="cursor-pointer hover:border-primary transition-colors"
-                      onClick={() => toggleCompany(company.id)}
-                    >
+                    <Card className="hover:border-primary transition-colors">
                       <CardHeader>
                         <CardTitle className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
+                          <button
+                            type="button"
+                            onClick={() => toggleCompany(company.id)}
+                            aria-expanded={isExpanded(company.id)}
+                            aria-controls={`positions-${company.id}`}
+                            className="flex w-full items-center gap-2 rounded-sm text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                          >
                             {t(`experience.companies.${company.id}.name`) ?? company.name}
                             {isExpanded(company.id) ? (
                               <ChevronUp
@@ -122,7 +128,12 @@ export function ExperienceSection() {
                                 aria-hidden="true"
                               />
                             )}
-                          </div>
+                            <span className="sr-only">
+                              {isExpanded(company.id)
+                                ? t("a11y.collapsePositions", { company: company.name })
+                                : t("a11y.expandPositions", { company: company.name })}
+                            </span>
+                          </button>
                         </CardTitle>
                         <CardDescription className="flex flex-wrap items-center gap-2 text-muted-foreground">
                           <span className="flex items-center gap-1">
@@ -160,6 +171,7 @@ export function ExperienceSection() {
                         <AnimatePresence>
                           {isExpanded(company.id) && company.positions.length > 1 && (
                             <motion.div
+                              id={`positions-${company.id}`}
                               initial={{
                                 opacity: 0,
                                 height: 0,

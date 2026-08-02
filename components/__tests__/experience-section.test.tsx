@@ -67,17 +67,13 @@ vi.mock("@/components/molecules/education-card", () => ({
   EducationCard: (props: any) => educationCardMock(props),
 }));
 
-const cardInstances: Array<{ onClick?: () => void }> = [];
+const cardInstances: Array<Record<string, never>> = [];
 
 vi.mock("@/components/ui/card", () => ({
-  Card: ({ children, onClick }: any) => {
-    cardInstances.push({ onClick });
+  Card: ({ children }: { children: ReactNode }) => {
+    cardInstances.push({});
     const index = cardInstances.length - 1;
-    return (
-      <div data-testid={`card-${index}`} onClick={onClick} role="button">
-        {children}
-      </div>
-    );
+    return <div data-testid={`card-${index}`}>{children}</div>;
   },
   CardHeader: ({ children }: { children: ReactNode }) => <div>{children}</div>,
   CardTitle: ({ children }: { children: ReactNode }) => <h3>{children}</h3>,
@@ -121,8 +117,19 @@ describe("ExperienceSection", () => {
 
     if (firstCompany.positions.length > 1) {
       experiencePositionMock.mockClear();
-      await user.click(screen.getByTestId("card-0"));
-      const hasPrevious = experiencePositionMock.mock.calls.some((call) => call[0].isPrevious === true);
+
+      const disclosure = screen.getByRole("button", {
+        name: new RegExp(firstCompany.name, "i"),
+      });
+      expect(disclosure).toHaveAttribute("aria-expanded", "false");
+      expect(disclosure).toHaveAttribute("aria-controls", `positions-${firstCompany.id}`);
+
+      await user.click(disclosure);
+
+      expect(disclosure).toHaveAttribute("aria-expanded", "true");
+      const hasPrevious = experiencePositionMock.mock.calls.some(
+        (call) => call[0].isPrevious === true,
+      );
       expect(hasPrevious).toBe(true);
     }
   });

@@ -111,7 +111,7 @@ export function HeroSection() {
       </div>
 
       <div className="flex justify-center mt-8">
-        <ScrollIndicator targetId="skills" label="Scroll to Skills section" />
+        <ScrollIndicator targetId="skills" label={t("a11y.scrollToSkills")} />
       </div>
     </section>
   );

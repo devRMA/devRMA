@@ -2,12 +2,13 @@
 
 import type React from "react";
 
+import { useLanguage } from "@/components/language-provider";
 import { MobileNavItem } from "@/components/molecules/mobile-nav-item";
 import { Button } from "@/components/ui/button";
 import { useMobile } from "@/hooks/use-mobile";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 type NavItem = {
   href: string;
@@ -24,6 +25,25 @@ interface MobileMenuProps {
 export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<MobileMenuProps>) {
   const [isOpen, setIsOpen] = useState(false);
   const { isTouchDevice } = useMobile();
+  const { t } = useLanguage();
+  const panelId = useId();
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+        triggerRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -71,11 +91,13 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
   return (
     <div className="md:hidden">
       <Button
+        ref={triggerRef}
         variant="ghost"
         size="icon"
         onClick={toggleMenu}
-        aria-label={isOpen ? "Close Menu" : "Open Menu"}
+        aria-label={isOpen ? t("a11y.closeMenu") : t("a11y.openMenu")}
         aria-expanded={isOpen}
+        aria-controls={panelId}
         className="relative overflow-hidden"
       >
         <AnimatePresence mode="wait">
@@ -106,14 +128,14 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id={panelId}
             className="absolute top-16 left-0 right-0 bg-background border-b z-50"
             initial="closed"
             animate="open"
             exit="closed"
             variants={menuVariants}
-            aria-label="Mobile navigation"
           >
-            <nav className="flex flex-col p-4">
+            <nav className="flex flex-col p-4" aria-label={t("a11y.mobileNavigation")}>
               {navItems.map((item) => (
                 <motion.div key={item.href} variants={itemVariants}>
                   <MobileNavItem
