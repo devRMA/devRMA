@@ -17,10 +17,10 @@ const translations = {
     toggle: "Toggle language",
   },
   hero: {
-    badge: "Full Stack Developer at MadeiraMadeira",
-    role: "Full Stack Developer",
+    badge: "Tech Lead at MadeiraMadeira",
+    role: "Tech Lead",
     description:
-      "I build large-scale systems with Laravel, PHP, and TypeScript, focused on performance, observability, and maintainable code — software that stays easy to evolve long after it ships.",
+      "I lead the Driver Experience squad at MadeiraMadeira, focused on performance, observability, and sustainable code across the company's logistics ecosystem — from NestJS/TypeScript services to real-time event orchestration with Kafka.",
     stackLabel: "Core technologies",
     projects: "View projects",
     contact: "Get in touch",
@@ -87,16 +87,22 @@ const translations = {
         period: "March 2024 - Present",
         positions: [
           {
-            title: "Full Stack Developer",
-            period: "June 2025 - Present",
+            title: "Tech Lead",
+            period: "June 2026 - Present",
             description:
-              "Focused on performance, observability, and best development practices. I work on improving scalability and efficiency, implementing monitoring strategies with logs and metrics, refactoring critical code areas, and ensuring quality through tests, documentation, and architecture reviews.",
+              "I lead the Driver Experience squad, driving development of iShip — the app that follows drivers from loading to final delivery — along with the systems that support operations at our distribution centers. I define architecture decisions, guide the team, and stay hands-on in the code with NestJS/TypeScript, orchestrating real-time events with Kafka to connect this ecosystem to the rest of the company's logistics operation. This role was formally recognized in September 2026 with my promotion to Senior Full Stack Developer.",
+          },
+          {
+            title: "Full Stack Developer",
+            period: "June 2025 - May 2026",
+            description:
+              "Focused on performance, observability, and best development practices on the Operational Experience team behind iTrack's iSend (TMS). I worked to improve the application's scalability and efficiency, implementing monitoring strategies with logs and metrics, refactoring critical areas of the system, and ensuring quality through tests, documentation, and architecture reviews.",
           },
           {
             title: "Junior Full Stack Developer",
             period: "March 2024 - May 2025",
             description:
-              "Worked on the iSend logistics system from iTrack, fixing bugs, developing new features, and continuous improvement. Used Laravel and relational databases, and implemented unit/integration tests, code standardization, and documentation. Collaborated with developers to deliver efficient and sustainable solutions.",
+              "Worked on the Operational Experience team, dedicated to iSend — iTrack's transportation management system (TMS) — fixing bugs, developing new features, and driving continuous improvement. I worked with Laravel and relational databases, and implemented unit/integration tests, code standardization, and documentation. I collaborated with other developers to deliver efficient and sustainable solutions.",
           },
         ],
       },

@@ -8,7 +8,7 @@ import { useLanguage } from "@/components/language-provider";
 import profileImage from "@/public/rafael-martins-alves.jpg";
 
 const CAREER_START_YEAR = 2021;
-const STACK = ["Laravel", "PHP", "TypeScript", "Next.js", "Python", "AWS"];
+const STACK = ["TypeScript", "NestJS", "Next.js", "Laravel", "AWS", "Docker"];
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },

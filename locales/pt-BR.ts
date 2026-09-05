@@ -17,10 +17,10 @@ const translations = {
     toggle: "Alternar idioma",
   },
   hero: {
-    badge: "Desenvolvedor Full Stack na MadeiraMadeira",
-    role: "Desenvolvedor Full Stack",
+    badge: "Tech Lead na MadeiraMadeira",
+    role: "Tech Lead",
     description:
-      "Trabalho com Laravel, PHP e TypeScript no desenvolvimento de sistemas de larga escala, com foco em performance, observabilidade e código sustentável — software que continua simples de evoluir depois do deploy.",
+      "Lidero tecnicamente o squad Experiência do Motorista na MadeiraMadeira, com foco em performance, observabilidade e código sustentável no ecossistema logístico da empresa — dos serviços em NestJS/TypeScript à orquestração de eventos em tempo real com Kafka.",
     stackLabel: "Principais tecnologias",
     projects: "Ver projetos",
     contact: "Entre em contato",
@@ -87,16 +87,22 @@ const translations = {
         period: "Março 2024 - Presente",
         positions: [
           {
-            title: "Desenvolvedor Full Stack Pleno",
-            period: "Junho 2025 - Presente",
+            title: "Tech Lead",
+            period: "Junho 2026 - Presente",
             description:
-              "Atuo com foco em performance, observabilidade e boas práticas de desenvolvimento. Tenho trabalhado para melhorar a escalabilidade e eficiência da aplicação, implementando estratégias de monitoramento com logs e métricas, refatorando trechos críticos do sistema e garantindo qualidade através de testes, documentação e revisão de arquitetura.",
+              "Lidero tecnicamente a squad Experiência do Motorista, à frente do desenvolvimento do iShip — o aplicativo que acompanha o motorista do carregamento à entrega — e dos sistemas que dão suporte à operação nos centros de distribuição. Defino decisões de arquitetura, oriento o time e continuo atuando diretamente no código em NestJS/TypeScript, orquestrando eventos em tempo real com Kafka para conectar esse ecossistema ao restante da operação logística da empresa. Essa atuação foi reconhecida oficialmente em setembro de 2026, com minha promoção a Desenvolvedor Full Stack Sênior.",
+          },
+          {
+            title: "Desenvolvedor Full Stack Pleno",
+            period: "Junho 2025 - Maio 2026",
+            description:
+              "Atuei com foco em performance, observabilidade e boas práticas de desenvolvimento, no time Experiência Operacional, por trás do iSend (TMS) da iTrack. Trabalhei para melhorar a escalabilidade e eficiência da aplicação, implementando estratégias de monitoramento com logs e métricas, refatorando trechos críticos do sistema e garantindo qualidade através de testes, documentação e revisão de arquitetura.",
           },
           {
             title: "Desenvolvedor Full Stack Júnior",
             period: "Março 2024 - Maio 2025",
             description:
-              "Atuei no sistema logístico iSend da iTrack, realizando correções de bugs, desenvolvimento de novas funcionalidades e melhorias contínuas. Trabalhei com Laravel e banco de dados relacional, além de implementar testes unitários e de integração, padronização de código e documentação. Colaborei com outros desenvolvedores para entregar soluções eficientes e sustentáveis.",
+              "Atuei no time Experiência Operacional, dedicado ao iSend — sistema de gestão de transporte (TMS) da iTrack — realizando correções de bugs, desenvolvimento de novas funcionalidades e melhorias contínuas. Trabalhei com Laravel e banco de dados relacional, além de implementar testes unitários e de integração, padronização de código e documentação. Colaborei com outros desenvolvedores para entregar soluções eficientes e sustentáveis.",
           },
         ],
       },
