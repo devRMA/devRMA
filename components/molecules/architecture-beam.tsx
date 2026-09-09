@@ -46,7 +46,10 @@ export function ArchitectureBeam() {
     <div className="relative w-full overflow-hidden rounded-2xl border border-border/80 bg-card/40 p-6 backdrop-blur-xl">
       <div className="mb-6 flex flex-col gap-1">
         <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-cyan-400 animate-ping" aria-hidden="true" />
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75 motion-reduce:hidden" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
+          </span>
           <h3 className="font-mono text-sm font-semibold uppercase tracking-wider text-cyan-400">
             {t("skills.bento.architectureTitle")}
           </h3>
@@ -61,13 +64,13 @@ export function ArchitectureBeam() {
           return (
             <motion.div
               key={node.titleKey}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: nodeIndex * 0.1 }}
-              className="relative flex flex-col items-center justify-center rounded-xl border bg-gradient-to-b p-4 text-center shadow-sm backdrop-blur-md transition-transform hover:-translate-y-1"
+              transition={{ duration: 0.25, delay: nodeIndex * 0.05, ease: [0.23, 1, 0.32, 1] }}
+              className="group relative flex flex-col items-center justify-center rounded-xl border bg-gradient-to-b p-4 text-center shadow-sm backdrop-blur-md transition-[border-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-1 hover:shadow-md cursor-default select-none"
             >
               <div
-                className={`mb-3 flex h-12 w-12 items-center justify-center rounded-xl border bg-background/80 shadow-inner ${node.accentColor}`}
+                className={`mb-3 flex h-12 w-12 items-center justify-center rounded-xl border bg-background/80 shadow-inner transition-transform duration-200 ease-out group-hover:scale-110 ${node.accentColor}`}
               >
                 <NodeIcon className="h-6 w-6" aria-hidden="true" />
               </div>

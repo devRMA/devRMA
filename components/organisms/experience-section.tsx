@@ -6,7 +6,6 @@ import {
   Building,
   Calendar,
   ChevronDown,
-  ChevronUp,
   GraduationCap,
   TrendingUp,
 } from "lucide-react";
@@ -19,6 +18,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { academicData, experienceData } from "@/data/experience";
 import { formatDurationRange } from "@/lib/duration";
+import { cn } from "@/lib/utils";
 
 export function ExperienceSection() {
   const { t, language } = useLanguage();
@@ -129,12 +129,12 @@ export function ExperienceSection() {
                   }}
                   className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
                 >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-cyan-500/60 bg-background shadow-[0_0_15px_rgba(6,182,212,0.3)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform group-hover:scale-110">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-cyan-500/60 bg-background shadow-[0_0_15px_rgba(6,182,212,0.3)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-200 ease-out group-hover:scale-105">
                     <Building className="h-4 w-4 text-cyan-400" aria-hidden="true" />
                   </div>
 
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)]">
-                    <Card className="border-border/80 bg-card/70 backdrop-blur-xl transition-all hover:border-cyan-500/50 hover:shadow-lg">
+                    <Card className="border-border/80 bg-card/70 backdrop-blur-xl transition-[border-color,box-shadow] duration-200 ease-out hover:border-cyan-500/50 hover:shadow-lg">
                       <CardHeader>
                         <CardTitle className="flex items-center justify-between">
                           <button
@@ -145,17 +145,13 @@ export function ExperienceSection() {
                             className="flex w-full items-center gap-2 rounded-sm text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                           >
                             {t(`experience.companies.${company.id}.name`)}
-                            {isExpanded(company.id) ? (
-                              <ChevronUp
-                                className="h-4 w-4 text-muted-foreground"
-                                aria-hidden="true"
-                              />
-                            ) : (
-                              <ChevronDown
-                                className="h-4 w-4 text-muted-foreground"
-                                aria-hidden="true"
-                              />
-                            )}
+                            <ChevronDown
+                              className={cn(
+                                "h-4 w-4 text-muted-foreground transition-transform duration-200 ease-out",
+                                isExpanded(company.id) && "rotate-180",
+                              )}
+                              aria-hidden="true"
+                            />
                             <span className="sr-only">
                               {isExpanded(company.id)
                                 ? t("a11y.collapsePositions", { company: company.name })
@@ -206,7 +202,8 @@ export function ExperienceSection() {
                                 height: 0,
                               }}
                               transition={{
-                                duration: 0.3,
+                                duration: 0.25,
+                                ease: [0.23, 1, 0.32, 1],
                               }}
                               className="overflow-hidden"
                             >
@@ -265,12 +262,12 @@ export function ExperienceSection() {
                   }}
                   className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
                 >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-indigo-500/60 bg-background shadow-[0_0_15px_rgba(99,102,241,0.3)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform group-hover:scale-110">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-indigo-500/60 bg-background shadow-[0_0_15px_rgba(99,102,241,0.3)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-200 ease-out group-hover:scale-105">
                     <GraduationCap className="h-4 w-4 text-indigo-400" aria-hidden="true" />
                   </div>
 
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)]">
-                    <Card className="border-border/80 bg-card/70 backdrop-blur-xl transition-all hover:border-indigo-500/50 hover:shadow-lg">
+                    <Card className="border-border/80 bg-card/70 backdrop-blur-xl transition-[border-color,box-shadow] duration-200 ease-out hover:border-indigo-500/50 hover:shadow-lg">
                       <CardHeader>
                         <div className="flex justify-between items-start">
                           <CardTitle>{t(`experience.education.${education.id}.degree`)}</CardTitle>

@@ -14,13 +14,17 @@ const CAREER_START_YEAR = 2021;
 const STACK = ["NestJS", "Kafka", "AWS", "TypeScript", "Docker", "Laravel"];
 
 const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  initial: { opacity: 0, y: 16 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.23, 1, 0.32, 1] } },
 };
 
 const fadeIn = {
   initial: { opacity: 0, scale: 0.95 },
-  animate: { opacity: 1, scale: 1, transition: { duration: 0.5, delay: 0.15 } },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.5, delay: 0.1, ease: [0.23, 1, 0.32, 1] },
+  },
 };
 
 export function HeroSection() {
@@ -64,13 +68,13 @@ export function HeroSection() {
               className="absolute -inset-4 rounded-full bg-gradient-to-tr from-cyan-500/20 via-indigo-500/20 to-primary/20 blur-xl animate-pulse"
               aria-hidden="true"
             />
-            <div className="relative aspect-square w-52 overflow-hidden rounded-full border-4 border-primary/30 shadow-2xl sm:w-64 md:w-72 lg:w-80 2xl:w-96">
+            <div className="relative aspect-square w-52 overflow-hidden rounded-full border-4 border-primary/30 shadow-2xl transition-transform duration-300 ease-out hover:scale-105 sm:w-64 md:w-72 lg:w-80 2xl:w-96">
               <Image
                 src={profileImage}
                 alt="Rafael Martins Alves, desenvolvedor full stack"
                 fill
                 sizes="(max-width: 640px) 208px, (max-width: 768px) 256px, (max-width: 1024px) 288px, (max-width: 1536px) 320px, 384px"
-                className="object-cover"
+                className="object-cover transition-transform duration-500 ease-out hover:scale-110"
                 priority
               />
             </div>
@@ -84,7 +88,10 @@ export function HeroSection() {
           className="flex flex-col gap-5"
         >
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-sm font-medium text-primary">
-            <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75 motion-reduce:hidden" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+            </span>
             <span>{t("hero.badge")}</span>
           </div>
 
@@ -108,7 +115,7 @@ export function HeroSection() {
             {STACK.map((techItem) => (
               <li
                 key={techItem}
-                className="rounded-md border border-border/80 bg-muted/60 px-2.5 py-1 font-mono text-xs text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"
+                className="rounded-md border border-border/80 bg-muted/60 px-2.5 py-1 font-mono text-xs text-muted-foreground transition-[border-color,color,transform] duration-150 ease-out hover:border-primary/50 hover:text-foreground hover:-translate-y-0.5 cursor-default select-none"
               >
                 {techItem}
               </li>
@@ -117,9 +124,14 @@ export function HeroSection() {
 
           <dl className="flex flex-wrap gap-x-8 gap-y-3 border-t pt-5">
             {stats.map((statistic) => (
-              <div key={statistic.label}>
+              <div
+                key={statistic.label}
+                className="group transition-transform duration-150 ease-out hover:-translate-y-0.5 cursor-default select-none"
+              >
                 <dt className="text-sm text-muted-foreground">{statistic.label}</dt>
-                <dd className="text-2xl font-bold text-foreground">{statistic.value}</dd>
+                <dd className="text-2xl font-bold text-foreground transition-colors duration-150 ease-out group-hover:text-primary">
+                  {statistic.value}
+                </dd>
               </div>
             ))}
           </dl>
@@ -138,19 +150,21 @@ export function HeroSection() {
               type="button"
               variant="ghost"
               onClick={handleCopyEmail}
-              className="rounded-xl border border-border/70 text-xs font-mono transition-all hover:bg-muted"
+              className="rounded-xl border border-border/70 text-xs font-mono transition-[background-color,border-color,color] duration-150 ease-out hover:bg-muted"
             >
-              {hasCopiedEmail ? (
-                <>
-                  <Check className="mr-1.5 h-3.5 w-3.5 text-emerald-500" aria-hidden="true" />
-                  <span className="text-emerald-500 font-semibold">{t("hero.emailCopied")}</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="mr-1.5 h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
-                  <span>{t("hero.copyEmail")}</span>
-                </>
-              )}
+              <span className="inline-flex items-center transition-[opacity,transform] duration-150 ease-out">
+                {hasCopiedEmail ? (
+                  <>
+                    <Check className="mr-1.5 h-3.5 w-3.5 text-emerald-500" aria-hidden="true" />
+                    <span className="text-emerald-500 font-semibold">{t("hero.emailCopied")}</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="mr-1.5 h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
+                    <span>{t("hero.copyEmail")}</span>
+                  </>
+                )}
+              </span>
             </Button>
           </div>
         </motion.div>
