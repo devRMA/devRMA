@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import type React from "react";
 import { LanguageProvider } from "@/components/language-provider";
 import { MotionProvider } from "@/components/motion-provider";
+import { PerformanceProvider } from "@/components/performance-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
@@ -182,9 +183,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LanguageProvider>
-            <MotionProvider>{children}</MotionProvider>
-          </LanguageProvider>
+          <PerformanceProvider>
+            <LanguageProvider>
+              <MotionProvider>{children}</MotionProvider>
+            </LanguageProvider>
+          </PerformanceProvider>
         </ThemeProvider>
       </body>
     </html>
