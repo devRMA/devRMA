@@ -32,37 +32,37 @@
     --input: 214 32% 58%;
     --ring: 217 91% 48%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: 222 14% 8%;
-    --foreground: 0 0% 92%;
+    --background: 228 24% 6%;
+    --foreground: 210 20% 96%;
 
-    --card: 222 16% 12%;
-    --card-foreground: 0 0% 92%;
+    --card: 228 20% 9%;
+    --card-foreground: 210 20% 96%;
 
-    --popover: 222 16% 12%;
-    --popover-foreground: 0 0% 92%;
+    --popover: 228 20% 9%;
+    --popover-foreground: 210 20% 96%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 228 24% 6%;
 
-    --secondary: 217 33% 18%;
-    --secondary-foreground: 217 91% 70%;
+    --secondary: 228 16% 14%;
+    --secondary-foreground: 199 89% 70%;
 
-    --muted: 217 33% 18%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 228 16% 14%;
+    --muted-foreground: 218 14% 65%;
 
-    --accent: 217 33% 18%;
-    --accent-foreground: 217 91% 70%;
+    --accent: 228 16% 14%;
+    --accent-foreground: 199 89% 70%;
 
     --destructive: 0 72% 60%;
     --destructive-foreground: 222 47% 11%;
 
-    --border: 217 33% 30%;
-    --input: 217 33% 42%;
-    --ring: 217 91% 60%;
+    --border: 228 15% 18%;
+    --input: 228 15% 26%;
+    --ring: 199 89% 48%;
   }
 }
 
@@ -80,12 +80,17 @@
     font-feature-settings:
       "rlig" 1,
       "calt" 1;
-    background-image: radial-gradient(
-      60rem 32rem at 50% -14rem,
-      hsl(var(--primary) / 0.1),
-      transparent
-    );
-    background-repeat: no-repeat;
+    background-image:
+      radial-gradient(circle at 1px 1px, hsl(var(--primary) / 0.07) 1px, transparent 0),
+      radial-gradient(
+        75rem 38rem at 50% -10rem,
+        rgba(6, 182, 212, 0.12),
+        rgba(99, 102, 241, 0.08),
+        transparent 70%
+      );
+    background-size:
+      32px 32px,
+      100% 100%;
     background-attachment: fixed;
   }
 
@@ -107,6 +112,14 @@
 @layer components {
   .container-page {
     @apply mx-auto w-full max-w-7xl px-4 md:px-6;
+  }
+
+  .glass-card {
+    @apply bg-card/70 backdrop-blur-xl border border-border/70 shadow-sm transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    @apply border-primary/40 shadow-md;
   }
 }
 
