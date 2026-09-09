@@ -9,6 +9,7 @@ export const projectsData = [
     image: null,
     githubUrl: "https://github.com/devRMA/Androxus",
     liveUrl: null,
+    isArchived: true,
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const projectsData = [
     image: "https://stopwatch.devrma.com/social.png",
     githubUrl: "https://github.com/devRMA/python-stopwatch2",
     liveUrl: "https://stopwatch.devrma.com/",
+    isArchived: false,
   },
   {
     id: 3,
@@ -30,6 +32,7 @@ export const projectsData = [
     image: null,
     githubUrl: "https://github.com/devRMA/Pybot_with_docker",
     liveUrl: null,
+    isArchived: true,
   },
   {
     id: 4,
@@ -41,5 +44,6 @@ export const projectsData = [
     image: null,
     githubUrl: "https://github.com/devRMA/stock_trader",
     liveUrl: "https://stocktrader-bay.vercel.app",
+    isArchived: true,
   },
 ];
