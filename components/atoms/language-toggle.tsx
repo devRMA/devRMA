@@ -17,8 +17,11 @@ export function LanguageToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" aria-label={t("language.toggle")}>
-          <Globe className="h-5 w-5" aria-hidden="true" />
+        <Button variant="ghost" size="icon" aria-label={t("language.toggle")} className="group">
+          <Globe
+            className="h-5 w-5 transition-transform duration-200 ease-out group-hover:rotate-12"
+            aria-hidden="true"
+          />
           <span className="sr-only">{t("language.toggle")}</span>
         </Button>
       </DropdownMenuTrigger>

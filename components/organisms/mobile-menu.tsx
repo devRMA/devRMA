@@ -70,9 +70,10 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
       opacity: 0,
       height: 0,
       transition: {
-        duration: 0.3,
+        duration: 0.2,
+        ease: [0.32, 0.72, 0, 1],
         when: "afterChildren",
-        staggerChildren: 0.05,
+        staggerChildren: 0.03,
         staggerDirection: -1,
       },
     },
@@ -80,17 +81,22 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
       opacity: 1,
       height: "auto",
       transition: {
-        duration: 0.3,
+        duration: 0.25,
+        ease: [0.32, 0.72, 0, 1],
         when: "beforeChildren",
-        staggerChildren: 0.05,
+        staggerChildren: 0.04,
         staggerDirection: 1,
       },
     },
   };
 
   const itemVariants = {
-    closed: { opacity: 0, x: -20 },
-    open: { opacity: 1, x: 0 },
+    closed: { opacity: 0, x: -12 },
+    open: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.2, ease: [0.23, 1, 0.32, 1] },
+    },
   };
 
   return (
@@ -112,7 +118,7 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
               initial={{ rotate: -90, opacity: 0 }}
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
             >
               <X className="h-5 w-5" aria-hidden="true" />
             </motion.div>
@@ -122,7 +128,7 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
               initial={{ rotate: 90, opacity: 0 }}
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: -90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
             >
               <Menu className="h-5 w-5" aria-hidden="true" />
             </motion.div>

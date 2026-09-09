@@ -22,7 +22,9 @@ export function useActiveSection(sections: string[], offset = 100) {
           return;
         }
 
-        const topMost = [...visibleTops.entries()].sort(([, a], [, b]) => a - b)[0];
+        const topMost = [...visibleTops.entries()].sort(
+          ([, firstTop], [, secondTop]) => firstTop - secondTop,
+        )[0];
         setActiveSection(topMost[0]);
       },
       { rootMargin: `-${offset}px 0px -45% 0px`, threshold: 0 },

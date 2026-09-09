@@ -25,20 +25,20 @@ export function SectionHeading({
       <motion.h2
         id={id}
         className={cn("text-3xl font-bold mb-4", titleClassName)}
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
       >
         {title}
       </motion.h2>
       {description && (
         <motion.p
           className={cn("text-muted-foreground max-w-2xl mx-auto", descriptionClassName)}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: 0.3, delay: 0.05, ease: [0.23, 1, 0.32, 1] }}
         >
           {description}
         </motion.p>

@@ -44,8 +44,12 @@ export function Footer() {
               size="icon"
               onClick={scrollToTop}
               aria-label={t("footer.backToTop")}
+              className="group"
             >
-              <ArrowUp className="h-5 w-5" aria-hidden="true" />
+              <ArrowUp
+                className="h-5 w-5 transition-transform duration-200 ease-out group-hover:-translate-y-0.5"
+                aria-hidden="true"
+              />
             </Button>
           </div>
         </div>
