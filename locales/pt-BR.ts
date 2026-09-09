@@ -17,13 +17,17 @@ const translations = {
     toggle: "Alternar idioma",
   },
   hero: {
-    badge: "Tech Lead na MadeiraMadeira",
-    role: "Tech Lead",
+    badge: "Tech Lead @ MadeiraMadeira",
+    role: "Tech Lead & Desenvolvedor Sênior",
+    headline:
+      "Arquitetando sistemas distribuídos escaláveis e liderando produtos orientados a eventos de alto impacto.",
     description:
-      "Lidero tecnicamente o squad Experiência do Motorista na MadeiraMadeira, com foco em performance, observabilidade e código sustentável no ecossistema logístico da empresa — dos serviços em NestJS/TypeScript à orquestração de eventos em tempo real com Kafka.",
+      "Lidero tecnicamente a equipe de Experiência do Motorista na MadeiraMadeira, com foco em performance, observabilidade e código sustentável no ecossistema logístico da empresa — dos serviços em NestJS/TypeScript à orquestração de eventos em tempo real com Kafka e AWS.",
     stackLabel: "Principais tecnologias",
     projects: "Ver projetos",
     contact: "Entre em contato",
+    copyEmail: "Copiar e-mail",
+    emailCopied: "E-mail copiado!",
     stats: {
       experience: "Anos de experiência",
       certificates: "Certificações",
@@ -31,42 +35,101 @@ const translations = {
     },
   },
   skills: {
-    title: "Habilidades",
+    title: "Habilidades & Especialidades",
     description:
-      "As tecnologias que uso no dia a dia, as que estou aprofundando agora e as que pretendo explorar em seguida.",
+      "As tecnologias que uso no dia a dia, arquitetura de sistemas e áreas que domino ou estou aprofundando.",
     tabs: {
       know: "Já usei",
       studying: "Estudando",
       future: "Quero aprender",
     },
+    bento: {
+      architectureTitle: "Arquitetura Orientada a Eventos",
+      architectureDescription:
+        "Fluxo assíncrono conectando o app do motorista, API em NestJS com PostgreSQL, e barramento de eventos",
+      nodeDriverApp: "App Motorista (iShip)",
+      nodeDriverAppSub: "Flutter & Firebase",
+      nodeBff: "API Principal em NestJS",
+      nodeBffSub: "TypeScript & PostgreSQL",
+      nodeKafka: "Apache Kafka",
+      nodeKafkaSub: "Barramento de Eventos",
+      nodeCloud: "Nuvem AWS",
+      nodeCloudSub: "ECS, Lambda (Python) & Terraform",
+      yearsValue: "5+ Anos",
+      yearsExp: "Anos de engenharia contínua",
+      scaleValue: "Alta Escala",
+      systemsScale: "Eventos e logística de missão crítica",
+      locationTitle: "Base de Atuação",
+      locationValue: "Curitiba, PR — Brasil (UTC-3)",
+      liveBadge: "Ao Vivo",
+    },
   },
   projects: {
-    title: "Projetos",
+    title: "Projetos & Estudos de Caso",
     description:
-      "Projetos pessoais e de estudo, todos com o código aberto no GitHub. Cada um nasceu de um problema real que eu quis resolver ou entender melhor.",
+      "Projetos em produção na MadeiraMadeira e projetos de código aberto. Cada um nasceu de um desafio técnico real.",
+    openSourceTitle: "Projetos Pessoais & Open Source",
+    archivedBadge: "Arquivado",
+    cases: {
+      iship: {
+        badge: "Foco Atual • Tech Lead",
+        team: "MadeiraMadeira • Equipe Experiência do Motorista",
+        title: "iShip — Aplicativo e Ecossistema do Motorista",
+        subtitle:
+          "App mobile em Flutter e Firebase, orquestrado pela API principal em NestJS com PostgreSQL, cobrindo a jornada completa do motorista do CD até a entrega final.",
+        challengeTitle: "O Desafio",
+        challenge:
+          "Conectar motoristas em campo aos centros de distribuição com alta disponibilidade, integrando o app Flutter via Firebase à API principal em NestJS através de mensageria assíncrona orientada a eventos.",
+        architectureTitle: "A Arquitetura",
+        architecture:
+          "API principal em NestJS / TypeScript com banco de dados PostgreSQL, utilizando KafkaJS e Outbox pattern para comunicação assíncrona resiliente com o sistema de transporte (TMS), além de funções AWS Lambda em Python para processamentos pontuais e lógicas leves. App em Flutter com Firebase e painel web em React com Vitest e SonarCloud.",
+        resultTitle: "O Resultado",
+        result:
+          "Jornada do motorista unificada e observável de ponta a ponta, redução de tempo no pátio dos CDs e alta estabilidade operacional.",
+        tagline: "Arquitetura de Missão Crítica",
+      },
+      isend: {
+        badge: "Desenvolvedor Backend",
+        team: "MadeiraMadeira • Equipe Experiência Operacional",
+        title: "iSend — Sistema de Gestão de Transporte (TMS)",
+        subtitle:
+          "Sistema central de transporte com mais de 1.100 rotas em Laravel e PHP para expedição e controle operacional de cargas.",
+        challengeTitle: "O Desafio",
+        challenge:
+          "Manter a estabilidade, corrigir bugs complexos e implementar novas funcionalidades em um sistema de grande porte com mais de 1.100 rotas utilizado intensamente na operação diária de transportes.",
+        architectureTitle: "A Arquitetura",
+        architecture:
+          "Laravel / PHP com MySQL relacional e funções AWS Lambda em Python para tarefas isoladas e rotinas auxiliares. Implementação de pipelines de CI no GitHub Actions com checagem de coverage e integração contínua com SonarQube para análise de PRs.",
+        resultTitle: "O Resultado",
+        result:
+          "Melhoria substancial na rastreabilidade e estruturação de logs e telemetria com New Relic, otimização de performance em rotas críticas e elevação consistente da qualidade de código com testes automatizados.",
+        tagline: "Qualidade de Código & CI/CD",
+      },
+    },
     items: {
       1: {
         title: "Androxus",
-        shortDescription: "Bot para Discord em Python",
+        shortDescription: "Bot para Discord em Python com PostgreSQL",
         longDescription:
-          "Um bot desenvolvido em Python para o Discord, com comandos personalizados e lógica modular.",
+          "Bot modular desenvolvido em Python para o Discord utilizando discord.py e banco relacional PostgreSQL na AWS RDS, com comandos matemáticos e utilitários. Projeto arquivado.",
       },
       2: {
         title: "Python Stopwatch2",
-        shortDescription: "Biblioteca de medição de tempo em Python",
+        shortDescription: "Biblioteca de medição de tempo e benchmarks em Python",
         longDescription:
-          "Uma biblioteca simples e reutilizável para medir tempo de execução de blocos de código em Python. Para testes de performance, benchmarks e logs.",
+          "Biblioteca simples e reutilizável para medir tempo de execução de blocos de código em Python, com suporte a benchmarks comparativos e logs de performance.",
       },
       3: {
         title: "Pybot com Docker",
-        shortDescription: "Bot Discord com suporte a Docker",
-        longDescription: "Exemplo de estrutura para bot de Discord em Python usando Docker.",
+        shortDescription: "Código base de bot Discord com Docker e Redis",
+        longDescription:
+          "Estrutura base desenvolvida como referência didática para novos desenvolvedores criarem bots para Discord com Python, Docker Compose, PostgreSQL e Redis. Projeto arquivado.",
       },
       4: {
         title: "Stock Trader",
-        shortDescription: "Jogo de compra e venda de ações",
+        shortDescription: "Jogo de negociação de ações com Vue.js e Laravel",
         longDescription:
-          "Jogo simples criado com Vue.js no frontend e Laravel no backend, onde o usuário pode simular a compra e venda de ações de empresas fictícias, com preços variando dinamicamente.",
+          "Simulador de compra e venda de ações de empresas fictícias com frontend em Vue.js / Vuex e API REST em Laravel / PHP com documentação interativa. Projeto arquivado.",
       },
     },
   },
@@ -74,6 +137,12 @@ const translations = {
     title: "Experiência",
     description:
       "Minha trajetória profissional e acadêmica: as empresas onde atuei, os cargos que ocupei e a formação que sustenta esse percurso.",
+    progression: {
+      label: "Evolução contínua:",
+      intern: "Jovem Aprendiz",
+      fullstack: "Desenvolvedor Full Stack",
+      techlead: "Tech Lead & Sênior",
+    },
     tabs: {
       professional: "Profissional",
       academic: "Acadêmica",
@@ -90,19 +159,19 @@ const translations = {
             title: "Tech Lead",
             period: "Junho 2026 - Presente",
             description:
-              "Lidero tecnicamente a squad Experiência do Motorista, à frente do desenvolvimento do iShip — o aplicativo que acompanha o motorista do carregamento à entrega — e dos sistemas que dão suporte à operação nos centros de distribuição. Defino decisões de arquitetura, oriento o time e continuo atuando diretamente no código em NestJS/TypeScript, orquestrando eventos em tempo real com Kafka para conectar esse ecossistema ao restante da operação logística da empresa. Essa atuação foi reconhecida oficialmente em setembro de 2026, com minha promoção a Desenvolvedor Full Stack Sênior.",
+              "Lidero tecnicamente a equipe de Experiência do Motorista, à frente do desenvolvimento do iShip — o aplicativo que acompanha o motorista do carregamento à entrega — e dos sistemas que dão suporte à operação nos centros de distribuição. Defino decisões de arquitetura, oriento o time e continuo atuando diretamente no código em NestJS/TypeScript e Python (AWS Lambda), orquestrando eventos em tempo real com Kafka para conectar esse ecossistema ao restante da operação logística da empresa. Essa atuação foi reconhecida oficialmente em setembro de 2026, com minha promoção a Desenvolvedor Full Stack Sênior.",
           },
           {
             title: "Desenvolvedor Full Stack Pleno",
             period: "Junho 2025 - Maio 2026",
             description:
-              "Atuei com foco em performance, observabilidade e boas práticas de desenvolvimento, no time Experiência Operacional, por trás do iSend (TMS) da iTrack. Trabalhei para melhorar a escalabilidade e eficiência da aplicação, implementando estratégias de monitoramento com logs e métricas, refatorando trechos críticos do sistema e garantindo qualidade através de testes, documentação e revisão de arquitetura.",
+              "Atuei com foco em performance, observabilidade e boas práticas de desenvolvimento, no time Experiência Operacional, por trás do iSend (TMS) da iTrack. Trabalhei para melhorar a escalabilidade e eficiência da aplicação com mais de 1.100 rotas e lambdas em Python para tarefas auxiliares, implementando pipelines de CI no GitHub Actions com SonarQube, estruturação de logs e monitoramento, refatorando trechos críticos do sistema e garantindo qualidade com testes unitários e de integração.",
           },
           {
             title: "Desenvolvedor Full Stack Júnior",
             period: "Março 2024 - Maio 2025",
             description:
-              "Atuei no time Experiência Operacional, dedicado ao iSend — sistema de gestão de transporte (TMS) da iTrack — realizando correções de bugs, desenvolvimento de novas funcionalidades e melhorias contínuas. Trabalhei com Laravel e banco de dados relacional, além de implementar testes unitários e de integração, padronização de código e documentação. Colaborei com outros desenvolvedores para entregar soluções eficientes e sustentáveis.",
+              "Atuei no time Experiência Operacional, dedicado ao iSend — sistema de gestão de transporte (TMS) da iTrack — realizando correções de bugs, desenvolvimento de novas funcionalidades e melhorias contínuas em Laravel e MySQL. Implementei testes automatizados, padronização de código e documentação técnica em colaboração direta com a equipe.",
           },
         ],
       },
@@ -239,6 +308,47 @@ const translations = {
       github: "GitHub",
       linkedin: "LinkedIn",
     },
+  },
+  terminal: {
+    title: "Terminal Interativo",
+    description:
+      "Para desenvolvedores e recrutadores técnicos — explore comandos rápidos no navegador:",
+    placeholder: "digite um comando (ex: help, stack, contact)...",
+    shortcutsLabel: "Atalhos rápidos:",
+    availableCommands: "Comandos disponíveis:",
+    stackTitle: "Stack Primária:",
+    architectureTitle: "Ecossistema Logístico (MadeiraMadeira):",
+    trajectoryTitle: "Rafael Martins Alves — Trajetória:",
+    trajectoryItem1: "2026 - Presente: Tech Lead & Desenvolvedor Sênior @ MadeiraMadeira",
+    trajectoryItem2: "2025 - 2026: Desenvolvedor Full Stack Pleno @ MadeiraMadeira",
+    trajectoryItem3: "2024 - 2025: Desenvolvedor Full Stack Júnior @ MadeiraMadeira",
+    trajectoryItem4: "2021 - 2024: Coordenador de TI / Desenvolvedor Full Stack @ Adam Robo",
+    channelsTitle: "Canais Diretos:",
+    unknownCommand: 'Comando não reconhecido: "{command}". Digite "help" para ver as opções.',
+    rootDenied: "Acesso root negado: você já possui privilégios de visitante especial!",
+    helpStack: "Tecnologias e ferramentas principais",
+    helpArchitecture: "Visão da arquitetura de eventos",
+    helpExperience: "Posição atual e trajetória",
+    helpContact: "Informações diretas de contato",
+    helpCv: "Resumo do currículo técnico",
+    helpClear: "Limpar tela do terminal",
+    stackBackend: "Backend: NestJS, TypeScript, Node.js, PHP, Laravel, Python",
+    stackMessaging: "Mensageria & Eventos: Apache Kafka, RabbitMQ",
+    stackCloud:
+      "Cloud & DevOps: AWS (ECS, Lambda, RDS, SQS), Terraform, Docker, GitHub Actions, Linux",
+    stackDatabases: "Bancos de Dados: PostgreSQL, MySQL, Redis",
+    stackFrontend: "Frontend: Next.js, React, Tailwind CSS, TypeScript",
+    archDriverTelemetry:
+      "App Motorista (iShip) em Flutter & Firebase ➔ API em NestJS com PostgreSQL",
+    archStreaming: "Streaming assíncrono: Tópicos de eventos no Apache Kafka",
+    archProcessing: "Processamento: Serviços distribuídos desacoplados e resilientes",
+    archInfra:
+      "Infraestrutura: Nuvem AWS (ECS, Lambda em Python, Terraform) com observabilidade contínua",
+    cvTitle: "Tech Lead & Arquiteto de Software | Curitiba, PR",
+    cvSpecialty:
+      "Especialidade: Sistemas distribuídos, APIs em NestJS com PostgreSQL, Lambdas em Python, Kafka e Nuvem AWS (Terraform/ECS).",
+    cvEducation: "Formação: Bacharelado em Engenharia de Software (Universidade Positivo)",
+    cvStatus: "Status: Disponível para liderança técnica e projetos de alto impacto",
   },
   footer: {
     rights: "Todos os direitos reservados.",
