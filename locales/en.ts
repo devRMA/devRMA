@@ -314,6 +314,7 @@ const translations = {
     description:
       "For developers and technical recruiters — explore CLI commands right in your browser:",
     placeholder: "type a command (e.g. help, stack, contact)...",
+    commandAriaLabel: "Terminal command",
     shortcutsLabel: "Quick shortcuts:",
     availableCommands: "Available commands:",
     stackTitle: "Primary Stack:",

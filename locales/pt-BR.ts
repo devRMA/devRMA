@@ -314,6 +314,7 @@ const translations = {
     description:
       "Para desenvolvedores e recrutadores técnicos — explore comandos rápidos no navegador:",
     placeholder: "digite um comando (ex: help, stack, contact)...",
+    commandAriaLabel: "Comando de terminal",
     shortcutsLabel: "Atalhos rápidos:",
     availableCommands: "Comandos disponíveis:",
     stackTitle: "Stack Primária:",

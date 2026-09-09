@@ -10,6 +10,7 @@ type Language = "pt-BR" | "en";
 type LanguageContextType = {
   language: Language;
   setLanguage: (lang: Language) => void;
+  translate: (key: string, params?: Record<string, string>) => string;
   t: (key: string, params?: Record<string, string>) => string;
 };
 
@@ -45,15 +46,15 @@ export function LanguageProvider({ children }: Readonly<{ children: React.ReactN
     document.documentElement.lang = languageState;
   }, [languageState]);
 
-  const t = useCallback(
+  const translate = useCallback(
     (key: string, params?: Record<string, string>): string => {
       try {
         const keys = key.split(".");
         let result: unknown = translations[languageState];
 
-        for (const k of keys) {
-          if (result && typeof result === "object" && k in result) {
-            result = (result as Record<string, unknown>)[k];
+        for (const segmentKey of keys) {
+          if (result && typeof result === "object" && segmentKey in result) {
+            result = (result as Record<string, unknown>)[segmentKey];
           } else {
             return warnAndFallBackToKey(key, languageState);
           }
@@ -86,8 +87,8 @@ export function LanguageProvider({ children }: Readonly<{ children: React.ReactN
   }, []);
 
   const contextValue = useMemo(
-    () => ({ language: languageState, setLanguage, t }),
-    [languageState, setLanguage, t],
+    () => ({ language: languageState, setLanguage, translate, t: translate }),
+    [languageState, setLanguage, translate],
   );
 
   return <LanguageContext.Provider value={contextValue}>{children}</LanguageContext.Provider>;
