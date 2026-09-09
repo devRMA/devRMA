@@ -24,7 +24,7 @@ type CertificateCategory = keyof typeof certificatesData;
 type Certificate = (typeof certificatesData)[CertificateCategory][number];
 
 export function CertificatesSection() {
-  const { t } = useLanguage();
+  const { t: translate } = useLanguage();
   const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
 
   return (
@@ -35,36 +35,40 @@ export function CertificatesSection() {
     >
       <SectionHeading
         id="certificates-heading"
-        title={t("certificates.title")}
-        description={t("certificates.description")}
+        title={translate("certificates.title")}
+        description={translate("certificates.description")}
       />
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        transition={{ duration: 0.3, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
       >
         <Tabs defaultValue="frontend" className="w-full">
-          <TabsList className="mb-8 flex w-full flex-wrap">
+          <TabsList className="mb-6 flex w-full flex-wrap rounded-2xl border border-border/70 bg-card/40 p-1.5 backdrop-blur-xl">
             {(Object.keys(certificatesData) as CertificateCategory[]).map((category) => (
-              <TabsTrigger key={category} value={category} className="flex-1">
-                {t(`certificates.tabs.${category}`)}
+              <TabsTrigger
+                key={category}
+                value={category}
+                className="flex-1 rounded-xl font-mono text-xs py-2.5 transition-all data-[state=active]:bg-card data-[state=active]:text-primary data-[state=active]:shadow-sm"
+              >
+                {translate(`certificates.tabs.${category}`)}
               </TabsTrigger>
             ))}
           </TabsList>
 
           {(Object.keys(certificatesData) as CertificateCategory[]).map((category) => (
             <TabsContent key={category} value={category}>
-              <Card>
-                <CardContent className="p-6 overflow-hidden">
+              <Card className="rounded-2xl md:rounded-3xl border-border/80 bg-card/50 backdrop-blur-xl shadow-lg">
+                <CardContent className="p-6 md:p-8 overflow-hidden">
                   <Marquee>
                     {certificatesData[category].map((certificate) => (
                       <CertificateCard
                         key={certificate.id}
                         id={certificate.id}
-                        title={t(`certificates.items.${certificate.id}.title`)}
-                        issuer={t(`certificates.items.${certificate.id}.issuer`)}
+                        title={translate(`certificates.items.${certificate.id}.title`)}
+                        issuer={translate(`certificates.items.${certificate.id}.issuer`)}
                         date={certificate.date}
                         thumbnail={certificate.thumbnail}
                         onClick={() => setSelectedCertificate(certificate)}
@@ -86,16 +90,18 @@ export function CertificatesSection() {
           {selectedCertificate && (
             <>
               <DialogHeader>
-                <DialogTitle>{t(`certificates.items.${selectedCertificate.id}.title`)}</DialogTitle>
+                <DialogTitle>
+                  {translate(`certificates.items.${selectedCertificate.id}.title`)}
+                </DialogTitle>
                 <DialogDescription>
-                  {t(`certificates.items.${selectedCertificate.id}.issuer`)} •{" "}
+                  {translate(`certificates.items.${selectedCertificate.id}.issuer`)} •{" "}
                   {selectedCertificate.date}
                 </DialogDescription>
               </DialogHeader>
               <div className="relative h-[60vh] w-full">
                 <Image
                   src={selectedCertificate.image || "/placeholder.svg?height=600&width=800"}
-                  alt={t(`certificates.items.${selectedCertificate.id}.title`)}
+                  alt={translate(`certificates.items.${selectedCertificate.id}.title`)}
                   fill
                   sizes="(max-width: 768px) 100vw, 768px"
                   className="object-contain"
@@ -106,7 +112,7 @@ export function CertificatesSection() {
                   <Button asChild>
                     <a href={selectedCertificate.url} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="mr-2 h-4 w-4" aria-hidden="true" />
-                      {t("certificates.verify")}
+                      {translate("certificates.verify")}
                     </a>
                   </Button>
                 )}

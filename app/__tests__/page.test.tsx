@@ -41,8 +41,8 @@ describe("Home Page", () => {
 
     const sections = [
       "hero-section",
-      "skills-section",
       "projects-section",
+      "skills-section",
       "experience-section",
       "certificates-section",
       "contact-section",

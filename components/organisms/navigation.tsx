@@ -11,26 +11,26 @@ interface NavigationProps {
   className?: string;
 }
 
-const NAV_SECTIONS = ["about", "skills", "projects", "experience", "certificates", "contact"];
+const NAV_SECTIONS = ["about", "projects", "skills", "experience", "certificates", "contact"];
 
 export function Navigation({ className }: Readonly<NavigationProps>) {
-  const { t } = useLanguage();
+  const { t: translate } = useLanguage();
 
   const activeSection = useActiveSection(NAV_SECTIONS);
 
-  const navItems = NAV_SECTIONS.map((id) => ({
-    href: `#${id}`,
-    label: t(`nav.${id}`),
-    id,
+  const navItems = NAV_SECTIONS.map((sectionIdentifier) => ({
+    href: `#${sectionIdentifier}`,
+    label: translate(`nav.${sectionIdentifier}`),
+    id: sectionIdentifier,
   }));
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
+  const handleNavClick = (clickEvent: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    clickEvent.preventDefault();
     const targetId = href.replace("#", "");
-    const element = document.getElementById(targetId);
+    const targetElement = document.getElementById(targetId);
 
-    if (element) {
-      element.scrollIntoView({
+    if (targetElement) {
+      targetElement.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
@@ -41,7 +41,7 @@ export function Navigation({ className }: Readonly<NavigationProps>) {
 
   return (
     <>
-      <nav className={className} aria-label={t("a11y.mobileNavigation")}>
+      <nav className={className} aria-label={translate("a11y.mobileNavigation")}>
         {navItems.map((item) => (
           <NavItem
             key={item.href}

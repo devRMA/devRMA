@@ -11,7 +11,7 @@ import { Navigation } from "@/components/organisms/navigation";
 import { cn } from "@/lib/utils";
 
 export function Header() {
-  const { t } = useLanguage();
+  const { t: translate } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -26,26 +26,26 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
-        isScrolled ? "bg-background/80 backdrop-blur-md border-b" : "bg-transparent",
+        "sticky top-0 z-50 w-full transition-[background-color,border-color,box-shadow] duration-200 ease-out",
+        isScrolled ? "bg-background/80 backdrop-blur-xl border-b shadow-sm" : "bg-transparent",
       )}
     >
-      <div className="container-page flex h-16 items-center justify-between gap-2">
+      <div className="container-page flex h-16 items-center justify-between gap-3">
         <Logo />
 
-        <Navigation className="hidden md:flex items-center gap-6 relative" />
+        <Navigation className="hidden md:flex items-center gap-6 relative rounded-full border border-border/60 bg-card/60 px-5 py-1.5 backdrop-blur-md" />
 
         <div className="flex items-center gap-2">
           <span className="hidden items-center gap-2 sm:flex">
             <SocialIcon
               href="https://github.com/devRMA"
               icon={Github}
-              label={t("a11y.githubProfile")}
+              label={translate("a11y.githubProfile")}
             />
             <SocialIcon
               href="https://linkedin.com/in/devRMA"
               icon={Linkedin}
-              label={t("a11y.linkedinProfile")}
+              label={translate("a11y.linkedinProfile")}
             />
           </span>
           <LanguageToggle />

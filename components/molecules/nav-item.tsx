@@ -9,27 +9,27 @@ interface NavItemProps {
   href: string;
   label: string;
   isActive: boolean;
-  onClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
+  onClick: (clickEvent: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
 }
 
 export function NavItem({ href, label, isActive, onClick }: Readonly<NavItemProps>) {
   return (
     <Link
       href={href}
-      onClick={(e) => onClick(e, href)}
+      onClick={(clickEvent) => onClick(clickEvent, href)}
       className={cn(
-        "text-sm font-medium transition-colors relative py-1",
-        isActive ? "text-primary" : "text-foreground/70 hover:text-foreground",
+        "text-sm font-medium transition-colors relative px-3 py-1 rounded-full",
+        isActive ? "text-primary font-semibold" : "text-foreground/70 hover:text-foreground",
       )}
     >
-      {label}
+      <span className="relative z-10">{label}</span>
       {isActive && (
         <motion.div
           layoutId="activeSection"
-          className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+          className="absolute inset-0 rounded-full bg-primary/10 border border-primary/25 shadow-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
+          transition={{ type: "spring", bounce: 0.15, duration: 0.35 }}
         />
       )}
     </Link>

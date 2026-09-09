@@ -39,8 +39,17 @@ export const experienceData: Company[] = [
         period: "June 2026 - Present",
         startDate: "2026-06-01",
         description:
-          "I lead the Driver Experience squad, driving development of iShip — the app that follows drivers from loading to final delivery — along with the systems that support operations at our distribution centers. I define architecture decisions, guide the team, and stay hands-on in the code with NestJS/TypeScript, orchestrating real-time events with Kafka to connect this ecosystem to the rest of the company's logistics operation. This role was formally recognized in September 2026 with my promotion to Senior Full Stack Developer.",
-        technologies: ["NestJS", "TypeScript", "Kafka", "PostgreSQL", "MySQL", "AWS", "Docker"],
+          "I technically lead the Driver Experience team, driving the iShip ecosystem and operational tools at distribution centers (including the Driver Scale web panel in React 19). I manage quarterly capacity planning and scope simplification with PM and Product Designer for predictable deliveries. I lead proactive incident triage and diagnostics using New Relic, direct database queries, and Microsoft Clarity before engaging the squad. Hands-on in NestJS/TypeScript backend development, creating Kafka producers and consumers with Avro schema contracts, and Python AWS Lambdas for scheduled calculations and legacy integrations.",
+        technologies: [
+          "NestJS",
+          "TypeScript",
+          "Kafka",
+          "PostgreSQL",
+          "MySQL",
+          "AWS",
+          "Docker",
+          "Python",
+        ],
       },
       {
         title: "Full Stack Developer",

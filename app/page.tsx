@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <MainLayout>
       <HeroSection />
-      <SkillsSection />
       <ProjectsSection />
+      <SkillsSection />
       <ExperienceSection />
       <CertificatesSection />
       <ContactSection />

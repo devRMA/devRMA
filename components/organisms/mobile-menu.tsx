@@ -18,13 +18,13 @@ type NavItem = {
 interface MobileMenuProps {
   navItems: NavItem[];
   activeSection: string | null;
-  onNavClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
+  onNavClick: (clickEvent: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
 }
 
 export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<MobileMenuProps>) {
   const [isOpen, setIsOpen] = useState(false);
   const { isTouchDevice } = useMobile();
-  const { t } = useLanguage();
+  const { t: translate } = useLanguage();
   const panelId = useId();
   const triggerRef = useRef<HTMLButtonElement>(null);
 
@@ -57,8 +57,8 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
     }
   };
 
-  const handleNavItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    onNavClick(e, href);
+  const handleNavItemClick = (clickEvent: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    onNavClick(clickEvent, href);
     setIsOpen(false);
     if (navigator.vibrate && isTouchDevice) {
       navigator.vibrate(5);
@@ -70,9 +70,10 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
       opacity: 0,
       height: 0,
       transition: {
-        duration: 0.3,
+        duration: 0.2,
+        ease: [0.32, 0.72, 0, 1] as const,
         when: "afterChildren",
-        staggerChildren: 0.05,
+        staggerChildren: 0.03,
         staggerDirection: -1,
       },
     },
@@ -80,17 +81,22 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
       opacity: 1,
       height: "auto",
       transition: {
-        duration: 0.3,
+        duration: 0.25,
+        ease: [0.32, 0.72, 0, 1] as const,
         when: "beforeChildren",
-        staggerChildren: 0.05,
+        staggerChildren: 0.04,
         staggerDirection: 1,
       },
     },
   };
 
   const itemVariants = {
-    closed: { opacity: 0, x: -20 },
-    open: { opacity: 1, x: 0 },
+    closed: { opacity: 0, x: -12 },
+    open: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.2, ease: [0.23, 1, 0.32, 1] as const },
+    },
   };
 
   return (
@@ -100,7 +106,7 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
         variant="ghost"
         size="icon"
         onClick={toggleMenu}
-        aria-label={isOpen ? t("a11y.closeMenu") : t("a11y.openMenu")}
+        aria-label={isOpen ? translate("a11y.closeMenu") : translate("a11y.openMenu")}
         aria-expanded={isOpen}
         aria-controls={panelId}
         className="relative overflow-hidden"
@@ -112,7 +118,7 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
               initial={{ rotate: -90, opacity: 0 }}
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
             >
               <X className="h-5 w-5" aria-hidden="true" />
             </motion.div>
@@ -122,7 +128,7 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
               initial={{ rotate: 90, opacity: 0 }}
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: -90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
             >
               <Menu className="h-5 w-5" aria-hidden="true" />
             </motion.div>
@@ -134,13 +140,13 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
         {isOpen && (
           <motion.div
             id={panelId}
-            className="absolute top-16 left-0 right-0 bg-background border-b z-50"
+            className="absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-xl border-b z-50 shadow-xl"
             initial="closed"
             animate="open"
             exit="closed"
             variants={menuVariants}
           >
-            <nav className="flex flex-col p-4" aria-label={t("a11y.mobileNavigation")}>
+            <nav className="flex flex-col p-4" aria-label={translate("a11y.mobileNavigation")}>
               {navItems.map((item) => (
                 <motion.div key={item.href} variants={itemVariants}>
                   <MobileNavItem

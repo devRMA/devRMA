@@ -1,0 +1,317 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-08T22:46:00Z",
+  "title": "Design System: devRMA Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Signal Electric Blue / Cyan Flux",
+        "canonical": "#0ea5e9",
+        "tonalRamp": [
+          "#082f49",
+          "#0c4a6e",
+          "#0369a1",
+          "#0284c7",
+          "#0ea5e9",
+          "#38bdf8",
+          "#7dd3fc",
+          "#e0f2fe"
+        ]
+      },
+      "secondary": {
+        "role": "secondary",
+        "displayName": "Deep Circuit Slate",
+        "canonical": "#1e222b",
+        "tonalRamp": [
+          "#090b10",
+          "#12151d",
+          "#1e222b",
+          "#272c38",
+          "#394050",
+          "#5f6d7e",
+          "#97a3b3",
+          "#dbe9fe"
+        ]
+      },
+      "background": {
+        "role": "neutral",
+        "displayName": "Obsidian Dark Void",
+        "canonical": "#090b10",
+        "tonalRamp": [
+          "#040507",
+          "#090b10",
+          "#12151d",
+          "#1a1f28",
+          "#272c38",
+          "#454e60",
+          "#718fa8",
+          "#f7f9fc"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "Midnight Card Surface",
+        "canonical": "#12151d",
+        "tonalRamp": [
+          "#090b10",
+          "#12151d",
+          "#1b202c",
+          "#272c38",
+          "#3b4456",
+          "#6c7990",
+          "#a3b8cc",
+          "#ffffff"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Precision Wire Border",
+        "canonical": "#272c38",
+        "tonalRamp": [
+          "#12151d",
+          "#1e222b",
+          "#272c38",
+          "#394050",
+          "#525c70",
+          "#718fa8",
+          "#a3b8cc",
+          "#cbd5e1"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Crisp Slate White",
+        "canonical": "#f1f5f9",
+        "tonalRamp": [
+          "#0f172a",
+          "#1e293b",
+          "#334155",
+          "#475569",
+          "#64748b",
+          "#94a3b8",
+          "#cbd5e1",
+          "#f1f5f9"
+        ]
+      },
+      "accent-cyan": {
+        "role": "tertiary",
+        "displayName": "Telemetry Cyan",
+        "canonical": "#06b6d4",
+        "tonalRamp": [
+          "#164e63",
+          "#155e75",
+          "#0e7490",
+          "#0891b2",
+          "#06b6d4",
+          "#22d3ee",
+          "#67e8f9",
+          "#cffafe"
+        ]
+      },
+      "accent-amber": {
+        "role": "tertiary",
+        "displayName": "Telemetry Amber",
+        "canonical": "#f59e0b",
+        "tonalRamp": [
+          "#78350f",
+          "#92400e",
+          "#b45309",
+          "#d97706",
+          "#f59e0b",
+          "#fbbf24",
+          "#fde68a",
+          "#fef3c7"
+        ]
+      },
+      "accent-emerald": {
+        "role": "tertiary",
+        "displayName": "Telemetry Emerald",
+        "canonical": "#10b981",
+        "tonalRamp": [
+          "#064e3b",
+          "#065f46",
+          "#047857",
+          "#059669",
+          "#10b981",
+          "#34d399",
+          "#6ee7b7",
+          "#d1fae5"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero statements and candidate identity headline."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Primary section titles across major portfolio landmarks."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Case study names, company roles, and card headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Architecture narratives, role achievements, and technical descriptions."
+      },
+      "label": {
+        "displayName": "Label / Mono",
+        "purpose": "Monospace metrics, timestamps, tech stack pills, and status indicators."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ambient-rest",
+        "value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+        "purpose": "Default baseline card elevation at rest."
+      },
+      {
+        "name": "lift-hover",
+        "value": "0 4px 12px -2px rgba(0, 0, 0, 0.15)",
+        "purpose": "Elevated hover state on interactive cards and triggers."
+      },
+      {
+        "name": "primary-glow",
+        "value": "0 8px 24px -4px rgba(14, 165, 233, 0.25)",
+        "purpose": "Subtle focused glow for primary action buttons."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Quartic decelerate for snappy hover transitions and modal reveals."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "Smooth acceleration curve for continuous animations."
+      },
+      {
+        "name": "duration-fast",
+        "value": "150ms",
+        "purpose": "Micro-interactions, button presses, and tab shifts."
+      },
+      {
+        "name": "duration-normal",
+        "value": "200ms",
+        "purpose": "Card hover lifts and border color transitions."
+      },
+      {
+        "name": "duration-flow",
+        "value": "500ms",
+        "purpose": "Section enter animations and image reveal fade-ins."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "2xl", "value": "1400px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "High-priority call-to-action button with electric blue fill and subtle glow.",
+      "html": "<button class=\"ds-btn-primary\">View Projects</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; font-weight: 600; color: #ffffff; background-color: #0ea5e9; border: none; border-radius: 12px; box-shadow: 0 4px 12px -2px rgba(14, 165, 233, 0.3); cursor: pointer; transition: background-color 0.15s ease-out, transform 0.15s ease-out; } .ds-btn-primary:hover { background-color: #0284c7; transform: translateY(-1px); } .ds-btn-primary:active { transform: scale(0.97); }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action button with translucent wire border and subtle hover fill.",
+      "html": "<button class=\"ds-btn-outline\">Get in Touch</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; font-weight: 500; color: #f1f5f9; background-color: transparent; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; cursor: pointer; transition: background-color 0.15s ease-out, border-color 0.15s ease-out, transform 0.15s ease-out; } .ds-btn-outline:hover { background-color: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.3); transform: translateY(-1px); } .ds-btn-outline:active { transform: scale(0.97); }"
+    },
+    {
+      "name": "Frosted Glass Card",
+      "kind": "card",
+      "refersTo": "card-surface",
+      "description": "Layered container with backdrop blur, 1px border lighting, and interactive hover lift.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-title\">Event-Driven Flow</div><p class=\"ds-card-body\">High-throughput Kafka streaming pipeline connected to NestJS microservices.</p></div>",
+      "css": ".ds-card { background: rgba(18, 21, 29, 0.7); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 24px; color: #f1f5f9; transition: border-color 0.2s ease-out, transform 0.2s ease-out, box-shadow 0.2s ease-out; } .ds-card:hover { border-color: rgba(14, 165, 233, 0.4); transform: translateY(-2px); box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.3); } .ds-card-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 18px; font-weight: 600; margin-bottom: 8px; color: #f1f5f9; } .ds-card-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; line-height: 1.5; color: #97a3b3; margin: 0; }"
+    },
+    {
+      "name": "Live Status Pill",
+      "kind": "chip",
+      "refersTo": "badge-pill",
+      "description": "Operational indicator with pulsing live telemetry dot.",
+      "html": "<div class=\"ds-badge\"><span class=\"ds-badge-dot\"></span><span>Tech Lead @ MadeiraMadeira</span></div>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; background: rgba(14, 165, 233, 0.1); border: 1px solid rgba(14, 165, 233, 0.3); border-radius: 9999px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace; font-size: 12px; font-weight: 500; color: #0ea5e9; } .ds-badge-dot { width: 6px; height: 6px; background-color: #0ea5e9; border-radius: 9999px; box-shadow: 0 0 8px #0ea5e9; }"
+    },
+    {
+      "name": "Tech Stack Tag",
+      "kind": "chip",
+      "refersTo": "badge-pill",
+      "description": "Compact monospace badge for skills, dependencies, and frameworks.",
+      "html": "<span class=\"ds-tag\">Kafka</span>",
+      "css": ".ds-tag { display: inline-block; padding: 3px 8px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace; font-size: 12px; color: #97a3b3; background: rgba(30, 34, 43, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; transition: border-color 0.15s, color 0.15s, transform 0.15s; } .ds-tag:hover { border-color: rgba(14, 165, 233, 0.5); color: #f1f5f9; transform: translateY(-1px); }"
+    },
+    {
+      "name": "Floating Capsule Navigation",
+      "kind": "nav",
+      "refersTo": "nav-capsule",
+      "description": "Pill-shaped floating navigation bar with frosted glass background.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#about\" class=\"ds-nav-link ds-nav-link-active\">About</a><a href=\"#skills\" class=\"ds-nav-link\">Skills</a><a href=\"#projects\" class=\"ds-nav-link\">Projects</a><a href=\"#experience\" class=\"ds-nav-link\">Experience</a></nav>",
+      "css": ".ds-nav { display: inline-flex; align-items: center; gap: 20px; padding: 6px 20px; background: rgba(18, 21, 29, 0.65); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 9999px; } .ds-nav-link { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; font-weight: 500; color: #97a3b3; text-decoration: none; transition: color 0.15s ease-out; } .ds-nav-link:hover { color: #f1f5f9; } .ds-nav-link-active { color: #0ea5e9; font-weight: 600; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Distributed Systems Terminal",
+    "overview": "The visual language reflects an instrument-grade, high-reliability engineering control room. Deep slate and obsidian backgrounds provide a calm, low-glare canvas where signal cyan and electric blue pulses guide attention with intentional hierarchy. Monospaced indicators, timestamp clocks, and event-flow diagrams are not decorative motifs — they function as authentic telemetry that anchors technical credibility and architectural mastery. Craft is communicated through restraint, precision, and tactile responsiveness.",
+    "keyCharacteristics": [
+      "Deep obsidian and slate canvases paired with high-contrast, crystal-clear typography.",
+      "Electric cyan/blue signals reserved strictly for active states, key affordances, and real-time telemetry.",
+      "Purposeful dual-font hierarchy: Inter for crisp, accessible human prose; JetBrains Mono for metrics, code architectures, timestamps, and badges.",
+      "Frosted glass containers (backdrop-blur-xl) with 1px border lighting that reacts to cursor proximity and hover states.",
+      "Micro-interactions built with physical feedback: 0.97 scale tap feedback, 0.5px hover elevation, and immediate status confirmations."
+    ],
+    "rules": [
+      {
+        "name": "The Signal Rarity Rule",
+        "body": "Primary electric blue and cyan are strictly rationed to interactive triggers, active tabs, and telemetry focal points. They occupy less than 10% of any viewport to preserve high signal-to-noise ratio.",
+        "section": "colors"
+      },
+      {
+        "name": "The Wireframe Contrast Rule",
+        "body": "Surface boundaries never rely on opaque solid block colors; they are defined by 1px translucent borders with subtle hover illumination.",
+        "section": "colors"
+      },
+      {
+        "name": "The Technical Anchor Rule",
+        "body": "Monospaced numbers, dates, tech stacks, and badges anchor qualitative headings, grounding narrative statements in precise technical syntax.",
+        "section": "typography"
+      },
+      {
+        "name": "The 70ch Prose Rule",
+        "body": "Long-form project narratives, challenges, and architecture explanations never exceed 75 characters per line to maintain effortless readability.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ambient Rest Rule",
+        "body": "Surfaces rest flat with frosted backdrop blur and 1px borders; shadows awaken strictly on hover and active focus states.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do anchor qualitative claims with monospaced statistics, verifiable tech stacks, and architecture case studies.",
+      "Do maintain smooth quartic deceleration (cubic-bezier(0.23, 1, 0.32, 1)) across all hover and layout transitions.",
+      "Do strictly support prefers-reduced-motion: reduce by suppressing infinite pulse loops and keyframe carousels.",
+      "Do maintain minimum 44x44px touch targets for all interactive icons, buttons, and switches on mobile screens."
+    ],
+    "donts": [
+      "Don't use solid pure black (#000000) for surfaces; use layered obsidian tones (#090b10, #12151d) with 1px translucent borders.",
+      "Don't decorate with generic stock illustrations, cartoon avatars, or decorative fluff; let real system topology and verifiable career milestones tell the story.",
+      "Don't allow accent colors (cyan, amber, emerald) to clash simultaneously; reserve electric blue/cyan for primary focus and use others contextually for telemetry.",
+      "Don't break bilingual parity (pt-BR and en) when introducing new components or section revisions."
+    ]
+  }
+}

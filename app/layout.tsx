@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import type React from "react";
 import { LanguageProvider } from "@/components/language-provider";
 import { MotionProvider } from "@/components/motion-provider";
+import { PerformanceProvider } from "@/components/performance-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
@@ -24,9 +25,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const SITE_URL = "https://devrma.com";
-const TITLE = "Rafael Martins Alves | Desenvolvedor Full Stack";
+const TITLE = "Rafael Martins Alves | Tech Lead & Arquiteto de Sistemas";
 const DESCRIPTION =
-  "Desenvolvedor Full Stack com foco em Laravel, PHP, TypeScript e AWS. Construo sistemas escaláveis, observáveis e bem testados — hoje na MadeiraMadeira.";
+  "Tech Lead na MadeiraMadeira. Especialista em arquitetura orientada a eventos (Kafka), APIs e serviços em NestJS, logística de alta escala e nuvem AWS.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -40,15 +41,18 @@ export const metadata: Metadata = {
   keywords: [
     "Rafael Martins Alves",
     "devRMA",
-    "desenvolvedor full stack",
-    "full stack developer",
+    "Tech Lead",
+    "Arquiteto de Sistemas",
+    "Kafka",
+    "NestJS",
+    "Sistemas Distribuídos",
+    "Event-Driven Architecture",
+    "TypeScript",
+    "AWS",
+    "Docker",
     "Laravel",
     "PHP",
-    "TypeScript",
     "Next.js",
-    "React",
-    "Python",
-    "AWS",
     "Curitiba",
   ],
   authors: [{ name: "Rafael Martins Alves", url: "https://github.com/devRMA" }],
@@ -94,7 +98,7 @@ export const viewport: Viewport = {
   colorScheme: "light dark",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#f7f9fc" },
-    { media: "(prefers-color-scheme: dark)", color: "#12141a" },
+    { media: "(prefers-color-scheme: dark)", color: "#090b10" },
   ],
 };
 
@@ -106,7 +110,7 @@ const personSchema = {
   alternateName: "devRMA",
   url: SITE_URL,
   sameAs: ["https://github.com/devRMA", "https://linkedin.com/in/devRMA"],
-  jobTitle: "Desenvolvedor Full Stack",
+  jobTitle: "Tech Lead & Arquiteto de Sistemas",
   email: "mailto:contact@devrma.com",
   image: `${SITE_URL}/rafael-martins-alves.jpg`,
   description: DESCRIPTION,
@@ -120,14 +124,18 @@ const personSchema = {
     { "@type": "EducationalOrganization", name: "SENAI Dr. Celso Charuri" },
   ],
   knowsAbout: [
+    "NestJS",
+    "TypeScript",
+    "Kafka",
+    "AWS",
+    "Docker",
+    "Event-Driven Architecture",
+    "Distributed Systems",
     "Laravel",
     "PHP",
-    "TypeScript",
     "Next.js",
     "React",
     "Python",
-    "Docker",
-    "AWS",
     "PostgreSQL",
     "CI/CD",
   ],
@@ -175,9 +183,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LanguageProvider>
-            <MotionProvider>{children}</MotionProvider>
-          </LanguageProvider>
+          <PerformanceProvider>
+            <LanguageProvider>
+              <MotionProvider>{children}</MotionProvider>
+            </LanguageProvider>
+          </PerformanceProvider>
         </ThemeProvider>
       </body>
     </html>

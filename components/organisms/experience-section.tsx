@@ -1,7 +1,14 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Briefcase, Building, Calendar, ChevronDown, ChevronUp, GraduationCap } from "lucide-react";
+import {
+  Briefcase,
+  Building,
+  Calendar,
+  ChevronDown,
+  GraduationCap,
+  TrendingUp,
+} from "lucide-react";
 import { useMemo, useState } from "react";
 import { SectionHeading } from "@/components/atoms/section-heading";
 import { useLanguage } from "@/components/language-provider";
@@ -11,9 +18,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { academicData, experienceData } from "@/data/experience";
 import { formatDurationRange } from "@/lib/duration";
+import { cn } from "@/lib/utils";
 
 export function ExperienceSection() {
-  const { t, language } = useLanguage();
+  const { t: translate, language } = useLanguage();
   const [expandedCompanies, setExpandedCompanies] = useState<string[]>([]);
   const durationConfig = useMemo(() => ({ locale: language }), [language]);
 
@@ -26,26 +34,28 @@ export function ExperienceSection() {
       return undefined;
     }
 
-    return company.positions.reduce<string | undefined>((latest, position) => {
+    return company.positions.reduce<string | undefined>((latestDate, position) => {
       if (!position.endDate) {
-        return latest;
+        return latestDate;
       }
 
-      if (!latest) {
+      if (!latestDate) {
         return position.endDate;
       }
 
-      return new Date(position.endDate) > new Date(latest) ? position.endDate : latest;
+      return new Date(position.endDate) > new Date(latestDate) ? position.endDate : latestDate;
     }, undefined);
   };
 
-  const toggleCompany = (companyId: string) => {
-    setExpandedCompanies((prev) =>
-      prev.includes(companyId) ? prev.filter((id) => id !== companyId) : [...prev, companyId],
+  const toggleCompany = (companyIdentifier: string) => {
+    setExpandedCompanies((previousExpandedCompanies) =>
+      previousExpandedCompanies.includes(companyIdentifier)
+        ? previousExpandedCompanies.filter((identifier) => identifier !== companyIdentifier)
+        : [...previousExpandedCompanies, companyIdentifier],
     );
   };
 
-  const isExpanded = (companyId: string) => expandedCompanies.includes(companyId);
+  const isExpanded = (companyIdentifier: string) => expandedCompanies.includes(companyIdentifier);
 
   return (
     <section
@@ -55,25 +65,49 @@ export function ExperienceSection() {
     >
       <SectionHeading
         id="experience-heading"
-        title={t("experience.title")}
-        description={t("experience.description")}
+        title={translate("experience.title")}
+        description={translate("experience.description")}
       />
 
+      <div className="mb-10 flex justify-center">
+        <div className="inline-flex flex-wrap items-center justify-center gap-2.5 rounded-full border border-border/80 bg-card/60 px-5 py-2 text-xs font-mono text-muted-foreground shadow-sm backdrop-blur-md">
+          <TrendingUp className="h-3.5 w-3.5 text-cyan-400" aria-hidden="true" />
+          <span className="text-zinc-400">{translate("experience.progression.label")}</span>
+          <span className="font-semibold text-foreground">
+            {translate("experience.progression.intern")}
+          </span>
+          <span className="text-cyan-500">➔</span>
+          <span className="font-semibold text-foreground">
+            {translate("experience.progression.fullstack")}
+          </span>
+          <span className="text-cyan-500">➔</span>
+          <span className="font-bold text-cyan-400">
+            {translate("experience.progression.techlead")}
+          </span>
+        </div>
+      </div>
+
       <Tabs defaultValue="professional" className="w-full">
-        <TabsList className="mb-8 flex w-full flex-wrap">
-          <TabsTrigger value="professional" className="flex flex-1 items-center gap-2">
+        <TabsList className="mb-8 flex w-full flex-wrap rounded-2xl border border-border/70 bg-card/40 p-1.5 backdrop-blur-xl">
+          <TabsTrigger
+            value="professional"
+            className="flex flex-1 items-center justify-center gap-2 rounded-xl py-2.5 font-mono text-xs transition-all data-[state=active]:bg-card data-[state=active]:text-primary data-[state=active]:shadow-sm"
+          >
             <Briefcase className="h-4 w-4" aria-hidden="true" />
-            {t("experience.tabs.professional")}
+            {translate("experience.tabs.professional")}
           </TabsTrigger>
-          <TabsTrigger value="academic" className="flex flex-1 items-center gap-2">
+          <TabsTrigger
+            value="academic"
+            className="flex flex-1 items-center justify-center gap-2 rounded-xl py-2.5 font-mono text-xs transition-all data-[state=active]:bg-card data-[state=active]:text-primary data-[state=active]:shadow-sm"
+          >
             <GraduationCap className="h-4 w-4" aria-hidden="true" />
-            {t("experience.tabs.academic")}
+            {translate("experience.tabs.academic")}
           </TabsTrigger>
         </TabsList>
 
         <TabsContent value="professional">
-          <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
-            {experienceData.map((company, index) => {
+          <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-px before:bg-gradient-to-b before:from-cyan-500/70 before:via-border/80 before:to-border/20">
+            {experienceData.map((company, companyIndex) => {
               const companyDuration = formatDurationRange(
                 company.startDate,
                 resolveCompanyEndDate(company),
@@ -99,16 +133,16 @@ export function ExperienceSection() {
                   viewport={{ once: true }}
                   transition={{
                     duration: 0.5,
-                    delay: index * 0.1,
+                    delay: companyIndex * 0.1,
                   }}
                   className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
                 >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-border bg-background shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                    <Building className="h-4 w-4 text-primary" aria-hidden="true" />
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-cyan-500/50 bg-card/90 shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-200 ease-out group-hover:scale-110">
+                    <Building className="h-4 w-4 text-cyan-400" aria-hidden="true" />
                   </div>
 
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)]">
-                    <Card className="hover:border-primary transition-colors">
+                    <Card className="rounded-2xl border-border/80 bg-card/70 backdrop-blur-xl shadow-sm transition-all duration-200 ease-out hover:border-cyan-500/40 hover:shadow-xl">
                       <CardHeader>
                         <CardTitle className="flex items-center justify-between">
                           <button
@@ -118,22 +152,18 @@ export function ExperienceSection() {
                             aria-controls={`positions-${company.id}`}
                             className="flex w-full items-center gap-2 rounded-sm text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                           >
-                            {t(`experience.companies.${company.id}.name`)}
-                            {isExpanded(company.id) ? (
-                              <ChevronUp
-                                className="h-4 w-4 text-muted-foreground"
-                                aria-hidden="true"
-                              />
-                            ) : (
-                              <ChevronDown
-                                className="h-4 w-4 text-muted-foreground"
-                                aria-hidden="true"
-                              />
-                            )}
+                            {translate(`experience.companies.${company.id}.name`)}
+                            <ChevronDown
+                              className={cn(
+                                "h-4 w-4 text-muted-foreground transition-transform duration-200 ease-out",
+                                isExpanded(company.id) && "rotate-180",
+                              )}
+                              aria-hidden="true"
+                            />
                             <span className="sr-only">
                               {isExpanded(company.id)
-                                ? t("a11y.collapsePositions", { company: company.name })
-                                : t("a11y.expandPositions", { company: company.name })}
+                                ? translate("a11y.collapsePositions", { company: company.name })
+                                : translate("a11y.expandPositions", { company: company.name })}
                             </span>
                           </button>
                         </CardTitle>
@@ -143,9 +173,9 @@ export function ExperienceSection() {
                               className="h-3 w-3 text-muted-foreground"
                               aria-hidden="true"
                             />
-                            {t(`experience.companies.${company.id}.period`)}
+                            {translate(`experience.companies.${company.id}.period`)}
                           </span>
-                          <span className="inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
+                          <span className="inline-flex items-center rounded-full bg-cyan-500/10 px-2 py-0.5 text-xs font-mono font-medium text-cyan-400 border border-cyan-500/20">
                             {companyDuration}
                           </span>
                         </CardDescription>
@@ -153,10 +183,14 @@ export function ExperienceSection() {
                       <CardContent>
                         <div className="mb-4">
                           <ExperiencePosition
-                            title={t(`experience.companies.${company.id}.positions.0.title`)}
-                            period={t(`experience.companies.${company.id}.positions.0.period`)}
+                            title={translate(
+                              `experience.companies.${company.id}.positions.0.title`,
+                            )}
+                            period={translate(
+                              `experience.companies.${company.id}.positions.0.period`,
+                            )}
                             duration={mainPositionDuration}
-                            description={t(
+                            description={translate(
                               `experience.companies.${company.id}.positions.0.description`,
                             )}
                             technologies={mainPosition.technologies}
@@ -180,31 +214,32 @@ export function ExperienceSection() {
                                 height: 0,
                               }}
                               transition={{
-                                duration: 0.3,
+                                duration: 0.25,
+                                ease: [0.23, 1, 0.32, 1],
                               }}
                               className="overflow-hidden"
                             >
-                              <div className="border-t pt-4 mt-4">
+                              <div className="border-t border-border/60 pt-4 mt-4">
                                 <h4 className="text-sm font-medium mb-3">
-                                  {t("experience.previousPositions")}
+                                  {translate("experience.previousPositions")}
                                 </h4>
                                 <div className="space-y-6">
-                                  {company.positions.slice(1).map((position, idx) => (
+                                  {company.positions.slice(1).map((position, offsetIndex) => (
                                     <ExperiencePosition
                                       key={`${company.id}-${position.startDate}`}
-                                      title={t(
-                                        `experience.companies.${company.id}.positions.${idx + 1}.title`,
+                                      title={translate(
+                                        `experience.companies.${company.id}.positions.${offsetIndex + 1}.title`,
                                       )}
-                                      period={t(
-                                        `experience.companies.${company.id}.positions.${idx + 1}.period`,
+                                      period={translate(
+                                        `experience.companies.${company.id}.positions.${offsetIndex + 1}.period`,
                                       )}
                                       duration={formatDurationRange(
                                         position.startDate,
                                         position.endDate,
                                         durationConfig,
                                       )}
-                                      description={t(
-                                        `experience.companies.${company.id}.positions.${idx + 1}.description`,
+                                      description={translate(
+                                        `experience.companies.${company.id}.positions.${offsetIndex + 1}.description`,
                                       )}
                                       technologies={position.technologies}
                                       isPrevious={true}
@@ -225,8 +260,8 @@ export function ExperienceSection() {
         </TabsContent>
 
         <TabsContent value="academic">
-          <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
-            {academicData.map((education, index) => {
+          <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-px before:bg-gradient-to-b before:from-indigo-500/70 before:via-border/80 before:to-border/20">
+            {academicData.map((education, educationIndex) => {
               return (
                 <motion.div
                   key={education.id}
@@ -235,34 +270,41 @@ export function ExperienceSection() {
                   viewport={{ once: true }}
                   transition={{
                     duration: 0.5,
-                    delay: index * 0.1,
+                    delay: educationIndex * 0.1,
                   }}
                   className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
                 >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-border bg-background shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                    <GraduationCap className="h-4 w-4 text-primary" aria-hidden="true" />
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-indigo-500/50 bg-card/90 shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-200 ease-out group-hover:scale-110">
+                    <GraduationCap className="h-4 w-4 text-indigo-400" aria-hidden="true" />
                   </div>
 
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)]">
-                    <Card>
+                    <Card className="rounded-2xl border-border/80 bg-card/70 backdrop-blur-xl shadow-sm transition-all duration-200 ease-out hover:border-indigo-500/40 hover:shadow-xl">
                       <CardHeader>
                         <div className="flex justify-between items-start">
-                          <CardTitle>{t(`experience.education.${education.id}.degree`)}</CardTitle>
+                          <CardTitle>
+                            {translate(`experience.education.${education.id}.degree`)}
+                          </CardTitle>
                         </div>
                         <CardDescription>
-                          {t(`experience.education.${education.id}.institution`)}
+                          {translate(`experience.education.${education.id}.institution`)}
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
                         <EducationCard
-                          period={t(`experience.education.${education.id}.period`)}
-                          description={t(`experience.education.${education.id}.description`)}
-                          inProgress={education.inProgress}
-                          achievements={education.achievements?.map((_achievement, idx) =>
-                            t(`experience.education.${education.id}.achievements.${idx}`),
+                          period={translate(`experience.education.${education.id}.period`)}
+                          description={translate(
+                            `experience.education.${education.id}.description`,
                           )}
-                          inProgressLabel={t("experience.inProgress")}
-                          keyAchievementsLabel={t("experience.keyAchievements")}
+                          inProgress={education.inProgress}
+                          achievements={education.achievements?.map(
+                            (_unassignedAchievement, achievementIndex) =>
+                              translate(
+                                `experience.education.${education.id}.achievements.${achievementIndex}`,
+                              ),
+                          )}
+                          inProgressLabel={translate("experience.inProgress")}
+                          keyAchievementsLabel={translate("experience.keyAchievements")}
                         />
                       </CardContent>
                     </Card>
