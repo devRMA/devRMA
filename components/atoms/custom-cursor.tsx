@@ -73,6 +73,20 @@ export function CustomCursor() {
     return null;
   }
 
+  let ringScale = 1;
+  if (isMouseDown) {
+    ringScale = 0.75;
+  } else if (isHoveringInteractive) {
+    ringScale = 1.7;
+  }
+
+  let dotScale = 1;
+  if (isMouseDown) {
+    dotScale = 1.4;
+  } else if (isHoveringInteractive) {
+    dotScale = 0.5;
+  }
+
   return (
     <div
       className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden transition-opacity duration-300 motion-reduce:hidden"
@@ -85,7 +99,7 @@ export function CustomCursor() {
         style={{
           x: smoothX,
           y: smoothY,
-          scale: isMouseDown ? 0.75 : isHoveringInteractive ? 1.7 : 1,
+          scale: ringScale,
           borderColor: isHoveringInteractive ? "rgba(6, 182, 212, 0.9)" : "rgba(6, 182, 212, 0.5)",
           backgroundColor: isHoveringInteractive
             ? "rgba(6, 182, 212, 0.12)"
@@ -99,7 +113,7 @@ export function CustomCursor() {
         style={{
           x: rawMouseX,
           y: rawMouseY,
-          scale: isMouseDown ? 1.4 : isHoveringInteractive ? 0.5 : 1,
+          scale: dotScale,
         }}
       />
     </div>

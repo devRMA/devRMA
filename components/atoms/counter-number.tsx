@@ -8,13 +8,15 @@ interface CounterNumberProps {
   className?: string;
 }
 
+const NUMERIC_REGEX = /^(\d+)([^\d]*)$/;
+
 export function CounterNumber({ value, className }: Readonly<CounterNumberProps>) {
   const ref = useRef<HTMLSpanElement>(null);
   const [isInView, setIsInView] = useState(false);
   const { tier, prefersReducedMotion } = usePerformance();
 
   // Extract numeric prefix and optional suffix (e.g., "5+" -> num: 5, suffix: "+")
-  const numericMatch = value.match(/^(\d+)(.*)$/);
+  const numericMatch = NUMERIC_REGEX.exec(value);
   const targetNumber = numericMatch ? Number.parseInt(numericMatch[1] ?? "0", 10) : null;
   const suffix = numericMatch ? (numericMatch[2] ?? "") : "";
 

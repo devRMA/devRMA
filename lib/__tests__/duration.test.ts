@@ -71,4 +71,11 @@ describe("formatDurationRange", () => {
       "Less than a month",
     );
   });
+
+  it("handles empty start date and unparseable end date", () => {
+    expect(formatDurationRange("", "2024-05-01", { locale: "en" })).toBe("Less than a month");
+    expect(formatDurationRange("2024-01-01", "invalid-end", { locale: "en" })).toBe(
+      "Less than a month",
+    );
+  });
 });

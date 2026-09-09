@@ -117,4 +117,20 @@ describe("HeroSection", () => {
       expect(typed.animate.transition.duration).toBe(0.5);
     }
   });
+
+  it("copies contact email to clipboard when copy button is clicked", async () => {
+    const writeTextSpy = vi.fn().mockResolvedValue(undefined);
+    Object.assign(navigator, {
+      clipboard: {
+        writeText: writeTextSpy,
+      },
+    });
+
+    render(<HeroSection />);
+
+    const copyBtn = screen.getByText("hero.copyEmail");
+    copyBtn.click();
+
+    expect(writeTextSpy).toHaveBeenCalledWith("contact@devrma.com");
+  });
 });

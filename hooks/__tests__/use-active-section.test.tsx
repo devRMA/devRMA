@@ -73,7 +73,7 @@ describe("useActiveSection", () => {
   it("observes every section with a single observer", async () => {
     renderHook(() => useActiveSection(sections, 150));
 
-    await waitFor(() => expect(observers.length).toBe(1));
+    await waitFor(() => expect(observers).toHaveLength(1));
     expect(observers[0].elements).toHaveLength(sections.length);
     expect(observers[0].options?.rootMargin).toBe("-150px 0px -45% 0px");
   });
@@ -82,7 +82,7 @@ describe("useActiveSection", () => {
     const { result } = renderHook(() => useActiveSection(sections, 150));
 
     expect(result.current).toBe("about");
-    await waitFor(() => expect(observers.length).toBe(1));
+    await waitFor(() => expect(observers).toHaveLength(1));
 
     await act(async () => {
       observers[0].trigger([entryFor("projects", 480, true), entryFor("skills", 120, true)]);
@@ -95,7 +95,7 @@ describe("useActiveSection", () => {
   it("falls back to the remaining visible section when one leaves the viewport", async () => {
     const { result } = renderHook(() => useActiveSection(sections));
 
-    await waitFor(() => expect(observers.length).toBe(1));
+    await waitFor(() => expect(observers).toHaveLength(1));
 
     await act(async () => {
       observers[0].trigger([entryFor("skills", 100, true), entryFor("projects", 600, true)]);

@@ -1,9 +1,10 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ExternalLink, Github, Terminal } from "lucide-react";
+import { ExternalLink, Terminal } from "lucide-react";
 import Image from "next/image";
 import type React from "react";
+import { GithubIcon } from "@/components/atoms/brand-icons";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -164,7 +165,7 @@ export function ProjectCard({
               asChild
             >
               <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-                <Github className="mr-1.5 h-3.5 w-3.5" />
+                <GithubIcon className="mr-1.5 h-3.5 w-3.5" />
                 GitHub
               </a>
             </Button>

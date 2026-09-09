@@ -40,4 +40,11 @@ describe("ScrollIndicator", () => {
 
     expect(screen.getByRole("link", { name: "Go to skills" })).toBeInTheDocument();
   });
+
+  it("handles reduced motion preference cleanly", () => {
+    useReducedMotionMock.mockReturnValue(true);
+    render(<ScrollIndicator targetId="destination" label="Go reduced" />);
+
+    expect(screen.getByRole("link", { name: "Go reduced" })).toBeInTheDocument();
+  });
 });

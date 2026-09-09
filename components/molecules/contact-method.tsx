@@ -1,7 +1,7 @@
-import type { LucideIcon } from "lucide-react";
+import type React from "react";
 
 interface ContactMethodProps {
-  icon: LucideIcon;
+  icon: React.ComponentType<{ className?: string }>;
   title: string;
   value: string;
   href: string;

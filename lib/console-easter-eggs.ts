@@ -1,5 +1,14 @@
 import type { PerformanceTier } from "@/components/performance-provider";
 
+function getSecureRandom(): number {
+  if (typeof crypto !== "undefined" && typeof crypto.getRandomValues === "function") {
+    const array = new Uint32Array(1);
+    crypto.getRandomValues(array);
+    return array[0] / (0xffffffff + 1);
+  }
+  return 0.5;
+}
+
 export interface TelemetryLogPayload {
   tier: PerformanceTier;
   cpuCores: number;
@@ -94,13 +103,15 @@ export function logPerformanceAndEasterEggs(payload: TelemetryLogPayload): void 
 
   console.log(`%c🖥️ [TELEMETRIA DE HARDWARE DETECTADA] -> ${tierMeta.name}`, headerStyle);
 
+  const featuresText = tierMeta.features.map((feature) => `      ✔ ${feature}`).join("\n");
+
   console.log(
     `%c  • Núcleos de CPU (Concurrency): %c${cpuCores} threads\n` +
       `%c  • Memória RAM Estimada: %c~${memoryGb} GB\n` +
       `%c  • Renderizador Gráfico (GPU): %c${gpuRenderer || "Acelerador Gráfico Integrado/Discreto"}\n` +
       `%c  • Dispositivo de Entrada: %c${hasFinePointer ? "Mouse / Trackpad de Alta Precisão (Fine Pointer)" : "Touch / Dispositivo Coarse"}\n` +
       `%c  • Preferência de Movimento: %c${prefersReducedMotion ? "Reduzido (prefers-reduced-motion ativado)" : "Padrão (Física de Mola & Efeitos 120 FPS Ativos)"}\n` +
-      `%c  • Recursos Ativos no seu PC: %c\n${tierMeta.features.map((f) => `      ✔ ${f}`).join("\n")}`,
+      `%c  • Recursos Ativos no seu PC: %c\n${featuresText}`,
     textStyle,
     accentStyle,
     textStyle,
@@ -166,16 +177,16 @@ export function logPerformanceAndEasterEggs(payload: TelemetryLogPayload): void 
       return "contact@devrma.com";
     },
     ping() {
-      const simulatedLatency = (Math.random() * 0.5 + 0.1).toFixed(2);
+      const simulatedLatency = (getSecureRandom() * 0.5 + 0.1).toFixed(2);
       return `pong! [${simulatedLatency}ms] Curitiba Edge Cluster • 0% packet loss`;
     },
     coffee() {
-      console.log(`
+      console.log(String.raw`
       ( (
        ) )
     .______.
     |   ☕ |]
-    \\______/
+    \______/
     "Compilando microsserviços e garantindo contratos de dados tipados com Apache Avro."
       `);
       return "Café quentinho servido com sucesso!";

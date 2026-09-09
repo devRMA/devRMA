@@ -76,6 +76,6 @@ describe("logPerformanceAndEasterEggs", () => {
       prefersReducedMotion: false,
     });
 
-    expect(logSpy.mock.calls.length).toBe(callCountFirst);
+    expect(logSpy.mock.calls).toHaveLength(callCountFirst);
   });
 });

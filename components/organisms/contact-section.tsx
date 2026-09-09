@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "@/components/atoms/brand-icons";
 import { SectionHeading } from "@/components/atoms/section-heading";
 import { useLanguage } from "@/components/language-provider";
 import { ContactMethod } from "@/components/molecules/contact-method";
@@ -47,14 +48,14 @@ export function ContactSection() {
                   />
 
                   <ContactMethod
-                    icon={Github}
+                    icon={GithubIcon}
                     title={translate("contact.connect.github")}
                     value="github.com/devRMA"
                     href="https://github.com/devRMA"
                   />
 
                   <ContactMethod
-                    icon={Linkedin}
+                    icon={LinkedinIcon}
                     title={translate("contact.connect.linkedin")}
                     value="linkedin.com/in/devRMA"
                     href="https://linkedin.com/in/devRMA"

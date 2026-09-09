@@ -1,9 +1,9 @@
-import type { LucideIcon } from "lucide-react";
+import type React from "react";
 import { Button } from "@/components/ui/button";
 
 interface SocialIconProps {
   href: string;
-  icon: LucideIcon;
+  icon: React.ComponentType<{ className?: string }>;
   label: string;
 }
 

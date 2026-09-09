@@ -110,4 +110,19 @@ describe("MobileMenu (organism)", () => {
     await user.click(screen.getByRole("button", { name: "a11y.openMenu" }));
     expect(navigator.vibrate).not.toHaveBeenCalled();
   });
+
+  it("closes menu when Escape key is pressed", async () => {
+    const onNavClick = vi.fn();
+    useMobileMock.mockReturnValue({ isTouchDevice: false });
+
+    render(<MobileMenu navItems={navItems} activeSection={null} onNavClick={onNavClick} />);
+
+    const user = userEvent.setup();
+    const toggleButton = screen.getByRole("button", { name: "a11y.openMenu" });
+    await user.click(toggleButton);
+    expect(toggleButton).toHaveAttribute("aria-expanded", "true");
+
+    await user.keyboard("{Escape}");
+    expect(toggleButton).toHaveAttribute("aria-expanded", "false");
+  });
 });

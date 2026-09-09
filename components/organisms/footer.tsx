@@ -1,6 +1,7 @@
 "use client";
 
-import { ArrowUp, Github, Linkedin } from "lucide-react";
+import { ArrowUp } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "@/components/atoms/brand-icons";
 import { Logo } from "@/components/atoms/logo";
 import { SocialIcon } from "@/components/atoms/social-icon";
 import { useLanguage } from "@/components/language-provider";
@@ -31,12 +32,12 @@ export function Footer() {
           <div className="flex items-center gap-4">
             <SocialIcon
               href="https://github.com/devRMA"
-              icon={Github}
+              icon={GithubIcon}
               label={translate("a11y.githubProfile")}
             />
             <SocialIcon
               href="https://linkedin.com/in/devRMA"
-              icon={Linkedin}
+              icon={LinkedinIcon}
               label={translate("a11y.linkedinProfile")}
             />
             <Button

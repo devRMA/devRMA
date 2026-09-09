@@ -48,6 +48,6 @@ describe("SectionHeading", () => {
     render(<SectionHeading title="Only title" />);
 
     expect(screen.getByRole("heading", { name: "Only title" })).toBeInTheDocument();
-    expect(screen.queryByText(/projects that/gi)).not.toBeInTheDocument();
+    expect(screen.queryByText(/projects that/i)).not.toBeInTheDocument();
   });
 });

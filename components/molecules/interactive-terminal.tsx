@@ -175,7 +175,7 @@ export function InteractiveTerminal() {
         break;
     }
 
-    const uniqueCommandIdentifier = `${trimmedCommand}-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+    const uniqueCommandIdentifier = `${trimmedCommand}-${Date.now()}-${historyItems.length + 1}`;
 
     setHistoryItems((previousItems) => [
       ...previousItems,
@@ -184,7 +184,7 @@ export function InteractiveTerminal() {
     setCommandInput("");
   };
 
-  const handleFormSubmit = (submitEvent: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = (submitEvent: React.SyntheticEvent<HTMLFormElement>) => {
     submitEvent.preventDefault();
     executeCommand(commandInput);
   };

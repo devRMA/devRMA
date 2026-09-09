@@ -118,7 +118,7 @@ export function HeroSection() {
             id="hero-heading"
             className="text-balance text-[clamp(2.25rem,5.5vw,4rem)] font-bold leading-[1.1] tracking-tight text-foreground"
           >
-            Rafael Martins Alves
+            <span>Rafael Martins Alves</span>
             <span className="mt-2 block font-semibold text-primary tracking-tight">
               {translate("hero.role")}
             </span>

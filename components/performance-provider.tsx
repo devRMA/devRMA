@@ -177,7 +177,7 @@ export function PerformanceProvider({
         (cpuCores >= 8 && memoryGb >= 8 && gpuQuality !== "low") ||
         (cpuCores >= 6 && gpuQuality === "high");
 
-      let evaluatedTier: PerformanceTier = 1;
+      let evaluatedTier: PerformanceTier;
 
       if (!hasFinePointer) {
         // Touch devices / mobile are capped at Tier 1 to avoid jank and battery drain

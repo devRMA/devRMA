@@ -135,6 +135,10 @@ describe("ExperienceSection", () => {
         (call) => call[0].isPrevious === true,
       );
       expect(hasPrevious).toBe(true);
+
+      // Collapse the company
+      await user.click(disclosure);
+      expect(disclosure).toHaveAttribute("aria-expanded", "false");
     }
   });
 

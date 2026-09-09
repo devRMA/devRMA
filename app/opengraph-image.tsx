@@ -19,7 +19,7 @@ export default function OpengraphImage() {
       }}
     >
       <div style={{ display: "flex", fontSize: 40, fontWeight: 700, color: "#0ea5e9" }}>
-        dev
+        <span>dev</span>
         <span style={{ color: "#f1f5f9" }}>RMA</span>
       </div>
       <div style={{ fontSize: 84, fontWeight: 700, marginTop: 32, letterSpacing: -2 }}>

@@ -1,7 +1,7 @@
 "use client";
 
-import { Github, Linkedin } from "lucide-react";
 import { useEffect, useState } from "react";
+import { GithubIcon, LinkedinIcon } from "@/components/atoms/brand-icons";
 import { LanguageToggle } from "@/components/atoms/language-toggle";
 import { Logo } from "@/components/atoms/logo";
 import { ModeToggle } from "@/components/atoms/mode-toggle";
@@ -39,12 +39,12 @@ export function Header() {
           <span className="hidden items-center gap-2 sm:flex">
             <SocialIcon
               href="https://github.com/devRMA"
-              icon={Github}
+              icon={GithubIcon}
               label={translate("a11y.githubProfile")}
             />
             <SocialIcon
               href="https://linkedin.com/in/devRMA"
-              icon={Linkedin}
+              icon={LinkedinIcon}
               label={translate("a11y.linkedinProfile")}
             />
           </span>
