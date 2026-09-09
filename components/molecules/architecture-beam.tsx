@@ -37,7 +37,7 @@ const ARCHITECTURE_NODES: ArchitectureNodeConfig[] = [
     icon: Layers,
     accentColor: "from-emerald-500/20 to-teal-500/20 border-emerald-500/40 text-emerald-400",
     badgeKey: "skills.bento.nodeBffBadge",
-    protocol: "NestJS / Outbox",
+    protocol: "NestJS / KafkaJS",
     detailKey: "skills.bento.nodeBffDetail",
   },
   {
@@ -48,7 +48,7 @@ const ARCHITECTURE_NODES: ArchitectureNodeConfig[] = [
     icon: Radio,
     accentColor: "from-amber-500/20 to-orange-500/20 border-amber-500/40 text-amber-400",
     badgeKey: "skills.bento.nodeKafkaBadge",
-    protocol: "Kafka Topics",
+    protocol: "Kafka + Avro",
     detailKey: "skills.bento.nodeKafkaDetail",
   },
   {
@@ -59,7 +59,7 @@ const ARCHITECTURE_NODES: ArchitectureNodeConfig[] = [
     icon: Cloud,
     accentColor: "from-sky-500/20 to-cyan-500/20 border-sky-500/40 text-sky-400",
     badgeKey: "skills.bento.nodeCloudBadge",
-    protocol: "AWS ECS / Lambda",
+    protocol: "Python Lambdas",
     detailKey: "skills.bento.nodeCloudDetail",
   },
 ];

@@ -5,20 +5,22 @@ import { Activity, ArrowRight, CheckCircle2, Cpu } from "lucide-react";
 import Image from "next/image";
 import { SectionHeading } from "@/components/atoms/section-heading";
 import { useLanguage } from "@/components/language-provider";
+import { ArchitectureBeam } from "@/components/molecules/architecture-beam";
 import { ProjectCard } from "@/components/molecules/project-card";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { projectsData } from "@/data/projects";
 
 const ISHIP_TECH = [
-  "Flutter",
-  "Firebase",
   "NestJS",
+  "TypeScript",
+  "Apache Kafka",
+  "Apache Avro",
   "PostgreSQL",
   "Python (Lambda)",
-  "Apache Kafka",
-  "React MFE",
-  "AWS Cloud",
+  "React 19 (MFE)",
+  "New Relic",
+  "Docker",
 ];
 
 const ISEND_TECH = [
@@ -91,6 +93,8 @@ export function ProjectsSection() {
                     <span>{translate("projects.cases.iship.productionBadge")}</span>
                   </div>
                 </div>
+
+                <ArchitectureBeam />
 
                 <div className="grid gap-4 md:grid-cols-3">
                   <div className="rounded-xl border border-border/70 bg-card/60 p-5 shadow-sm">

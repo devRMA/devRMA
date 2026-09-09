@@ -176,7 +176,7 @@ export function logPerformanceAndEasterEggs(payload: TelemetryLogPayload): void 
     .______.
     |   ☕ |]
     \\______/
-    "Compilando microsserviços e garantindo zero perda de dados com Outbox Pattern."
+    "Compilando microsserviços e garantindo contratos de dados tipados com Apache Avro."
       `);
       return "Café quentinho servido com sucesso!";
     },
@@ -185,7 +185,7 @@ export function logPerformanceAndEasterEggs(payload: TelemetryLogPayload): void 
         frontend:
           "Next.js 15 App Router + React 19 + Tailwind CSS + Motion (GPU-accelerated, 0 re-render loops)",
         backendExperience:
-          "NestJS, TypeScript, PostgreSQL, Apache Kafka (Avro), Outbox Pattern, AWS ECS & Lambda",
+          "NestJS, TypeScript, PostgreSQL, Apache Kafka (Avro), AWS ECS & Lambda (Python)",
         performanceEngine:
           "Hardware-Adaptive Engine (Tier 0, 1, 2) com Canvas 2D nativo e física de amortecimento",
         codeQuality:

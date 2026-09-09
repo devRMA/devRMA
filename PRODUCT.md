@@ -16,7 +16,7 @@ Showcase the engineering journey, architectural authority, and technical leaders
 
 ## Positioning
 
-Real-world mission-critical scale: leading logistics systems (iShip driver mobile platform and iSend TMS at MadeiraMadeira), event-driven orchestration (Kafka, NestJS, AWS, PostgreSQL), and bridging high-level architecture vision with pragmatic team execution. Unlike typical developer portfolios featuring toy projects or generic full-stack CRUDs, this platform demonstrates real enterprise scale, resilience patterns (Outbox pattern, observability, high availability), and hands-on technical leadership.
+Real-world mission-critical scale: leading logistics systems (iShip driver ecosystem and iSend TMS at MadeiraMadeira), event-driven orchestration (Kafka with Avro, NestJS, AWS Lambdas, PostgreSQL), and bridging high-level architecture vision with pragmatic team execution. Unlike typical developer portfolios featuring toy projects or generic full-stack CRUDs, this platform demonstrates real enterprise scale, strong schema contracts (Apache Avro), multi-faceted observability (New Relic, direct DB, session replays), and hands-on technical leadership.
 
 ## Operating Context
 
@@ -33,12 +33,12 @@ Evaluators typically review this site on desktop during executive hiring reviews
 
 - Identity: Rafael Martins Alves / `devRMA`.
 - Voice and tone: Confident, authoritative, pragmatic, and engineering-driven. Clear and direct without hype, buzzwords, or unsubstantiated claims.
-- Domain expertise: Event-Driven Architecture, Apache Kafka, NestJS, TypeScript, AWS (ECS, Lambda, Terraform), Flutter & Firebase, PostgreSQL, Docker, and Logistics Systems.
+- Domain expertise: Event-Driven Architecture, Apache Kafka (Avro), NestJS, TypeScript, React (Microfrontends), PostgreSQL, Python (AWS Lambda), New Relic, Docker, Technical Leadership, and Logistics Systems.
 
 ## Evidence on Hand
 
 - Production case studies in `locales/en.ts` and `locales/pt-BR.ts`:
-  - **iShip**: Mobile app (Flutter, Firebase) orchestrated by NestJS/PostgreSQL backend with Kafka event streaming and AWS Lambdas, connecting field drivers to national distribution hubs.
+  - **iShip**: Driver ecosystem orchestrated by NestJS/PostgreSQL backend with Kafka (Avro) event streaming, Python AWS Lambdas, and Driver Scale web panel (React 19 MFE), connecting field drivers to national distribution hubs.
   - **iSend**: High-traffic Transportation Management System (TMS) with 1,100+ routes in Laravel/PHP for freight dispatch and cargo tracking.
 - Career milestones and timeline in `data/experience.tsx`: Tech Lead, Senior Developer, Mid-level Developer, Junior Developer at MadeiraMadeira, and instructor at SENAI.
 - Verifiable credentials and certifications in `data/certificates.tsx`.

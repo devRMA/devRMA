@@ -11,7 +11,7 @@ interface NavigationProps {
   className?: string;
 }
 
-const NAV_SECTIONS = ["about", "skills", "projects", "experience", "certificates", "contact"];
+const NAV_SECTIONS = ["about", "projects", "skills", "experience", "certificates", "contact"];
 
 export function Navigation({ className }: Readonly<NavigationProps>) {
   const { t: translate } = useLanguage();

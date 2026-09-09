@@ -5,7 +5,6 @@ import { Clock, Cpu, Zap } from "lucide-react";
 import { CuritibaClock } from "@/components/atoms/curitiba-clock";
 import { SectionHeading } from "@/components/atoms/section-heading";
 import { useLanguage } from "@/components/language-provider";
-import { ArchitectureBeam } from "@/components/molecules/architecture-beam";
 import { Marquee } from "@/components/molecules/marquee";
 import { SkillCard } from "@/components/molecules/skill-card";
 import { Card, CardContent } from "@/components/ui/card";
@@ -27,9 +26,7 @@ export function SkillsSection() {
         description={translate("skills.description")}
       />
 
-      <div className="mb-10 space-y-6">
-        <ArchitectureBeam />
-
+      <div className="mb-10">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <div className="group rounded-2xl border border-border/80 bg-card/50 p-5 backdrop-blur-xl transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-cyan-500/40 hover:-translate-y-1 hover:shadow-lg cursor-default select-none">
             <div className="flex items-center gap-4">
