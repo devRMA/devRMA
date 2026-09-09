@@ -33,7 +33,9 @@ vi.mock("@/public/rafael-martins-alves.jpg", () => ({
 
 vi.mock("next/image", () => ({
   __esModule: true,
-  default: ({ alt }: { alt: string }) => <img alt={alt} data-testid="profile-image" />,
+  default: ({ alt, src = "/test.jpg" }: { alt: string; src?: string }) => (
+    <img src={src} alt={alt} data-testid="profile-image" />
+  ),
 }));
 
 vi.mock("framer-motion", () => ({

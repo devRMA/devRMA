@@ -80,7 +80,9 @@ vi.mock("@/components/ui/dialog", () => ({
 
 vi.mock("next/image", () => ({
   __esModule: true,
-  default: ({ alt }: { alt: string }) => <img alt={alt} data-testid="certificate-image" />,
+  default: ({ alt, src = "/test.jpg" }: { alt: string; src?: string }) => (
+    <img src={src} alt={alt} data-testid="certificate-image" />
+  ),
 }));
 
 vi.mock("framer-motion", () => ({

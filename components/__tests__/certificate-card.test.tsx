@@ -6,7 +6,9 @@ import { CertificateCard } from "../molecules/certificate-card";
 
 vi.mock("next/image", () => ({
   __esModule: true,
-  default: ({ alt }: { alt: string }) => <img alt={alt} data-testid="image" />,
+  default: ({ alt, src = "/test.jpg" }: { alt: string; src?: string }) => (
+    <img src={src} alt={alt} data-testid="image" />
+  ),
 }));
 
 describe("CertificateCard", () => {

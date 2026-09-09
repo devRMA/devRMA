@@ -23,6 +23,6 @@ if (!window.matchMedia) {
 }
 
 Object.defineProperty(window, "scrollTo", {
-  value: (x: number, y: number) => {},
+  value: (xCoord: number, yCoord: number) => {},
   writable: true,
 });
