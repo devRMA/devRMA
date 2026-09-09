@@ -14,13 +14,13 @@ interface NavigationProps {
 const NAV_SECTIONS = ["about", "skills", "projects", "experience", "certificates", "contact"];
 
 export function Navigation({ className }: Readonly<NavigationProps>) {
-  const { t } = useLanguage();
+  const { t: translate } = useLanguage();
 
   const activeSection = useActiveSection(NAV_SECTIONS);
 
   const navItems = NAV_SECTIONS.map((sectionIdentifier) => ({
     href: `#${sectionIdentifier}`,
-    label: t(`nav.${sectionIdentifier}`),
+    label: translate(`nav.${sectionIdentifier}`),
     id: sectionIdentifier,
   }));
 
@@ -41,7 +41,7 @@ export function Navigation({ className }: Readonly<NavigationProps>) {
 
   return (
     <>
-      <nav className={className} aria-label={t("a11y.mobileNavigation")}>
+      <nav className={className} aria-label={translate("a11y.mobileNavigation")}>
         {navItems.map((item) => (
           <NavItem
             key={item.href}

@@ -24,7 +24,7 @@ interface MobileMenuProps {
 export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<MobileMenuProps>) {
   const [isOpen, setIsOpen] = useState(false);
   const { isTouchDevice } = useMobile();
-  const { t } = useLanguage();
+  const { t: translate } = useLanguage();
   const panelId = useId();
   const triggerRef = useRef<HTMLButtonElement>(null);
 
@@ -71,7 +71,7 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
       height: 0,
       transition: {
         duration: 0.2,
-        ease: [0.32, 0.72, 0, 1],
+        ease: [0.32, 0.72, 0, 1] as const,
         when: "afterChildren",
         staggerChildren: 0.03,
         staggerDirection: -1,
@@ -82,7 +82,7 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
       height: "auto",
       transition: {
         duration: 0.25,
-        ease: [0.32, 0.72, 0, 1],
+        ease: [0.32, 0.72, 0, 1] as const,
         when: "beforeChildren",
         staggerChildren: 0.04,
         staggerDirection: 1,
@@ -95,7 +95,7 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
     open: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.2, ease: [0.23, 1, 0.32, 1] },
+      transition: { duration: 0.2, ease: [0.23, 1, 0.32, 1] as const },
     },
   };
 
@@ -106,7 +106,7 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
         variant="ghost"
         size="icon"
         onClick={toggleMenu}
-        aria-label={isOpen ? t("a11y.closeMenu") : t("a11y.openMenu")}
+        aria-label={isOpen ? translate("a11y.closeMenu") : translate("a11y.openMenu")}
         aria-expanded={isOpen}
         aria-controls={panelId}
         className="relative overflow-hidden"
@@ -146,7 +146,7 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
             exit="closed"
             variants={menuVariants}
           >
-            <nav className="flex flex-col p-4" aria-label={t("a11y.mobileNavigation")}>
+            <nav className="flex flex-col p-4" aria-label={translate("a11y.mobileNavigation")}>
               {navItems.map((item) => (
                 <motion.div key={item.href} variants={itemVariants}>
                   <MobileNavItem

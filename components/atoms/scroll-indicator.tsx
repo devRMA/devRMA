@@ -15,9 +15,13 @@ export function ScrollIndicator({ targetId, label }: Readonly<ScrollIndicatorPro
   return (
     <motion.div
       initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-      className="animate-bounce motion-reduce:animate-none"
+      animate={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: [0, 6, 0] }}
+      transition={
+        prefersReducedMotion
+          ? { duration: 0.3, ease: [0.23, 1, 0.32, 1] }
+          : { duration: 2, repeat: Number.POSITIVE_INFINITY, ease: [0.23, 1, 0.32, 1] }
+      }
+      className="flex justify-center"
     >
       <Button variant="ghost" size="icon" asChild>
         <a href={`#${targetId}`}>

@@ -7,7 +7,7 @@ import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
 
 export function Footer() {
-  const { t } = useLanguage();
+  const { t: translate } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
@@ -24,7 +24,7 @@ export function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <Logo className="mb-2" />
             <p className="text-sm text-muted-foreground text-center md:text-left">
-              &copy; {currentYear} Rafael Martins Alves. {t("footer.rights")}
+              &copy; {currentYear} Rafael Martins Alves. {translate("footer.rights")}
             </p>
           </div>
 
@@ -32,18 +32,18 @@ export function Footer() {
             <SocialIcon
               href="https://github.com/devRMA"
               icon={Github}
-              label={t("a11y.githubProfile")}
+              label={translate("a11y.githubProfile")}
             />
             <SocialIcon
               href="https://linkedin.com/in/devRMA"
               icon={Linkedin}
-              label={t("a11y.linkedinProfile")}
+              label={translate("a11y.linkedinProfile")}
             />
             <Button
               variant="outline"
               size="icon"
               onClick={scrollToTop}
-              aria-label={t("footer.backToTop")}
+              aria-label={translate("footer.backToTop")}
               className="group"
             >
               <ArrowUp

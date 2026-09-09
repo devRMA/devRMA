@@ -15,7 +15,7 @@ import {
 
 export function ModeToggle() {
   const { theme, setTheme } = useTheme();
-  const { t } = useLanguage();
+  const { t: translate } = useLanguage();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export function ModeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" aria-label={t("theme.toggle")}>
+        <Button variant="ghost" size="icon" aria-label={translate("theme.toggle")}>
           <Sun
             className="h-5 w-5 rotate-0 scale-100 transition-[transform,opacity] duration-200 ease-out dark:-rotate-90 dark:scale-95 dark:opacity-0"
             aria-hidden="true"
@@ -34,22 +34,22 @@ export function ModeToggle() {
             className="absolute h-5 w-5 rotate-90 scale-95 opacity-0 transition-[transform,opacity] duration-200 ease-out dark:rotate-0 dark:scale-100 dark:opacity-100"
             aria-hidden="true"
           />
-          <span className="sr-only">{t("theme.toggle")}</span>
+          <span className="sr-only">{translate("theme.toggle")}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuRadioGroup value={mounted ? theme : undefined} onValueChange={setTheme}>
           <DropdownMenuRadioItem value="light">
             <Sun className="h-4 w-4" aria-hidden="true" />
-            <span>{t("theme.light")}</span>
+            <span>{translate("theme.light")}</span>
           </DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="dark">
             <Moon className="h-4 w-4" aria-hidden="true" />
-            <span>{t("theme.dark")}</span>
+            <span>{translate("theme.dark")}</span>
           </DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="system">
             <Laptop className="h-4 w-4" aria-hidden="true" />
-            <span>{t("theme.system")}</span>
+            <span>{translate("theme.system")}</span>
           </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>

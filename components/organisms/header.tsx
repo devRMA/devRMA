@@ -11,7 +11,7 @@ import { Navigation } from "@/components/organisms/navigation";
 import { cn } from "@/lib/utils";
 
 export function Header() {
-  const { t } = useLanguage();
+  const { t: translate } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -40,12 +40,12 @@ export function Header() {
             <SocialIcon
               href="https://github.com/devRMA"
               icon={Github}
-              label={t("a11y.githubProfile")}
+              label={translate("a11y.githubProfile")}
             />
             <SocialIcon
               href="https://linkedin.com/in/devRMA"
               icon={Linkedin}
-              label={t("a11y.linkedinProfile")}
+              label={translate("a11y.linkedinProfile")}
             />
           </span>
           <LanguageToggle />

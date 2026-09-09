@@ -12,17 +12,22 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export function LanguageToggle() {
-  const { language, setLanguage, t } = useLanguage();
+  const { language, setLanguage, t: translate } = useLanguage();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" aria-label={t("language.toggle")} className="group">
+        <Button
+          variant="ghost"
+          size="icon"
+          aria-label={translate("language.toggle")}
+          className="group"
+        >
           <Globe
             className="h-5 w-5 transition-transform duration-200 ease-out group-hover:rotate-12"
             aria-hidden="true"
           />
-          <span className="sr-only">{t("language.toggle")}</span>
+          <span className="sr-only">{translate("language.toggle")}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
