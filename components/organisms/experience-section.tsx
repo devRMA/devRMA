@@ -1,7 +1,15 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Briefcase, Building, Calendar, ChevronDown, ChevronUp, GraduationCap } from "lucide-react";
+import {
+  Briefcase,
+  Building,
+  Calendar,
+  ChevronDown,
+  ChevronUp,
+  GraduationCap,
+  TrendingUp,
+} from "lucide-react";
 import { useMemo, useState } from "react";
 import { SectionHeading } from "@/components/atoms/section-heading";
 import { useLanguage } from "@/components/language-provider";
@@ -26,26 +34,28 @@ export function ExperienceSection() {
       return undefined;
     }
 
-    return company.positions.reduce<string | undefined>((latest, position) => {
+    return company.positions.reduce<string | undefined>((latestDate, position) => {
       if (!position.endDate) {
-        return latest;
+        return latestDate;
       }
 
-      if (!latest) {
+      if (!latestDate) {
         return position.endDate;
       }
 
-      return new Date(position.endDate) > new Date(latest) ? position.endDate : latest;
+      return new Date(position.endDate) > new Date(latestDate) ? position.endDate : latestDate;
     }, undefined);
   };
 
-  const toggleCompany = (companyId: string) => {
-    setExpandedCompanies((prev) =>
-      prev.includes(companyId) ? prev.filter((id) => id !== companyId) : [...prev, companyId],
+  const toggleCompany = (companyIdentifier: string) => {
+    setExpandedCompanies((previousExpandedCompanies) =>
+      previousExpandedCompanies.includes(companyIdentifier)
+        ? previousExpandedCompanies.filter((identifier) => identifier !== companyIdentifier)
+        : [...previousExpandedCompanies, companyIdentifier],
     );
   };
 
-  const isExpanded = (companyId: string) => expandedCompanies.includes(companyId);
+  const isExpanded = (companyIdentifier: string) => expandedCompanies.includes(companyIdentifier);
 
   return (
     <section
@@ -58,6 +68,22 @@ export function ExperienceSection() {
         title={t("experience.title")}
         description={t("experience.description")}
       />
+
+      <div className="mb-8 flex justify-center">
+        <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-1.5 text-xs font-mono text-muted-foreground shadow-sm">
+          <TrendingUp className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
+          <span>{t("experience.progression.label")}</span>
+          <span className="font-semibold text-foreground">
+            {t("experience.progression.intern")}
+          </span>
+          <span className="text-primary">➔</span>
+          <span className="font-semibold text-foreground">
+            {t("experience.progression.fullstack")}
+          </span>
+          <span className="text-primary">➔</span>
+          <span className="font-bold text-cyan-400">{t("experience.progression.techlead")}</span>
+        </div>
+      </div>
 
       <Tabs defaultValue="professional" className="w-full">
         <TabsList className="mb-8 flex w-full flex-wrap">
@@ -72,8 +98,8 @@ export function ExperienceSection() {
         </TabsList>
 
         <TabsContent value="professional">
-          <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
-            {experienceData.map((company, index) => {
+          <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-cyan-500/80 before:via-indigo-500/80 before:to-purple-500/80 before:shadow-[0_0_10px_rgba(6,182,212,0.4)]">
+            {experienceData.map((company, companyIndex) => {
               const companyDuration = formatDurationRange(
                 company.startDate,
                 resolveCompanyEndDate(company),
@@ -99,16 +125,16 @@ export function ExperienceSection() {
                   viewport={{ once: true }}
                   transition={{
                     duration: 0.5,
-                    delay: index * 0.1,
+                    delay: companyIndex * 0.1,
                   }}
                   className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
                 >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-border bg-background shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                    <Building className="h-4 w-4 text-primary" aria-hidden="true" />
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-cyan-500/60 bg-background shadow-[0_0_15px_rgba(6,182,212,0.3)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform group-hover:scale-110">
+                    <Building className="h-4 w-4 text-cyan-400" aria-hidden="true" />
                   </div>
 
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)]">
-                    <Card className="hover:border-primary transition-colors">
+                    <Card className="border-border/80 bg-card/70 backdrop-blur-xl transition-all hover:border-cyan-500/50 hover:shadow-lg">
                       <CardHeader>
                         <CardTitle className="flex items-center justify-between">
                           <button
@@ -145,7 +171,7 @@ export function ExperienceSection() {
                             />
                             {t(`experience.companies.${company.id}.period`)}
                           </span>
-                          <span className="inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
+                          <span className="inline-flex items-center rounded-full bg-cyan-500/10 px-2 py-0.5 text-xs font-mono font-medium text-cyan-400 border border-cyan-500/20">
                             {companyDuration}
                           </span>
                         </CardDescription>
@@ -184,19 +210,19 @@ export function ExperienceSection() {
                               }}
                               className="overflow-hidden"
                             >
-                              <div className="border-t pt-4 mt-4">
+                              <div className="border-t border-border/60 pt-4 mt-4">
                                 <h4 className="text-sm font-medium mb-3">
                                   {t("experience.previousPositions")}
                                 </h4>
                                 <div className="space-y-6">
-                                  {company.positions.slice(1).map((position, idx) => (
+                                  {company.positions.slice(1).map((position, offsetIndex) => (
                                     <ExperiencePosition
                                       key={`${company.id}-${position.startDate}`}
                                       title={t(
-                                        `experience.companies.${company.id}.positions.${idx + 1}.title`,
+                                        `experience.companies.${company.id}.positions.${offsetIndex + 1}.title`,
                                       )}
                                       period={t(
-                                        `experience.companies.${company.id}.positions.${idx + 1}.period`,
+                                        `experience.companies.${company.id}.positions.${offsetIndex + 1}.period`,
                                       )}
                                       duration={formatDurationRange(
                                         position.startDate,
@@ -204,7 +230,7 @@ export function ExperienceSection() {
                                         durationConfig,
                                       )}
                                       description={t(
-                                        `experience.companies.${company.id}.positions.${idx + 1}.description`,
+                                        `experience.companies.${company.id}.positions.${offsetIndex + 1}.description`,
                                       )}
                                       technologies={position.technologies}
                                       isPrevious={true}
@@ -225,8 +251,8 @@ export function ExperienceSection() {
         </TabsContent>
 
         <TabsContent value="academic">
-          <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
-            {academicData.map((education, index) => {
+          <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-cyan-500/80 before:via-indigo-500/80 before:to-purple-500/80 before:shadow-[0_0_10px_rgba(6,182,212,0.4)]">
+            {academicData.map((education, educationIndex) => {
               return (
                 <motion.div
                   key={education.id}
@@ -235,16 +261,16 @@ export function ExperienceSection() {
                   viewport={{ once: true }}
                   transition={{
                     duration: 0.5,
-                    delay: index * 0.1,
+                    delay: educationIndex * 0.1,
                   }}
                   className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
                 >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-border bg-background shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                    <GraduationCap className="h-4 w-4 text-primary" aria-hidden="true" />
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-indigo-500/60 bg-background shadow-[0_0_15px_rgba(99,102,241,0.3)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform group-hover:scale-110">
+                    <GraduationCap className="h-4 w-4 text-indigo-400" aria-hidden="true" />
                   </div>
 
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)]">
-                    <Card>
+                    <Card className="border-border/80 bg-card/70 backdrop-blur-xl transition-all hover:border-indigo-500/50 hover:shadow-lg">
                       <CardHeader>
                         <div className="flex justify-between items-start">
                           <CardTitle>{t(`experience.education.${education.id}.degree`)}</CardTitle>
@@ -258,8 +284,11 @@ export function ExperienceSection() {
                           period={t(`experience.education.${education.id}.period`)}
                           description={t(`experience.education.${education.id}.description`)}
                           inProgress={education.inProgress}
-                          achievements={education.achievements?.map((_achievement, idx) =>
-                            t(`experience.education.${education.id}.achievements.${idx}`),
+                          achievements={education.achievements?.map(
+                            (_unassignedAchievement, achievementIndex) =>
+                              t(
+                                `experience.education.${education.id}.achievements.${achievementIndex}`,
+                              ),
                           )}
                           inProgressLabel={t("experience.inProgress")}
                           keyAchievementsLabel={t("experience.keyAchievements")}
