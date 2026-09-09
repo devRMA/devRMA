@@ -18,19 +18,19 @@ export function Navigation({ className }: Readonly<NavigationProps>) {
 
   const activeSection = useActiveSection(NAV_SECTIONS);
 
-  const navItems = NAV_SECTIONS.map((id) => ({
-    href: `#${id}`,
-    label: t(`nav.${id}`),
-    id,
+  const navItems = NAV_SECTIONS.map((sectionIdentifier) => ({
+    href: `#${sectionIdentifier}`,
+    label: t(`nav.${sectionIdentifier}`),
+    id: sectionIdentifier,
   }));
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
+  const handleNavClick = (clickEvent: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    clickEvent.preventDefault();
     const targetId = href.replace("#", "");
-    const element = document.getElementById(targetId);
+    const targetElement = document.getElementById(targetId);
 
-    if (element) {
-      element.scrollIntoView({
+    if (targetElement) {
+      targetElement.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });

@@ -18,7 +18,7 @@ type NavItem = {
 interface MobileMenuProps {
   navItems: NavItem[];
   activeSection: string | null;
-  onNavClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
+  onNavClick: (clickEvent: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
 }
 
 export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<MobileMenuProps>) {
@@ -57,8 +57,8 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
     }
   };
 
-  const handleNavItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    onNavClick(e, href);
+  const handleNavItemClick = (clickEvent: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    onNavClick(clickEvent, href);
     setIsOpen(false);
     if (navigator.vibrate && isTouchDevice) {
       navigator.vibrate(5);
@@ -134,7 +134,7 @@ export function MobileMenu({ navItems, activeSection, onNavClick }: Readonly<Mob
         {isOpen && (
           <motion.div
             id={panelId}
-            className="absolute top-16 left-0 right-0 bg-background border-b z-50"
+            className="absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-xl border-b z-50 shadow-xl"
             initial="closed"
             animate="open"
             exit="closed"

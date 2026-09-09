@@ -27,13 +27,13 @@ export function Header() {
     <header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
-        isScrolled ? "bg-background/80 backdrop-blur-md border-b" : "bg-transparent",
+        isScrolled ? "bg-background/80 backdrop-blur-xl border-b shadow-sm" : "bg-transparent",
       )}
     >
-      <div className="container-page flex h-16 items-center justify-between gap-2">
+      <div className="container-page flex h-16 items-center justify-between gap-3">
         <Logo />
 
-        <Navigation className="hidden md:flex items-center gap-6 relative" />
+        <Navigation className="hidden md:flex items-center gap-6 relative rounded-full border border-border/60 bg-card/60 px-5 py-1.5 backdrop-blur-md" />
 
         <div className="flex items-center gap-2">
           <span className="hidden items-center gap-2 sm:flex">
