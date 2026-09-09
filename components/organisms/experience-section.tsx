@@ -21,7 +21,7 @@ import { formatDurationRange } from "@/lib/duration";
 import { cn } from "@/lib/utils";
 
 export function ExperienceSection() {
-  const { t, language } = useLanguage();
+  const { t: translate, language } = useLanguage();
   const [expandedCompanies, setExpandedCompanies] = useState<string[]>([]);
   const durationConfig = useMemo(() => ({ locale: language }), [language]);
 
@@ -65,23 +65,25 @@ export function ExperienceSection() {
     >
       <SectionHeading
         id="experience-heading"
-        title={t("experience.title")}
-        description={t("experience.description")}
+        title={translate("experience.title")}
+        description={translate("experience.description")}
       />
 
       <div className="mb-8 flex justify-center">
         <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-1.5 text-xs font-mono text-muted-foreground shadow-sm">
           <TrendingUp className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
-          <span>{t("experience.progression.label")}</span>
+          <span>{translate("experience.progression.label")}</span>
           <span className="font-semibold text-foreground">
-            {t("experience.progression.intern")}
+            {translate("experience.progression.intern")}
           </span>
           <span className="text-primary">➔</span>
           <span className="font-semibold text-foreground">
-            {t("experience.progression.fullstack")}
+            {translate("experience.progression.fullstack")}
           </span>
           <span className="text-primary">➔</span>
-          <span className="font-bold text-cyan-400">{t("experience.progression.techlead")}</span>
+          <span className="font-bold text-cyan-400">
+            {translate("experience.progression.techlead")}
+          </span>
         </div>
       </div>
 
@@ -89,11 +91,11 @@ export function ExperienceSection() {
         <TabsList className="mb-8 flex w-full flex-wrap">
           <TabsTrigger value="professional" className="flex flex-1 items-center gap-2">
             <Briefcase className="h-4 w-4" aria-hidden="true" />
-            {t("experience.tabs.professional")}
+            {translate("experience.tabs.professional")}
           </TabsTrigger>
           <TabsTrigger value="academic" className="flex flex-1 items-center gap-2">
             <GraduationCap className="h-4 w-4" aria-hidden="true" />
-            {t("experience.tabs.academic")}
+            {translate("experience.tabs.academic")}
           </TabsTrigger>
         </TabsList>
 
@@ -144,7 +146,7 @@ export function ExperienceSection() {
                             aria-controls={`positions-${company.id}`}
                             className="flex w-full items-center gap-2 rounded-sm text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                           >
-                            {t(`experience.companies.${company.id}.name`)}
+                            {translate(`experience.companies.${company.id}.name`)}
                             <ChevronDown
                               className={cn(
                                 "h-4 w-4 text-muted-foreground transition-transform duration-200 ease-out",
@@ -154,8 +156,8 @@ export function ExperienceSection() {
                             />
                             <span className="sr-only">
                               {isExpanded(company.id)
-                                ? t("a11y.collapsePositions", { company: company.name })
-                                : t("a11y.expandPositions", { company: company.name })}
+                                ? translate("a11y.collapsePositions", { company: company.name })
+                                : translate("a11y.expandPositions", { company: company.name })}
                             </span>
                           </button>
                         </CardTitle>
@@ -165,7 +167,7 @@ export function ExperienceSection() {
                               className="h-3 w-3 text-muted-foreground"
                               aria-hidden="true"
                             />
-                            {t(`experience.companies.${company.id}.period`)}
+                            {translate(`experience.companies.${company.id}.period`)}
                           </span>
                           <span className="inline-flex items-center rounded-full bg-cyan-500/10 px-2 py-0.5 text-xs font-mono font-medium text-cyan-400 border border-cyan-500/20">
                             {companyDuration}
@@ -175,10 +177,14 @@ export function ExperienceSection() {
                       <CardContent>
                         <div className="mb-4">
                           <ExperiencePosition
-                            title={t(`experience.companies.${company.id}.positions.0.title`)}
-                            period={t(`experience.companies.${company.id}.positions.0.period`)}
+                            title={translate(
+                              `experience.companies.${company.id}.positions.0.title`,
+                            )}
+                            period={translate(
+                              `experience.companies.${company.id}.positions.0.period`,
+                            )}
                             duration={mainPositionDuration}
-                            description={t(
+                            description={translate(
                               `experience.companies.${company.id}.positions.0.description`,
                             )}
                             technologies={mainPosition.technologies}
@@ -209,16 +215,16 @@ export function ExperienceSection() {
                             >
                               <div className="border-t border-border/60 pt-4 mt-4">
                                 <h4 className="text-sm font-medium mb-3">
-                                  {t("experience.previousPositions")}
+                                  {translate("experience.previousPositions")}
                                 </h4>
                                 <div className="space-y-6">
                                   {company.positions.slice(1).map((position, offsetIndex) => (
                                     <ExperiencePosition
                                       key={`${company.id}-${position.startDate}`}
-                                      title={t(
+                                      title={translate(
                                         `experience.companies.${company.id}.positions.${offsetIndex + 1}.title`,
                                       )}
-                                      period={t(
+                                      period={translate(
                                         `experience.companies.${company.id}.positions.${offsetIndex + 1}.period`,
                                       )}
                                       duration={formatDurationRange(
@@ -226,7 +232,7 @@ export function ExperienceSection() {
                                         position.endDate,
                                         durationConfig,
                                       )}
-                                      description={t(
+                                      description={translate(
                                         `experience.companies.${company.id}.positions.${offsetIndex + 1}.description`,
                                       )}
                                       technologies={position.technologies}
@@ -270,25 +276,29 @@ export function ExperienceSection() {
                     <Card className="border-border/80 bg-card/70 backdrop-blur-xl transition-[border-color,box-shadow] duration-200 ease-out hover:border-indigo-500/50 hover:shadow-lg">
                       <CardHeader>
                         <div className="flex justify-between items-start">
-                          <CardTitle>{t(`experience.education.${education.id}.degree`)}</CardTitle>
+                          <CardTitle>
+                            {translate(`experience.education.${education.id}.degree`)}
+                          </CardTitle>
                         </div>
                         <CardDescription>
-                          {t(`experience.education.${education.id}.institution`)}
+                          {translate(`experience.education.${education.id}.institution`)}
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
                         <EducationCard
-                          period={t(`experience.education.${education.id}.period`)}
-                          description={t(`experience.education.${education.id}.description`)}
+                          period={translate(`experience.education.${education.id}.period`)}
+                          description={translate(
+                            `experience.education.${education.id}.description`,
+                          )}
                           inProgress={education.inProgress}
                           achievements={education.achievements?.map(
                             (_unassignedAchievement, achievementIndex) =>
-                              t(
+                              translate(
                                 `experience.education.${education.id}.achievements.${achievementIndex}`,
                               ),
                           )}
-                          inProgressLabel={t("experience.inProgress")}
-                          keyAchievementsLabel={t("experience.keyAchievements")}
+                          inProgressLabel={translate("experience.inProgress")}
+                          keyAchievementsLabel={translate("experience.keyAchievements")}
                         />
                       </CardContent>
                     </Card>

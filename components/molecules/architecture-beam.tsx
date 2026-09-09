@@ -23,7 +23,7 @@ const ARCHITECTURE_NODES: ArchitectureNodeConfig[] = [
     titleKey: "skills.bento.nodeBff",
     subtitleKey: "skills.bento.nodeBffSub",
     icon: Layers,
-    accentColor: "from-rose-500/20 to-pink-500/20 border-rose-500/40 text-rose-400",
+    accentColor: "from-emerald-500/20 to-teal-500/20 border-emerald-500/40 text-emerald-400",
   },
   {
     titleKey: "skills.bento.nodeKafka",
@@ -35,12 +35,12 @@ const ARCHITECTURE_NODES: ArchitectureNodeConfig[] = [
     titleKey: "skills.bento.nodeCloud",
     subtitleKey: "skills.bento.nodeCloudSub",
     icon: Cloud,
-    accentColor: "from-violet-500/20 to-indigo-500/20 border-violet-500/40 text-violet-400",
+    accentColor: "from-sky-500/20 to-indigo-500/20 border-indigo-500/40 text-indigo-400",
   },
 ];
 
 export function ArchitectureBeam() {
-  const { t } = useLanguage();
+  const { t: translate } = useLanguage();
 
   return (
     <div className="relative w-full overflow-hidden rounded-2xl border border-border/80 bg-card/40 p-6 backdrop-blur-xl">
@@ -51,10 +51,12 @@ export function ArchitectureBeam() {
             <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
           </span>
           <h3 className="font-mono text-sm font-semibold uppercase tracking-wider text-cyan-400">
-            {t("skills.bento.architectureTitle")}
+            {translate("skills.bento.architectureTitle")}
           </h3>
         </div>
-        <p className="text-xs text-muted-foreground">{t("skills.bento.architectureDescription")}</p>
+        <p className="text-xs text-muted-foreground">
+          {translate("skills.bento.architectureDescription")}
+        </p>
       </div>
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -75,10 +77,10 @@ export function ArchitectureBeam() {
                 <NodeIcon className="h-6 w-6" aria-hidden="true" />
               </div>
               <span className="font-mono text-xs font-bold text-foreground">
-                {t(node.titleKey)}
+                {translate(node.titleKey)}
               </span>
-              <span className="mt-1 font-mono text-[11px] text-muted-foreground">
-                {t(node.subtitleKey)}
+              <span className="mt-1 font-mono text-xs text-muted-foreground">
+                {translate(node.subtitleKey)}
               </span>
             </motion.div>
           );

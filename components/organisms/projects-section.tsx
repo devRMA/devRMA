@@ -32,7 +32,7 @@ const ISEND_TECH = [
 ];
 
 export function ProjectsSection() {
-  const { t } = useLanguage();
+  const { t: translate } = useLanguage();
 
   return (
     <section
@@ -42,8 +42,8 @@ export function ProjectsSection() {
     >
       <SectionHeading
         id="projects-heading"
-        title={t("projects.title")}
-        description={t("projects.description")}
+        title={translate("projects.title")}
+        description={translate("projects.description")}
       />
 
       <div className="mb-14 space-y-10">
@@ -62,24 +62,24 @@ export function ProjectsSection() {
                     className="h-2 w-2 rounded-full bg-primary animate-pulse"
                     aria-hidden="true"
                   />
-                  <span>{t("projects.cases.iship.badge")}</span>
+                  <span>{translate("projects.cases.iship.badge")}</span>
                 </div>
                 <span className="font-mono text-xs text-muted-foreground">
-                  {t("projects.cases.iship.team")}
+                  {translate("projects.cases.iship.team")}
                 </span>
               </div>
               <CardTitle className="mt-3 text-2xl md:text-3xl font-bold tracking-tight text-foreground">
-                {t("projects.cases.iship.title")}
+                {translate("projects.cases.iship.title")}
               </CardTitle>
               <p className="text-base text-muted-foreground md:text-lg">
-                {t("projects.cases.iship.subtitle")}
+                {translate("projects.cases.iship.subtitle")}
               </p>
             </CardHeader>
             <CardContent className="p-6 pt-0 md:p-8 md:pt-0 space-y-6">
               <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-border/70 bg-zinc-950/80 shadow-md">
                 <Image
                   src="/app-iship.png"
-                  alt={t("projects.cases.iship.title") || "iShip Driver Platform"}
+                  alt={translate("projects.cases.iship.title") || "iShip Driver Platform"}
                   fill
                   sizes="(max-width: 768px) 100vw, 1200px"
                   className="object-contain object-center"
@@ -92,11 +92,11 @@ export function ProjectsSection() {
                   <div className="mb-3 flex items-center gap-2 text-amber-500">
                     <Activity className="h-5 w-5" aria-hidden="true" />
                     <h4 className="font-mono text-sm font-bold uppercase tracking-wider">
-                      {t("projects.cases.iship.challengeTitle")}
+                      {translate("projects.cases.iship.challengeTitle")}
                     </h4>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    {t("projects.cases.iship.challenge")}
+                    {translate("projects.cases.iship.challenge")}
                   </p>
                 </div>
 
@@ -104,11 +104,11 @@ export function ProjectsSection() {
                   <div className="mb-3 flex items-center gap-2 text-cyan-400">
                     <Cpu className="h-5 w-5" aria-hidden="true" />
                     <h4 className="font-mono text-sm font-bold uppercase tracking-wider">
-                      {t("projects.cases.iship.architectureTitle")}
+                      {translate("projects.cases.iship.architectureTitle")}
                     </h4>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    {t("projects.cases.iship.architecture")}
+                    {translate("projects.cases.iship.architecture")}
                   </p>
                 </div>
 
@@ -116,11 +116,11 @@ export function ProjectsSection() {
                   <div className="mb-3 flex items-center gap-2 text-emerald-400">
                     <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
                     <h4 className="font-mono text-sm font-bold uppercase tracking-wider">
-                      {t("projects.cases.iship.resultTitle")}
+                      {translate("projects.cases.iship.resultTitle")}
                     </h4>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    {t("projects.cases.iship.result")}
+                    {translate("projects.cases.iship.result")}
                   </p>
                 </div>
               </div>
@@ -138,7 +138,7 @@ export function ProjectsSection() {
                   ))}
                 </div>
                 <span className="flex items-center gap-1 font-mono text-xs text-primary font-medium">
-                  {t("projects.cases.iship.tagline")}
+                  {translate("projects.cases.iship.tagline")}
                   <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
               </div>
@@ -161,17 +161,17 @@ export function ProjectsSection() {
                     className="h-2 w-2 rounded-full bg-amber-400 animate-pulse"
                     aria-hidden="true"
                   />
-                  <span>{t("projects.cases.isend.badge")}</span>
+                  <span>{translate("projects.cases.isend.badge")}</span>
                 </div>
                 <span className="font-mono text-xs text-muted-foreground">
-                  {t("projects.cases.isend.team")}
+                  {translate("projects.cases.isend.team")}
                 </span>
               </div>
               <CardTitle className="mt-3 text-2xl md:text-3xl font-bold tracking-tight text-foreground">
-                {t("projects.cases.isend.title")}
+                {translate("projects.cases.isend.title")}
               </CardTitle>
               <p className="text-base text-muted-foreground md:text-lg">
-                {t("projects.cases.isend.subtitle")}
+                {translate("projects.cases.isend.subtitle")}
               </p>
             </CardHeader>
             <CardContent className="p-6 pt-0 md:p-8 md:pt-0 space-y-6">
@@ -180,11 +180,11 @@ export function ProjectsSection() {
                   <div className="mb-3 flex items-center gap-2 text-amber-500">
                     <Activity className="h-5 w-5" aria-hidden="true" />
                     <h4 className="font-mono text-sm font-bold uppercase tracking-wider">
-                      {t("projects.cases.isend.challengeTitle")}
+                      {translate("projects.cases.isend.challengeTitle")}
                     </h4>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    {t("projects.cases.isend.challenge")}
+                    {translate("projects.cases.isend.challenge")}
                   </p>
                 </div>
 
@@ -192,11 +192,11 @@ export function ProjectsSection() {
                   <div className="mb-3 flex items-center gap-2 text-cyan-400">
                     <Cpu className="h-5 w-5" aria-hidden="true" />
                     <h4 className="font-mono text-sm font-bold uppercase tracking-wider">
-                      {t("projects.cases.isend.architectureTitle")}
+                      {translate("projects.cases.isend.architectureTitle")}
                     </h4>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    {t("projects.cases.isend.architecture")}
+                    {translate("projects.cases.isend.architecture")}
                   </p>
                 </div>
 
@@ -204,11 +204,11 @@ export function ProjectsSection() {
                   <div className="mb-3 flex items-center gap-2 text-emerald-400">
                     <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
                     <h4 className="font-mono text-sm font-bold uppercase tracking-wider">
-                      {t("projects.cases.isend.resultTitle")}
+                      {translate("projects.cases.isend.resultTitle")}
                     </h4>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    {t("projects.cases.isend.result")}
+                    {translate("projects.cases.isend.result")}
                   </p>
                 </div>
               </div>
@@ -226,7 +226,7 @@ export function ProjectsSection() {
                   ))}
                 </div>
                 <span className="flex items-center gap-1 font-mono text-xs text-amber-400 font-medium">
-                  {t("projects.cases.isend.tagline")}
+                  {translate("projects.cases.isend.tagline")}
                   <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
               </div>
@@ -237,7 +237,7 @@ export function ProjectsSection() {
 
       <div className="mb-6 flex items-center gap-3">
         <h3 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-          {t("projects.openSourceTitle")}
+          {translate("projects.openSourceTitle")}
         </h3>
         <div className="h-px flex-1 bg-border/60" />
       </div>
@@ -253,15 +253,15 @@ export function ProjectsSection() {
           >
             <ProjectCard
               id={project.id}
-              title={t(`projects.items.${project.id}.title`)}
-              shortDescription={t(`projects.items.${project.id}.shortDescription`)}
-              longDescription={t(`projects.items.${project.id}.longDescription`)}
+              title={translate(`projects.items.${project.id}.title`)}
+              shortDescription={translate(`projects.items.${project.id}.shortDescription`)}
+              longDescription={translate(`projects.items.${project.id}.longDescription`)}
               technologies={project.technologies}
               image={project.image}
               githubUrl={project.githubUrl}
               liveUrl={project.liveUrl}
               isArchived={project.isArchived}
-              archivedLabel={t("projects.archivedBadge")}
+              archivedLabel={translate("projects.archivedBadge")}
             />
           </motion.div>
         ))}

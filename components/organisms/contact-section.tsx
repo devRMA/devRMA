@@ -9,14 +9,14 @@ import { InteractiveTerminal } from "@/components/molecules/interactive-terminal
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function ContactSection() {
-  const { t } = useLanguage();
+  const { t: translate } = useLanguage();
 
   return (
     <section id="contact" aria-labelledby="contact-heading" className="scroll-mt-16 py-20 md:py-28">
       <SectionHeading
         id="contact-heading"
-        title={t("contact.title")}
-        description={t("contact.description")}
+        title={translate("contact.title")}
+        description={translate("contact.description")}
       />
 
       <div className="grid gap-8 lg:grid-cols-2 items-start">
@@ -29,27 +29,27 @@ export function ContactSection() {
         >
           <Card className="border-border/80 bg-card/70 backdrop-blur-xl shadow-lg">
             <CardHeader>
-              <CardTitle>{t("contact.connect.title")}</CardTitle>
-              <CardDescription>{t("contact.connect.description")}</CardDescription>
+              <CardTitle>{translate("contact.connect.title")}</CardTitle>
+              <CardDescription>{translate("contact.connect.description")}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <ContactMethod
                 icon={Mail}
-                title={t("contact.connect.email")}
+                title={translate("contact.connect.email")}
                 value="contact@devrma.com"
                 href="mailto:contact@devrma.com"
               />
 
               <ContactMethod
                 icon={Github}
-                title={t("contact.connect.github")}
+                title={translate("contact.connect.github")}
                 value="github.com/devRMA"
                 href="https://github.com/devRMA"
               />
 
               <ContactMethod
                 icon={Linkedin}
-                title={t("contact.connect.linkedin")}
+                title={translate("contact.connect.linkedin")}
                 value="linkedin.com/in/devRMA"
                 href="https://linkedin.com/in/devRMA"
               />

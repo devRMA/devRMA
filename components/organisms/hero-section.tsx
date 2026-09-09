@@ -15,7 +15,7 @@ const STACK = ["NestJS", "Kafka", "AWS", "TypeScript", "Docker", "Laravel"];
 
 const fadeUp = {
   initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.23, 1, 0.32, 1] } },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.23, 1, 0.32, 1] as const } },
 };
 
 const fadeIn = {
@@ -23,19 +23,19 @@ const fadeIn = {
   animate: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.5, delay: 0.1, ease: [0.23, 1, 0.32, 1] },
+    transition: { duration: 0.5, delay: 0.1, ease: [0.23, 1, 0.32, 1] as const },
   },
 };
 
 export function HeroSection() {
-  const { t } = useLanguage();
+  const { t: translate } = useLanguage();
   const [hasCopiedEmail, setHasCopiedEmail] = useState(false);
   const yearsOfExperience = new Date().getFullYear() - CAREER_START_YEAR;
 
   const stats = [
-    { value: `${yearsOfExperience}+`, label: t("hero.stats.experience") },
-    { value: "14", label: t("hero.stats.certificates") },
-    { value: "2", label: t("hero.stats.companies") },
+    { value: `${yearsOfExperience}+`, label: translate("hero.stats.experience") },
+    { value: "14", label: translate("hero.stats.certificates") },
+    { value: "2", label: translate("hero.stats.companies") },
   ];
 
   const handleCopyEmail = async () => {
@@ -92,7 +92,7 @@ export function HeroSection() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75 motion-reduce:hidden" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
             </span>
-            <span>{t("hero.badge")}</span>
+            <span>{translate("hero.badge")}</span>
           </div>
 
           <h1
@@ -100,18 +100,18 @@ export function HeroSection() {
             className="text-balance text-[clamp(2rem,5vw,3.75rem)] font-bold leading-tight tracking-tight"
           >
             Rafael Martins Alves
-            <span className="mt-2 block text-primary">{t("hero.role")}</span>
+            <span className="mt-2 block text-primary">{translate("hero.role")}</span>
           </h1>
 
           <p className="text-pretty text-lg font-medium text-foreground/90 md:text-xl">
-            {t("hero.headline")}
+            {translate("hero.headline")}
           </p>
 
           <p className="max-w-prose text-pretty text-base text-muted-foreground md:text-lg">
-            {t("hero.description")}
+            {translate("hero.description")}
           </p>
 
-          <ul className="flex flex-wrap gap-2" aria-label={t("hero.stackLabel")}>
+          <ul className="flex flex-wrap gap-2" aria-label={translate("hero.stackLabel")}>
             {STACK.map((techItem) => (
               <li
                 key={techItem}
@@ -141,10 +141,10 @@ export function HeroSection() {
               href="#projects"
               className="rounded-xl font-medium shadow-md shadow-primary/20"
             >
-              {t("hero.projects")}
+              {translate("hero.projects")}
             </ButtonLink>
             <ButtonLink href="#contact" variant="outline" className="rounded-xl">
-              {t("hero.contact")}
+              {translate("hero.contact")}
             </ButtonLink>
             <Button
               type="button"
@@ -156,12 +156,14 @@ export function HeroSection() {
                 {hasCopiedEmail ? (
                   <>
                     <Check className="mr-1.5 h-3.5 w-3.5 text-emerald-500" aria-hidden="true" />
-                    <span className="text-emerald-500 font-semibold">{t("hero.emailCopied")}</span>
+                    <span className="text-emerald-500 font-semibold">
+                      {translate("hero.emailCopied")}
+                    </span>
                   </>
                 ) : (
                   <>
                     <Copy className="mr-1.5 h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
-                    <span>{t("hero.copyEmail")}</span>
+                    <span>{translate("hero.copyEmail")}</span>
                   </>
                 )}
               </span>
@@ -171,7 +173,7 @@ export function HeroSection() {
       </div>
 
       <div className="mt-10 flex justify-center">
-        <ScrollIndicator targetId="skills" label={t("a11y.scrollToSkills")} />
+        <ScrollIndicator targetId="skills" label={translate("a11y.scrollToSkills")} />
       </div>
     </section>
   );

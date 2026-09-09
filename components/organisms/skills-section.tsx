@@ -17,14 +17,14 @@ type SkillCategory = keyof typeof skillsData;
 const CATEGORIES: SkillCategory[] = ["know", "studying", "future"];
 
 export function SkillsSection() {
-  const { t } = useLanguage();
+  const { t: translate } = useLanguage();
 
   return (
     <section id="skills" aria-labelledby="skills-heading" className="scroll-mt-16 py-20 md:py-28">
       <SectionHeading
         id="skills-heading"
-        title={t("skills.title")}
-        description={t("skills.description")}
+        title={translate("skills.title")}
+        description={translate("skills.description")}
       />
 
       <div className="mb-10 space-y-6">
@@ -38,9 +38,11 @@ export function SkillsSection() {
               </div>
               <div>
                 <span className="font-mono text-xl font-bold text-foreground">
-                  {t("skills.bento.yearsValue")}
+                  {translate("skills.bento.yearsValue")}
                 </span>
-                <p className="text-xs text-muted-foreground">{t("skills.bento.yearsExp")}</p>
+                <p className="text-xs text-muted-foreground">
+                  {translate("skills.bento.yearsExp")}
+                </p>
               </div>
             </div>
           </div>
@@ -52,9 +54,11 @@ export function SkillsSection() {
               </div>
               <div>
                 <span className="font-mono text-xl font-bold text-foreground">
-                  {t("skills.bento.scaleValue")}
+                  {translate("skills.bento.scaleValue")}
                 </span>
-                <p className="text-xs text-muted-foreground">{t("skills.bento.systemsScale")}</p>
+                <p className="text-xs text-muted-foreground">
+                  {translate("skills.bento.systemsScale")}
+                </p>
               </div>
             </div>
           </div>
@@ -70,12 +74,12 @@ export function SkillsSection() {
                   <CuritibaClock />
                 </div>
               </div>
-              <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 font-mono text-[11px] text-emerald-400">
+              <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 font-mono text-xs text-emerald-400">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75 motion-reduce:hidden" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
                 </span>
-                {t("skills.bento.liveBadge")}
+                {translate("skills.bento.liveBadge")}
               </span>
             </div>
           </div>
@@ -92,7 +96,7 @@ export function SkillsSection() {
           <TabsList className="mb-8 flex w-full flex-wrap">
             {CATEGORIES.map((category) => (
               <TabsTrigger key={category} value={category} className="flex-1">
-                {t(`skills.tabs.${category}`)}
+                {translate(`skills.tabs.${category}`)}
               </TabsTrigger>
             ))}
           </TabsList>

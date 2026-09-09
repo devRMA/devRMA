@@ -24,7 +24,7 @@ type CertificateCategory = keyof typeof certificatesData;
 type Certificate = (typeof certificatesData)[CertificateCategory][number];
 
 export function CertificatesSection() {
-  const { t } = useLanguage();
+  const { t: translate } = useLanguage();
   const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
 
   return (
@@ -35,8 +35,8 @@ export function CertificatesSection() {
     >
       <SectionHeading
         id="certificates-heading"
-        title={t("certificates.title")}
-        description={t("certificates.description")}
+        title={translate("certificates.title")}
+        description={translate("certificates.description")}
       />
 
       <motion.div
@@ -49,7 +49,7 @@ export function CertificatesSection() {
           <TabsList className="mb-8 flex w-full flex-wrap">
             {(Object.keys(certificatesData) as CertificateCategory[]).map((category) => (
               <TabsTrigger key={category} value={category} className="flex-1">
-                {t(`certificates.tabs.${category}`)}
+                {translate(`certificates.tabs.${category}`)}
               </TabsTrigger>
             ))}
           </TabsList>
@@ -63,8 +63,8 @@ export function CertificatesSection() {
                       <CertificateCard
                         key={certificate.id}
                         id={certificate.id}
-                        title={t(`certificates.items.${certificate.id}.title`)}
-                        issuer={t(`certificates.items.${certificate.id}.issuer`)}
+                        title={translate(`certificates.items.${certificate.id}.title`)}
+                        issuer={translate(`certificates.items.${certificate.id}.issuer`)}
                         date={certificate.date}
                         thumbnail={certificate.thumbnail}
                         onClick={() => setSelectedCertificate(certificate)}
@@ -86,16 +86,18 @@ export function CertificatesSection() {
           {selectedCertificate && (
             <>
               <DialogHeader>
-                <DialogTitle>{t(`certificates.items.${selectedCertificate.id}.title`)}</DialogTitle>
+                <DialogTitle>
+                  {translate(`certificates.items.${selectedCertificate.id}.title`)}
+                </DialogTitle>
                 <DialogDescription>
-                  {t(`certificates.items.${selectedCertificate.id}.issuer`)} •{" "}
+                  {translate(`certificates.items.${selectedCertificate.id}.issuer`)} •{" "}
                   {selectedCertificate.date}
                 </DialogDescription>
               </DialogHeader>
               <div className="relative h-[60vh] w-full">
                 <Image
                   src={selectedCertificate.image || "/placeholder.svg?height=600&width=800"}
-                  alt={t(`certificates.items.${selectedCertificate.id}.title`)}
+                  alt={translate(`certificates.items.${selectedCertificate.id}.title`)}
                   fill
                   sizes="(max-width: 768px) 100vw, 768px"
                   className="object-contain"
@@ -106,7 +108,7 @@ export function CertificatesSection() {
                   <Button asChild>
                     <a href={selectedCertificate.url} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="mr-2 h-4 w-4" aria-hidden="true" />
-                      {t("certificates.verify")}
+                      {translate("certificates.verify")}
                     </a>
                   </Button>
                 )}

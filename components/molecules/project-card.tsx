@@ -93,21 +93,21 @@ export function ProjectCard({
                   <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
                   <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
                 </div>
-                <span className="text-[11px] text-zinc-500">{title.toLowerCase()}</span>
+                <span className="text-xs text-zinc-500">{title.toLowerCase()}</span>
               </div>
               <div className="space-y-1 py-2">
                 <div className="flex items-center gap-2 text-cyan-400">
                   <Terminal className="h-3.5 w-3.5" />
                   <span>$ {title.toLowerCase().replace(/\s+/g, "-")} --status</span>
                 </div>
-                <p className="text-[11px] text-emerald-400">
+                <p className="text-xs text-emerald-400">
                   [SUCCESS] Modules loaded: {technologies.slice(0, 2).join(", ")}
                 </p>
-                <p className="text-[11px] text-zinc-400">
+                <p className="text-xs text-zinc-400">
                   {isArchived ? "Status: Archived" : "Memory: 24MB • Status: Production-Ready"}
                 </p>
               </div>
-              <div className="flex items-center justify-between border-t border-zinc-800/80 pt-2 text-[10px] text-zinc-500">
+              <div className="flex items-center justify-between border-t border-zinc-800/80 pt-2 text-xs text-zinc-500">
                 <span>Architecture verified</span>
                 <span className="text-cyan-500">devrma</span>
               </div>
@@ -120,7 +120,7 @@ export function ProjectCard({
             {isArchived && (
               <Badge
                 variant="outline"
-                className="border-amber-500/40 bg-amber-500/10 text-amber-500 font-mono text-[11px] shrink-0"
+                className="border-amber-500/40 bg-amber-500/10 text-amber-500 font-mono text-xs shrink-0"
               >
                 {archivedLabel ?? "Archived"}
               </Badge>

@@ -10,7 +10,7 @@ interface MarqueeProps {
 }
 
 export function Marquee({ children }: Readonly<MarqueeProps>) {
-  const { t } = useLanguage();
+  const { t: translate } = useLanguage();
   const [isPaused, setIsPaused] = useState(false);
 
   return (
@@ -21,7 +21,7 @@ export function Marquee({ children }: Readonly<MarqueeProps>) {
           size="icon"
           onClick={() => setIsPaused((previousState) => !previousState)}
           aria-pressed={isPaused}
-          aria-label={isPaused ? t("a11y.playCarousel") : t("a11y.pauseCarousel")}
+          aria-label={isPaused ? translate("a11y.playCarousel") : translate("a11y.pauseCarousel")}
           className="h-7 w-7 rounded-full border border-border/50 bg-background/80 backdrop-blur-sm"
         >
           {isPaused ? (
