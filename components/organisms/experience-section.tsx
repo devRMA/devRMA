@@ -69,18 +69,18 @@ export function ExperienceSection() {
         description={translate("experience.description")}
       />
 
-      <div className="mb-8 flex justify-center">
-        <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-1.5 text-xs font-mono text-muted-foreground shadow-sm">
-          <TrendingUp className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
-          <span>{translate("experience.progression.label")}</span>
+      <div className="mb-10 flex justify-center">
+        <div className="inline-flex flex-wrap items-center justify-center gap-2.5 rounded-full border border-border/80 bg-card/60 px-5 py-2 text-xs font-mono text-muted-foreground shadow-sm backdrop-blur-md">
+          <TrendingUp className="h-3.5 w-3.5 text-cyan-400" aria-hidden="true" />
+          <span className="text-zinc-400">{translate("experience.progression.label")}</span>
           <span className="font-semibold text-foreground">
             {translate("experience.progression.intern")}
           </span>
-          <span className="text-primary">➔</span>
+          <span className="text-cyan-500">➔</span>
           <span className="font-semibold text-foreground">
             {translate("experience.progression.fullstack")}
           </span>
-          <span className="text-primary">➔</span>
+          <span className="text-cyan-500">➔</span>
           <span className="font-bold text-cyan-400">
             {translate("experience.progression.techlead")}
           </span>
@@ -88,19 +88,25 @@ export function ExperienceSection() {
       </div>
 
       <Tabs defaultValue="professional" className="w-full">
-        <TabsList className="mb-8 flex w-full flex-wrap">
-          <TabsTrigger value="professional" className="flex flex-1 items-center gap-2">
+        <TabsList className="mb-8 flex w-full flex-wrap rounded-2xl border border-border/70 bg-card/40 p-1.5 backdrop-blur-xl">
+          <TabsTrigger
+            value="professional"
+            className="flex flex-1 items-center justify-center gap-2 rounded-xl py-2.5 font-mono text-xs transition-all data-[state=active]:bg-card data-[state=active]:text-primary data-[state=active]:shadow-sm"
+          >
             <Briefcase className="h-4 w-4" aria-hidden="true" />
             {translate("experience.tabs.professional")}
           </TabsTrigger>
-          <TabsTrigger value="academic" className="flex flex-1 items-center gap-2">
+          <TabsTrigger
+            value="academic"
+            className="flex flex-1 items-center justify-center gap-2 rounded-xl py-2.5 font-mono text-xs transition-all data-[state=active]:bg-card data-[state=active]:text-primary data-[state=active]:shadow-sm"
+          >
             <GraduationCap className="h-4 w-4" aria-hidden="true" />
             {translate("experience.tabs.academic")}
           </TabsTrigger>
         </TabsList>
 
         <TabsContent value="professional">
-          <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-cyan-500/80 before:via-indigo-500/80 before:to-purple-500/80 before:shadow-[0_0_10px_rgba(6,182,212,0.4)]">
+          <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-px before:bg-gradient-to-b before:from-cyan-500/70 before:via-border/80 before:to-border/20">
             {experienceData.map((company, companyIndex) => {
               const companyDuration = formatDurationRange(
                 company.startDate,
@@ -131,12 +137,12 @@ export function ExperienceSection() {
                   }}
                   className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
                 >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-cyan-500/60 bg-background shadow-[0_0_15px_rgba(6,182,212,0.3)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-200 ease-out group-hover:scale-105">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-cyan-500/50 bg-card/90 shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-200 ease-out group-hover:scale-110">
                     <Building className="h-4 w-4 text-cyan-400" aria-hidden="true" />
                   </div>
 
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)]">
-                    <Card className="border-border/80 bg-card/70 backdrop-blur-xl transition-[border-color,box-shadow] duration-200 ease-out hover:border-cyan-500/50 hover:shadow-lg">
+                    <Card className="rounded-2xl border-border/80 bg-card/70 backdrop-blur-xl shadow-sm transition-all duration-200 ease-out hover:border-cyan-500/40 hover:shadow-xl">
                       <CardHeader>
                         <CardTitle className="flex items-center justify-between">
                           <button
@@ -254,7 +260,7 @@ export function ExperienceSection() {
         </TabsContent>
 
         <TabsContent value="academic">
-          <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-cyan-500/80 before:via-indigo-500/80 before:to-purple-500/80 before:shadow-[0_0_10px_rgba(6,182,212,0.4)]">
+          <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-px before:bg-gradient-to-b before:from-indigo-500/70 before:via-border/80 before:to-border/20">
             {academicData.map((education, educationIndex) => {
               return (
                 <motion.div
@@ -268,12 +274,12 @@ export function ExperienceSection() {
                   }}
                   className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
                 >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-indigo-500/60 bg-background shadow-[0_0_15px_rgba(99,102,241,0.3)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-200 ease-out group-hover:scale-105">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-indigo-500/50 bg-card/90 shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-200 ease-out group-hover:scale-110">
                     <GraduationCap className="h-4 w-4 text-indigo-400" aria-hidden="true" />
                   </div>
 
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)]">
-                    <Card className="border-border/80 bg-card/70 backdrop-blur-xl transition-[border-color,box-shadow] duration-200 ease-out hover:border-indigo-500/50 hover:shadow-lg">
+                    <Card className="rounded-2xl border-border/80 bg-card/70 backdrop-blur-xl shadow-sm transition-all duration-200 ease-out hover:border-indigo-500/40 hover:shadow-xl">
                       <CardHeader>
                         <div className="flex justify-between items-start">
                           <CardTitle>

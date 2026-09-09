@@ -63,20 +63,38 @@ export function HeroSection() {
           variants={fadeIn}
           className="flex justify-center md:order-last"
         >
-          <div className="relative flex items-center justify-center">
+          <div className="relative group">
             <div
-              className="absolute -inset-4 rounded-full bg-gradient-to-tr from-cyan-500/20 via-indigo-500/20 to-primary/20 blur-xl animate-pulse"
+              className="absolute -inset-2 rounded-[2.5rem] bg-gradient-to-b from-primary/20 via-cyan-500/10 to-transparent blur-xl opacity-60 transition-opacity duration-500 group-hover:opacity-100"
               aria-hidden="true"
             />
-            <div className="relative aspect-square w-52 overflow-hidden rounded-full border-4 border-primary/30 shadow-2xl transition-transform duration-300 ease-out hover:scale-105 sm:w-64 md:w-72 lg:w-80 2xl:w-96">
-              <Image
-                src={profileImage}
-                alt="Rafael Martins Alves, desenvolvedor full stack"
-                fill
-                sizes="(max-width: 640px) 208px, (max-width: 768px) 256px, (max-width: 1024px) 288px, (max-width: 1536px) 320px, 384px"
-                className="object-cover transition-transform duration-500 ease-out hover:scale-110"
-                priority
-              />
+            <div className="relative rounded-[2.5rem] border border-border/80 bg-card/40 p-2 shadow-2xl backdrop-blur-xl transition-[border-color,box-shadow] duration-300 ease-out group-hover:border-primary/40">
+              <div className="relative aspect-square w-56 overflow-hidden rounded-[2rem] border border-border/60 bg-zinc-950 sm:w-64 md:w-72 lg:w-80 2xl:w-96">
+                <Image
+                  src={profileImage}
+                  alt="Rafael Martins Alves, desenvolvedor full stack"
+                  fill
+                  sizes="(max-width: 640px) 224px, (max-width: 768px) 256px, (max-width: 1024px) 288px, (max-width: 1536px) 320px, 384px"
+                  className="object-cover transition-transform duration-700 ease-out-expo group-hover:scale-105"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent opacity-60" />
+
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between rounded-xl border border-white/10 bg-black/60 px-3 py-1.5 backdrop-blur-md">
+                  <div className="flex items-center gap-2">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75 motion-reduce:hidden" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                    </span>
+                    <span className="font-mono text-[11px] text-zinc-300 font-medium">
+                      Curitiba, BR
+                    </span>
+                  </div>
+                  <span className="font-mono text-[11px] text-cyan-400 font-semibold tracking-wider uppercase">
+                    Tech Lead
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -87,7 +105,7 @@ export function HeroSection() {
           variants={fadeUp}
           className="flex flex-col gap-5"
         >
-          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-sm font-medium text-primary">
+          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-xs font-mono font-medium text-primary shadow-sm backdrop-blur-md">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75 motion-reduce:hidden" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
@@ -97,17 +115,19 @@ export function HeroSection() {
 
           <h1
             id="hero-heading"
-            className="text-balance text-[clamp(2rem,5vw,3.75rem)] font-bold leading-tight tracking-tight"
+            className="text-balance text-[clamp(2.25rem,5.5vw,4rem)] font-bold leading-[1.1] tracking-tight text-foreground"
           >
             Rafael Martins Alves
-            <span className="mt-2 block text-primary">{translate("hero.role")}</span>
+            <span className="mt-2 block bg-gradient-to-r from-primary via-cyan-400 to-sky-400 bg-clip-text text-transparent">
+              {translate("hero.role")}
+            </span>
           </h1>
 
           <p className="text-pretty text-lg font-medium text-foreground/90 md:text-xl">
             {translate("hero.headline")}
           </p>
 
-          <p className="max-w-prose text-pretty text-base text-muted-foreground md:text-lg">
+          <p className="max-w-prose text-pretty text-base text-muted-foreground leading-relaxed md:text-lg">
             {translate("hero.description")}
           </p>
 
@@ -115,48 +135,58 @@ export function HeroSection() {
             {STACK.map((techItem) => (
               <li
                 key={techItem}
-                className="rounded-md border border-border/80 bg-muted/60 px-2.5 py-1 font-mono text-xs text-muted-foreground transition-[border-color,color,transform] duration-150 ease-out hover:border-primary/50 hover:text-foreground hover:-translate-y-0.5 cursor-default select-none"
+                className="rounded-lg border border-border/80 bg-card/60 px-3 py-1 font-mono text-xs text-muted-foreground shadow-sm backdrop-blur-md transition-[border-color,color,transform] duration-150 ease-out hover:border-primary/50 hover:text-foreground hover:-translate-y-0.5 cursor-default select-none"
               >
                 {techItem}
               </li>
             ))}
           </ul>
 
-          <dl className="flex flex-wrap gap-x-8 gap-y-3 border-t pt-5">
-            {stats.map((statistic) => (
-              <div
-                key={statistic.label}
-                className="group transition-transform duration-150 ease-out hover:-translate-y-0.5 cursor-default select-none"
-              >
-                <dt className="text-sm text-muted-foreground">{statistic.label}</dt>
-                <dd className="text-2xl font-bold text-foreground transition-colors duration-150 ease-out group-hover:text-primary">
-                  {statistic.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <div className="rounded-2xl border border-border/70 bg-card/40 p-4 backdrop-blur-xl shadow-sm">
+            <dl className="grid grid-cols-3 gap-3 divide-x divide-border/60">
+              {stats.map((statistic, statIndex) => (
+                <div
+                  key={statistic.label}
+                  className={`group transition-transform duration-150 ease-out hover:-translate-y-0.5 cursor-default select-none ${
+                    statIndex > 0 ? "pl-4" : ""
+                  }`}
+                >
+                  <dt className="text-xs text-muted-foreground font-mono truncate">
+                    {statistic.label}
+                  </dt>
+                  <dd className="mt-1 font-mono text-2xl font-bold tracking-tight text-foreground transition-colors duration-150 ease-out group-hover:text-primary md:text-3xl">
+                    {statistic.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
 
           <div className="mt-2 flex flex-wrap items-center gap-3">
             <ButtonLink
               href="#projects"
-              className="rounded-xl font-medium shadow-md shadow-primary/20"
+              className="rounded-xl font-medium shadow-md shadow-primary/20 transition-all duration-200 hover:shadow-lg hover:shadow-primary/30 active:scale-[0.98]"
             >
               {translate("hero.projects")}
             </ButtonLink>
-            <ButtonLink href="#contact" variant="outline" className="rounded-xl">
+            <ButtonLink
+              href="#contact"
+              variant="outline"
+              className="rounded-xl border-border/80 bg-card/40 backdrop-blur-md transition-all duration-200 hover:bg-muted hover:border-primary/40 active:scale-[0.98]"
+            >
               {translate("hero.contact")}
             </ButtonLink>
             <Button
               type="button"
               variant="ghost"
               onClick={handleCopyEmail}
-              className="rounded-xl border border-border/70 text-xs font-mono transition-[background-color,border-color,color] duration-150 ease-out hover:bg-muted"
+              className="rounded-xl border border-border/70 bg-card/30 text-xs font-mono backdrop-blur-md transition-all duration-150 ease-out hover:bg-muted hover:border-primary/40 active:scale-[0.98]"
             >
               <span className="inline-flex items-center transition-[opacity,transform] duration-150 ease-out">
                 {hasCopiedEmail ? (
                   <>
-                    <Check className="mr-1.5 h-3.5 w-3.5 text-emerald-500" aria-hidden="true" />
-                    <span className="text-emerald-500 font-semibold">
+                    <Check className="mr-1.5 h-3.5 w-3.5 text-emerald-400" aria-hidden="true" />
+                    <span className="text-emerald-400 font-semibold">
                       {translate("hero.emailCopied")}
                     </span>
                   </>

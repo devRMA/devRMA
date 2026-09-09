@@ -194,7 +194,7 @@ export function InteractiveTerminal() {
   };
 
   return (
-    <div className="w-full overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950 font-mono text-xs shadow-xl">
+    <div className="w-full h-full min-h-[380px] overflow-hidden rounded-[1.5rem] border border-zinc-800 bg-zinc-950 font-mono text-xs shadow-2xl flex flex-col justify-between">
       <div className="flex items-center justify-between border-b border-zinc-800 bg-zinc-900/80 px-4 py-2.5">
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1.5">

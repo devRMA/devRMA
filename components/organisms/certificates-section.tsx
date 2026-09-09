@@ -46,9 +46,13 @@ export function CertificatesSection() {
         transition={{ duration: 0.3, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
       >
         <Tabs defaultValue="frontend" className="w-full">
-          <TabsList className="mb-8 flex w-full flex-wrap">
+          <TabsList className="mb-6 flex w-full flex-wrap rounded-2xl border border-border/70 bg-card/40 p-1.5 backdrop-blur-xl">
             {(Object.keys(certificatesData) as CertificateCategory[]).map((category) => (
-              <TabsTrigger key={category} value={category} className="flex-1">
+              <TabsTrigger
+                key={category}
+                value={category}
+                className="flex-1 rounded-xl font-mono text-xs py-2.5 transition-all data-[state=active]:bg-card data-[state=active]:text-primary data-[state=active]:shadow-sm"
+              >
                 {translate(`certificates.tabs.${category}`)}
               </TabsTrigger>
             ))}
@@ -56,8 +60,8 @@ export function CertificatesSection() {
 
           {(Object.keys(certificatesData) as CertificateCategory[]).map((category) => (
             <TabsContent key={category} value={category}>
-              <Card>
-                <CardContent className="p-6 overflow-hidden">
+              <Card className="rounded-2xl md:rounded-3xl border-border/80 bg-card/50 backdrop-blur-xl shadow-lg">
+                <CardContent className="p-6 md:p-8 overflow-hidden">
                   <Marquee>
                     {certificatesData[category].map((certificate) => (
                       <CertificateCard

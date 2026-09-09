@@ -60,6 +60,10 @@ const config: Config = {
         sans: ["var(--font-inter)"],
         mono: ["var(--font-jetbrains-mono)"],
       },
+      transitionTimingFunction: {
+        "out-expo": "cubic-bezier(0.23, 1, 0.32, 1)",
+        spring: "cubic-bezier(0.32, 0.72, 0, 1)",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
