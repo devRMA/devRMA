@@ -26,3 +26,16 @@ Object.defineProperty(window, "scrollTo", {
   value: (xCoord: number, yCoord: number) => {},
   writable: true,
 });
+
+if (!globalThis.IntersectionObserver) {
+  class MockIntersectionObserver {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  }
+  Object.defineProperty(globalThis, "IntersectionObserver", {
+    value: MockIntersectionObserver,
+    writable: true,
+    configurable: true,
+  });
+}
