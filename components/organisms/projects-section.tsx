@@ -86,7 +86,7 @@ export function ProjectsSection() {
                     className="object-contain object-center"
                     priority
                   />
-                  <div className="absolute top-3 right-3 hidden sm:flex items-center gap-2 rounded-lg border border-white/10 bg-black/60 px-3 py-1 font-mono text-[11px] text-zinc-300 backdrop-blur-md">
+                  <div className="absolute top-3 right-3 hidden sm:flex items-center gap-2 rounded-lg border border-white/10 bg-black/60 px-3 py-1 font-mono text-xs text-zinc-300 backdrop-blur-md">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     <span>{translate("projects.cases.iship.productionBadge")}</span>
                   </div>
@@ -194,41 +194,41 @@ export function ProjectsSection() {
                         {translate("projects.cases.isend.telemetryUrl")}
                       </span>
                     </div>
-                    <span className="text-[11px] text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 rounded-full">
+                    <span className="text-xs font-mono text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 rounded-full">
                       {translate("projects.cases.isend.activeRoutesBadge")}
                     </span>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
                     <div className="rounded-lg border border-zinc-800/80 bg-zinc-900/50 p-3">
-                      <span className="text-zinc-500 block text-[10px] uppercase tracking-wider">
+                      <span className="text-zinc-500 block text-xs uppercase tracking-wider">
                         {translate("projects.cases.isend.apmCategory")}
                       </span>
                       <span className="text-cyan-400 font-bold mt-1 block">
                         {translate("projects.cases.isend.apmTitle")}
                       </span>
-                      <span className="text-[11px] text-zinc-400">
+                      <span className="text-xs text-zinc-400">
                         {translate("projects.cases.isend.apmDesc")}
                       </span>
                     </div>
                     <div className="rounded-lg border border-zinc-800/80 bg-zinc-900/50 p-3">
-                      <span className="text-zinc-500 block text-[10px] uppercase tracking-wider">
+                      <span className="text-zinc-500 block text-xs uppercase tracking-wider">
                         {translate("projects.cases.isend.qualityCategory")}
                       </span>
                       <span className="text-emerald-400 font-bold mt-1 block">
                         {translate("projects.cases.isend.qualityTitle")}
                       </span>
-                      <span className="text-[11px] text-zinc-400">
+                      <span className="text-xs text-zinc-400">
                         {translate("projects.cases.isend.qualityDesc")}
                       </span>
                     </div>
                     <div className="rounded-lg border border-zinc-800/80 bg-zinc-900/50 p-3">
-                      <span className="text-zinc-500 block text-[10px] uppercase tracking-wider">
+                      <span className="text-zinc-500 block text-xs uppercase tracking-wider">
                         {translate("projects.cases.isend.asyncCategory")}
                       </span>
                       <span className="text-amber-400 font-bold mt-1 block">
                         {translate("projects.cases.isend.asyncTitle")}
                       </span>
-                      <span className="text-[11px] text-zinc-400">
+                      <span className="text-xs text-zinc-400">
                         {translate("projects.cases.isend.asyncDesc")}
                       </span>
                     </div>

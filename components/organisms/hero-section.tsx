@@ -5,6 +5,7 @@ import { Check, Copy } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { ButtonLink } from "@/components/atoms/button-link";
+import { CounterNumber } from "@/components/atoms/counter-number";
 import { ScrollIndicator } from "@/components/atoms/scroll-indicator";
 import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
@@ -86,11 +87,11 @@ export function HeroSection() {
                       <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75 motion-reduce:hidden" />
                       <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
                     </span>
-                    <span className="font-mono text-[11px] text-zinc-300 font-medium">
+                    <span className="font-mono text-xs text-zinc-300 font-medium">
                       Curitiba, BR
                     </span>
                   </div>
-                  <span className="font-mono text-[11px] text-cyan-400 font-semibold tracking-wider uppercase">
+                  <span className="font-mono text-xs text-cyan-400 font-semibold tracking-wider uppercase">
                     Tech Lead
                   </span>
                 </div>
@@ -118,7 +119,7 @@ export function HeroSection() {
             className="text-balance text-[clamp(2.25rem,5.5vw,4rem)] font-bold leading-[1.1] tracking-tight text-foreground"
           >
             Rafael Martins Alves
-            <span className="mt-2 block bg-gradient-to-r from-primary via-cyan-400 to-sky-400 bg-clip-text text-transparent">
+            <span className="mt-2 block font-semibold text-primary tracking-tight">
               {translate("hero.role")}
             </span>
           </h1>
@@ -142,8 +143,8 @@ export function HeroSection() {
             ))}
           </ul>
 
-          <div className="rounded-2xl border border-border/70 bg-card/40 p-4 backdrop-blur-xl shadow-sm">
-            <dl className="grid grid-cols-3 gap-3 divide-x divide-border/60">
+          <div className="rounded-2xl border border-border/70 bg-card/30 p-1.5 backdrop-blur-xl shadow-sm">
+            <dl className="grid grid-cols-3 gap-3 divide-x divide-border/60 rounded-xl bg-card/50 p-3.5 border border-border/40">
               {stats.map((statistic, statIndex) => (
                 <div
                   key={statistic.label}
@@ -155,7 +156,7 @@ export function HeroSection() {
                     {statistic.label}
                   </dt>
                   <dd className="mt-1 font-mono text-2xl font-bold tracking-tight text-foreground transition-colors duration-150 ease-out group-hover:text-primary md:text-3xl">
-                    {statistic.value}
+                    <CounterNumber value={statistic.value} />
                   </dd>
                 </div>
               ))}

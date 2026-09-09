@@ -1,10 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ExternalLink, Github, Terminal } from "lucide-react";
 import Image from "next/image";
 import type React from "react";
-import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -50,27 +49,28 @@ export function ProjectCard({
   previewVerifiedLabel = "Architecture verified",
 }: Readonly<ProjectCardProps>) {
   const { isMobile } = useMobile();
-  const [tiltRotation, setTiltRotation] = useState({ rotateX: 0, rotateY: 0 });
+
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { damping: 22, stiffness: 240 };
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [5, -5]), springConfig);
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-5, 5]), springConfig);
 
   const handleMouseMove = (mouseEvent: React.MouseEvent<HTMLDivElement>) => {
-    if (isMobile) {
-      return;
-    }
+    if (isMobile) return;
 
-    const cardBoundingRectangle = mouseEvent.currentTarget.getBoundingClientRect();
-    const relativeCoordinateX = mouseEvent.clientX - cardBoundingRectangle.left;
-    const relativeCoordinateY = mouseEvent.clientY - cardBoundingRectangle.top;
-    const horizontalRatio = relativeCoordinateX / cardBoundingRectangle.width - 0.5;
-    const verticalRatio = relativeCoordinateY / cardBoundingRectangle.height - 0.5;
+    const cardRect = mouseEvent.currentTarget.getBoundingClientRect();
+    const x = (mouseEvent.clientX - cardRect.left) / cardRect.width - 0.5;
+    const y = (mouseEvent.clientY - cardRect.top) / cardRect.height - 0.5;
 
-    setTiltRotation({
-      rotateX: -verticalRatio * 3,
-      rotateY: horizontalRatio * 3,
-    });
+    mouseX.set(x);
+    mouseY.set(y);
   };
 
   const handleMouseLeave = () => {
-    setTiltRotation({ rotateX: 0, rotateY: 0 });
+    mouseX.set(0);
+    mouseY.set(0);
   };
 
   return (
@@ -78,12 +78,13 @@ export function ProjectCard({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
-        transform: `perspective(1000px) rotateX(${tiltRotation.rotateX}deg) rotateY(${tiltRotation.rotateY}deg)`,
-        transition: "transform 0.2s cubic-bezier(0.23, 1, 0.32, 1)",
+        rotateX,
+        rotateY,
+        transformPerspective: 1000,
       }}
-      className="h-full"
+      className="h-full [transform-style:preserve-3d]"
     >
-      <Card className="h-full flex flex-col overflow-hidden rounded-2xl border-border/80 bg-card/60 backdrop-blur-xl transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-primary/50 hover:shadow-xl hover:-translate-y-1">
+      <Card className="group relative h-full flex flex-col overflow-hidden rounded-2xl border-border/80 bg-card/60 backdrop-blur-xl transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-cyan-500/50 hover:shadow-2xl hover:shadow-cyan-500/5 hover:-translate-y-1">
         <div className="relative h-48 w-full overflow-hidden border-b border-border/70 bg-zinc-950/50">
           {image ? (
             <Image
@@ -101,21 +102,21 @@ export function ProjectCard({
                   <span className="h-2 w-2 rounded-full bg-amber-500/80" />
                   <span className="h-2 w-2 rounded-full bg-emerald-500/80" />
                 </div>
-                <span className="text-[11px] text-zinc-500 font-mono">{title.toLowerCase()}</span>
+                <span className="text-xs text-zinc-500 font-mono">{title.toLowerCase()}</span>
               </div>
               <div className="space-y-1.5 py-2">
                 <div className="flex items-center gap-2 text-cyan-400">
                   <Terminal className="h-3.5 w-3.5" />
                   <span>$ {title.toLowerCase().replace(/\s+/g, "-")} --status</span>
                 </div>
-                <p className="text-[11px] text-emerald-400">
+                <p className="text-xs text-emerald-400">
                   {previewSuccessLabel} {technologies.slice(0, 2).join(", ")}
                 </p>
-                <p className="text-[11px] text-zinc-400">
+                <p className="text-xs text-zinc-400">
                   {isArchived ? previewArchivedStatusLabel : previewProductionStatusLabel}
                 </p>
               </div>
-              <div className="flex items-center justify-between border-t border-zinc-800/80 pt-2 text-[10px] text-zinc-500">
+              <div className="flex items-center justify-between border-t border-zinc-800/80 pt-2 text-xs text-zinc-500">
                 <span>{previewVerifiedLabel}</span>
                 <span className="text-cyan-400 font-semibold">devrma</span>
               </div>
@@ -130,7 +131,7 @@ export function ProjectCard({
             {isArchived && (
               <Badge
                 variant="outline"
-                className="border-amber-500/40 bg-amber-500/10 text-amber-400 font-mono text-[10px] shrink-0"
+                className="border-amber-500/40 bg-amber-500/10 text-amber-400 font-mono text-xs shrink-0"
               >
                 {archivedLabel ?? "Archived"}
               </Badge>
@@ -147,7 +148,7 @@ export function ProjectCard({
               <Badge
                 key={technologyItem}
                 variant="secondary"
-                className="border border-border/60 bg-muted/50 text-[11px] font-mono px-2 py-0.5 text-muted-foreground"
+                className="border border-border/60 bg-muted/50 text-xs font-mono px-2 py-0.5 text-muted-foreground"
               >
                 {technologyItem}
               </Badge>

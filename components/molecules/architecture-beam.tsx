@@ -57,7 +57,7 @@ const ARCHITECTURE_NODES: ArchitectureNodeConfig[] = [
     titleKey: "skills.bento.nodeCloud",
     subtitleKey: "skills.bento.nodeCloudSub",
     icon: Cloud,
-    accentColor: "from-indigo-500/20 to-violet-500/20 border-indigo-500/40 text-indigo-400",
+    accentColor: "from-sky-500/20 to-cyan-500/20 border-sky-500/40 text-sky-400",
     badgeKey: "skills.bento.nodeCloudBadge",
     protocol: "AWS ECS / Lambda",
     detailKey: "skills.bento.nodeCloudDetail",
@@ -86,9 +86,9 @@ export function ArchitectureBeam() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2 font-mono text-[11px] self-start sm:self-auto">
+        <div className="flex items-center gap-2 font-mono text-xs self-start sm:self-auto">
           <span className="rounded-md border border-border/80 bg-card/60 px-2.5 py-1 text-zinc-400">
-            PROTOBUF / JSON
+            AVRO / JSON
           </span>
           <span className="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-emerald-400 font-semibold flex items-center gap-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -122,6 +122,28 @@ export function ArchitectureBeam() {
               strokeDasharray="6 6"
               className="motion-reduce:stroke-dashoffset-0 [stroke-dashoffset:0] animate-[dash_20s_linear_infinite]"
             />
+            <circle r="3.5" fill="#06b6d4" className="motion-reduce:hidden">
+              <animate attributeName="cx" values="0%;100%" dur="4s" repeatCount="indefinite" />
+              <animate attributeName="cy" values="16;16" dur="4s" repeatCount="indefinite" />
+              <animate attributeName="opacity" values="0;1;1;0" dur="4s" repeatCount="indefinite" />
+            </circle>
+            <circle r="3" fill="#10b981" className="motion-reduce:hidden">
+              <animate
+                attributeName="cx"
+                values="0%;100%"
+                dur="4s"
+                begin="2s"
+                repeatCount="indefinite"
+              />
+              <animate attributeName="cy" values="16;16" dur="4s" repeatCount="indefinite" />
+              <animate
+                attributeName="opacity"
+                values="0;1;1;0"
+                dur="4s"
+                begin="2s"
+                repeatCount="indefinite"
+              />
+            </circle>
           </svg>
         </div>
 
@@ -144,10 +166,10 @@ export function ArchitectureBeam() {
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="font-mono text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">
+                    <span className="font-mono text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                       NODE {node.step}
                     </span>
-                    <span className="font-mono text-[10px] px-2 py-0.5 rounded-full border border-border/80 bg-muted/40 text-muted-foreground">
+                    <span className="font-mono text-xs px-2 py-0.5 rounded-full border border-border/80 bg-muted/40 text-muted-foreground">
                       {translate(node.badgeKey)}
                     </span>
                   </div>
@@ -162,14 +184,14 @@ export function ArchitectureBeam() {
                       <h4 className="font-mono text-xs font-bold text-foreground truncate">
                         {translate(node.titleKey)}
                       </h4>
-                      <p className="font-mono text-[11px] text-muted-foreground truncate">
+                      <p className="font-mono text-xs text-muted-foreground truncate">
                         {translate(node.subtitleKey)}
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="border-t border-border/50 pt-3 mt-1 flex items-center justify-between font-mono text-[10px] text-muted-foreground">
+                <div className="border-t border-border/50 pt-3 mt-1 flex items-center justify-between font-mono text-xs text-muted-foreground">
                   <span className="text-zinc-400">{node.protocol}</span>
                   <span className="text-cyan-400/90">{translate(node.detailKey)}</span>
                 </div>
