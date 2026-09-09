@@ -2,7 +2,7 @@
 
 import { Terminal as TerminalIcon } from "lucide-react";
 import type React from "react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useLanguage } from "@/components/language-provider";
 
 interface CommandHistoryItem {
@@ -27,6 +27,7 @@ export function InteractiveTerminal() {
   );
 
   const [historyItems, setHistoryItems] = useState<CommandHistoryItem[]>(initialHistory);
+  const terminalScrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setHistoryItems((currentItems) => {
@@ -36,6 +37,20 @@ export function InteractiveTerminal() {
       return currentItems;
     });
   }, [initialHistory]);
+
+  useEffect(() => {
+    const scrollContainer = terminalScrollContainerRef.current;
+    if (scrollContainer) {
+      if (typeof scrollContainer.scrollTo === "function") {
+        scrollContainer.scrollTo({
+          top: scrollContainer.scrollHeight,
+          behavior: "smooth",
+        });
+      } else {
+        scrollContainer.scrollTop = scrollContainer.scrollHeight;
+      }
+    }
+  }, []);
 
   const executeCommand = (rawCommand: string) => {
     const trimmedCommand = rawCommand.trim().toLowerCase();
@@ -193,9 +208,15 @@ export function InteractiveTerminal() {
         </div>
       </div>
 
-      <div className="max-h-64 overflow-y-auto p-4 space-y-3">
+      <div
+        ref={terminalScrollContainerRef}
+        className="max-h-64 overflow-y-auto p-4 space-y-3 scroll-smooth"
+      >
         {historyItems.map((historyItem) => (
-          <div key={historyItem.id} className="space-y-1">
+          <div
+            key={historyItem.id}
+            className="space-y-1 animate-in fade-in-0 slide-in-from-bottom-1 duration-150 ease-out"
+          >
             <div className="flex items-center gap-2 text-zinc-400">
               <span className="text-cyan-400">visitor@devrma:~$</span>
               <span className="text-foreground">{historyItem.command}</span>
@@ -214,6 +235,10 @@ export function InteractiveTerminal() {
             className="flex-1 bg-transparent text-foreground placeholder:text-zinc-600 focus:outline-none"
             aria-label="Comando de terminal"
           />
+          <span
+            className="inline-block h-3.5 w-1.5 bg-cyan-400/80 animate-pulse motion-reduce:hidden"
+            aria-hidden="true"
+          />
         </form>
       </div>
 
@@ -224,7 +249,7 @@ export function InteractiveTerminal() {
             key={shortcutCommand}
             type="button"
             onClick={() => executeSuggestedCommand(shortcutCommand)}
-            className="rounded border border-zinc-700 bg-zinc-800/60 px-2 py-0.5 text-[10px] text-zinc-300 transition-colors hover:border-cyan-500/50 hover:bg-zinc-800 hover:text-cyan-300"
+            className="rounded border border-zinc-700 bg-zinc-800/60 px-2 py-0.5 text-[10px] text-zinc-300 transition-[color,background-color,border-color,transform] duration-150 ease-out hover:border-cyan-500/50 hover:bg-zinc-800 hover:text-cyan-300 hover:-translate-y-0.5 active:scale-[0.97]"
           >
             {shortcutCommand}
           </button>

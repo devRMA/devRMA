@@ -48,12 +48,12 @@ export function ProjectsSection() {
 
       <div className="mb-14 space-y-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
         >
-          <Card className="overflow-hidden border-border/80 bg-gradient-to-b from-card/90 to-card/50 shadow-xl backdrop-blur-xl transition-all hover:border-primary/50">
+          <Card className="overflow-hidden border-border/80 bg-gradient-to-b from-card/90 to-card/50 shadow-xl backdrop-blur-xl transition-colors duration-200 ease-out hover:border-primary/50">
             <div className="h-1.5 w-full bg-gradient-to-r from-cyan-500 via-indigo-500 to-emerald-500" />
             <CardHeader className="p-6 md:p-8">
               <div className="flex flex-wrap items-center justify-between gap-3">
@@ -147,12 +147,12 @@ export function ProjectsSection() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
         >
-          <Card className="overflow-hidden border-border/80 bg-gradient-to-b from-card/90 to-card/50 shadow-xl backdrop-blur-xl transition-all hover:border-primary/50">
+          <Card className="overflow-hidden border-border/80 bg-gradient-to-b from-card/90 to-card/50 shadow-xl backdrop-blur-xl transition-colors duration-200 ease-out hover:border-primary/50">
             <div className="h-1.5 w-full bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500" />
             <CardHeader className="p-6 md:p-8">
               <div className="flex flex-wrap items-center justify-between gap-3">
@@ -246,10 +246,10 @@ export function ProjectsSection() {
         {projectsData.map((project, projectIndex) => (
           <motion.div
             key={project.id}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: projectIndex * 0.1 }}
+            transition={{ duration: 0.3, delay: projectIndex * 0.05, ease: [0.23, 1, 0.32, 1] }}
           >
             <ProjectCard
               id={project.id}

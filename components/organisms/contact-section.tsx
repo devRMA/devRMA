@@ -21,10 +21,10 @@ export function ContactSection() {
 
       <div className="grid gap-8 lg:grid-cols-2 items-start">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
           className="w-full"
         >
           <Card className="border-border/80 bg-card/70 backdrop-blur-xl shadow-lg">
@@ -58,10 +58,10 @@ export function ContactSection() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15 }}
+          transition={{ duration: 0.3, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
           className="w-full"
         >
           <InteractiveTerminal />

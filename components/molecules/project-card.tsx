@@ -75,7 +75,7 @@ export function ProjectCard({
       }}
       className="h-full"
     >
-      <Card className="h-full flex flex-col overflow-hidden border-border/70 bg-card/80 backdrop-blur-xl transition-all hover:border-primary/50 hover:shadow-lg">
+      <Card className="h-full flex flex-col overflow-hidden border-border/70 bg-card/80 backdrop-blur-xl transition-[border-color,box-shadow] duration-200 ease-out hover:border-primary/50 hover:shadow-lg">
         <div className="relative h-48 w-full overflow-hidden border-b border-border/70 bg-muted/30">
           {image ? (
             <Image
