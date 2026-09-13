@@ -228,7 +228,7 @@ const translations = {
     education: {
       "software-engineering": {
         degree: "Bacharelado em Engenharia de Software",
-        institution: "Faculdade Positivo",
+        institution: "Universidade Positivo",
         period: "Junho 2022 - Dezembro 2026",
         description:
           "Curso Engenharia de Software na Universidade Positivo, onde aprofundo meus conhecimentos em algoritmos, estrutura de dados, arquitetura de sistemas, DevOps e cloud, com foco prático e alinhado ao mercado.",
@@ -372,7 +372,8 @@ const translations = {
     cvTitle: "Tech Lead & Engenheiro de Software Sênior | Curitiba, PR",
     cvSpecialty:
       "Especialidade: Sistemas distribuídos, APIs em NestJS com PostgreSQL, mensageria Kafka (Avro), Lambdas Python e liderança técnica de times.",
-    cvEducation: "Formação: Bacharelado em Engenharia de Software (Universidade Positivo)",
+    cvEducation:
+      "Formação: Engenharia de Software (Universidade Positivo) · conclusão em dez. 2026",
     cvStatus: "Status: Disponível para liderança técnica e projetos de alto impacto",
   },
   footer: {

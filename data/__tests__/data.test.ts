@@ -18,6 +18,10 @@ describe("Static Data Integrity", () => {
       expect(edu.id).toBeDefined();
       expect(edu.institution).toBeDefined();
     }
+
+    const softwareEngineering = academicData.find((edu) => edu.id === "software-engineering");
+    expect(softwareEngineering?.institution).toBe("Universidade Positivo");
+    expect(softwareEngineering?.inProgress).toBe(true);
   });
 
   it("validates certificates dataset", () => {

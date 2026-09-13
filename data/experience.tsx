@@ -123,7 +123,7 @@ export const academicData: Education[] = [
   {
     id: "software-engineering",
     degree: "Bachelor's in Software Engineering",
-    institution: "Faculdade Positivo",
+    institution: "Universidade Positivo",
     period: "Jun 2022 - Dec 2026",
     startDate: "2022-06-01",
     description:

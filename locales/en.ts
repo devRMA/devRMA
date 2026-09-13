@@ -228,7 +228,7 @@ const translations = {
     education: {
       "software-engineering": {
         degree: "Bachelor's in Software Engineering",
-        institution: "Faculdade Positivo",
+        institution: "Universidade Positivo",
         period: "Jun 2022 - Dec 2026",
         description:
           "I study Software Engineering at Universidade Positivo, deepening my knowledge in algorithms, data structures, systems architecture, DevOps, and cloud computing, with practical, market-aligned focus.",
@@ -372,7 +372,8 @@ const translations = {
     cvTitle: "Tech Lead & Senior Software Engineer | Curitiba, PR",
     cvSpecialty:
       "Specialty: Distributed systems, NestJS API with PostgreSQL, Kafka (Avro) messaging, Python Lambdas, and team tech leadership.",
-    cvEducation: "Education: Bachelor of Software Engineering (Universidade Positivo)",
+    cvEducation:
+      "Education: Software Engineering (Universidade Positivo) · in progress, ends Dec 2026",
     cvStatus: "Status: Available for technical leadership and high-impact systems",
   },
   footer: {
