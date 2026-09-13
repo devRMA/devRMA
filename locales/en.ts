@@ -44,9 +44,6 @@ const translations = {
       future: "Want to learn",
     },
     bento: {
-      architectureTitle: "Ecosystem Architecture & Event Flow",
-      architectureDescription:
-        "Asynchronous flow connecting driver app, NestJS API backed by PostgreSQL, Kafka event broker (Avro), and Python Lambdas",
       zeroDataLoss: "Typed Contracts (Avro)",
       nodeDriverApp: "Driver App (iShip)",
       nodeDriverAppSub: "Field Edge Client",

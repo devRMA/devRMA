@@ -124,4 +124,20 @@ describe("CaseDialog", () => {
 
     expect(screen.getByText("projects.cases.isend.schema.caption")).toBeInTheDocument();
   });
+
+  it("nests the dialog headings without skipping a level", () => {
+    renderCase("iship");
+
+    const dialog = screen.getByRole("dialog");
+    const levels = Array.from(dialog.querySelectorAll("h1,h2,h3,h4,h5,h6")).map((heading) =>
+      Number(heading.tagName[1]),
+    );
+
+    expect(levels[0]).toBe(2);
+    let maxAllowed = levels[0];
+    for (const level of levels) {
+      expect(level).toBeLessThanOrEqual(maxAllowed + 1);
+      if (level > maxAllowed) maxAllowed = level;
+    }
+  });
 });

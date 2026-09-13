@@ -70,22 +70,7 @@ export function ArchitectureBeam() {
 
   return (
     <div className="relative w-full overflow-hidden rounded-2xl md:rounded-3xl border border-border/80 bg-card/30 p-5 md:p-8 backdrop-blur-xl shadow-lg">
-      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-b border-border/60 pb-5">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75 motion-reduce:hidden" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
-            </span>
-            <h3 className="font-mono text-xs md:text-sm font-semibold uppercase tracking-wider text-cyan-400">
-              {translate("skills.bento.architectureTitle")}
-            </h3>
-          </div>
-          <p className="mt-1 text-xs text-muted-foreground max-w-xl">
-            {translate("skills.bento.architectureDescription")}
-          </p>
-        </div>
-
+      <div className="mb-6 flex flex-wrap items-center gap-2 border-b border-border/60 pb-5">
         <div className="flex items-center gap-2 font-mono text-xs self-start sm:self-auto">
           <span className="rounded-md border border-border/80 bg-card/60 px-2.5 py-1 text-zinc-400">
             AVRO / JSON
@@ -181,9 +166,9 @@ export function ArchitectureBeam() {
                       <NodeIcon className="h-5 w-5" aria-hidden="true" />
                     </div>
                     <div className="overflow-hidden">
-                      <h4 className="font-mono text-xs font-bold text-foreground truncate">
+                      <h5 className="font-mono text-xs font-bold text-foreground truncate">
                         {translate(node.titleKey)}
-                      </h4>
+                      </h5>
                       <p className="font-mono text-xs text-muted-foreground truncate">
                         {translate(node.subtitleKey)}
                       </p>

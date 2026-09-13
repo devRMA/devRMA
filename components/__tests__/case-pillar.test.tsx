@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import { CasePillar } from "../molecules/case-pillar";
 
 describe("CasePillar", () => {
-  it("renders the title as a level-4 heading and the body", () => {
+  it("renders the title as a level-3 heading and the body", () => {
     render(
       <CasePillar
         icon={Activity}
@@ -14,7 +14,7 @@ describe("CasePillar", () => {
       />,
     );
 
-    expect(screen.getByRole("heading", { level: 4, name: "The problem" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 3, name: "The problem" })).toBeInTheDocument();
     expect(screen.getByText("A large monolith with no structured logging.")).toBeInTheDocument();
   });
 
@@ -41,7 +41,7 @@ describe("CasePillar", () => {
       />,
     );
 
-    const title = screen.getByRole("heading", { level: 4, name: "The problem" });
+    const title = screen.getByRole("heading", { level: 3, name: "The problem" });
     expect(title).toHaveClass("text-foreground");
     expect(title.className).not.toMatch(/text-(amber|cyan|emerald)/);
   });

@@ -44,9 +44,6 @@ const translations = {
       future: "Quero aprender",
     },
     bento: {
-      architectureTitle: "Arquitetura do Ecossistema & Fluxo de Eventos",
-      architectureDescription:
-        "Fluxo assíncrono conectando o app do motorista, API em NestJS com PostgreSQL, barramento Kafka (Avro) e Lambdas Python",
       zeroDataLoss: "Contratos Tipados (Avro)",
       nodeDriverApp: "App do Motorista (iShip)",
       nodeDriverAppSub: "Cliente de Borda (Campo)",

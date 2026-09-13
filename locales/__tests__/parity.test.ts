@@ -75,6 +75,8 @@ describe("locale parity", () => {
       "certificates",
       "nav.certificates",
       "a11y.viewCertificate",
+      "skills.bento.architectureTitle",
+      "skills.bento.architectureDescription",
     ];
     const ptPaths = flattenKeyPaths(ptBR);
     const enPaths = flattenKeyPaths(en);

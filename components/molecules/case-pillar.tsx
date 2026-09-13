@@ -15,9 +15,9 @@ export function CasePillar({ icon: Icon, iconClassName, title, body, children }:
     <div className="rounded-lg border border-border/60 bg-card/50 p-4">
       <div className="mb-3 flex items-center gap-2">
         <Icon className={cn("h-4 w-4", iconClassName)} aria-hidden="true" />
-        <h4 className="font-mono text-xs font-bold uppercase tracking-wider text-foreground">
+        <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-foreground">
           {title}
-        </h4>
+        </h3>
       </div>
       <p className="max-w-prose text-sm leading-relaxed text-muted-foreground">{body}</p>
       {children}

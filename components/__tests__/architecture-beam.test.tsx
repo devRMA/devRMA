@@ -17,12 +17,20 @@ vi.mock("framer-motion", () => ({
 
 describe("ArchitectureBeam", () => {
   it("renders the four architecture nodes", () => {
-    render(<ArchitectureBeam />);
+    const { container } = render(<ArchitectureBeam />);
 
     expect(screen.getByText("skills.bento.nodeDriverApp")).toBeInTheDocument();
     expect(screen.getByText("skills.bento.nodeBff")).toBeInTheDocument();
     expect(screen.getByText("skills.bento.nodeKafka")).toBeInTheDocument();
     expect(screen.getByText("skills.bento.nodeCloud")).toBeInTheDocument();
+    expect(container.querySelectorAll("h5")).toHaveLength(4);
+  });
+
+  it("does not render its own section heading", () => {
+    const { container } = render(<ArchitectureBeam />);
+
+    expect(container.querySelector("h3")).toBeNull();
+    expect(screen.queryByText("skills.bento.architectureTitle")).toBeNull();
   });
 
   it("suppresses the beam animation under reduced motion", () => {

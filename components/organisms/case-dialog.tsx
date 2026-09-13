@@ -86,7 +86,7 @@ export function CaseDialog({ engineeringCase }: CaseDialogProps) {
           >
             {engineeringCase.hasArchitectureBeam ? (
               <div className="mt-4">
-                <h5 className={SECTION_HEADING_CLASS}>{t("projects.cases.iship.diagramTitle")}</h5>
+                <h4 className={SECTION_HEADING_CLASS}>{t("projects.cases.iship.diagramTitle")}</h4>
                 <ArchitectureBeam />
               </div>
             ) : null}
@@ -100,7 +100,7 @@ export function CaseDialog({ engineeringCase }: CaseDialogProps) {
         </div>
 
         <div className="border-t border-border/60 pt-5">
-          <h4 className={SECTION_HEADING_CLASS}>{t("projects.case.stackTitle")}</h4>
+          <h3 className={SECTION_HEADING_CLASS}>{t("projects.case.stackTitle")}</h3>
           <ul className="flex flex-wrap gap-2">
             {engineeringCase.technologies.map((technology) => (
               <li key={technology}>
@@ -117,7 +117,7 @@ export function CaseDialog({ engineeringCase }: CaseDialogProps) {
 
         {engineeringCase.evidence.length > 0 ? (
           <div>
-            <h4 className={SECTION_HEADING_CLASS}>{t("projects.case.evidenceTitle")}</h4>
+            <h3 className={SECTION_HEADING_CLASS}>{t("projects.case.evidenceTitle")}</h3>
             <div className="grid gap-3 sm:grid-cols-2">
               {engineeringCase.evidence.map((plate) => (
                 <MediaPlate
