@@ -12,4 +12,4 @@ State: `draft` · `in-progress` · `blocked` · `done` · `rejected`
 
 | # | Spec | State | Holder |
 |---|---|---|---|
-| 0100 | [Engineering proof redesign — inverted narrative + real system screenshots](0100-engineering-proof-redesign/spec.md) | in-progress | release-manager |
+| 0100 | [Engineering proof redesign — inverted narrative + real system screenshots](0100-engineering-proof-redesign/spec.md) | in-progress | web-standards-auditor |
