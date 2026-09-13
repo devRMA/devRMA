@@ -112,4 +112,21 @@ describe("MediaPlate", () => {
     const well = container.querySelector("figure > div");
     expect(well).toHaveClass("aspect-[11/16]");
   });
+
+  it("keeps caption, note and fallback on the AA-safe foreground", () => {
+    const { container } = render(<MediaPlate {...captureProps} note="n" />);
+
+    const figcaption = container.querySelector("figcaption");
+    const note = screen.getByText("n");
+    expect(figcaption).toHaveClass("text-foreground/70");
+    expect(figcaption).not.toHaveClass("text-muted-foreground");
+    expect(note).toHaveClass("text-foreground/70");
+    expect(note).not.toHaveClass("text-muted-foreground");
+
+    const img = screen.getByRole("img", { name: "A screenshot of the case" });
+    fireEvent.error(img);
+    const fallback = screen.getByText("A screenshot of the case");
+    expect(fallback).toHaveClass("text-foreground/70");
+    expect(fallback).not.toHaveClass("text-muted-foreground");
+  });
 });

@@ -58,7 +58,7 @@ export function MediaPlate({
         )}
       >
         {hasFailed ? (
-          <span className="px-4 text-center text-xs text-muted-foreground">{alt}</span>
+          <span className="px-4 text-center text-xs text-foreground/70">{alt}</span>
         ) : variant === "capture" && src && width && height && sizes ? (
           <Image
             className="h-full w-full object-cover object-top"
@@ -74,12 +74,12 @@ export function MediaPlate({
           children
         )}
       </div>
-      <figcaption className="mt-2 flex items-center justify-between border-t border-border/60 pt-2 font-mono text-[11px] font-medium text-muted-foreground">
+      <figcaption className="mt-2 flex items-center justify-between border-t border-border/60 pt-2 font-mono text-[11px] font-medium text-foreground/70">
         <span>{kindLabel}</span>
         <span>{year}</span>
       </figcaption>
       {note ? (
-        <p className="mt-1.5 font-mono text-[11px] font-medium leading-snug text-muted-foreground">
+        <p className="mt-1.5 font-mono text-[11px] font-medium leading-snug text-foreground/70">
           {note}
         </p>
       ) : null}
