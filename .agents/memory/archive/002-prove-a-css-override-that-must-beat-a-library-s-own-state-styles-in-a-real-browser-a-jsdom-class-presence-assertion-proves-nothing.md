@@ -23,3 +23,8 @@ When a utility exists to **override** something a third-party component sets on 
 ## How to verify it was applied
 
 Ask of every `motion-reduce:`, `dark:`, `data-[...]:` or `!` override added in the batch: which rule is it fighting, and what is that rule's specificity? Then run the browser probe under the matching condition and read the computed value — `animationName`, `transitionProperty`, `color`. A check that has never been seen to fail has not been verified.
+
+
+## Retired
+
+2026-09-13 — promoted — the browser-proof rule is now .agents/agents/frontend-dev.md § Test conventions and AGENTS.md §8; merged with lesson 005, which is the same defect in a different state

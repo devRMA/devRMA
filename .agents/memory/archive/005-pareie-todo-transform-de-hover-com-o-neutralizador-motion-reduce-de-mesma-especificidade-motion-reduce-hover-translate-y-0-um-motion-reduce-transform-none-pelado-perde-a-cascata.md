@@ -23,3 +23,8 @@ Todo utilitário de transform preso a um estado precisa do neutralizador `motion
 ## How to verify it was applied
 
 `node .agents/tools/check-reduced-motion.mjs` sai `0` com `0 FAIL`. Asserção de classe em jsdom não conta (lição 002): o probe hover cada elemento com transform de estado sob `reducedMotion: 'reduce'` e compara o `transform` computado em repouso e sob o cursor; valores diferentes são falha.
+
+
+## Retired
+
+2026-09-13 — promoted — merged into the same frontend-dev.md rule as lesson 002 (same-state motion-reduce neutraliser) and into AGENTS.md §8

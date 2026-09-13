@@ -23,3 +23,8 @@ Any revert-measure-restore diagnostic a reviewing agent performs must happen in 
 ## How to verify it was applied
 
 Before running any `sed`/`cp`-based revert for diagnostic purposes, confirm the working directory for that command is under a scratch/temp path the agent controls exclusively (e.g. `.agents/tools/preview.mjs`'s own `--out` convention, or the session's scratchpad), not the repository path other agents read from. If a shared-tree mutation already happened, check the mtime of the affected file against every parallel report's own write-timestamp before trusting that report's findings on that file.
+
+
+## Retired
+
+2026-09-13 — promoted — now AGENTS.md §4 gate rule 6, beside the parallel-gate rule it qualifies; it is a pipeline rule, not one agent's

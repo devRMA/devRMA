@@ -138,8 +138,9 @@ request
 3. **Two bounces per gate is the ceiling.** On the third, the pipeline stops: the tech-lead writes the impasse and the options into `STATUS.md` and hands it to the human. Never loop.
 4. Parallel gates both run to completion before routing. Do not abort the second because the first rejected — two reports in one bounce is one round trip instead of two.
 5. Reviewing agents (`qa-engineer`, `web-standards-auditor`, `tech-recruiter`) **never edit source files.** They report; the developer fixes. A reviewer who fixes stops being able to see.
-6. `frontend-dev` makes no decisions. Ambiguity goes into `STATUS.md` under `blockers` and back to the tech-lead.
-7. The `tech-recruiter` may reject work that passed every other gate. Technically perfect and strategically pointless is a real outcome.
+6. **The shared working tree is read-only for diagnosis.** Rule 4 means another agent may be reading and testing the same files right now, so a revert-measure-restore probe — proving a check fails before the fix, measuring a "before" value, bisecting — happens in an isolated copy (`git worktree` or a scratch clone), never in the repository, no matter how fast the file is restored. A mutation another agent can observe produces findings against a tree nobody delivered, and the cost is a whole gate round. If isolation is genuinely impractical for one measurement, the agent states in its report which file it mutated, for how long, and why — but isolation is the default, not the disclosure. When a report's findings look impossible, check the mtime of the files it names against the report's own write time before trusting it.
+7. `frontend-dev` makes no decisions. Ambiguity goes into `STATUS.md` under `blockers` and back to the tech-lead.
+8. The `tech-recruiter` may reject work that passed every other gate. Technically perfect and strategically pointless is a real outcome.
 
 ### Human approval points
 
@@ -238,6 +239,7 @@ Binding on `frontend-dev`, enforced by `qa-engineer`.
 - **Reuse before writing.** Check `components/`, `hooks/`, `lib/` first. Three similar lines beat a premature abstraction; a reinvented existing helper beats nothing.
 - **No new dependencies** without a written justification in `plan.md`. `framer-motion`, Radix, `cva`, `tailwind-merge`, `next-themes`, `lucide-react` are already here.
 - **Tests** mirror `components/__tests__/`: query by accessible role and name, assert observable behavior, cover keyboard and reduced-motion paths.
+- **A CSS override is proven in a browser, never in jsdom.** Any utility whose job is to beat another rule — a library's own state styles, a `motion-reduce:`/`dark:`/`data-[...]:` variant, anything carrying `!` — needs a check that reads the *computed* style under the condition it targets, and that check must be seen to fail against the unfixed code first. A `toHaveClass` assertion proves the string reached `className` and nothing about the cascade.
 - Match the surrounding file's idiom. New code should be unidentifiable as new.
 
 ---
