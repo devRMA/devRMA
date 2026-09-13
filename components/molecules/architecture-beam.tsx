@@ -120,7 +120,7 @@ export function ArchitectureBeam() {
               stroke="url(#beamGradient)"
               strokeWidth="2"
               strokeDasharray="6 6"
-              className="motion-reduce:stroke-dashoffset-0 [stroke-dashoffset:0] animate-[dash_20s_linear_infinite]"
+              className="motion-reduce:stroke-dashoffset-0 [stroke-dashoffset:0] animate-[dash_20s_linear_infinite] motion-reduce:animate-none"
             />
             <circle r="3.5" fill="#06b6d4" className="motion-reduce:hidden">
               <animate attributeName="cx" values="0%;100%" dur="4s" repeatCount="indefinite" />
