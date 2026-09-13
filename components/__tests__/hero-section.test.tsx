@@ -67,6 +67,12 @@ describe("HeroSection", () => {
           "hero.projects": "View projects",
           "hero.contact": "Contact me",
           "hero.stats.experience": "Years of experience",
+          "hero.stats.education": "Universidade Positivo · in progress, ends Dec 2026",
+          "hero.stats.educationValue": "Software Engineering",
+          "hero.stats.leadership": "Architecture and squad leadership",
+          "hero.stats.leadershipValue": "Tech Lead",
+          "a11y.profilePhoto": "Portrait of Rafael Martins Alves",
+          "a11y.scrollToExperience": "Go to Experience section",
         })[key] ?? key,
     });
   });
@@ -79,7 +85,7 @@ describe("HeroSection", () => {
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Rafael Martins Alves");
   });
 
-  it("exposes both calls to action and the scroll indicator", () => {
+  it("exposes both calls to action", () => {
     render(<HeroSection />);
 
     expect(buttonLinkMock).toHaveBeenCalledWith(
@@ -88,25 +94,71 @@ describe("HeroSection", () => {
     expect(buttonLinkMock).toHaveBeenCalledWith(
       expect.objectContaining({ href: "#contact", children: "Contact me" }),
     );
+  });
+
+  it("points the scroll indicator at the trajectory", () => {
+    render(<HeroSection />);
+
     expect(scrollIndicatorMock).toHaveBeenCalledWith(
-      expect.objectContaining({ targetId: "skills", label: "a11y.scrollToSkills" }),
+      expect.objectContaining({
+        targetId: "experience",
+        label: "Go to Experience section",
+      }),
     );
   });
 
-  it("describes the profile picture", () => {
+  it("describes the profile picture from the locale", () => {
     render(<HeroSection />);
 
     expect(screen.getByTestId("profile-image")).toHaveAttribute(
       "alt",
-      "Rafael Martins Alves, desenvolvedor full stack",
+      "Portrait of Rafael Martins Alves",
     );
   });
 
-  it("derives the years of experience from the current year", () => {
+  it("keeps the computed years of experience", () => {
     render(<HeroSection />);
 
     const expected = `${new Date().getFullYear() - 2021}+`;
     expect(screen.getByText(expected)).toBeInTheDocument();
+  });
+
+  it("shows exactly three credentials", () => {
+    const { container } = render(<HeroSection />);
+
+    const dl = container.querySelector("dl");
+    expect(dl?.querySelectorAll("dt")).toHaveLength(3);
+    expect(dl?.querySelectorAll("dd")).toHaveLength(3);
+  });
+
+  it("names no certification count and no company count", () => {
+    const { container } = render(<HeroSection />);
+
+    const text = container.textContent ?? "";
+    expect(text).not.toContain("Certifications");
+    expect(text).not.toContain("Certificações");
+    expect(text).not.toContain("Companies");
+    expect(text).not.toContain("Empresas");
+
+    const dds = Array.from(container.querySelectorAll("dd")).map((dd) => dd.textContent);
+    expect(dds).not.toContain("14");
+    expect(dds).not.toContain("2");
+  });
+
+  it("states the education without asserting a completed degree", () => {
+    render(<HeroSection />);
+
+    const education = screen.getByText("Universidade Positivo · in progress, ends Dec 2026");
+    expect(education).toBeInTheDocument();
+    expect(education.textContent).not.toMatch(/bacharel|bachelor|graduado|graduated/i);
+  });
+
+  it("stacks the credential strip on small viewports", () => {
+    const { container } = render(<HeroSection />);
+
+    const dl = container.querySelector("dl");
+    expect(dl).toHaveClass("grid-cols-1");
+    expect(dl).toHaveClass("sm:grid-cols-3");
   });
 
   it("animates with a single set of variants regardless of viewport", () => {

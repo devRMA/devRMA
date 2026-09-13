@@ -33,11 +33,26 @@ export function HeroSection() {
   const [hasCopiedEmail, setHasCopiedEmail] = useState(false);
   const yearsOfExperience = new Date().getFullYear() - CAREER_START_YEAR;
 
-  const stats = [
-    { value: `${yearsOfExperience}+`, label: translate("hero.stats.experience") },
-    { value: "14", label: translate("hero.stats.certificates") },
-    { value: "2", label: translate("hero.stats.companies") },
-  ];
+  const credentials = [
+    {
+      id: "experience",
+      label: translate("hero.stats.experience"),
+      value: `${yearsOfExperience}+`,
+      isCounter: true,
+    },
+    {
+      id: "education",
+      label: translate("hero.stats.education"),
+      value: translate("hero.stats.educationValue"),
+      isCounter: false,
+    },
+    {
+      id: "leadership",
+      label: translate("hero.stats.leadership"),
+      value: translate("hero.stats.leadershipValue"),
+      isCounter: false,
+    },
+  ] as const;
 
   const handleCopyEmail = async () => {
     try {
@@ -73,7 +88,7 @@ export function HeroSection() {
               <div className="relative aspect-square w-56 overflow-hidden rounded-[2rem] border border-border/60 bg-zinc-950 sm:w-64 md:w-72 lg:w-80 2xl:w-96">
                 <Image
                   src={profileImage}
-                  alt="Rafael Martins Alves, desenvolvedor full stack"
+                  alt={translate("a11y.profilePhoto")}
                   fill
                   sizes="(max-width: 640px) 224px, (max-width: 768px) 256px, (max-width: 1024px) 288px, (max-width: 1536px) 320px, 384px"
                   className="object-cover transition-transform duration-700 ease-out-expo group-hover:scale-105"
@@ -143,20 +158,18 @@ export function HeroSection() {
             ))}
           </ul>
 
-          <div className="rounded-2xl border border-border/70 bg-card/30 p-1.5 backdrop-blur-xl shadow-sm">
-            <dl className="grid grid-cols-3 gap-3 divide-x divide-border/60 rounded-xl bg-card/50 p-3.5 border border-border/40">
-              {stats.map((statistic, statIndex) => (
+          <div className="rounded-2xl border border-border/70 bg-card/30 p-1.5 shadow-sm backdrop-blur-xl">
+            <dl className="grid grid-cols-1 divide-y divide-border/60 rounded-xl border border-border/40 bg-card/50 p-3.5 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+              {credentials.map((credential) => (
                 <div
-                  key={statistic.label}
-                  className={`group transition-transform duration-150 ease-out hover:-translate-y-0.5 cursor-default select-none ${
-                    statIndex > 0 ? "pl-4" : ""
-                  }`}
+                  key={credential.id}
+                  className="group cursor-default select-none py-2 transition-transform duration-150 ease-out hover:-translate-y-0.5 motion-reduce:transform-none sm:px-4 sm:py-0"
                 >
-                  <dt className="text-xs text-muted-foreground font-mono truncate">
-                    {statistic.label}
+                  <dt className="font-mono text-[11px] leading-snug tracking-[0.025em] text-muted-foreground">
+                    {credential.label}
                   </dt>
-                  <dd className="mt-1 font-mono text-2xl font-bold tracking-tight text-foreground transition-colors duration-150 ease-out group-hover:text-primary md:text-3xl">
-                    <CounterNumber value={statistic.value} />
+                  <dd className="mt-1 text-base font-semibold leading-tight text-foreground transition-colors duration-150 ease-out group-hover:text-primary">
+                    {credential.isCounter ? <CounterNumber value={credential.value} /> : credential.value}
                   </dd>
                 </div>
               ))}
@@ -204,7 +217,7 @@ export function HeroSection() {
       </div>
 
       <div className="mt-10 flex justify-center">
-        <ScrollIndicator targetId="skills" label={translate("a11y.scrollToSkills")} />
+        <ScrollIndicator targetId="experience" label={translate("a11y.scrollToExperience")} />
       </div>
     </section>
   );
