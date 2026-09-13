@@ -37,10 +37,12 @@ Evaluators typically review this site on desktop during executive hiring reviews
 
 ## Evidence on Hand
 
-- Production case studies in `locales/en.ts` and `locales/pt-BR.ts`:
-  - **iShip**: Driver ecosystem orchestrated by NestJS/PostgreSQL backend with Kafka (Avro) event streaming, Python AWS Lambdas, and Driver Scale web panel (React 19 MFE), connecting field drivers to national distribution hubs.
-  - **iSend**: High-traffic Transportation Management System (TMS) with 1,100+ routes in Laravel/PHP for freight dispatch and cargo tracking.
-- Career milestones and timeline in `data/experience.tsx`: Tech Lead, Senior Developer, Mid-level Developer, Junior Developer at MadeiraMadeira, and instructor at SENAI.
+- Four production case studies in `data/cases.ts` and `locales/en.ts` / `locales/pt-BR.ts`, each backed by real system screenshots or a labelled schematic (`.specs/0100-engineering-proof-redesign/assets/`):
+  - **iShip**: Driver ecosystem orchestrated by a NestJS/PostgreSQL backend with Kafka (Avro) event streaming, Python AWS Lambdas, and the Driver Scale web panel (React 19 MFE), connecting field drivers to national distribution hubs.
+  - **iSend**: A legacy Laravel/PHP TMS on MySQL, stabilised and made observable — structured logging and tracing (New Relic), a GitHub Actions CI pipeline with SonarQube quality gates, instrumented in place rather than rewritten. Presented as a labelled instrumentation schematic, not a screenshot.
+  - **Adam Robo A1**: A visual-screening platform (Laravel/MySQL, React/TypeScript) delivering one screening protocol across three exam modes and two print formats (A4 and thermal), built and shipped while coordinating Adam Robo's IT team.
+  - **Adam 4.0 @ Electrolux**: The occupational-health build of Adam — far/near acuity and Ishihara testing that closes in a single signed record (worker data, anamnesis, per-eye result, applicator and physician signatures) — delivered and deployed into internal use at Electrolux.
+- Career milestones and timeline in `data/experience.tsx`: Tech Lead, Senior Developer, Mid-level Developer, Junior Developer at MadeiraMadeira, IT Coordinator and Full Stack Developer at Adam Robo, and instructor at SENAI.
 - Open source and personal projects in `data/projects.tsx`.
 - No customer testimonials or private proprietary metrics beyond what is documented in source code and locales.
 
