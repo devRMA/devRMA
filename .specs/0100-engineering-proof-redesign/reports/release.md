@@ -147,7 +147,7 @@ Every commit ends with `Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>`.
 
 ### Preview URL
 
-`https://portfolio-99srn42xy-devrmas-projects.vercel.app` — the Vercel preview for PR #25 (`fix/accessibility-hardening`, the top of the stack, so it carries every change cumulatively), re-resolved after the doc-update commit forced a rebase of all four branches. Confirmed reachable (`200`). Hand this to the `web-standards-auditor` (G8) and the `tech-recruiter` (G9).
+`https://portfolio-5zl34mbum-devrmas-projects.vercel.app` — the Vercel preview for PR #25 (`fix/accessibility-hardening`, the top of the stack, so it carries every change cumulatively), resolved from the final rebase (each doc-only correction commit reshuffles downstream SHAs and triggers a fresh Vercel deployment; this is the URL for the tree actually on GitHub as of this report). Confirmed reachable (`200`). Hand this to the `web-standards-auditor` (G8) and the `tech-recruiter` (G9). **This is the last edit to this report** — further corrections belong in a new report or `STATUS.md`, not another rebase of this stack.
 
 ### Next
 
