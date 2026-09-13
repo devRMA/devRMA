@@ -58,3 +58,6 @@ next-env.d.ts
 .impeccable/live/deferred-svelte-component-accepts.json
 .impeccable/live/*.png
 # impeccable-ignore-end
+# spec evidence: screenshots regeneráveis, não material de review
+.specs/*/evidence/
+.specs/*/evidence-*/
