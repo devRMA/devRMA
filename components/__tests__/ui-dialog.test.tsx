@@ -104,7 +104,7 @@ describe("Dialog UI", () => {
     expect(close).toHaveClass("h-11", "w-11", "sm:h-9", "sm:w-9");
   });
 
-  it("suppresses the entrance animation under reduced motion", () => {
+  it("carries the important reduced-motion override on overlay and content", () => {
     render(
       <Dialog>
         <DialogContent className="custom-content" />
@@ -114,7 +114,8 @@ describe("Dialog UI", () => {
     const root = screen.getByTestId("dialog-root");
     const overlay = root.querySelector('[data-tag="div"]');
     const content = root.querySelector('[data-tag="section"]');
-    expect(overlay).toHaveClass("motion-reduce:animate-none");
-    expect(content).toHaveClass("motion-reduce:animate-none");
+    expect(overlay).toHaveClass("motion-reduce:!animate-none");
+    expect(overlay).toHaveClass("motion-reduce:!transition-none");
+    expect(content).toHaveClass("motion-reduce:!animate-none");
   });
 });
