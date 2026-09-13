@@ -10,7 +10,7 @@ export function Logo({ className }: Readonly<LogoProps>) {
     <Link
       href="/"
       className={cn(
-        "group inline-flex items-center transition-transform duration-200 ease-out hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm",
+        "group inline-flex items-center transition-transform duration-200 ease-out hover:scale-105 active:scale-95 motion-reduce:hover:scale-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm",
         className,
       )}
     >

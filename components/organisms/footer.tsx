@@ -48,7 +48,7 @@ export function Footer() {
               className="group"
             >
               <ArrowUp
-                className="h-5 w-5 transition-transform duration-200 ease-out group-hover:-translate-y-0.5"
+                className="h-5 w-5 transition-transform duration-200 ease-out group-hover:-translate-y-0.5 motion-reduce:group-hover:translate-y-0"
                 aria-hidden="true"
               />
             </Button>

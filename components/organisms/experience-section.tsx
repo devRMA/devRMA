@@ -146,7 +146,7 @@ export function ExperienceSection() {
                   }}
                   className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
                 >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-cyan-500/50 bg-card/90 shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-200 ease-out group-hover:scale-110">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-cyan-500/50 bg-card/90 shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-200 ease-out group-hover:scale-110 motion-reduce:group-hover:scale-100">
                     <Building className="h-4 w-4 text-cyan-400" aria-hidden="true" />
                   </div>
 
@@ -283,7 +283,7 @@ export function ExperienceSection() {
                   }}
                   className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
                 >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-indigo-500/50 bg-card/90 shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-200 ease-out group-hover:scale-110">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-indigo-500/50 bg-card/90 shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-200 ease-out group-hover:scale-110 motion-reduce:group-hover:scale-100">
                     <GraduationCap className="h-4 w-4 text-indigo-400" aria-hidden="true" />
                   </div>
 

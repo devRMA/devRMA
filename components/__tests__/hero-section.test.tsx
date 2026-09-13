@@ -178,6 +178,13 @@ describe("HeroSection", () => {
     expect(badge).not.toHaveClass("text-primary");
   });
 
+  it("neutralizes the credential cell's hover displacement under reduced motion", () => {
+    const { container } = render(<HeroSection />);
+
+    const cell = container.querySelector("dl dt")?.closest("div");
+    expect(cell).toHaveClass("motion-reduce:transform-none", "motion-reduce:hover:translate-y-0");
+  });
+
   it("copies contact email to clipboard when copy button is clicked", async () => {
     const writeTextSpy = vi.fn().mockResolvedValue(undefined);
     Object.assign(navigator, {

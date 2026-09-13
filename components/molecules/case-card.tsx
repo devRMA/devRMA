@@ -119,7 +119,7 @@ export function CaseCard({ engineeringCase, index }: CaseCardProps) {
             aria-hidden="true"
           >
             {t("projects.case.open")}
-            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-[180ms] ease-out-expo group-hover:translate-x-0.5 motion-reduce:transform-none" />
+            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-[180ms] ease-out-expo group-hover:translate-x-0.5 motion-reduce:transform-none motion-reduce:group-hover:translate-x-0" />
           </div>
         </article>
 

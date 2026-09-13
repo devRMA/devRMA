@@ -251,7 +251,7 @@ export function InteractiveTerminal() {
             key={shortcutCommand}
             type="button"
             onClick={() => executeSuggestedCommand(shortcutCommand)}
-            className="rounded border border-zinc-700 bg-zinc-800/60 px-2 py-0.5 text-xs text-zinc-300 transition-[color,background-color,border-color,transform] duration-150 ease-out hover:border-cyan-500/50 hover:bg-zinc-800 hover:text-cyan-300 hover:-translate-y-0.5 active:scale-[0.97]"
+            className="rounded border border-zinc-700 bg-zinc-800/60 px-2 py-0.5 text-xs text-zinc-300 transition-[color,background-color,border-color,transform] duration-150 ease-out hover:border-cyan-500/50 hover:bg-zinc-800 hover:text-cyan-300 hover:-translate-y-0.5 active:scale-[0.97] motion-reduce:hover:translate-y-0"
           >
             {shortcutCommand}
           </button>

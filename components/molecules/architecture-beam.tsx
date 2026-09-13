@@ -145,7 +145,7 @@ export function ArchitectureBeam() {
                 transition={{ duration: 0.3, delay: nodeIndex * 0.08, ease: [0.23, 1, 0.32, 1] }}
                 onMouseEnter={() => setActiveNode(node.id)}
                 onMouseLeave={() => setActiveNode(null)}
-                className={`group relative flex flex-col justify-between rounded-xl border bg-card/80 p-5 shadow-sm backdrop-blur-md transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-xl cursor-default select-none ${
+                className={`group relative flex flex-col justify-between rounded-xl border bg-card/80 p-5 shadow-sm backdrop-blur-md transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-xl cursor-default select-none motion-reduce:hover:translate-y-0 ${
                   isHovered ? "border-primary/60 ring-1 ring-primary/20" : "border-border/80"
                 }`}
               >
@@ -161,7 +161,7 @@ export function ArchitectureBeam() {
 
                   <div className="flex items-center gap-3 mb-3">
                     <div
-                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border bg-background/90 shadow-inner transition-transform duration-200 ease-out group-hover:scale-105 ${node.accentColor}`}
+                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border bg-background/90 shadow-inner transition-transform duration-200 ease-out group-hover:scale-105 motion-reduce:group-hover:scale-100 ${node.accentColor}`}
                     >
                       <NodeIcon className="h-5 w-5" aria-hidden="true" />
                     </div>

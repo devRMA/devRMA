@@ -91,7 +91,7 @@ export function HeroSection() {
                   alt={translate("a11y.profilePhoto")}
                   fill
                   sizes="(max-width: 640px) 224px, (max-width: 768px) 256px, (max-width: 1024px) 288px, (max-width: 1536px) 320px, 384px"
-                  className="object-cover transition-transform duration-700 ease-out-expo group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 ease-out-expo group-hover:scale-105 motion-reduce:group-hover:scale-100"
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent opacity-60" />
@@ -151,7 +151,7 @@ export function HeroSection() {
             {STACK.map((techItem) => (
               <li
                 key={techItem}
-                className="rounded-lg border border-border/80 bg-card/60 px-3 py-1 font-mono text-xs text-muted-foreground shadow-sm backdrop-blur-md transition-[border-color,color,transform] duration-150 ease-out hover:border-primary/50 hover:text-foreground hover:-translate-y-0.5 cursor-default select-none"
+                className="rounded-lg border border-border/80 bg-card/60 px-3 py-1 font-mono text-xs text-muted-foreground shadow-sm backdrop-blur-md transition-[border-color,color,transform] duration-150 ease-out hover:border-primary/50 hover:text-foreground hover:-translate-y-0.5 cursor-default select-none motion-reduce:hover:translate-y-0"
               >
                 {techItem}
               </li>
@@ -163,7 +163,7 @@ export function HeroSection() {
               {credentials.map((credential) => (
                 <div
                   key={credential.id}
-                  className="group cursor-default select-none py-2 transition-transform duration-150 ease-out hover:-translate-y-0.5 motion-reduce:transform-none sm:px-4 sm:py-0"
+                  className="group cursor-default select-none py-2 transition-transform duration-150 ease-out hover:-translate-y-0.5 motion-reduce:transform-none sm:px-4 sm:py-0 motion-reduce:hover:translate-y-0"
                 >
                   <dt className="font-mono text-[11px] leading-snug tracking-[0.025em] text-muted-foreground">
                     {credential.label}

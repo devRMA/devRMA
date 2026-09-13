@@ -24,7 +24,7 @@ export function LanguageToggle() {
           className="group"
         >
           <Globe
-            className="h-5 w-5 transition-transform duration-200 ease-out group-hover:rotate-12"
+            className="h-5 w-5 transition-transform duration-200 ease-out group-hover:rotate-12 motion-reduce:group-hover:rotate-0"
             aria-hidden="true"
           />
           <span className="sr-only">{translate("language.toggle")}</span>

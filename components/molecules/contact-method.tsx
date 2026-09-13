@@ -11,7 +11,7 @@ export function ContactMethod({ icon: Icon, title, value, href }: Readonly<Conta
   return (
     <div className="group flex items-center gap-4">
       <div
-        className="rounded-full bg-primary/10 p-3 transition-transform duration-200 ease-out group-hover:scale-110 group-hover:bg-primary/20"
+        className="rounded-full bg-primary/10 p-3 transition-transform duration-200 ease-out group-hover:scale-110 group-hover:bg-primary/20 motion-reduce:group-hover:scale-100"
         aria-hidden="true"
       >
         <Icon className="h-6 w-6 text-primary" />
