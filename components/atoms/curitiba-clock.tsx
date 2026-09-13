@@ -23,7 +23,7 @@ export function CuritibaClock() {
   }, []);
 
   return (
-    <p className="font-mono text-xs text-emerald-500" suppressHydrationWarning>
+    <p className="font-mono text-xs text-emerald-700 dark:text-emerald-400" suppressHydrationWarning>
       {currentTime ? `${currentTime} (UTC-3)` : "UTC-3"}
     </p>
   );

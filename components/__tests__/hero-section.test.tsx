@@ -170,6 +170,14 @@ describe("HeroSection", () => {
     }
   });
 
+  it("keeps the hero badge on the AA-safe foreground in light theme", () => {
+    render(<HeroSection />);
+
+    const badge = screen.getByText("Full Stack Developer at MadeiraMadeira").closest("div");
+    expect(badge).toHaveClass("text-secondary-foreground", "dark:text-primary");
+    expect(badge).not.toHaveClass("text-primary");
+  });
+
   it("copies contact email to clipboard when copy button is clicked", async () => {
     const writeTextSpy = vi.fn().mockResolvedValue(undefined);
     Object.assign(navigator, {

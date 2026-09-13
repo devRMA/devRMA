@@ -63,7 +63,7 @@ export function SkillsSection() {
           <div className="group rounded-2xl border border-border/80 bg-card/50 p-5 backdrop-blur-xl transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-emerald-500/40 hover:-translate-y-1 hover:shadow-lg sm:col-span-2 lg:col-span-1 cursor-default select-none">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 shadow-inner transition-transform duration-200 ease-out group-hover:scale-110">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 shadow-inner transition-transform duration-200 ease-out group-hover:scale-110">
                   <Clock className="h-5 w-5" aria-hidden="true" />
                 </div>
                 <div>
@@ -71,7 +71,7 @@ export function SkillsSection() {
                   <CuritibaClock />
                 </div>
               </div>
-              <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 font-mono text-xs text-emerald-400">
+              <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 font-mono text-xs text-emerald-700 dark:text-emerald-400">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75 motion-reduce:hidden" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
