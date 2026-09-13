@@ -1,17 +1,11 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  Briefcase,
-  Building,
-  Calendar,
-  ChevronDown,
-  GraduationCap,
-  TrendingUp,
-} from "lucide-react";
+import { Briefcase, Building, Calendar, ChevronDown, GraduationCap } from "lucide-react";
 import { useMemo, useState } from "react";
 import { SectionHeading } from "@/components/atoms/section-heading";
 import { useLanguage } from "@/components/language-provider";
+import { CareerPhaseCard } from "@/components/molecules/career-phase-card";
 import { EducationCard } from "@/components/molecules/education-card";
 import { ExperiencePosition } from "@/components/molecules/experience-position";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -19,6 +13,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { academicData, experienceData } from "@/data/experience";
 import { formatDurationRange } from "@/lib/duration";
 import { cn } from "@/lib/utils";
+
+const PHASES = [
+  { id: "foundation", emphasis: "muted" },
+  { id: "leadership", emphasis: "foreground" },
+  { id: "scale", emphasis: "primary" },
+] as const;
 
 export function ExperienceSection() {
   const { t: translate, language } = useLanguage();
@@ -69,23 +69,32 @@ export function ExperienceSection() {
         description={translate("experience.description")}
       />
 
-      <div className="mb-10 flex justify-center">
-        <div className="inline-flex flex-wrap items-center justify-center gap-2.5 rounded-full border border-border/80 bg-card/60 px-5 py-2 text-xs font-mono text-muted-foreground shadow-sm backdrop-blur-md">
-          <TrendingUp className="h-3.5 w-3.5 text-cyan-400" aria-hidden="true" />
-          <span className="text-zinc-400">{translate("experience.progression.label")}</span>
-          <span className="font-semibold text-foreground">
-            {translate("experience.progression.intern")}
-          </span>
-          <span className="text-cyan-500">➔</span>
-          <span className="font-semibold text-foreground">
-            {translate("experience.progression.fullstack")}
-          </span>
-          <span className="text-cyan-500">➔</span>
-          <span className="font-bold text-cyan-400">
-            {translate("experience.progression.techlead")}
-          </span>
-        </div>
+      <div className="mb-10">
+        <h3 className="text-center text-xl font-semibold tracking-tight text-foreground text-balance">
+          {translate("experience.phases.title")}
+        </h3>
+        <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-muted-foreground">
+          {translate("experience.phases.description")}
+        </p>
+
+        <ol className="mt-8 grid list-none grid-cols-1 gap-3 p-0 md:grid-cols-3 md:gap-4">
+          {PHASES.map((phase, index) => (
+            <CareerPhaseCard
+              key={phase.id}
+              index={index}
+              emphasis={phase.emphasis}
+              number={translate(`experience.phases.${phase.id}.number`)}
+              badge={translate(`experience.phases.${phase.id}.badge`)}
+              period={translate(`experience.phases.${phase.id}.period`)}
+              title={translate(`experience.phases.${phase.id}.title`)}
+              context={translate(`experience.phases.${phase.id}.context`)}
+              description={translate(`experience.phases.${phase.id}.description`)}
+            />
+          ))}
+        </ol>
       </div>
+
+      <div className="mb-6 mt-10 h-px w-full bg-border/60" aria-hidden="true" />
 
       <Tabs defaultValue="professional" className="w-full">
         <TabsList className="mb-8 flex w-full flex-wrap rounded-2xl border border-border/70 bg-card/40 p-1.5 backdrop-blur-xl">
