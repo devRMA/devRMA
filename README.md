@@ -6,7 +6,7 @@ Welcome to my digital playground! This project is a bold, bilingual portfolio bu
 
 ## ✨ Highlights
 - Dynamic professional timeline with live duration counters per role and per company
-- Academic journey, skills, projects, and certificates organized in elegant sections
+- Academic journey, skills, and projects organized in elegant sections
 - Light/dark themes, micro-interactions, and buttery-smooth Framer Motion animations
 - Language switcher (pt-BR 🇧🇷 / en 🇺🇸) keeping every detail localized
 - Component-driven architecture with reusable building blocks and clean TypeScript models
@@ -53,7 +53,7 @@ Visit [http://localhost:3000](http://localhost:3000) to explore the portfolio lo
 ```
 ├─ app/                 # Next.js app router pages & layouts
 ├─ components/          # Atomic design system (atoms → organisms → templates)
-├─ data/                # Structured content for experience, projects, skills, certificates
+├─ data/                # Structured content for experience, projects, skills
 ├─ hooks/               # Shared React hooks
 ├─ lib/                 # Utilities (e.g., duration formatter)
 ├─ locales/             # i18n dictionaries

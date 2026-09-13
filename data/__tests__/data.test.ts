@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vitest";
-import { certificatesData } from "../certificates";
 import { academicData, experienceData } from "../experience";
 import { projectsData } from "../projects";
 import { skillsData } from "../skills";
@@ -22,20 +21,6 @@ describe("Static Data Integrity", () => {
     const softwareEngineering = academicData.find((edu) => edu.id === "software-engineering");
     expect(softwareEngineering?.institution).toBe("Universidade Positivo");
     expect(softwareEngineering?.inProgress).toBe(true);
-  });
-
-  it("validates certificates dataset", () => {
-    const categories = Object.keys(certificatesData);
-    expect(categories.length).toBeGreaterThan(0);
-    for (const cat of categories) {
-      const items = certificatesData[cat as keyof typeof certificatesData];
-      expect(items.length).toBeGreaterThan(0);
-      for (const cert of items) {
-        expect(cert.id).toBeDefined();
-        expect(cert.title).toBeDefined();
-        expect(cert.issuer).toBeDefined();
-      }
-    }
   });
 
   it("validates projects dataset", () => {

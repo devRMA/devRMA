@@ -198,11 +198,6 @@
   }
 }
 
-.certificate-item {
-  flex: 0 0 15rem;
-  margin: 0 1rem;
-}
-
 @keyframes scroll {
   0% {
     transform: translateX(0);

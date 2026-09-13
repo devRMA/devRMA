@@ -41,7 +41,6 @@ Evaluators typically review this site on desktop during executive hiring reviews
   - **iShip**: Driver ecosystem orchestrated by NestJS/PostgreSQL backend with Kafka (Avro) event streaming, Python AWS Lambdas, and Driver Scale web panel (React 19 MFE), connecting field drivers to national distribution hubs.
   - **iSend**: High-traffic Transportation Management System (TMS) with 1,100+ routes in Laravel/PHP for freight dispatch and cargo tracking.
 - Career milestones and timeline in `data/experience.tsx`: Tech Lead, Senior Developer, Mid-level Developer, Junior Developer at MadeiraMadeira, and instructor at SENAI.
-- Verifiable credentials and certifications in `data/certificates.tsx`.
 - Open source and personal projects in `data/projects.tsx`.
 - No customer testimonials or private proprietary metrics beyond what is documented in source code and locales.
 

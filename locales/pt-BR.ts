@@ -4,7 +4,6 @@ const translations = {
     skills: "Habilidades",
     projects: "Projetos",
     experience: "Experiência",
-    certificates: "Certificados",
     contact: "Contato",
   },
   theme: {
@@ -252,76 +251,6 @@ const translations = {
       },
     },
   },
-  certificates: {
-    title: "Certificados",
-    description:
-      "Certificações e cursos concluídos ao longo da carreira. Clique em qualquer um para ver o certificado e validá-lo na origem.",
-    tabs: {
-      frontend: "Frontend",
-      backend: "Backend",
-      devops: "DevOps",
-      other: "Outros",
-    },
-    verify: "Verificar certificado",
-    items: {
-      1: {
-        title: "Curso Vue JS 2 - O Guia Completo (incl. Vue Router & Vuex)",
-        issuer: "Udemy",
-      },
-      2: {
-        title: "Entendendo TypeScript",
-        issuer: "Udemy",
-      },
-      3: {
-        title: "SOLID - Os 5 Princípios Para as Boas Práticas da POO",
-        issuer: "Udemy",
-      },
-      4: {
-        title: "Fundamentos de Expressões Regulares (Regex)",
-        issuer: "Udemy",
-      },
-      5: {
-        title: "SASS e SCSS do básico ao avançado + Projetos",
-        issuer: "Udemy",
-      },
-      6: {
-        title: "Docker: Ferramenta essencial para Desenvolvedores",
-        issuer: "Udemy",
-      },
-      7: {
-        title: "Desenvolvimento Web Avançado com PHP, Laravel e Vue.JS",
-        issuer: "Udemy",
-      },
-      8: {
-        title: "Docker para Desenvolvedores (com Docker Swarm e Kubernetes)",
-        issuer: "Udemy",
-      },
-      9: {
-        title: "Vue JS 3 Completo com Composition API, Vuex & Vue Router",
-        issuer: "Udemy",
-      },
-      10: {
-        title: "Interface Gráfica para Apps Python com GTK e Glade",
-        issuer: "Udemy",
-      },
-      11: {
-        title: "Gestão Ágil com Scrum COMPLETO",
-        issuer: "Udemy",
-      },
-      12: {
-        title: "PRO FIGMA | UI DESIGN com Figma do Zero ao especialista",
-        issuer: "Udemy",
-      },
-      13: {
-        title: "Certificação AWS Solutions Architect Associate SAA-C03",
-        issuer: "Udemy",
-      },
-      14: {
-        title: "Fundamentos de Arquitetura de Software",
-        issuer: "Desenvolvedor.io",
-      },
-    },
-  },
   contact: {
     title: "Contato",
     description:
@@ -392,7 +321,6 @@ const translations = {
     playCarousel: "Retomar rolagem automática",
     expandPositions: "Ver cargos anteriores em {company}",
     collapsePositions: "Ocultar cargos anteriores em {company}",
-    viewCertificate: "Ver certificado: {title}",
   },
 };
 
