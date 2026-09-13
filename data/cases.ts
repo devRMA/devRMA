@@ -7,7 +7,7 @@ export type CasePlate = {
   sizes: string;
   /** suffix under `projects.cases.<id>.shots.` */
   altKey: string;
-  aspect: "16/10" | "9/16";
+  aspect: "16/10" | "9/16" | "11/16";
 };
 
 export type EngineeringCase = {
@@ -153,7 +153,7 @@ export const casesData: EngineeringCase[] = [
         height: 1283,
         sizes: "(max-width: 640px) 100vw, 340px",
         altKey: "report",
-        aspect: "16/10",
+        aspect: "11/16",
       },
     ],
     mobileEvidence: [],

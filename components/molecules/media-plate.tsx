@@ -9,7 +9,7 @@ interface MediaPlateProps {
   kindLabel: string;
   year: string;
   alt: string;
-  aspect: "16/10" | "9/16";
+  aspect: "16/10" | "9/16" | "11/16";
   src?: string;
   width?: number;
   height?: number;
@@ -23,6 +23,7 @@ interface MediaPlateProps {
 const ASPECT_CLASS = {
   "16/10": "aspect-[16/10]",
   "9/16": "aspect-[9/16]",
+  "11/16": "aspect-[11/16]",
 } as const;
 
 export function MediaPlate({

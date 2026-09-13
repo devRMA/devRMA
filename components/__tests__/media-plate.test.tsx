@@ -95,10 +95,21 @@ describe("MediaPlate", () => {
     expect(well?.className).not.toMatch(/motion-reduce:/);
   });
 
-  it("applies the requested aspect ratio", () => {
-    const { container } = render(<MediaPlate {...captureProps} aspect="9/16" />);
+  it.each([
+    ["16/10", "aspect-[16/10]"],
+    ["9/16", "aspect-[9/16]"],
+    ["11/16", "aspect-[11/16]"],
+  ] as const)("applies the requested aspect ratio (%s)", (aspect, expectedClass) => {
+    const { container } = render(<MediaPlate {...captureProps} aspect={aspect} />);
 
     const well = container.querySelector("figure > div");
-    expect(well).toHaveClass("aspect-[9/16]");
+    expect(well).toHaveClass(expectedClass);
+  });
+
+  it("frames a portrait document at its own ratio", () => {
+    const { container } = render(<MediaPlate {...captureProps} aspect="11/16" />);
+
+    const well = container.querySelector("figure > div");
+    expect(well).toHaveClass("aspect-[11/16]");
   });
 });
