@@ -7,9 +7,9 @@ interface SkillCardProps {
 
 export function SkillCard({ name, icon }: Readonly<SkillCardProps>) {
   return (
-    <div className="carousel-item group flex flex-col items-center gap-4 rounded-lg p-4 hover:bg-muted transition-colors duration-200 ease-out hover:-translate-y-1 active:scale-[0.97] cursor-default select-none">
+    <div className="carousel-item group flex flex-col items-center gap-4 rounded-lg p-4 hover:bg-muted transition-colors duration-200 ease-out hover:-translate-y-1 active:scale-[0.97] cursor-default select-none motion-reduce:hover:translate-y-0">
       <div
-        className="flex h-16 w-16 items-center justify-center text-primary transition-transform duration-200 ease-out group-hover:scale-110"
+        className="flex h-16 w-16 items-center justify-center text-primary transition-transform duration-200 ease-out group-hover:scale-110 motion-reduce:group-hover:scale-100"
         aria-hidden="true"
       >
         <div className="h-10 w-10">{icon}</div>

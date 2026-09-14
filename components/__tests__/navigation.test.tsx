@@ -13,8 +13,14 @@ type NavItemMockProps = {
   onClick: (event: unknown, href: string) => void;
 };
 
+type MobileMenuMockProps = {
+  navItems: { href: string; label: string; id: string }[];
+  activeSection: string | null;
+  onNavClick: (event: unknown, href: string) => void;
+};
+
 const NavItemMock = vi.fn((_props: NavItemMockProps) => null);
-const MobileMenuMock = vi.fn((_props: unknown) => null);
+const MobileMenuMock = vi.fn((_props: MobileMenuMockProps) => null);
 
 vi.mock("@/components/language-provider", () => ({
   useLanguage: () => useLanguageMock(),
@@ -55,7 +61,6 @@ describe("Navigation", () => {
     "nav.skills": "Skills",
     "nav.projects": "Projects",
     "nav.experience": "Experience",
-    "nav.certificates": "Certificates",
     "nav.contact": "Contact",
   } as const;
 
@@ -70,7 +75,7 @@ describe("Navigation", () => {
 
     render(<Navigation className="nav-class" />);
 
-    expect(NavItemMock).toHaveBeenCalledTimes(6);
+    expect(NavItemMock).toHaveBeenCalledTimes(5);
     expect(NavItemMock).toHaveBeenCalledWith(
       expect.objectContaining({ href: "#about", label: "About", isActive: false }),
     );
@@ -91,6 +96,31 @@ describe("Navigation", () => {
     expect(preventDefault).toHaveBeenCalled();
     expect(scrollSpy).toHaveBeenCalledWith({ behavior: "smooth", block: "start" });
     expect(pushStateSpy).toHaveBeenCalledWith(null, "", "#projects");
+  });
+
+  it("renders five items in page order", () => {
+    useLanguageMock.mockReturnValue({
+      t: (key: keyof typeof translations) => translations[key] ?? key,
+    });
+    useMobileMock.mockReturnValue({ isMobile: false });
+    useActiveSectionMock.mockReturnValue("about");
+
+    render(<Navigation />);
+
+    expect(NavItemMock.mock.calls.map(([props]) => props.href)).toEqual([
+      "#about",
+      "#experience",
+      "#projects",
+      "#skills",
+      "#contact",
+    ]);
+    expect(MobileMenuMock.mock.calls[0][0].navItems.map((item) => item.href)).toEqual([
+      "#about",
+      "#experience",
+      "#projects",
+      "#skills",
+      "#contact",
+    ]);
   });
 
   it("renders the mobile menu when the viewport is mobile", () => {

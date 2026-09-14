@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { certificatesData } from "../certificates";
+import { casesData } from "../cases";
 import { academicData, experienceData } from "../experience";
 import { projectsData } from "../projects";
 import { skillsData } from "../skills";
@@ -18,20 +18,10 @@ describe("Static Data Integrity", () => {
       expect(edu.id).toBeDefined();
       expect(edu.institution).toBeDefined();
     }
-  });
 
-  it("validates certificates dataset", () => {
-    const categories = Object.keys(certificatesData);
-    expect(categories.length).toBeGreaterThan(0);
-    for (const cat of categories) {
-      const items = certificatesData[cat as keyof typeof certificatesData];
-      expect(items.length).toBeGreaterThan(0);
-      for (const cert of items) {
-        expect(cert.id).toBeDefined();
-        expect(cert.title).toBeDefined();
-        expect(cert.issuer).toBeDefined();
-      }
-    }
+    const softwareEngineering = academicData.find((edu) => edu.id === "software-engineering");
+    expect(softwareEngineering?.institution).toBe("Universidade Positivo");
+    expect(softwareEngineering?.inProgress).toBe(true);
   });
 
   it("validates projects dataset", () => {
@@ -40,6 +30,26 @@ describe("Static Data Integrity", () => {
       expect(project.id).toBeDefined();
       expect(project.title).toBeDefined();
       expect(project.technologies.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("validates engineering cases dataset", () => {
+    expect(casesData.length).toBe(4);
+    expect(casesData.map((c) => c.id)).toEqual(["iship", "isend", "a1", "electrolux"]);
+    for (const engineeringCase of casesData) {
+      expect(engineeringCase.technologies.length).toBeGreaterThan(0);
+    }
+
+    const beamCases = casesData.filter((c) => c.hasArchitectureBeam);
+    expect(beamCases.length).toBe(1);
+
+    const diagramCases = casesData.filter((c) => c.variant === "diagram");
+    expect(diagramCases.length).toBe(1);
+    expect(diagramCases[0]?.cover).toBeUndefined();
+
+    for (const engineeringCase of casesData.filter((c) => c.variant === "capture")) {
+      expect(engineeringCase.cover).toBeDefined();
+      expect(engineeringCase.cover?.src.startsWith("/projects/")).toBe(true);
     }
   });
 

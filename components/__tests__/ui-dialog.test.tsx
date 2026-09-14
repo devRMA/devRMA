@@ -70,4 +70,52 @@ describe("Dialog UI", () => {
     expect(screen.getByTestId("title")).toHaveClass("text-lg", "font-semibold");
     expect(screen.getByTestId("description")).toHaveClass("text-sm", "text-muted-foreground");
   });
+
+  it("renders the default close label", () => {
+    render(
+      <Dialog>
+        <DialogContent />
+      </Dialog>,
+    );
+
+    expect(screen.getByText("Close")).toBeInTheDocument();
+  });
+
+  it("uses the provided close label", () => {
+    render(
+      <Dialog>
+        <DialogContent closeLabel="Fechar o case" />
+      </Dialog>,
+    );
+
+    expect(screen.getByText("Fechar o case")).toBeInTheDocument();
+    expect(screen.queryByText("Close")).not.toBeInTheDocument();
+  });
+
+  it("sizes the close control for touch", () => {
+    render(
+      <Dialog>
+        <DialogContent />
+      </Dialog>,
+    );
+
+    const root = screen.getByTestId("dialog-root");
+    const close = root.querySelector('[data-tag="button"]');
+    expect(close).toHaveClass("h-11", "w-11", "sm:h-9", "sm:w-9");
+  });
+
+  it("carries the important reduced-motion override on overlay and content", () => {
+    render(
+      <Dialog>
+        <DialogContent className="custom-content" />
+      </Dialog>,
+    );
+
+    const root = screen.getByTestId("dialog-root");
+    const overlay = root.querySelector('[data-tag="div"]');
+    const content = root.querySelector('[data-tag="section"]');
+    expect(overlay).toHaveClass("motion-reduce:!animate-none");
+    expect(overlay).toHaveClass("motion-reduce:!transition-none");
+    expect(content).toHaveClass("motion-reduce:!animate-none");
+  });
 });

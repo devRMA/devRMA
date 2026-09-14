@@ -18,10 +18,6 @@ vi.mock("@/components/organisms/experience-section", () => ({
   ExperienceSection: () => <div data-testid="experience-section" />,
 }));
 
-vi.mock("@/components/organisms/certificates-section", () => ({
-  CertificatesSection: () => <div data-testid="certificates-section" />,
-}));
-
 vi.mock("@/components/organisms/contact-section", () => ({
   ContactSection: () => <div data-testid="contact-section" />,
 }));
@@ -41,10 +37,9 @@ describe("Home Page", () => {
 
     const sections = [
       "hero-section",
+      "experience-section",
       "projects-section",
       "skills-section",
-      "experience-section",
-      "certificates-section",
       "contact-section",
     ];
 

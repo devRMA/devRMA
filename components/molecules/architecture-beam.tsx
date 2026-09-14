@@ -70,22 +70,7 @@ export function ArchitectureBeam() {
 
   return (
     <div className="relative w-full overflow-hidden rounded-2xl md:rounded-3xl border border-border/80 bg-card/30 p-5 md:p-8 backdrop-blur-xl shadow-lg">
-      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-b border-border/60 pb-5">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75 motion-reduce:hidden" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
-            </span>
-            <h3 className="font-mono text-xs md:text-sm font-semibold uppercase tracking-wider text-cyan-400">
-              {translate("skills.bento.architectureTitle")}
-            </h3>
-          </div>
-          <p className="mt-1 text-xs text-muted-foreground max-w-xl">
-            {translate("skills.bento.architectureDescription")}
-          </p>
-        </div>
-
+      <div className="mb-6 flex flex-wrap items-center gap-2 border-b border-border/60 pb-5">
         <div className="flex items-center gap-2 font-mono text-xs self-start sm:self-auto">
           <span className="rounded-md border border-border/80 bg-card/60 px-2.5 py-1 text-zinc-400">
             AVRO / JSON
@@ -120,7 +105,7 @@ export function ArchitectureBeam() {
               stroke="url(#beamGradient)"
               strokeWidth="2"
               strokeDasharray="6 6"
-              className="motion-reduce:stroke-dashoffset-0 [stroke-dashoffset:0] animate-[dash_20s_linear_infinite]"
+              className="motion-reduce:stroke-dashoffset-0 [stroke-dashoffset:0] animate-[dash_20s_linear_infinite] motion-reduce:animate-none"
             />
             <circle r="3.5" fill="#06b6d4" className="motion-reduce:hidden">
               <animate attributeName="cx" values="0%;100%" dur="4s" repeatCount="indefinite" />
@@ -160,7 +145,7 @@ export function ArchitectureBeam() {
                 transition={{ duration: 0.3, delay: nodeIndex * 0.08, ease: [0.23, 1, 0.32, 1] }}
                 onMouseEnter={() => setActiveNode(node.id)}
                 onMouseLeave={() => setActiveNode(null)}
-                className={`group relative flex flex-col justify-between rounded-xl border bg-card/80 p-5 shadow-sm backdrop-blur-md transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-xl cursor-default select-none ${
+                className={`group relative flex flex-col justify-between rounded-xl border bg-card/80 p-5 shadow-sm backdrop-blur-md transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-xl cursor-default select-none motion-reduce:hover:translate-y-0 ${
                   isHovered ? "border-primary/60 ring-1 ring-primary/20" : "border-border/80"
                 }`}
               >
@@ -176,14 +161,14 @@ export function ArchitectureBeam() {
 
                   <div className="flex items-center gap-3 mb-3">
                     <div
-                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border bg-background/90 shadow-inner transition-transform duration-200 ease-out group-hover:scale-105 ${node.accentColor}`}
+                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border bg-background/90 shadow-inner transition-transform duration-200 ease-out group-hover:scale-105 motion-reduce:group-hover:scale-100 ${node.accentColor}`}
                     >
                       <NodeIcon className="h-5 w-5" aria-hidden="true" />
                     </div>
                     <div className="overflow-hidden">
-                      <h4 className="font-mono text-xs font-bold text-foreground truncate">
+                      <h5 className="font-mono text-xs font-bold text-foreground truncate">
                         {translate(node.titleKey)}
-                      </h4>
+                      </h5>
                       <p className="font-mono text-xs text-muted-foreground truncate">
                         {translate(node.subtitleKey)}
                       </p>

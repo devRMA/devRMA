@@ -83,7 +83,6 @@ describe("useMobile", () => {
   });
 
   it("detects non-touch device when maxTouchPoints and legacy touch are 0", () => {
-    // @ts-expect-error - delete ontouchstart to simulate desktop environment without touch
     delete window.ontouchstart;
     setNavigatorProp("maxTouchPoints", 0);
     setNavigatorProp("msMaxTouchPoints", 0);
@@ -93,7 +92,6 @@ describe("useMobile", () => {
     expect(result.current.isTouchDevice).toBe(false);
 
     // Restore
-    // @ts-expect-error - restore ontouchstart
     window.ontouchstart = null;
   });
 });

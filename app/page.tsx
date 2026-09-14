@@ -1,4 +1,3 @@
-import { CertificatesSection } from "@/components/organisms/certificates-section";
 import { ContactSection } from "@/components/organisms/contact-section";
 import { ExperienceSection } from "@/components/organisms/experience-section";
 import { HeroSection } from "@/components/organisms/hero-section";
@@ -10,10 +9,9 @@ export default function Home() {
   return (
     <MainLayout>
       <HeroSection />
+      <ExperienceSection />
       <ProjectsSection />
       <SkillsSection />
-      <ExperienceSection />
-      <CertificatesSection />
       <ContactSection />
     </MainLayout>
   );

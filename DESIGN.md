@@ -174,7 +174,7 @@ The spatial model is built around a centralized 12-column responsive container (
 - **Header Layer:** Fixed sticky top bar (`h-16`) utilizing dynamic backdrop blur (`backdrop-blur-xl`) and a bottom border that activates upon scrolling (`scrollY > 10`).
 - **Hero Grid:** Asymmetrical two-column grid on desktop (photo with ambient pulse halo on the right, executive narrative and action buttons on the left).
 - **Bento Telemetry Grid:** 3-column modular cards displaying live time (Curitiba, Brazil), high-scale throughput, and cumulative engineering years.
-- **Case Study Architecture Grid:** 3-column breakdown for flagship systems (Challenge, Architecture, Result), providing structured technical scanning.
+- **Case Study Detail Grid:** Case cards are single-column (2-up from `lg`); each opens a dialog whose Problem / Architecture / Outcome pillars stack as full-width rows at every viewport, never a 3-column grid — three ~80-word pillars need reading room a column can't give.
 
 ## Elevation & Depth
 
@@ -224,6 +224,9 @@ The form language is structured, geometric, and modern, using proportional corne
 
 ### Signature Component: Telemetry Bento & Architecture Beam
 - **Description:** Real-time engineering dashboard component featuring an interactive live Curitiba local time clock, pulsing status indicators, and SVG event-stream beam illustrating Kafka and NestJS asynchronous flows.
+
+### Signature Component: The Specimen Plate (`MediaPlate`)
+- **Description:** The one frame every production capture and diagram is shown in — a `bg-muted` bezel (`rounded-xl border border-border/70 p-2`) around an inner `rounded-lg ring-1 ring-border/60` image well, with a mono 11px figure-caption strip below stating the source kind ("capture"/"diagram") and the year. One frame serves light and dark captures in both themes with no branching, and a real screenshot is never re-themed to match the page — it is framed instead. Dark theme rests the image at `opacity-90`, returning to full fidelity on hover/focus-within; light theme never dims. Reused identically across all four case cards and their detail-dialog evidence galleries.
 
 ## Do's and Don'ts
 

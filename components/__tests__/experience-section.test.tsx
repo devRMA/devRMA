@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { ReactNode } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -19,6 +19,8 @@ const experiencePositionMock = vi.fn((props: any) => (
 
 const educationCardMock = vi.fn((props: any) => <div data-testid={`education-${props.period}`} />);
 
+const PHASES = ["foundation", "leadership", "scale"] as const;
+
 const translationMap: Record<string, string | undefined> = {
   "experience.title": "Professional journey",
   "experience.description": "Timeline of roles and studies.",
@@ -27,7 +29,18 @@ const translationMap: Record<string, string | undefined> = {
   "experience.previousPositions": "Previous roles",
   "experience.inProgress": "In progress",
   "experience.keyAchievements": "Key achievements",
+  "experience.progression.label": "Career progression:",
 };
+
+PHASES.forEach((phaseId, index) => {
+  const number = `0${index + 1}`;
+  translationMap[`experience.phases.${phaseId}.number`] = number;
+  translationMap[`experience.phases.${phaseId}.badge`] = `Badge ${number}`;
+  translationMap[`experience.phases.${phaseId}.period`] = `Period ${number}`;
+  translationMap[`experience.phases.${phaseId}.title`] = `Phase ${number} title`;
+  translationMap[`experience.phases.${phaseId}.context`] = `Phase ${number} context`;
+  translationMap[`experience.phases.${phaseId}.description`] = `Phase ${number} description`;
+});
 
 for (const company of experienceData) {
   translationMap[`experience.companies.${company.id}.name`] = `${company.name} Inc.`;
@@ -87,7 +100,9 @@ vi.mock("@/components/ui/card", () => ({
 
 vi.mock("@/components/ui/tabs", () => ({
   Tabs: ({ children }: { children: ReactNode }) => <div>{children}</div>,
-  TabsList: ({ children }: { children: ReactNode }) => <div>{children}</div>,
+  TabsList: ({ children }: { children: ReactNode }) => (
+    <div data-testid="tabs-list">{children}</div>
+  ),
   TabsTrigger: ({ children }: { children: ReactNode }) => <button type="button">{children}</button>,
   TabsContent: ({ children }: { children: ReactNode }) => <div>{children}</div>,
 }));
@@ -96,7 +111,9 @@ vi.mock("framer-motion", () => ({
   AnimatePresence: ({ children }: { children: ReactNode }) => <>{children}</>,
   motion: {
     div: ({ children }: { children: ReactNode }) => <div>{children}</div>,
+    li: ({ children }: { children: ReactNode }) => <li>{children}</li>,
   },
+  useReducedMotion: () => false,
 }));
 
 describe("ExperienceSection", () => {
@@ -155,5 +172,44 @@ describe("ExperienceSection", () => {
         }),
       );
     });
+  });
+
+  it("summarises the career as three ordered phases", () => {
+    render(<ExperienceSection />);
+
+    const phaseItems = within(screen.getByRole("list")).getAllByRole("listitem");
+    expect(phaseItems).toHaveLength(3);
+    expect(phaseItems.map((item) => item.textContent)).toEqual([
+      expect.stringContaining("Phase 01 title"),
+      expect.stringContaining("Phase 02 title"),
+      expect.stringContaining("Phase 03 title"),
+    ]);
+  });
+
+  it("places the phase summary above the tabs", () => {
+    render(<ExperienceSection />);
+
+    const phaseList = screen.getByRole("list");
+    const tabsList = screen.getByTestId("tabs-list");
+    // biome-ignore lint/suspicious/noBitwiseOperators: DOM position comparison requires the bitmask API
+    expect(phaseList.compareDocumentPosition(tabsList) & Node.DOCUMENT_POSITION_FOLLOWING).toBe(
+      Node.DOCUMENT_POSITION_FOLLOWING,
+    );
+  });
+
+  it("keeps the detailed tabs intact", () => {
+    render(<ExperienceSection />);
+
+    expect(screen.getByRole("button", { name: "Professional" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Academic" })).toBeInTheDocument();
+    experienceData.forEach((company) => {
+      expect(screen.getByText(`${company.name} Inc.`)).toBeInTheDocument();
+    });
+  });
+
+  it("no longer renders the progression pill", () => {
+    render(<ExperienceSection />);
+
+    expect(screen.queryByText("Career progression:")).not.toBeInTheDocument();
   });
 });

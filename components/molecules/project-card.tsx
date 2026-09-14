@@ -85,7 +85,7 @@ export function ProjectCard({
       }}
       className="h-full [transform-style:preserve-3d]"
     >
-      <Card className="group relative h-full flex flex-col overflow-hidden rounded-2xl border-border/80 bg-card/60 backdrop-blur-xl transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-cyan-500/50 hover:shadow-2xl hover:shadow-cyan-500/5 hover:-translate-y-1">
+      <Card className="group relative h-full flex flex-col overflow-hidden rounded-2xl border-border/80 bg-card/60 backdrop-blur-xl transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-cyan-500/50 hover:shadow-2xl hover:shadow-cyan-500/5 hover:-translate-y-1 motion-reduce:hover:translate-y-0">
         <div className="relative h-48 w-full overflow-hidden border-b border-border/70 bg-zinc-950/50">
           {image ? (
             <Image
@@ -93,7 +93,7 @@ export function ProjectCard({
               alt={title}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1536px) 50vw, 25vw"
-              className="object-cover transition-transform duration-500 ease-out hover:scale-105 active:scale-105"
+              className="object-cover transition-transform duration-500 ease-out hover:scale-105 active:scale-105 motion-reduce:hover:scale-100"
             />
           ) : (
             <div className="flex h-full flex-col justify-between bg-zinc-950 p-4 font-mono text-xs text-zinc-300">

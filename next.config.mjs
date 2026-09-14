@@ -14,18 +14,6 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
-      {
-        protocol: "https",
-        hostname: "img-c.udemycdn.com",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "i.vimeocdn.com",
-        port: "",
-        pathname: "/**",
-      },
     ],
   },
 };

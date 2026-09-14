@@ -48,7 +48,7 @@ function entryFor(id: string, top: number, isIntersecting: boolean) {
 }
 
 describe("useActiveSection", () => {
-  const sections = ["about", "skills", "projects"];
+  const sections = ["about", "experience", "projects"];
   let originalIntersectionObserver: typeof IntersectionObserver;
 
   beforeEach(() => {
@@ -85,11 +85,11 @@ describe("useActiveSection", () => {
     await waitFor(() => expect(observers).toHaveLength(1));
 
     await act(async () => {
-      observers[0].trigger([entryFor("projects", 480, true), entryFor("skills", 120, true)]);
+      observers[0].trigger([entryFor("projects", 480, true), entryFor("experience", 120, true)]);
       await Promise.resolve();
     });
 
-    await waitFor(() => expect(result.current).toBe("skills"));
+    await waitFor(() => expect(result.current).toBe("experience"));
   });
 
   it("falls back to the remaining visible section when one leaves the viewport", async () => {
@@ -98,14 +98,14 @@ describe("useActiveSection", () => {
     await waitFor(() => expect(observers).toHaveLength(1));
 
     await act(async () => {
-      observers[0].trigger([entryFor("skills", 100, true), entryFor("projects", 600, true)]);
+      observers[0].trigger([entryFor("experience", 100, true), entryFor("projects", 600, true)]);
       await Promise.resolve();
     });
 
-    await waitFor(() => expect(result.current).toBe("skills"));
+    await waitFor(() => expect(result.current).toBe("experience"));
 
     await act(async () => {
-      observers[0].trigger([entryFor("skills", -400, false)]);
+      observers[0].trigger([entryFor("experience", -400, false)]);
       await Promise.resolve();
     });
 
@@ -116,7 +116,7 @@ describe("useActiveSection", () => {
     const { result } = renderHook(() => useActiveSection(sections));
 
     act(() => {
-      observers[0].trigger([entryFor("skills", 0, false)]);
+      observers[0].trigger([entryFor("experience", 0, false)]);
     });
 
     expect(result.current).toBe("about");

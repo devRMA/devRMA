@@ -28,9 +28,9 @@ export function SkillsSection() {
 
       <div className="mb-10">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="group rounded-2xl border border-border/80 bg-card/50 p-5 backdrop-blur-xl transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-cyan-500/40 hover:-translate-y-1 hover:shadow-lg cursor-default select-none">
+          <div className="group rounded-2xl border border-border/80 bg-card/50 p-5 backdrop-blur-xl transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-cyan-500/40 hover:-translate-y-1 hover:shadow-lg cursor-default select-none motion-reduce:hover:translate-y-0">
             <div className="flex items-center gap-4">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 shadow-inner transition-transform duration-200 ease-out group-hover:scale-110">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 shadow-inner transition-transform duration-200 ease-out group-hover:scale-110 motion-reduce:group-hover:scale-100">
                 <Zap className="h-5 w-5" aria-hidden="true" />
               </div>
               <div>
@@ -44,9 +44,9 @@ export function SkillsSection() {
             </div>
           </div>
 
-          <div className="group rounded-2xl border border-border/80 bg-card/50 p-5 backdrop-blur-xl transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-amber-500/40 hover:-translate-y-1 hover:shadow-lg cursor-default select-none">
+          <div className="group rounded-2xl border border-border/80 bg-card/50 p-5 backdrop-blur-xl transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-amber-500/40 hover:-translate-y-1 hover:shadow-lg cursor-default select-none motion-reduce:hover:translate-y-0">
             <div className="flex items-center gap-4">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-400 shadow-inner transition-transform duration-200 ease-out group-hover:scale-110">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-400 shadow-inner transition-transform duration-200 ease-out group-hover:scale-110 motion-reduce:group-hover:scale-100">
                 <Cpu className="h-5 w-5" aria-hidden="true" />
               </div>
               <div>
@@ -60,10 +60,10 @@ export function SkillsSection() {
             </div>
           </div>
 
-          <div className="group rounded-2xl border border-border/80 bg-card/50 p-5 backdrop-blur-xl transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-emerald-500/40 hover:-translate-y-1 hover:shadow-lg sm:col-span-2 lg:col-span-1 cursor-default select-none">
+          <div className="group rounded-2xl border border-border/80 bg-card/50 p-5 backdrop-blur-xl transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-emerald-500/40 hover:-translate-y-1 hover:shadow-lg sm:col-span-2 lg:col-span-1 cursor-default select-none motion-reduce:hover:translate-y-0">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 shadow-inner transition-transform duration-200 ease-out group-hover:scale-110">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 shadow-inner transition-transform duration-200 ease-out group-hover:scale-110 motion-reduce:group-hover:scale-100">
                   <Clock className="h-5 w-5" aria-hidden="true" />
                 </div>
                 <div>
@@ -71,7 +71,7 @@ export function SkillsSection() {
                   <CuritibaClock />
                 </div>
               </div>
-              <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 font-mono text-xs text-emerald-400">
+              <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 font-mono text-xs text-emerald-700 dark:text-emerald-400">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75 motion-reduce:hidden" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />

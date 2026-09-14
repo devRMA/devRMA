@@ -70,7 +70,7 @@ describe("ProjectCard", () => {
         isArchived={true}
         archivedLabel="Arquivo"
         liveUrl={null}
-        githubUrl={null}
+        githubUrl={undefined}
       />,
     );
 
